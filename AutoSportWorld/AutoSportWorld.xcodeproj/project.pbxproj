@@ -20,6 +20,8 @@
 		CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */; };
 		CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */; };
 		CA8C00401F39BAEF005CF27E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Settings.storyboard */; };
+		DE424BEF1F3C7D4700D97B2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE424BEE1F3C7D4700D97B2F /* ViewController.swift */; };
+		DE424C001F3C9FA100D97B2F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE424BFF1F3C9FA100D97B2F /* Calendar.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsSocialNetworkCell.swift; sourceTree = "<group>"; };
 		CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsFilterCell.swift; sourceTree = "<group>"; };
 		CA8C003F1F39BAEF005CF27E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		DE424BEE1F3C7D4700D97B2F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE424BFF1F3C9FA100D97B2F /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				CA3710B81F37C94E003578E5 /* ASWSettingsViewController.swift */,
+				DE424BEE1F3C7D4700D97B2F /* ViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				CA323B2F1F379ADA007157D4 /* LaunchScreen.storyboard */,
 				CA323B2A1F379ADA007157D4 /* Main.storyboard */,
 				CA8C003F1F39BAEF005CF27E /* Settings.storyboard */,
+				DE424BFF1F3C9FA100D97B2F /* Calendar.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
+				DE424C001F3C9FA100D97B2F /* Calendar.storyboard in Resources */,
 				CA8C00401F39BAEF005CF27E /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE424BEF1F3C7D4700D97B2F /* ViewController.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
