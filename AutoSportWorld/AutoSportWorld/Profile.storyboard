@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NWx-Cj-VDS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Мои настройки-->
+        <scene sceneID="8en-IH-Msu">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="ndN-Nm-oYs" customClass="ASWSettingsViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WcS-xj-e75"/>
+                        <viewControllerLayoutGuide type="bottom" id="R9z-F5-3UJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0FI-8i-sJj">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="elm-pw-htT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ASWSettingsUserDataCell" rowHeight="55" id="msX-T2-rPH" customClass="ASWSettingsUserDataCell" customModule="AutoSportWorld" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="msX-T2-rPH" id="dhe-pk-DWN">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сменить пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fy7-AA-xm3">
+                                                    <rect key="frame" x="15" y="16" width="134" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="134" id="1sY-6X-oHJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT9-ic-Ezc">
+                                                    <rect key="frame" x="157" y="19" width="185" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="tT9-ic-Ezc" secondAttribute="trailing" id="01s-Ts-Ymi"/>
+                                                <constraint firstItem="tT9-ic-Ezc" firstAttribute="leading" secondItem="fy7-AA-xm3" secondAttribute="trailing" constant="8" id="2RT-vK-Krh"/>
+                                                <constraint firstItem="fy7-AA-xm3" firstAttribute="top" secondItem="dhe-pk-DWN" secondAttribute="topMargin" constant="8" id="6qe-Z8-dRP"/>
+                                                <constraint firstItem="tT9-ic-Ezc" firstAttribute="leading" secondItem="fy7-AA-xm3" secondAttribute="trailing" constant="8" id="EGG-mB-xlQ"/>
+                                                <constraint firstItem="tT9-ic-Ezc" firstAttribute="top" secondItem="dhe-pk-DWN" secondAttribute="top" constant="19" id="QUm-iW-wOm"/>
+                                                <constraint firstAttribute="bottom" secondItem="tT9-ic-Ezc" secondAttribute="bottom" constant="17.5" id="acr-3L-oba"/>
+                                                <constraint firstItem="fy7-AA-xm3" firstAttribute="leading" secondItem="dhe-pk-DWN" secondAttribute="leadingMargin" constant="7" id="ghN-w8-8h7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fy7-AA-xm3" secondAttribute="bottom" constant="9.5" id="h4Y-Sd-AcT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dataLabel" destination="tT9-ic-Ezc" id="hYj-EF-UUF"/>
+                                            <outlet property="infoLabel" destination="fy7-AA-xm3" id="pDs-HY-H7H"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASWSettingsSocialNetworkCell" rowHeight="55" id="N5H-dj-qPQ" customClass="ASWSettingsSocialNetworkCell" customModule="AutoSportWorld" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="83" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N5H-dj-qPQ" id="8vS-Wv-QeF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Привязать Вконтакте" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2y-jS-paA">
+                                                    <rect key="frame" x="65" y="17" width="302" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g7F-XH-or7">
+                                                    <rect key="frame" x="15" y="10" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="P6V-cB-Xu9"/>
+                                                        <constraint firstAttribute="height" constant="35" id="mqE-mO-cSZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="g7F-XH-or7" secondAttribute="bottom" constant="1.5" id="5Ih-oZ-YG2"/>
+                                                <constraint firstItem="g7F-XH-or7" firstAttribute="top" secondItem="8vS-Wv-QeF" secondAttribute="topMargin" constant="2" id="5SO-BK-NRq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="G2y-jS-paA" secondAttribute="bottom" constant="8.5" id="6sb-EV-aJv"/>
+                                                <constraint firstItem="G2y-jS-paA" firstAttribute="leading" secondItem="g7F-XH-or7" secondAttribute="trailing" constant="15" id="TwX-SL-6HW"/>
+                                                <constraint firstItem="G2y-jS-paA" firstAttribute="leading" secondItem="g7F-XH-or7" secondAttribute="trailing" constant="15" id="dbk-Ho-Fhx"/>
+                                                <constraint firstItem="G2y-jS-paA" firstAttribute="trailing" secondItem="8vS-Wv-QeF" secondAttribute="trailingMargin" id="h1j-qH-Dh2"/>
+                                                <constraint firstItem="G2y-jS-paA" firstAttribute="top" secondItem="8vS-Wv-QeF" secondAttribute="topMargin" constant="9" id="hhS-X6-m9A"/>
+                                                <constraint firstItem="g7F-XH-or7" firstAttribute="leading" secondItem="8vS-Wv-QeF" secondAttribute="leadingMargin" constant="7" id="lw2-tZ-Es4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="65" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="socialImage" destination="g7F-XH-or7" id="vLG-Oz-UQR"/>
+                                            <outlet property="socialTextLabel" destination="G2y-jS-paA" id="P4e-LG-75f"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ASWSettingsFilterCell" rowHeight="55" id="H3R-zl-jwe" customClass="ASWSettingsFilterCell" customModule="AutoSportWorld" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H3R-zl-jwe" id="nSC-6a-8Bs">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stM-gq-eAH">
+                                                    <rect key="frame" x="15" y="17" width="319" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="stM-gq-eAH" secondAttribute="bottom" constant="8.5" id="4hZ-RK-H1q"/>
+                                                <constraint firstItem="stM-gq-eAH" firstAttribute="top" secondItem="nSC-6a-8Bs" secondAttribute="topMargin" constant="9" id="7if-FX-bRS"/>
+                                                <constraint firstItem="stM-gq-eAH" firstAttribute="leading" secondItem="nSC-6a-8Bs" secondAttribute="leadingMargin" constant="7" id="e68-Ru-ABr"/>
+                                                <constraint firstItem="stM-gq-eAH" firstAttribute="trailing" secondItem="nSC-6a-8Bs" secondAttribute="trailingMargin" id="wXg-Nc-98I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="infoLabel" destination="stM-gq-eAH" id="Zl5-iC-kOB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="elm-pw-htT" firstAttribute="leading" secondItem="0FI-8i-sJj" secondAttribute="leading" id="AyD-fW-yvE"/>
+                            <constraint firstItem="elm-pw-htT" firstAttribute="top" secondItem="0FI-8i-sJj" secondAttribute="top" id="V6G-JW-7BD"/>
+                            <constraint firstAttribute="trailing" secondItem="elm-pw-htT" secondAttribute="trailing" id="aiW-Ow-Fsi"/>
+                            <constraint firstItem="R9z-F5-3UJ" firstAttribute="top" secondItem="elm-pw-htT" secondAttribute="bottom" id="yfU-2K-tfq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Мои настройки" id="We5-MO-LX4">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="gtk-gN-BW1" customClass="ASWBackBarButtonItem" customModule="AutoSportWorld" customModuleProvider="target">
+                            <connections>
+                                <action selector="goBack:" destination="ndN-Nm-oYs" id="c2F-vJ-6qL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="settingsTable" destination="elm-pw-htT" id="ObP-Ju-fib"/>
+                        <segue destination="5ao-rt-4GQ" kind="show" identifier="changeRegions" id="SNJ-Dr-cCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyL-Bm-0TH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2560.8000000000002" y="1139.2803598200901"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pXl-qJ-cdr">
+            <objects>
+                <viewController id="5ao-rt-4GQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Mw-Lf-vVV"/>
+                        <viewControllerLayoutGuide type="bottom" id="qnb-LG-bjj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eiV-Fk-GeZ">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wPx-C1-l9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3527" y="1139"/>
+        </scene>
+        <!--Профиль-->
+        <scene sceneID="AUZ-m9-tf4">
+            <objects>
+                <viewController id="NWx-Cj-VDS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5DD-5g-KTw"/>
+                        <viewControllerLayoutGuide type="bottom" id="DLv-tp-ZXY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3VW-2N-Ly3">
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Профиль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VW0-Nb-8e3">
+                                <rect key="frame" x="151" y="99" width="73" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbC-9t-aeW">
+                                <rect key="frame" x="134" y="156" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="К настройкам">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ndN-Nm-oYs" kind="show" id="EJm-rB-4nV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RL3-XF-FpL">
+                                <rect key="frame" x="137" y="194" width="101" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Разработчики"/>
+                                <connections>
+                                    <segue destination="tpS-vN-gz1" kind="show" id="mwW-7x-4xM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlt-lp-hsY">
+                                <rect key="frame" x="134" y="232" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="О приложении"/>
+                                <connections>
+                                    <segue destination="aYY-jx-qFA" kind="show" id="uVr-tt-fwO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPB-rK-gAe">
+                                <rect key="frame" x="141" y="270" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="мои события"/>
+                                <connections>
+                                    <segue destination="cr7-yv-8zv" kind="show" id="78c-8Y-lC3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Профиль" id="Agh-U5-6iz"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o90-ie-faM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1521" y="1467"/>
+        </scene>
+        <!--Мои события-->
+        <scene sceneID="TUu-p6-GT6">
+            <objects>
+                <viewController id="cr7-yv-8zv" customClass="ASWMyEventsViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tuz-4P-8Au"/>
+                        <viewControllerLayoutGuide type="bottom" id="oHp-IX-Ob0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ibb-YI-X8V">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJi-vw-5fX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VjH-Pn-6lV">
+                                        <rect key="frame" x="87" y="0.0" width="200" height="29"/>
+                                        <segments>
+                                            <segment title="Зритель"/>
+                                            <segment title="Участник"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VjH-Pn-6lV" secondAttribute="trailing" constant="88" id="8pw-Yx-Ml0"/>
+                                    <constraint firstAttribute="height" constant="42" id="YNZ-Py-JsF"/>
+                                    <constraint firstItem="VjH-Pn-6lV" firstAttribute="leading" secondItem="QJi-vw-5fX" secondAttribute="leading" constant="87" id="g4g-h1-aXh"/>
+                                    <constraint firstItem="VjH-Pn-6lV" firstAttribute="top" secondItem="QJi-vw-5fX" secondAttribute="top" id="oDJ-Ru-F7B"/>
+                                    <constraint firstAttribute="bottom" secondItem="VjH-Pn-6lV" secondAttribute="bottom" constant="14" id="z5q-KI-5Qg"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ld9-G2-Kg8" customClass="ASWFeedTableView" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="42" width="375" height="561"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ld9-G2-Kg8" firstAttribute="leading" secondItem="Ibb-YI-X8V" secondAttribute="leading" id="7CA-T8-24P"/>
+                            <constraint firstItem="Ld9-G2-Kg8" firstAttribute="top" secondItem="QJi-vw-5fX" secondAttribute="bottom" id="HCF-2Z-nBA"/>
+                            <constraint firstItem="oHp-IX-Ob0" firstAttribute="top" secondItem="Ld9-G2-Kg8" secondAttribute="bottom" id="L2q-Ij-bLk"/>
+                            <constraint firstItem="QJi-vw-5fX" firstAttribute="top" secondItem="Tuz-4P-8Au" secondAttribute="bottom" id="Ntj-Nx-6f5"/>
+                            <constraint firstAttribute="trailing" secondItem="QJi-vw-5fX" secondAttribute="trailing" id="fTN-tJ-871"/>
+                            <constraint firstAttribute="trailing" secondItem="Ld9-G2-Kg8" secondAttribute="trailing" id="hHt-h0-yVP"/>
+                            <constraint firstItem="QJi-vw-5fX" firstAttribute="leading" secondItem="Ibb-YI-X8V" secondAttribute="leading" id="vHQ-r2-8aT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Мои события" id="0Ba-fC-fhC">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="10E-S2-lr8" customClass="ASWBackBarButtonItem" customModule="AutoSportWorld" customModuleProvider="target">
+                            <connections>
+                                <action selector="goBack:" destination="cr7-yv-8zv" id="DEj-sv-72Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="eventsTable" destination="Ld9-G2-Kg8" id="2ZN-JL-pAZ"/>
+                        <outlet property="headerView" destination="QJi-vw-5fX" id="N0F-nq-IpK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xvM-zi-lDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2597.5999999999999" y="1843.6281859070466"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="pjR-IR-YC0">
+            <objects>
+                <viewController id="aYY-jx-qFA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YNu-7H-C3s"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y5R-Rt-sb6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMJ-js-dtK">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Mit-GJ-HsP"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7t4-eN-gfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="2310"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="M78-P0-ukV">
+            <objects>
+                <viewController id="tpS-vN-gz1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u7j-yP-QJA"/>
+                        <viewControllerLayoutGuide type="bottom" id="RUe-oq-o6R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="usP-Df-4rj">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="ej0-c7-nUn"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JAZ-fX-GCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1974" y="2577"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+</document>

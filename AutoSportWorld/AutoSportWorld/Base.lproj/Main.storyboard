@@ -18,15 +18,15 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8j-Dd-4cu">
-                                <rect key="frame" x="137" y="208" width="100" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOc-cY-PVO">
+                                <rect key="frame" x="151" y="252" width="72" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="К настройкам"/>
+                                <state key="normal" title="К таббару"/>
                                 <connections>
-                                    <segue destination="rCo-oM-t7F" kind="show" id="sjK-3M-48K"/>
+                                    <segue destination="MDR-gb-j9R" kind="show" id="ym3-cq-d9y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,11 +43,17 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NwF-aM-rDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XC6-ww-bvG">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="XC6-ww-bvG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1Bd-OU-WsX">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GCo-DX-rK3"/>
                     </connections>
@@ -56,13 +62,112 @@
             </objects>
             <point key="canvasLocation" x="130" y="139"/>
         </scene>
-        <!--Settings-->
+        <!--Profile-->
         <scene sceneID="r1N-eW-HBj">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="rCo-oM-t7F" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="rCo-oM-t7F" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="krG-M3-hmp"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfZ-DM-FF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1241" y="613"/>
+            <point key="canvasLocation" x="2278" y="881"/>
+        </scene>
+        <!--Календарь-->
+        <scene sceneID="Yso-iX-6oT">
+            <objects>
+                <viewController id="Ehe-5H-v8t" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2OS-f9-ujP"/>
+                        <viewControllerLayoutGuide type="bottom" id="QId-kD-HbL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PaY-Qc-aEb">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Календарь" id="8Qy-pH-ImZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thE-m8-acL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="466"/>
+        </scene>
+        <!--Карта-->
+        <scene sceneID="vvv-aZ-HxK">
+            <objects>
+                <viewController id="Pul-1K-c8N" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="luJ-WG-88C"/>
+                        <viewControllerLayoutGuide type="bottom" id="qo4-eI-94P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jxR-oa-SSq">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Карта" id="3t5-F1-SVf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyF-e6-aIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="1192"/>
+        </scene>
+        <!--События-->
+        <scene sceneID="Ime-0G-SHu">
+            <objects>
+                <viewController id="lby-ck-1rP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="86h-Go-CHs"/>
+                        <viewControllerLayoutGuide type="bottom" id="rsM-xi-E2Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eIO-xD-gna">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="События" id="sKQ-m9-GJb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nti-L5-dNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="-976"/>
+        </scene>
+        <!--Избранное-->
+        <scene sceneID="TSr-cI-NoB">
+            <objects>
+                <viewController id="B8I-oz-LlR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7dH-56-vF8"/>
+                        <viewControllerLayoutGuide type="bottom" id="UUE-YR-NCB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OQb-sX-nGn">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Избранное" id="kpI-Re-EdV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UpV-9s-USZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="-188"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="4An-kO-sGW">
+            <objects>
+                <tabBarController id="MDR-gb-j9R" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Cfm-58-Wei">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="lby-ck-1rP" kind="relationship" relationship="viewControllers" id="Ku6-DG-fNc"/>
+                        <segue destination="B8I-oz-LlR" kind="relationship" relationship="viewControllers" id="RmP-4Z-MbH"/>
+                        <segue destination="Ehe-5H-v8t" kind="relationship" relationship="viewControllers" id="wid-kI-4ut"/>
+                        <segue destination="Pul-1K-c8N" kind="relationship" relationship="viewControllers" id="w6a-CX-4e3"/>
+                        <segue destination="rCo-oM-t7F" kind="relationship" relationship="viewControllers" id="VQk-aJ-6OY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L4Z-jW-y8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1985" y="139"/>
         </scene>
     </scenes>
 </document>

@@ -9,6 +9,9 @@
 import UIKit
 
 class ASWSettingsSocialNetworkCell: UITableViewCell {
+    
+    @IBOutlet weak var socialImage: UIImageView!
+    @IBOutlet weak var socialTextLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

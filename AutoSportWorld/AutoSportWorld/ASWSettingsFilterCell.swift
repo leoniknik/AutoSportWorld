@@ -10,6 +10,8 @@ import UIKit
 
 class ASWSettingsFilterCell: UITableViewCell {
 
+    @IBOutlet weak var infoLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

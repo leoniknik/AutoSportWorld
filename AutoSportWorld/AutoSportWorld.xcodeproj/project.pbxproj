@@ -18,7 +18,14 @@
 		CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */; };
 		CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */; };
 		CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */; };
-		CA8C00401F39BAEF005CF27E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Settings.storyboard */; };
+		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
+		CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */; };
+		CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */; };
+		CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */; };
+		CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */; };
+		CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */; };
+		CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB584E1F3E8068007E8E0B /* ASWSpacingCell.swift */; };
+		CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +42,14 @@
 		CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsUserDataCell.swift; sourceTree = "<group>"; };
 		CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsSocialNetworkCell.swift; sourceTree = "<group>"; };
 		CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsFilterCell.swift; sourceTree = "<group>"; };
-		CA8C003F1F39BAEF005CF27E /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSegueRouter.swift; sourceTree = "<group>"; };
+		CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEventCell.swift; sourceTree = "<group>"; };
+		CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWEventCell.xib; sourceTree = "<group>"; };
+		CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWMyEventsViewController.swift; sourceTree = "<group>"; };
+		CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWFeedTableView.swift; sourceTree = "<group>"; };
+		CACB584E1F3E8068007E8E0B /* ASWSpacingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSpacingCell.swift; sourceTree = "<group>"; };
+		CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWSpacingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				CA3710B81F37C94E003578E5 /* ASWSettingsViewController.swift */,
+				CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -92,6 +107,7 @@
 				CA8C00411F39BB26005CF27E /* Storyboards */,
 				CA3710C01F37D78B003578E5 /* Cells */,
 				CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */,
+				CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -115,6 +131,7 @@
 		CA3710AE1F37B5C9003578E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -135,6 +152,10 @@
 				CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */,
 				CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */,
 				CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */,
+				CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */,
+				CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */,
+				CACB584E1F3E8068007E8E0B /* ASWSpacingCell.swift */,
+				CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -144,7 +165,7 @@
 			children = (
 				CA323B2F1F379ADA007157D4 /* LaunchScreen.storyboard */,
 				CA323B2A1F379ADA007157D4 /* Main.storyboard */,
-				CA8C003F1F39BAEF005CF27E /* Settings.storyboard */,
+				CA8C003F1F39BAEF005CF27E /* Profile.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -212,7 +233,9 @@
 				CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
-				CA8C00401F39BAEF005CF27E /* Settings.storyboard in Resources */,
+				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
+				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
+				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,12 +246,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
+				CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
+				CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */,
 				CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */,
+				CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */,
+				CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */,
 				CA3710B91F37C94E003578E5 /* ASWSettingsViewController.swift in Sources */,
 				CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */,
 			);

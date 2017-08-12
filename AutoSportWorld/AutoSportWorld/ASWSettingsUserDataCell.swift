@@ -9,6 +9,9 @@
 import UIKit
 
 class ASWSettingsUserDataCell: UITableViewCell {
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var dataLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
