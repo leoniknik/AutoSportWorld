@@ -51,6 +51,12 @@ class ASWFeedTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return nil
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.item % 2 != 0 {
+            return true
+        }
+        return false
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.deselectRow(at: indexPath, animated: true)

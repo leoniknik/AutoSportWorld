@@ -153,7 +153,9 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        if indexPath.section == 2 && indexPath.item == 0 {
+            performSegue(withIdentifier: ASWSegueRouter.changeRegions, sender: nil)
+        }
     }
     
     //MARK: - IBAction
