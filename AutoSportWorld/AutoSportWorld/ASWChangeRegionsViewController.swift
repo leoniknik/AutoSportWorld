@@ -50,15 +50,18 @@ class ASWChangeRegionsViewController: UIViewController, UICollectionViewDelegate
         if indexPath.section == 0 {
             //выделить ячейку
             cell.checkmark.isHidden = false
+            cell.darkShadow.opacity = 0.3
             //настройка ячейки
             
         }
         else {
             //снять выделение
             cell.checkmark.isHidden = true
+            cell.darkShadow.opacity = 0.0
             //настройка ячейки
-            
         }
+        
+        cell.regionNumber.text = "\(indexPath.item)"
         
         return cell
     }
@@ -130,13 +133,13 @@ class ASWChangeRegionsViewController: UIViewController, UICollectionViewDelegate
             let string = selectedItems[indexPath.item]
             selectedItems.remove(at: indexPath.item)
             availableItems.append(string)
-            availableItems.sort(by: sortingRegions(value1:value2:))
+          //  availableItems.sort(by: sortingRegions(value1:value2:))
         }
         else {
             let string = availableItems[indexPath.item]
             availableItems.remove(at: indexPath.item)
             selectedItems.append(string)
-            selectedItems.sort(by: sortingRegions(value1:value2:))
+           // selectedItems.sort(by: sortingRegions(value1:value2:))
         }
         
         //обработка нажатия

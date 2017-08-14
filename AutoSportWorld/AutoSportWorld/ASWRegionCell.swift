@@ -11,6 +11,9 @@ import UIKit
 class ASWRegionCell: UICollectionViewCell {
     
     @IBOutlet weak var checkmark: UIImageView!
+    @IBOutlet weak var regionNumber: UILabel!
+    
+    let darkShadow = CALayer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +22,13 @@ class ASWRegionCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.ASWColor.grey.cgColor
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
+        
+        //добавление слоя для затемнения
+        darkShadow.backgroundColor = UIColor.black.cgColor
+        darkShadow.opacity = 0.0
+        darkShadow.frame = self.frame
+        self.layer.addSublayer(darkShadow)
+        
     }
 
 }
