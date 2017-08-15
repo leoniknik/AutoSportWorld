@@ -78,7 +78,7 @@
                             </imageView>
                         </subviews>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H8L-CL-3He">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_backward" translatesAutoresizingMaskIntoConstraints="NO" id="H8L-CL-3He">
                         <rect key="frame" x="74" y="4" width="22" height="22"/>
                         <color key="backgroundColor" red="0.19990382696202261" green="0.72340381145477295" blue="0.16092284105966903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -111,4 +111,7 @@
             <point key="canvasLocation" x="-48" y="-95"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_backward" width="24" height="24"/>
+    </resources>
 </document>

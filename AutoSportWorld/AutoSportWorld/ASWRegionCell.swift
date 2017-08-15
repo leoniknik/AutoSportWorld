@@ -17,19 +17,24 @@ class ASWRegionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.ASWColor.grey.cgColor
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
         self.checkmark.isHidden = true
-    }
-    
-    func selectCell() {
+        
         darkShadow.backgroundColor = UIColor.black.cgColor
         darkShadow.opacity = 0.3
         darkShadow.frame = self.contentView.frame
-        self.layer.addSublayer(darkShadow)
+        
+        self.checkmark.backgroundColor = UIColor.clear
+        self.checkmark.layer.opacity = 1.0
+
+    }
+    
+    func selectCell() {
+        self.contentView.layer.insertSublayer(darkShadow, below: self.checkmark.layer)
         self.checkmark.isHidden = false
     }
     
