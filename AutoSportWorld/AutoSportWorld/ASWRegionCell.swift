@@ -13,7 +13,7 @@ class ASWRegionCell: UICollectionViewCell {
     @IBOutlet weak var checkmark: UIImageView!
     @IBOutlet weak var regionNumber: UILabel!
     
-    let darkShadow = CALayer()
+    var darkShadow = CALayer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,13 +22,20 @@ class ASWRegionCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.ASWColor.grey.cgColor
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
-        
-        //добавление слоя для затемнения
+        self.checkmark.isHidden = true
+    }
+    
+    func selectCell() {
         darkShadow.backgroundColor = UIColor.black.cgColor
-        darkShadow.opacity = 0.0
-        darkShadow.frame = self.frame
+        darkShadow.opacity = 0.3
+        darkShadow.frame = self.contentView.frame
         self.layer.addSublayer(darkShadow)
-        
+        self.checkmark.isHidden = false
+    }
+    
+    func deselectCell() {
+        darkShadow.removeFromSuperlayer()
+        self.checkmark.isHidden = true
     }
 
 }

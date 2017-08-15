@@ -48,20 +48,16 @@ class ASWChangeRegionsViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWRegionCell", for: indexPath) as! ASWRegionCell
         if indexPath.section == 0 {
-            //выделить ячейку
-            cell.checkmark.isHidden = false
-            cell.darkShadow.opacity = 0.3
+            cell.selectCell()
             //настройка ячейки
-            
+            cell.regionNumber.text = "\(selectedItems[indexPath.item])"
         }
         else {
-            //снять выделение
-            cell.checkmark.isHidden = true
-            cell.darkShadow.opacity = 0.0
+            cell.deselectCell()
             //настройка ячейки
+            cell.regionNumber.text = "\(availableItems[indexPath.item]))"
+            
         }
-        
-        cell.regionNumber.text = "\(indexPath.item)"
         
         return cell
     }
