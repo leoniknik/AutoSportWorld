@@ -12,6 +12,7 @@ class ASWRaceTypeCell: UICollectionViewCell {
 
     
     
+    @IBOutlet weak var checkmark: UIImageView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var label: UILabel!
     
