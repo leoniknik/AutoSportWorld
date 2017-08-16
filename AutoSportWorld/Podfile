@@ -6,5 +6,7 @@ target 'AutoSportWorld' do
   use_frameworks!
 
   # Pods for AutoSportWorld
-
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
 end
