@@ -170,7 +170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BIf-Qu-pcV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="W2P-I4-fJO">
                                     <size key="itemSize" width="50" height="50"/>
@@ -186,7 +186,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVc-dH-d4n">
                                             <rect key="frame" x="146" y="12.5" width="83" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -199,13 +199,57 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXV-B0-Btp">
+                                <rect key="frame" x="20" y="533" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LLY-pk-ml7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSJ-zP-gdG">
+                                <rect key="frame" x="0.0" y="483" width="375" height="30"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rX9-I9-dsE">
+                                        <rect key="frame" x="20" y="28" width="335" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="ZTw-bC-E7p"/>
+                                        </constraints>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="шаг 1 из 4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oef-fS-IXG">
+                                        <rect key="frame" x="250" y="5" width="105" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="105" id="FZt-my-8N0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="controlDarkShadowColor" catalog="System" colorSpace="catalog"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LGc-Xq-7as"/>
+                                    <constraint firstAttribute="bottom" secondItem="rX9-I9-dsE" secondAttribute="bottom" id="T4w-np-ry1"/>
+                                    <constraint firstAttribute="trailing" secondItem="rX9-I9-dsE" secondAttribute="trailing" constant="20" id="X5l-ph-nYG"/>
+                                    <constraint firstItem="rX9-I9-dsE" firstAttribute="leading" secondItem="rSJ-zP-gdG" secondAttribute="leading" constant="20" id="cKq-Tg-dgE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oef-fS-IXG" secondAttribute="trailing" constant="20" id="gTx-jB-qmo"/>
+                                    <constraint firstItem="Oef-fS-IXG" firstAttribute="top" secondItem="rSJ-zP-gdG" secondAttribute="top" constant="5" id="reV-gk-2GH"/>
+                                    <constraint firstItem="rX9-I9-dsE" firstAttribute="top" secondItem="Oef-fS-IXG" secondAttribute="bottom" constant="2" id="woe-cK-tbW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qnb-LG-bjj" firstAttribute="top" secondItem="BIf-Qu-pcV" secondAttribute="bottom" id="5a2-0a-gzo"/>
                             <constraint firstItem="BIf-Qu-pcV" firstAttribute="top" secondItem="2Mw-Lf-vVV" secondAttribute="bottom" id="7rU-jX-mST"/>
+                            <constraint firstItem="rSJ-zP-gdG" firstAttribute="top" secondItem="BIf-Qu-pcV" secondAttribute="bottom" id="Af0-kz-IsK"/>
                             <constraint firstItem="BIf-Qu-pcV" firstAttribute="leading" secondItem="eiV-Fk-GeZ" secondAttribute="leading" id="FBg-8F-krg"/>
+                            <constraint firstAttribute="trailing" secondItem="rSJ-zP-gdG" secondAttribute="trailing" id="MAo-FJ-d95"/>
+                            <constraint firstItem="WXV-B0-Btp" firstAttribute="leading" secondItem="eiV-Fk-GeZ" secondAttribute="leading" constant="20" id="MJ2-Xq-oAL"/>
+                            <constraint firstItem="WXV-B0-Btp" firstAttribute="top" secondItem="rSJ-zP-gdG" secondAttribute="bottom" constant="20" id="ccY-0h-psR"/>
                             <constraint firstAttribute="trailing" secondItem="BIf-Qu-pcV" secondAttribute="trailing" id="fMR-pe-oQu"/>
+                            <constraint firstItem="qnb-LG-bjj" firstAttribute="top" secondItem="WXV-B0-Btp" secondAttribute="bottom" constant="20" id="tFy-K2-URL"/>
+                            <constraint firstItem="rSJ-zP-gdG" firstAttribute="leading" secondItem="eiV-Fk-GeZ" secondAttribute="leading" id="zMa-cP-5Z5"/>
+                            <constraint firstAttribute="trailing" secondItem="WXV-B0-Btp" secondAttribute="trailing" constant="20" id="zXZ-Og-vQn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Фильтр регионов" id="mEI-36-c3j">
@@ -216,12 +260,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionVIew" destination="BIf-Qu-pcV" id="PEL-W3-WwX"/>
+                        <outlet property="collectionView" destination="BIf-Qu-pcV" id="ny1-Df-sul"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPx-C1-l9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3469.5999999999999" y="1138.3808095952024"/>
+            <point key="canvasLocation" x="3470" y="1139"/>
         </scene>
         <!--Профиль-->
         <scene sceneID="AUZ-m9-tf4">

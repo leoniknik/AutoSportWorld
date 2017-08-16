@@ -17,6 +17,7 @@
 //для формы SwiftValidator
 //пароль GenericPasswordRow
 //DGRunkeeperSwitch
+//ALThreeCircleSpinner для ожидания
 
 import UIKit
 
