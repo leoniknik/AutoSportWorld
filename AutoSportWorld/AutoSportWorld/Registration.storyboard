@@ -79,18 +79,18 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSb-em-1ZU">
-                                <rect key="frame" x="290.66666666666674" y="525.66666666666652" width="103.33333333333331" height="97.333333333333371"/>
+                                <rect key="frame" x="291" y="525.66666666666652" width="103" height="97.333333333333371"/>
                                 <color key="backgroundColor" red="0.111931488" green="1" blue="0.97983173769999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2t-RC-im3">
-                                <rect key="frame" x="155" y="525.66666666666652" width="104" height="97.333333333333371"/>
+                                <rect key="frame" x="155.33333333333331" y="525.66666666666652" width="103.33333333333331" height="97.333333333333371"/>
                                 <color key="backgroundColor" red="0.111931488" green="1" blue="0.97983173769999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="K2t-RC-im3" secondAttribute="height" multiplier="18:17" id="ZUK-0P-3Kx"/>
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcg-rh-Ipm">
-                                <rect key="frame" x="20.000000000000007" y="525.66666666666652" width="103.66666666666669" height="97.333333333333371"/>
+                                <rect key="frame" x="20" y="525.66666666666652" width="104" height="97.333333333333371"/>
                                 <color key="backgroundColor" red="0.111931488" green="1" blue="0.97983173769999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3oc-dD-vNq">

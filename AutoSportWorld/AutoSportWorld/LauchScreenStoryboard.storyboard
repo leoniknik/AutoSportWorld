@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fpi-0b-OW8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="QUc-F7-DHq">
+            <objects>
+                <viewController id="Fpi-0b-OW8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oLu-l3-NS0"/>
+                        <viewControllerLayoutGuide type="bottom" id="jZd-1z-onK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lJb-xb-vZK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xaw-YZ-Fcg">
+                                <rect key="frame" x="56.5" y="41" width="262.5" height="262.5"/>
+                                <color key="backgroundColor" red="0.111931488" green="1" blue="0.97983173769999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xaw-YZ-Fcg" secondAttribute="height" multiplier="1:1" id="kQS-7k-uNr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СЕРВИС МОНИТОРИНГА АВТОГОНОК" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxa-N3-1kk">
+                                <rect key="frame" x="74" y="390.5" width="226" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="226" id="Ewq-dB-haq"/>
+                                    <constraint firstAttribute="height" constant="51" id="hnC-o5-lVQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МИР АВТОСПОРТА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPL-OY-kRL">
+                                <rect key="frame" x="61" y="343.5" width="253" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="253" id="1kv-3e-w1h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pxa-N3-1kk" firstAttribute="centerX" secondItem="lJb-xb-vZK" secondAttribute="centerX" id="AYD-u1-uvh"/>
+                            <constraint firstItem="NPL-OY-kRL" firstAttribute="top" secondItem="Xaw-YZ-Fcg" secondAttribute="bottom" constant="40" id="JEg-lg-j1C"/>
+                            <constraint firstItem="Xaw-YZ-Fcg" firstAttribute="width" secondItem="lJb-xb-vZK" secondAttribute="width" multiplier="0.7" id="PMx-jq-pf8"/>
+                            <constraint firstItem="Xaw-YZ-Fcg" firstAttribute="centerX" secondItem="lJb-xb-vZK" secondAttribute="centerX" id="WMq-lJ-w9M"/>
+                            <constraint firstItem="Pxa-N3-1kk" firstAttribute="top" secondItem="NPL-OY-kRL" secondAttribute="bottom" constant="15.5" id="Xuq-yo-wOh"/>
+                            <constraint firstItem="NPL-OY-kRL" firstAttribute="centerX" secondItem="lJb-xb-vZK" secondAttribute="centerX" id="bzg-N4-bpT"/>
+                            <constraint firstItem="Xaw-YZ-Fcg" firstAttribute="top" secondItem="oLu-l3-NS0" secondAttribute="bottom" constant="21" id="qSj-nR-iR3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jmr-QA-eWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="175.86206896551727"/>
+        </scene>
+    </scenes>
+</document>
