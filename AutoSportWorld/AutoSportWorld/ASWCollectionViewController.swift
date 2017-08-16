@@ -19,10 +19,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     fileprivate var sectionInsetForSelectedItems: UIEdgeInsets!
     fileprivate var sectionInsetForAvailableItems: UIEdgeInsets!
     
-    var titleForSelectedItems: String = ""
-    var titleForAvailableItems: String = ""
-    
-    var datasource = ASWCollectionViewDataSource()
+    var datasource: ASWCollectionViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,28 +73,6 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             return CGSize(width: 0, height: 0)
         }
         return CGSize(width: self.collectionView.frame.size.width, height: 46)
-    }
-    
-
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,withReuseIdentifier: "ASWCollectionReusableView", for: indexPath) as! ASWCollectionReusableView
-            if indexPath.section == 0 {
-                headerView.header.text = titleForSelectedItems + " (\(datasource.selectedItems.count))"
-            }
-            else {
-                headerView.header.text = titleForAvailableItems + " (\(datasource.availableItems.count))"
-            }
-            headerView.header.textColor = UIColor.ASWColor.grey
-            return headerView
-        default:
-            assert(false, "Unexpected element kind")
-            
-        }
     }
     
     

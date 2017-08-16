@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     var availableItems: [ASWCollectionItem] = []
     var selectedItems: [ASWCollectionItem] = []
+    
+    var titleForSelectedItems: String = ""
+    var titleForAvailableItems: String = ""
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
@@ -30,6 +33,27 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,withReuseIdentifier: "ASWCollectionReusableView", for: indexPath) as! ASWCollectionReusableView
+            if indexPath.section == 0 {
+                headerView.header.text = self.titleForSelectedItems + " (\(self.selectedItems.count))"
+            }
+            else {
+                headerView.header.text = self.titleForAvailableItems + " (\(self.availableItems.count))"
+            }
+            headerView.header.textColor = UIColor.ASWColor.grey
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+            
+        }
     }
     
 }
