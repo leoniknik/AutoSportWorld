@@ -13,12 +13,33 @@ class ASWChangeRegionsViewController: ASWCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "ASWRegionCell", bundle: nil), forCellWithReuseIdentifier: "ASWRegionCell")
-        datasource = ASWRegionsCollectionViewDataSource()
+        datasource = ASWRegionsCollectionViewDataSource(collectionView: collectionView)
         collectionView.dataSource = datasource
+        searchBar.delegate = datasource
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUI()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         super.collectionView(collectionView, didSelectItemAt: indexPath)
+    }
+    
+    override func setupUI() {
+        super.setupUI()
+        hideStepAndProgressView()
+        setupButton()
+    }
+    
+    func setupButton() {
+        let titleAttributed = NSMutableAttributedString(string: "Сохранить", attributes: [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 17),NSForegroundColorAttributeName:UIColor.white])
+        confirmButton.setAttributedTitle(titleAttributed, for: .normal)
+    }
+    
+    override func buttonTapped(_ sender: Any) {
+        
     }
 
 }

@@ -11,22 +11,26 @@ import UIKit
 class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var stepAndProgressView: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     fileprivate let cellSize: CGFloat = 100
-    fileprivate let cellBigSize: CGFloat = 130
     fileprivate let cellMargin: CGFloat = 18
+    fileprivate let cellBigMargin: CGFloat = 40
     
-    fileprivate var sectionInsetForSelectedItems: UIEdgeInsets!
-    fileprivate var sectionInsetForAvailableItems: UIEdgeInsets!
+    var isSearching: Bool = false
     
     var datasource: ASWCollectionViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        searchBar.delegate = datasource
         collectionView.dataSource = datasource
-        sectionInsetForSelectedItems = UIEdgeInsets(top: 0, left: cellMargin, bottom: 0, right: cellMargin)
-        sectionInsetForAvailableItems = UIEdgeInsets(top: 0, left: cellMargin, bottom: cellMargin, right: cellMargin)
+        setupUI()
     }
     
     
@@ -34,27 +38,30 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let screenWidth = UIScreen.main.bounds.size.width
-        let requiredWidth = cellSize * 3 + cellMargin * 4
-        
-        if screenWidth <= requiredWidth {
-            return CGSize(width: cellSize + 30, height: cellSize + 30)
-        }
-        else {
             return CGSize(width: cellSize, height: cellSize)
-        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let screenWidth = UIScreen.main.bounds.size.width
+        let requiredWidth = cellSize * 3 + cellMargin * 4
+        
+        var margin = cellMargin
+        
+        if screenWidth <= requiredWidth {
+            margin = cellBigMargin
+        }
+        
         if section == 0 {
-            return sectionInsetForSelectedItems
+            return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
         }
         else {
-            return sectionInsetForAvailableItems
+            return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
         }
+        
     }
     
     
@@ -89,13 +96,41 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             datasource.selectedItems.append(string)
         }
         
+        datasource.syncItems()
+        
         collectionView.reloadData()
         
     }
     
+    func setupUI() {
+        confirmButton.layer.cornerRadius = 10
+        confirmButton.clipsToBounds = true
+        confirmButton.backgroundColor = UIColor.ASWColor.black
+        stepLabel.textColor = UIColor.ASWColor.grey
+        progressView.progressTintColor = UIColor.ASWColor.pink
+    }
     
     @IBAction func goBack(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        
+    }
+    
+    func hideStepAndProgressView() {
+        //установка высоты вьюхи с прогрессбаром и шагами в 0
+        stepLabel.isHidden = true
+        progressView.isHidden = true
+        if let constraint = (stepAndProgressView.constraints.filter{$0.firstAttribute == .height}.first) {
+            constraint.constant = 0.0
+        }
+    }
+    
+    func hideSearchBar() {
+        if let constraint = (searchBar.constraints.filter{$0.firstAttribute == .height}.first) {
+            constraint.constant = 0.0
+        }
+    }
+    
 }

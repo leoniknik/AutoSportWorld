@@ -26,7 +26,6 @@ class ASWRegionCell: UICollectionViewCell {
         
         darkShadow.backgroundColor = UIColor.black.cgColor
         darkShadow.opacity = 0.3
-        darkShadow.frame = self.contentView.frame
         
         self.checkmark.backgroundColor = UIColor.clear
         self.checkmark.layer.opacity = 1.0
@@ -34,6 +33,7 @@ class ASWRegionCell: UICollectionViewCell {
     }
     
     func selectCell() {
+        darkShadow.frame = self.contentView.frame
         self.contentView.layer.insertSublayer(darkShadow, below: self.checkmark.layer)
         self.checkmark.isHidden = false
     }

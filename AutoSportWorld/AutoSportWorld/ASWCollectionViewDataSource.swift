@@ -8,7 +8,13 @@
 
 import UIKit
 
-class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
+    
+    var collectionView: UICollectionView!
+//    var isSearching: Bool = false
+    
+    var rawAvailableItems: [ASWCollectionItem] = []
+    var rawSelectedItems: [ASWCollectionItem] = []
     
     var availableItems: [ASWCollectionItem] = []
     var selectedItems: [ASWCollectionItem] = []
@@ -56,4 +62,8 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
         }
     }
     
+    func syncItems() {
+        rawAvailableItems = availableItems
+        rawSelectedItems = selectedItems
+    }
 }

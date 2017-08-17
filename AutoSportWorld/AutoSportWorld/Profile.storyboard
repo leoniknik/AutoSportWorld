@@ -170,7 +170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BIf-Qu-pcV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="483"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="439"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="W2P-I4-fJO">
                                     <size key="itemSize" width="50" height="50"/>
@@ -199,13 +199,24 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXV-B0-Btp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXV-B0-Btp">
                                 <rect key="frame" x="20" y="533" width="335" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LLY-pk-ml7"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Button">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="15"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="5ao-rt-4GQ" eventType="touchUpInside" id="rIr-IV-OpM"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSJ-zP-gdG">
                                 <rect key="frame" x="0.0" y="483" width="375" height="30"/>
@@ -234,17 +245,23 @@
                                     <constraint firstItem="rX9-I9-dsE" firstAttribute="leading" secondItem="rSJ-zP-gdG" secondAttribute="leading" constant="20" id="cKq-Tg-dgE"/>
                                     <constraint firstAttribute="trailing" secondItem="Oef-fS-IXG" secondAttribute="trailing" constant="20" id="gTx-jB-qmo"/>
                                     <constraint firstItem="Oef-fS-IXG" firstAttribute="top" secondItem="rSJ-zP-gdG" secondAttribute="top" constant="5" id="reV-gk-2GH"/>
-                                    <constraint firstItem="rX9-I9-dsE" firstAttribute="top" secondItem="Oef-fS-IXG" secondAttribute="bottom" constant="2" id="woe-cK-tbW"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" placeholder="Поиск" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6N5-nw-ea0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BIf-Qu-pcV" firstAttribute="top" secondItem="2Mw-Lf-vVV" secondAttribute="bottom" id="7rU-jX-mST"/>
+                            <constraint firstItem="6N5-nw-ea0" firstAttribute="top" secondItem="2Mw-Lf-vVV" secondAttribute="bottom" id="1rr-ZE-2OM"/>
+                            <constraint firstAttribute="trailing" secondItem="6N5-nw-ea0" secondAttribute="trailing" id="6hv-fm-JIs"/>
                             <constraint firstItem="rSJ-zP-gdG" firstAttribute="top" secondItem="BIf-Qu-pcV" secondAttribute="bottom" id="Af0-kz-IsK"/>
                             <constraint firstItem="BIf-Qu-pcV" firstAttribute="leading" secondItem="eiV-Fk-GeZ" secondAttribute="leading" id="FBg-8F-krg"/>
                             <constraint firstAttribute="trailing" secondItem="rSJ-zP-gdG" secondAttribute="trailing" id="MAo-FJ-d95"/>
                             <constraint firstItem="WXV-B0-Btp" firstAttribute="leading" secondItem="eiV-Fk-GeZ" secondAttribute="leading" constant="20" id="MJ2-Xq-oAL"/>
+                            <constraint firstItem="BIf-Qu-pcV" firstAttribute="top" secondItem="6N5-nw-ea0" secondAttribute="bottom" id="SCf-9L-9XU"/>
+                            <constraint firstItem="6N5-nw-ea0" firstAttribute="leading" secondItem="eiV-Fk-GeZ" secondAttribute="leading" id="Xgy-Np-ahh"/>
                             <constraint firstItem="WXV-B0-Btp" firstAttribute="top" secondItem="rSJ-zP-gdG" secondAttribute="bottom" constant="20" id="ccY-0h-psR"/>
                             <constraint firstAttribute="trailing" secondItem="BIf-Qu-pcV" secondAttribute="trailing" id="fMR-pe-oQu"/>
                             <constraint firstItem="qnb-LG-bjj" firstAttribute="top" secondItem="WXV-B0-Btp" secondAttribute="bottom" constant="20" id="tFy-K2-URL"/>
@@ -261,11 +278,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="BIf-Qu-pcV" id="ny1-Df-sul"/>
+                        <outlet property="confirmButton" destination="WXV-B0-Btp" id="Xjw-9t-NHm"/>
+                        <outlet property="progressView" destination="rX9-I9-dsE" id="TH2-ea-kqT"/>
+                        <outlet property="searchBar" destination="6N5-nw-ea0" id="dFr-9z-o3M"/>
+                        <outlet property="stepAndProgressView" destination="rSJ-zP-gdG" id="uuT-fl-cBK"/>
+                        <outlet property="stepLabel" destination="Oef-fS-IXG" id="jHY-Qc-8gT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPx-C1-l9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3470" y="1139"/>
+            <point key="canvasLocation" x="3456.8000000000002" y="1138.3808095952024"/>
         </scene>
         <!--Профиль-->
         <scene sceneID="AUZ-m9-tf4">
