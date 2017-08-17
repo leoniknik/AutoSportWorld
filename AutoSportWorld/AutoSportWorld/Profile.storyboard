@@ -157,7 +157,7 @@
             </objects>
             <point key="canvasLocation" x="2560.8000000000002" y="1139.2803598200901"/>
         </scene>
-        <!--Фильтр регионов-->
+        <!--Заголовок-->
         <scene sceneID="pXl-qJ-cdr">
             <objects>
                 <viewController id="5ao-rt-4GQ" customClass="ASWChangeRegionsViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
@@ -250,6 +250,10 @@
                             <searchBar contentMode="redraw" placeholder="Поиск" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6N5-nw-ea0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -269,7 +273,7 @@
                             <constraint firstAttribute="trailing" secondItem="WXV-B0-Btp" secondAttribute="trailing" constant="20" id="zXZ-Og-vQn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Фильтр регионов" id="mEI-36-c3j">
+                    <navigationItem key="navigationItem" title="Заголовок" id="mEI-36-c3j">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="LeR-Yk-Bei" customClass="ASWBackBarButtonItem" customModule="AutoSportWorld" customModuleProvider="target">
                             <connections>
                                 <action selector="goBack:" destination="5ao-rt-4GQ" id="QGc-lZ-IWa"/>
@@ -287,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPx-C1-l9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3456.8000000000002" y="1138.3808095952024"/>
+            <point key="canvasLocation" x="3698" y="1139"/>
         </scene>
         <!--Профиль-->
         <scene sceneID="AUZ-m9-tf4">

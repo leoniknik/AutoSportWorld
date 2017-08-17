@@ -10,10 +10,10 @@ import Foundation
 
 class ASWCollectionItem {
     
-    var temp = "0"
+    var id: Int = 0
     
-    init(_ temp: String) {
-        self.temp = temp
+    init(_ id: Int) {
+        self.id = id
     }
     
 }

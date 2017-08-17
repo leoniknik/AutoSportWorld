@@ -18,7 +18,7 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         titleForSelectedItems = "Мои регионы"
         titleForAvailableItems = "Доступные регионы"
         
-        rawAvailableItems = [ASWCollectionItem("0"),ASWCollectionItem("1"),ASWCollectionItem("2"),ASWCollectionItem("3"),ASWCollectionItem("4"),ASWCollectionItem("5"),ASWCollectionItem("6"),ASWCollectionItem("7"),ASWCollectionItem("8"),ASWCollectionItem("9"),ASWCollectionItem("10")]
+        rawAvailableItems = [ASWCollectionItem(0),ASWCollectionItem(1),ASWCollectionItem(2),ASWCollectionItem(3),ASWCollectionItem(4),ASWCollectionItem(5),ASWCollectionItem(6),ASWCollectionItem(7),ASWCollectionItem(8),ASWCollectionItem(9),ASWCollectionItem(10)]
         
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
@@ -31,11 +31,11 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         
         if indexPath.section == 0 {
             cell.selectCell()
-            cell.regionNumber.text = self.selectedItems[indexPath.item].temp
+            cell.regionNumber.text = "\(self.selectedItems[indexPath.item].id)"
         }
         else {
             cell.deselectCell()
-            cell.regionNumber.text = self.availableItems[indexPath.item].temp
+            cell.regionNumber.text = "\(self.availableItems[indexPath.item].id)"
         }
         
         return cell
@@ -44,7 +44,13 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         availableItems = searchText.isEmpty ? rawAvailableItems : rawAvailableItems.filter { (item: ASWCollectionItem) -> Bool in
-            return item.temp.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            let string = "\(item.id)"
+            return string.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        selectedItems = searchText.isEmpty ? rawSelectedItems : rawSelectedItems.filter { (item: ASWCollectionItem) -> Bool in
+            let string = "\(item.id)"
+            return string.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
 
         collectionView.reloadData()

@@ -16,12 +16,11 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stepAndProgressView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+
     
     fileprivate let cellSize: CGFloat = 100
     fileprivate let cellMargin: CGFloat = 18
     fileprivate let cellBigMargin: CGFloat = 40
-    
-    var isSearching: Bool = false
     
     var datasource: ASWCollectionViewDataSource!
     
@@ -96,7 +95,14 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             datasource.selectedItems.append(string)
         }
         
+        //синхронизация
         datasource.syncItems()
+        
+        //убираем клавиатуру
+        searchBar.resignFirstResponder()
+        
+        //подчищаем текст
+        searchBar.text = ""
         
         collectionView.reloadData()
         
@@ -108,6 +114,13 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         confirmButton.backgroundColor = UIColor.ASWColor.black
         stepLabel.textColor = UIColor.ASWColor.grey
         progressView.progressTintColor = UIColor.ASWColor.pink
+        searchBar.backgroundColor = UIColor.ASWColor.black
+        searchBar.barTintColor = UIColor.ASWColor.black
+        
+        //убираем полоску между хедером и навигейшен баром
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
     
     @IBAction func goBack(_ sender: Any) {

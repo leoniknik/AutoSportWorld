@@ -31,6 +31,7 @@ class ASWChangeRegionsViewController: ASWCollectionViewController {
         super.setupUI()
         hideStepAndProgressView()
         setupButton()
+        navigationItem.title = "Фильтр регионов"
     }
     
     func setupButton() {

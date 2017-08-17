@@ -11,7 +11,7 @@ import UIKit
 class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
     
     var collectionView: UICollectionView!
-//    var isSearching: Bool = false
+    var isSearching: Bool = false
     
     var rawAvailableItems: [ASWCollectionItem] = []
     var rawSelectedItems: [ASWCollectionItem] = []
@@ -63,7 +63,34 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     }
     
     func syncItems() {
-        rawAvailableItems = availableItems
-        rawSelectedItems = selectedItems
+        
+        guard isSearching else {
+            rawAvailableItems = availableItems
+            rawSelectedItems = selectedItems
+            return
+        }
+        
+        for availableItem in availableItems {
+            if let index = rawSelectedItems.index(where: { $0.id == availableItem.id }){
+                rawSelectedItems.remove(at: index)
+                rawAvailableItems.append(availableItem)
+            }
+        }
+        
+        for selectedItem in selectedItems {
+            if let index = rawAvailableItems.index(where: { $0.id == selectedItem.id }){
+                rawAvailableItems.remove(at: index)
+                rawSelectedItems.append(selectedItem)
+            }
+        }
+        
+        availableItems = rawAvailableItems
+        selectedItems = rawSelectedItems
+        isSearching = false
+        
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
     }
 }
