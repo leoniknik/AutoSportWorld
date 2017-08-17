@@ -34,6 +34,8 @@
 		CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */; };
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
+		CAED5F631F45F2C300099A99 /* MapAndCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED5F611F45F2C300099A99 /* MapAndCalendarCell.swift */; };
+		CAED5F641F45F2C300099A99 /* MapAndCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAED5F621F45F2C300099A99 /* MapAndCalendarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		CAED5F611F45F2C300099A99 /* MapAndCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAndCalendarCell.swift; sourceTree = "<group>"; };
+		CAED5F621F45F2C300099A99 /* MapAndCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAndCalendarCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,8 @@
 				CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */,
 				CACB58521F3F3CF0007E8E0B /* ASWRegionCell.swift */,
 				CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */,
+				CAED5F611F45F2C300099A99 /* MapAndCalendarCell.swift */,
+				CAED5F621F45F2C300099A99 /* MapAndCalendarCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 			files = (
 				CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
+				CAED5F641F45F2C300099A99 /* MapAndCalendarCell.xib in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
@@ -285,6 +292,7 @@
 				CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */,
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
+				CAED5F631F45F2C300099A99 /* MapAndCalendarCell.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapAndCalendarCell" id="KGk-i7-Jjw" customClass="MapAndCalendarCell" customModule="AutoSportWorld" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5K2-le-E3y">
+                        <rect key="frame" x="15" y="8" width="297" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="XAP-6I-RNf"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Тайм-аттак MaxPowerCars">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <font key="NSFont" size="17" name="Arial-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Трек-день; Кольцо" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="085-yl-Vug">
+                        <rect key="frame" x="15" y="31" width="297" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="qHu-ET-yvD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.07.17 - 01.08.17; Покататься; Посмотреть" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeU-tW-Tde">
+                        <rect key="frame" x="15" y="54" width="297" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="lx1-kg-qBi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHx-lR-PSS">
+                        <rect key="frame" x="15" y="79" width="290" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="NFF-ix-P2m"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                        <state key="normal" title="  Копировать координаты" image="ic_backward">
+                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="qHx-lR-PSS" secondAttribute="trailing" constant="15" id="2d6-9n-64a"/>
+                    <constraint firstItem="OeU-tW-Tde" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="7ut-jL-bhu"/>
+                    <constraint firstItem="OeU-tW-Tde" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="AkX-og-Rv5"/>
+                    <constraint firstItem="OeU-tW-Tde" firstAttribute="top" secondItem="085-yl-Vug" secondAttribute="bottom" constant="2" id="GSZ-QQ-alc"/>
+                    <constraint firstItem="5K2-le-E3y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="Q7E-h0-puP"/>
+                    <constraint firstItem="5K2-le-E3y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="aMo-qH-A0m"/>
+                    <constraint firstAttribute="bottom" secondItem="qHx-lR-PSS" secondAttribute="bottom" constant="6.5" id="ciX-p4-tkA"/>
+                    <constraint firstItem="085-yl-Vug" firstAttribute="top" secondItem="5K2-le-E3y" secondAttribute="bottom" constant="2" id="htH-MZ-Ng8"/>
+                    <constraint firstItem="085-yl-Vug" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="mM4-zM-qmF"/>
+                    <constraint firstItem="5K2-le-E3y" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="p8T-Ws-du3"/>
+                    <constraint firstItem="qHx-lR-PSS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pPe-Lb-OLV"/>
+                    <constraint firstItem="085-yl-Vug" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="rgl-Pi-jD0"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_backward" width="24" height="24"/>
+    </resources>
+</document>
