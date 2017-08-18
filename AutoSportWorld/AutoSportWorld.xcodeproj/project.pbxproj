@@ -21,6 +21,9 @@
 		CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */; };
 		CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */; };
 		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
+		CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */; };
+		CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC70E601F4701E60098470F /* ASWMapAndCalendarCell.swift */; };
+		CAC70E631F4701E60098470F /* ASWMapAndCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */; };
 		CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */; };
 		CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */; };
 		CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */; };
@@ -34,8 +37,6 @@
 		CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */; };
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
-		CAED5F631F45F2C300099A99 /* MapAndCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED5F611F45F2C300099A99 /* MapAndCalendarCell.swift */; };
-		CAED5F641F45F2C300099A99 /* MapAndCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAED5F621F45F2C300099A99 /* MapAndCalendarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,9 @@
 		CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionItem.swift; sourceTree = "<group>"; };
 		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWMapViewController.swift; sourceTree = "<group>"; };
+		CAC70E601F4701E60098470F /* ASWMapAndCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWMapAndCalendarCell.swift; sourceTree = "<group>"; };
+		CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWMapAndCalendarCell.xib; sourceTree = "<group>"; };
 		CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSegueRouter.swift; sourceTree = "<group>"; };
 		CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEventCell.swift; sourceTree = "<group>"; };
 		CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWEventCell.xib; sourceTree = "<group>"; };
@@ -68,8 +72,6 @@
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		CAED5F611F45F2C300099A99 /* MapAndCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAndCalendarCell.swift; sourceTree = "<group>"; };
-		CAED5F621F45F2C300099A99 /* MapAndCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapAndCalendarCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */,
 				CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */,
 				CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */,
+				CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -127,11 +130,9 @@
 		CA3710AB1F37B528003578E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA3B2EF61F45FE02003ED926 /* View */,
 				CA8C00411F39BB26005CF27E /* Storyboards */,
 				CA3710C01F37D78B003578E5 /* Cells */,
-				CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */,
-				CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */,
-				CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -183,10 +184,20 @@
 				CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */,
 				CACB58521F3F3CF0007E8E0B /* ASWRegionCell.swift */,
 				CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */,
-				CAED5F611F45F2C300099A99 /* MapAndCalendarCell.swift */,
-				CAED5F621F45F2C300099A99 /* MapAndCalendarCell.xib */,
+				CAC70E601F4701E60098470F /* ASWMapAndCalendarCell.swift */,
+				CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		CA3B2EF61F45FE02003ED926 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */,
+				CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */,
+				CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		CA8C00411F39BB26005CF27E /* Storyboards */ = {
@@ -268,9 +279,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC70E631F4701E60098470F /* ASWMapAndCalendarCell.xib in Resources */,
 				CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
-				CAED5F641F45F2C300099A99 /* MapAndCalendarCell.xib in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
@@ -292,9 +303,9 @@
 				CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */,
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
-				CAED5F631F45F2C300099A99 /* MapAndCalendarCell.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
+				CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */,
@@ -306,6 +317,7 @@
 				CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */,
 				CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */,
 				CA3710B91F37C94E003578E5 /* ASWSettingsViewController.swift in Sources */,
+				CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */,
 				CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

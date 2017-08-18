@@ -94,21 +94,66 @@
         <!--Карта-->
         <scene sceneID="vvv-aZ-HxK">
             <objects>
-                <viewController id="Pul-1K-c8N" sceneMemberID="viewController">
+                <viewController id="Pul-1K-c8N" customClass="ASWMapViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="luJ-WG-88C"/>
-                        <viewControllerLayoutGuide type="bottom" id="qo4-eI-94P"/>
+                        <viewControllerLayoutGuide type="top" id="dPY-fO-IXs"/>
+                        <viewControllerLayoutGuide type="bottom" id="A0N-fL-bmQ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jxR-oa-SSq">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="Ong-IN-PUv">
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-aJ-Jl9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
+                            </mapView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-TA-Ny5">
+                                <rect key="frame" x="0.0" y="444" width="375" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="3GN-vM-4YX"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5lk-v8-jgd">
+                                    <size key="itemSize" width="50" height="110"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aSX-ex-loQ">
+                                <rect key="frame" x="0.0" y="529" width="375" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6MG-Kp-omr"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DEg-aJ-Jl9" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="5Dw-0U-zOD"/>
+                            <constraint firstAttribute="trailing" secondItem="DEg-aJ-Jl9" secondAttribute="trailing" id="7uW-br-1zq"/>
+                            <constraint firstAttribute="trailing" secondItem="aSX-ex-loQ" secondAttribute="trailing" id="9fH-Rz-fSn"/>
+                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="DEg-aJ-Jl9" secondAttribute="bottom" id="HdM-4v-u15"/>
+                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="Irp-6w-kg6"/>
+                            <constraint firstItem="aSX-ex-loQ" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="ZYH-eS-Jus"/>
+                            <constraint firstItem="DEg-aJ-Jl9" firstAttribute="top" secondItem="dPY-fO-IXs" secondAttribute="bottom" id="aUP-gq-ySh"/>
+                            <constraint firstAttribute="trailing" secondItem="aqn-TA-Ny5" secondAttribute="trailing" id="lwI-xG-IxL"/>
+                            <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aSX-ex-loQ" secondAttribute="bottom" constant="-5" id="whV-FJ-WS6"/>
+                            <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aqn-TA-Ny5" secondAttribute="bottom" id="yBd-km-JCc"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Карта" id="3t5-F1-SVf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
+                        <outlet property="mapView" destination="DEg-aJ-Jl9" id="d7L-Wc-2nq"/>
+                        <outlet property="pageControl" destination="aSX-ex-loQ" id="gfl-RJ-4gL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyF-e6-aIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="1192"/>
+            <point key="canvasLocation" x="3141.5999999999999" y="1191.4542728635683"/>
         </scene>
         <!--События-->
         <scene sceneID="Ime-0G-SHu">
@@ -127,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nti-L5-dNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="-976"/>
+            <point key="canvasLocation" x="3141.5999999999999" y="-976.46176911544239"/>
         </scene>
         <!--Избранное-->
         <scene sceneID="TSr-cI-NoB">

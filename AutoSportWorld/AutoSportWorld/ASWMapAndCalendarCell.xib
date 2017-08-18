@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ASWMapAndCalendarCell" id="gTV-IL-0wX" customClass="ASWMapAndCalendarCell" customModule="AutoSportWorld" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="110"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnz-eW-d5t">
+                        <rect key="frame" x="15" y="7" width="340" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="qa3-C2-ZvG"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Тайм-аттак MaxPowerCars">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <font key="NSFont" size="17" name="Arial-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Трек-день; Кольцо" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St8-RL-BCk">
+                        <rect key="frame" x="15" y="28" width="340" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="BgJ-dI-P6f"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Y8A-z3-5ej"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.07.17 - 01.08.17; Покататься; Посмотреть" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-76-Ex3">
+                        <rect key="frame" x="15" y="50" width="313" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Qhf-cV-Qzu"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="m5m-dQ-o51"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vKd-e3-Hae">
+                        <rect key="frame" x="336" y="43" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.37638404510884527" green="0.47181126475334167" blue="0.11569477998743077" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="2r2-kS-ugU"/>
+                            <constraint firstAttribute="width" constant="25" id="Htj-3w-iSM"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gd-yU-Kki">
+                        <rect key="frame" x="15" y="73" width="25" height="25"/>
+                        <color key="backgroundColor" red="1" green="0.93420527310000001" blue="0.05338420353" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="15E-W4-RN1"/>
+                        </constraints>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Копировать координаты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtp-JW-q72">
+                        <rect key="frame" x="48" y="77.5" width="309" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Af4-76-Ex3" secondAttribute="trailing" constant="42" id="3cc-WJ-KLk"/>
+                <constraint firstAttribute="trailing" secondItem="St8-RL-BCk" secondAttribute="trailing" constant="15" id="5XZ-Oj-lMU"/>
+                <constraint firstItem="lnz-eW-d5t" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="F5g-25-a7L"/>
+                <constraint firstItem="0gd-yU-Kki" firstAttribute="top" secondItem="Af4-76-Ex3" secondAttribute="bottom" constant="2" id="K1G-qH-CF8"/>
+                <constraint firstAttribute="trailing" secondItem="lnz-eW-d5t" secondAttribute="trailing" constant="15" id="LOM-g6-rMB"/>
+                <constraint firstAttribute="trailing" secondItem="vKd-e3-Hae" secondAttribute="trailing" constant="9" id="Lx9-Rb-3f2"/>
+                <constraint firstItem="lnz-eW-d5t" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="MVZ-BW-rh4"/>
+                <constraint firstAttribute="bottom" secondItem="dtp-JW-q72" secondAttribute="bottom" constant="18" id="OZF-kb-GDC"/>
+                <constraint firstAttribute="bottom" secondItem="0gd-yU-Kki" secondAttribute="bottom" constant="12" id="PmX-l0-qdu"/>
+                <constraint firstItem="vKd-e3-Hae" firstAttribute="top" secondItem="lnz-eW-d5t" secondAttribute="bottom" constant="15" id="RQX-wl-4K4"/>
+                <constraint firstItem="Af4-76-Ex3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Xur-Sn-HqP"/>
+                <constraint firstItem="St8-RL-BCk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Yx7-aT-n9R"/>
+                <constraint firstAttribute="trailing" secondItem="dtp-JW-q72" secondAttribute="trailing" constant="13" id="cGb-fP-mXl"/>
+                <constraint firstItem="0gd-yU-Kki" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="ey1-d8-mpy"/>
+                <constraint firstItem="Af4-76-Ex3" firstAttribute="top" secondItem="St8-RL-BCk" secondAttribute="bottom" constant="1" id="iWe-ZV-0Ur"/>
+                <constraint firstItem="dtp-JW-q72" firstAttribute="leading" secondItem="0gd-yU-Kki" secondAttribute="trailing" constant="8" id="ked-Cz-iey"/>
+                <constraint firstItem="St8-RL-BCk" firstAttribute="top" secondItem="lnz-eW-d5t" secondAttribute="bottom" id="ovj-h8-VeO"/>
+            </constraints>
+        </collectionViewCell>
+    </objects>
+</document>
