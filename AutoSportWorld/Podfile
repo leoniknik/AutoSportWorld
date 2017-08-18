@@ -4,4 +4,7 @@ target 'AutoSportWorld' do
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
 
+pod 'FacebookCore'
+pod 'FacebookLogin'
+
 end
