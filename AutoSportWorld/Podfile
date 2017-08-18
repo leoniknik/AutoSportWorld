@@ -8,5 +8,4 @@ target 'AutoSportWorld' do
   # Pods for AutoSportWorld
 pod 'FacebookCore'
 pod 'FacebookLogin'
-pod 'FacebookShare'
 end
