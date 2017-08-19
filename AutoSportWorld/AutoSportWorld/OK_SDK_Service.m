@@ -10,6 +10,13 @@
 #import "OKSDK.h"
 
 @implementation OK_SDK_Service
+
+-(void) emulateLogin{
+    [self initAPI];
+    [self logIn];
+    
+}
+
 -(void) initAPI{
     OKSDKInitSettings *settings = [OKSDKInitSettings new];
     settings.appKey = @"CBAKEGNFEBABABABA";
@@ -62,7 +69,9 @@ static OKErrorBlock commonError = ^(NSError *error) {
     } error:commonError];
 }
 
-
+//-(void)openOKURL:(NSURL*)url{
+//    [OKSDK openUrl:url];
+//}
 //need to override openURL -> PEACE OF FUCKING SHIT
 
 
