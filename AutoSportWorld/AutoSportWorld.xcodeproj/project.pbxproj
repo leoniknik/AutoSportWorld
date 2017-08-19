@@ -11,7 +11,6 @@
 		CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323B261F379ADA007157D4 /* AppDelegate.swift */; };
 		CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2A1F379ADA007157D4 /* Main.storyboard */; };
 		CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2D1F379ADA007157D4 /* Assets.xcassets */; };
-		CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2F1F379ADA007157D4 /* LaunchScreen.storyboard */; };
 		CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710B01F37B72A003578E5 /* UIColor+ASWColors.swift */; };
 		CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */; };
 		CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710B61F37C357003578E5 /* UIImage+ASWImages.swift */; };
@@ -19,6 +18,15 @@
 		CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */; };
 		CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */; };
 		CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */; };
+		CA584CD41F4843A30011E653 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD11F4843A30011E653 /* Calendar.storyboard */; };
+		CA584CD51F4843A30011E653 /* LauchScreenStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD21F4843A30011E653 /* LauchScreenStoryboard.storyboard */; };
+		CA584CD61F4843A30011E653 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD31F4843A30011E653 /* Registration.storyboard */; };
+		CA584CD91F48440D0011E653 /* ASWRaceTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CD71F48440D0011E653 /* ASWRaceTypeCell.swift */; };
+		CA584CDA1F48440D0011E653 /* ASWRaceTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD81F48440D0011E653 /* ASWRaceTypeCell.xib */; };
+		CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CDB1F4844220011E653 /* ASWCalendarViewController.swift */; };
+		CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */; };
+		CA584CE11F48AD5D0011E653 /* ASWNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */; };
+		CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */; };
 		CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */; };
 		CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */; };
 		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
@@ -50,7 +58,6 @@
 		CA323B261F379ADA007157D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA323B2B1F379ADA007157D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA323B2D1F379ADA007157D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CA323B301F379ADA007157D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA323B321F379ADA007157D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA3710B01F37B72A003578E5 /* UIColor+ASWColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ASWColors.swift"; sourceTree = "<group>"; };
 		CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWBackBarButtonItem.swift; sourceTree = "<group>"; };
@@ -59,6 +66,15 @@
 		CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsUserDataCell.swift; sourceTree = "<group>"; };
 		CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsSocialNetworkCell.swift; sourceTree = "<group>"; };
 		CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsFilterCell.swift; sourceTree = "<group>"; };
+		CA584CD11F4843A30011E653 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		CA584CD21F4843A30011E653 /* LauchScreenStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LauchScreenStoryboard.storyboard; sourceTree = "<group>"; };
+		CA584CD31F4843A30011E653 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		CA584CD71F48440D0011E653 /* ASWRaceTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRaceTypeCell.swift; sourceTree = "<group>"; };
+		CA584CD81F48440D0011E653 /* ASWRaceTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWRaceTypeCell.xib; sourceTree = "<group>"; };
+		CA584CDB1F4844220011E653 /* ASWCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCalendarViewController.swift; sourceTree = "<group>"; };
+		CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEmailValidator.swift; sourceTree = "<group>"; };
+		CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWNameValidator.swift; sourceTree = "<group>"; };
+		CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWPasswordValidator.swift; sourceTree = "<group>"; };
 		CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionItem.swift; sourceTree = "<group>"; };
 		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -135,6 +151,7 @@
 		CA3710A61F37AD9F003578E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA584CDB1F4844220011E653 /* ASWCalendarViewController.swift */,
 				CA3710B81F37C94E003578E5 /* ASWSettingsViewController.swift */,
 				CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */,
 				CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */,
@@ -175,6 +192,7 @@
 		CA3710AE1F37B5C9003578E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CA584CDD1F48856F0011E653 /* Validators */,
 				CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */,
 			);
 			name = Helpers;
@@ -193,6 +211,8 @@
 		CA3710C01F37D78B003578E5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CA584CD71F48440D0011E653 /* ASWRaceTypeCell.swift */,
+				CA584CD81F48440D0011E653 /* ASWRaceTypeCell.xib */,
 				CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */,
 				CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */,
 				CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */,
@@ -218,10 +238,22 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		CA584CDD1F48856F0011E653 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */,
+				CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */,
+				CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */,
+			);
+			name = Validators;
+			sourceTree = "<group>";
+		};
 		CA8C00411F39BB26005CF27E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				CA323B2F1F379ADA007157D4 /* LaunchScreen.storyboard */,
+				CA584CD11F4843A30011E653 /* Calendar.storyboard */,
+				CA584CD21F4843A30011E653 /* LauchScreenStoryboard.storyboard */,
+				CA584CD31F4843A30011E653 /* Registration.storyboard */,
 				CA323B2A1F379ADA007157D4 /* Main.storyboard */,
 				CA8C003F1F39BAEF005CF27E /* Profile.storyboard */,
 			);
@@ -309,13 +341,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA584CD41F4843A30011E653 /* Calendar.storyboard in Resources */,
 				CAC70E631F4701E60098470F /* ASWMapAndCalendarCell.xib in Resources */,
-				CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */,
+				CA584CD61F4843A30011E653 /* Registration.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
+				CA584CD51F4843A30011E653 /* LauchScreenStoryboard.storyboard in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
+				CA584CDA1F48440D0011E653 /* ASWRaceTypeCell.xib in Resources */,
 				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,17 +418,22 @@
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
+				CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */,
 				CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */,
+				CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */,
 				CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */,
 				CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */,
 				CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */,
 				CACB58571F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift in Sources */,
+				CA584CD91F48440D0011E653 /* ASWRaceTypeCell.swift in Sources */,
+				CA584CE11F48AD5D0011E653 /* ASWNameValidator.swift in Sources */,
 				CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */,
 				CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */,
 				CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */,
+				CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */,
 				CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */,
 				CA3710B91F37C94E003578E5 /* ASWSettingsViewController.swift in Sources */,
 				CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */,
@@ -410,14 +450,6 @@
 				CA323B2B1F379ADA007157D4 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CA323B2F1F379ADA007157D4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA323B301F379ADA007157D4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
