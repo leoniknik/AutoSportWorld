@@ -40,12 +40,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="90L-dO-ZUr">
-                                <rect key="frame" x="0.0" y="452.5" width="375" height="150.5"/>
+                                <rect key="frame" x="0.0" y="465" width="375" height="138"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-Gh-VpS" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="452.5"/>
+                                <rect key="frame" x="5" y="5" width="365" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="440" id="72x-sC-SZ4"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderType">
                                         <integer key="value" value="1"/>
@@ -60,7 +63,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="fakeSubtitles" value="NO"/>
@@ -76,13 +79,16 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
                                         <real key="value" value="26"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderSelectionColor">
+                                        <color key="value" red="0.37343376900000003" green="1" blue="0.2576099282" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOX-ia-6S5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+                                <rect key="frame" x="5" y="5" width="365" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPf-Dr-e9z">
-                                        <rect key="frame" x="112" y="15" width="150" height="21"/>
+                                        <rect key="frame" x="107.5" y="15" width="150" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JUh-Np-YrT"/>
                                             <constraint firstAttribute="width" constant="150" id="d9s-bl-z4a"/>
@@ -92,7 +98,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHS-cU-BnA">
-                                        <rect key="frame" x="262" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="257.5" y="10" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kf9-3i-dXL"/>
                                         </constraints>
@@ -102,7 +108,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-oq-tUg">
-                                        <rect key="frame" x="62" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="57.5" y="10" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="x5U-ag-8od"/>
                                         </constraints>
@@ -113,36 +119,36 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="pPf-Dr-e9z" firstAttribute="centerX" secondItem="FOX-ia-6S5" secondAttribute="centerX" id="EkV-L4-ZUF"/>
                                     <constraint firstItem="pPf-Dr-e9z" firstAttribute="leading" secondItem="9r8-oq-tUg" secondAttribute="trailing" id="H7q-gA-mWk"/>
                                     <constraint firstItem="9r8-oq-tUg" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="top" constant="10" id="QSN-aG-iDJ"/>
                                     <constraint firstItem="pPf-Dr-e9z" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="top" constant="15" id="ayN-S0-nny"/>
                                     <constraint firstItem="dHS-cU-BnA" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="top" constant="10" id="n9z-mR-a7J"/>
-                                    <constraint firstItem="pPf-Dr-e9z" firstAttribute="centerX" secondItem="FOX-ia-6S5" secondAttribute="centerX" id="t9l-fV-TvS"/>
                                     <constraint firstItem="dHS-cU-BnA" firstAttribute="leading" secondItem="pPf-Dr-e9z" secondAttribute="trailing" id="ty7-Px-Z56"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.86981121845807952" green="1" blue="0.92660787966125113" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" id="CEd-GA-Yzp"/>
+                            <constraint firstItem="FOX-ia-6S5" firstAttribute="width" secondItem="e8a-Gh-VpS" secondAttribute="width" id="016-Fy-SRp"/>
+                            <constraint firstItem="FOX-ia-6S5" firstAttribute="height" secondItem="e8a-Gh-VpS" secondAttribute="height" multiplier="0.1" id="EP2-zI-YOi"/>
+                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" constant="5" id="F7Y-vz-6B3"/>
                             <constraint firstItem="90L-dO-ZUr" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="FeS-xn-Wbs"/>
-                            <constraint firstItem="FOX-ia-6S5" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="I7g-kC-caz"/>
-                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="JPF-OL-gec"/>
-                            <constraint firstItem="FOX-ia-6S5" firstAttribute="height" secondItem="c0B-MD-UzX" secondAttribute="height" multiplier="0.1" id="MKo-B1-2Cc"/>
-                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="height" secondItem="c0B-MD-UzX" secondAttribute="height" multiplier="0.75" id="RQe-ej-GK8"/>
-                            <constraint firstItem="90L-dO-ZUr" firstAttribute="top" secondItem="e8a-Gh-VpS" secondAttribute="bottom" id="csX-iC-je5"/>
+                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" constant="5" id="KwY-at-QfO"/>
+                            <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" constant="5" id="LQS-Xq-X1x"/>
+                            <constraint firstItem="90L-dO-ZUr" firstAttribute="top" secondItem="e8a-Gh-VpS" secondAttribute="bottom" constant="20" id="TVI-M0-EOq"/>
+                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="U8p-77-wTK"/>
                             <constraint firstItem="X0g-Xw-LkD" firstAttribute="top" secondItem="90L-dO-ZUr" secondAttribute="bottom" id="g7A-hY-1aB"/>
-                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" id="llD-sw-M6V"/>
+                            <constraint firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" constant="5" id="mIt-u2-eig"/>
+                            <constraint firstItem="FOX-ia-6S5" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="vVQ-f4-KEW"/>
                             <constraint firstAttribute="trailing" secondItem="90L-dO-ZUr" secondAttribute="trailing" id="wUW-fZ-OHf"/>
-                            <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" id="wfZ-Hh-WVi"/>
-                            <constraint firstAttribute="trailing" secondItem="FOX-ia-6S5" secondAttribute="trailing" id="ywR-p0-rqC"/>
-                            <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" id="zRH-4L-6gm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lBP-EG-CON"/>
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
+                        <outlet property="titleView" destination="FOX-ia-6S5" id="oii-en-gfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-VV-MeO" userLabel="First Responder" sceneMemberID="firstResponder"/>

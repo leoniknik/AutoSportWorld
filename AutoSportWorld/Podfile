@@ -6,5 +6,5 @@ target 'AutoSportWorld' do
   use_frameworks!
 
   # Pods for AutoSportWorld
-
+  pod 'FSCalendar'
 end
