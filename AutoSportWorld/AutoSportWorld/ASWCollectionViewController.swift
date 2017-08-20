@@ -58,7 +58,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
         }
         else {
-            return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
+            return UIEdgeInsets(top: 0, left: margin, bottom: 10, right: margin)
         }
         
     }
@@ -109,11 +109,11 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func setupUI() {
-        confirmButton.layer.cornerRadius = 10
-        confirmButton.clipsToBounds = true
+//        confirmButton.layer.cornerRadius = 10
+//        confirmButton.clipsToBounds = true
         confirmButton.backgroundColor = UIColor.ASWColor.black
         stepLabel.textColor = UIColor.ASWColor.grey
-        progressView.progressTintColor = UIColor.ASWColor.pink
+        progressView.progressTintColor = UIColor.ASWColor.yellow
         searchBar.backgroundColor = UIColor.ASWColor.black
         searchBar.barTintColor = UIColor.ASWColor.black
         

@@ -48,12 +48,15 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         
         //настройка футера (отступа) для таблицы
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 75))
+        let button = setupBottomRedButton()
+        button.frame = CGRect(x: customView.bounds.minX, y: customView.bounds.minY + 25, width: customView.bounds.width, height: customView.bounds.height - 25)
+        customView.addSubview(button)
         customView.backgroundColor = UIColor.ASWColor.greyBackground
         settingsTable.tableFooterView = customView
     }
     
     //настройка красной кнопки внизу экрана
-    func setupBottomRedButton() {
+    func setupBottomRedButton() -> UIButton {
         
         //создание самой кнопки
         let button: UIButton = UIButton(type: .system)
@@ -63,21 +66,9 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         button.setTitle("Выйти из аккаунта", for: UIControlState.normal)
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
         
-        //определение местоположения кнопки (низ экрана)
-        let x: CGFloat = 25
-        var y = self.view.frame.size.height - 80
-        if let navigationBarSize = self.navigationController?.navigationBar.frame.size.height {
-            //отнимаем высоту навигейшен бара
-            y = y - navigationBarSize
-        }
-        button.layer.frame = CGRect(x: x, y: y, width: self.view.frame.size.width - 50, height: 45)
-        
-        //настройка скругленных углов
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        
-        self.view.addSubview(button)
         button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
+        
+        return button
     }
 
     // MARK: - Table view data source
