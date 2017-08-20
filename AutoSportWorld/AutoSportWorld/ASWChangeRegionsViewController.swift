@@ -16,6 +16,7 @@ class ASWChangeRegionsViewController: ASWCollectionViewController {
         datasource = ASWRegionsCollectionViewDataSource(collectionView: collectionView)
         collectionView.dataSource = datasource
         searchBar.delegate = datasource
+        setupRightBarItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {

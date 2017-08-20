@@ -279,11 +279,18 @@
                                 <action selector="goBack:" destination="5ao-rt-4GQ" id="QGc-lZ-IWa"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="rj9-1D-0kg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="rightBarItemTapped:" destination="5ao-rt-4GQ" id="Zvc-ZW-2I0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="BIf-Qu-pcV" id="ny1-Df-sul"/>
                         <outlet property="confirmButton" destination="WXV-B0-Btp" id="Xjw-9t-NHm"/>
                         <outlet property="progressView" destination="rX9-I9-dsE" id="TH2-ea-kqT"/>
+                        <outlet property="rightBarItem" destination="rj9-1D-0kg" id="bon-t0-tMP"/>
                         <outlet property="searchBar" destination="6N5-nw-ea0" id="dFr-9z-o3M"/>
                         <outlet property="stepAndProgressView" destination="rSJ-zP-gdG" id="uuT-fl-cBK"/>
                         <outlet property="stepLabel" destination="Oef-fS-IXG" id="jHY-Qc-8gT"/>

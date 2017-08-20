@@ -17,6 +17,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var stepAndProgressView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
 
+    @IBOutlet weak var rightBarItem: UIBarButtonItem!
     
     fileprivate let cellSize: CGFloat = 100
     fileprivate let cellMargin: CGFloat = 18
@@ -104,6 +105,8 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         //подчищаем текст
         searchBar.text = ""
         
+        setupRightBarItem()
+        
         collectionView.reloadData()
         
     }
@@ -121,6 +124,16 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        
+    }
+    
+    func setupRightBarItem() {
+        if datasource.availableItems.count == 0 {
+            rightBarItem.title = "нет"
+        }
+        else {
+            rightBarItem.title = "все"
+        }
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -129,6 +142,27 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     
     @IBAction func buttonTapped(_ sender: Any) {
         
+    }
+    
+    @IBAction func rightBarItemTapped(_ sender: Any) {
+        if rightBarItem.title == "нет" {
+            for _ in 0 ..< datasource.selectedItems.count {
+                let item = datasource.selectedItems[0]
+                datasource.selectedItems.remove(at: 0)
+                datasource.availableItems.append(item)
+            }
+        }
+        else {
+            for _ in 0 ..< datasource.availableItems.count {
+                let item = datasource.availableItems[0]
+                datasource.availableItems.remove(at: 0)
+                datasource.selectedItems.append(item)
+            }
+        }
+        //синхронизация
+        datasource.syncItems()
+        datasource.collectionView.reloadData()
+        setupRightBarItem()
     }
     
     func hideStepAndProgressView() {
