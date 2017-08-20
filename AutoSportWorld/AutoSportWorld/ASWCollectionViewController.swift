@@ -99,11 +99,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         //синхронизация
         datasource.syncItems()
         
-        //убираем клавиатуру
-        searchBar.resignFirstResponder()
-        
-        //подчищаем текст
-        searchBar.text = ""
+        hideKeyboard()
         
         setupRightBarItem()
         
@@ -159,8 +155,8 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
                 datasource.selectedItems.append(item)
             }
         }
-        //синхронизация
         datasource.syncItems()
+        hideKeyboard()
         datasource.collectionView.reloadData()
         setupRightBarItem()
     }
@@ -178,6 +174,14 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         if let constraint = (searchBar.constraints.filter{$0.firstAttribute == .height}.first) {
             constraint.constant = 0.0
         }
+    }
+    
+    func hideKeyboard() {
+        //убираем клавиатуру
+        searchBar.resignFirstResponder()
+        
+        //подчищаем текст
+        searchBar.text = ""
     }
     
 }
