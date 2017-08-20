@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Viewer</string>
+            <key>CFBundleURLName</key>
+            <string>ru.ok</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>ok1154828544</string>
+            </array>
+        </dict>
+    </array>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSApplicationQueriesSchemas</key>
+    <array/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>ok1154828544</string>
+        <string>okauth</string>
+    </array>
+    
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -21,9 +44,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Calendar</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -32,5 +55,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    
+    <key>item0</key>
+    <string>okauth</string>
+    <key>item1</key>
+    <string>ok1154828544</string>
 </dict>
 </plist>
