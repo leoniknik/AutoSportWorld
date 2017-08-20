@@ -81,11 +81,11 @@
                         <viewControllerLayoutGuide type="bottom" id="QId-kD-HbL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PaY-Qc-aEb">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Календарь" id="8Qy-pH-ImZ"/>
+                    <tabBarItem key="tabBarItem" title="Календарь" image="ic_calendar_off" selectedImage="ic_calendar_on" id="8Qy-pH-ImZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thE-m8-acL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,7 +143,7 @@
                             <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aqn-TA-Ny5" secondAttribute="bottom" id="yBd-km-JCc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Карта" id="3t5-F1-SVf"/>
+                    <tabBarItem key="tabBarItem" title="Карта" image="ic_map" selectedImage="ic_map_on" id="3t5-F1-SVf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
@@ -175,7 +175,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="События" id="sKQ-m9-GJb"/>
+                    <tabBarItem key="tabBarItem" title="События" image="ic_lenta_off" selectedImage="ic_lenta_on" id="sKQ-m9-GJb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="tableView" destination="e1D-LA-cY0" id="JcQ-i9-JGD"/>
@@ -194,11 +194,11 @@
                         <viewControllerLayoutGuide type="bottom" id="UUE-YR-NCB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OQb-sX-nGn">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Избранное" id="kpI-Re-EdV"/>
+                    <tabBarItem key="tabBarItem" title="Избранное" image="ic_bookmark_tab_off" selectedImage="ic_bookmark_tab_on" id="kpI-Re-EdV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpV-9s-USZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -208,7 +208,8 @@
         <scene sceneID="4An-kO-sGW">
             <objects>
                 <tabBarController id="MDR-gb-j9R" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Cfm-58-Wei">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="Cfm-58-Wei">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -226,4 +227,14 @@
             <point key="canvasLocation" x="1985" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_bookmark_tab_off" width="24" height="24"/>
+        <image name="ic_bookmark_tab_on" width="24" height="24"/>
+        <image name="ic_calendar_off" width="24" height="24"/>
+        <image name="ic_calendar_on" width="24" height="24"/>
+        <image name="ic_lenta_off" width="24" height="24"/>
+        <image name="ic_lenta_on" width="24" height="24"/>
+        <image name="ic_map" width="24" height="24"/>
+        <image name="ic_map_on" width="24" height="24"/>
+    </resources>
 </document>

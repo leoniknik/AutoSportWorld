@@ -356,7 +356,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Профиль" id="Agh-U5-6iz"/>
+                    <tabBarItem key="tabBarItem" title="Профиль" image="ic_profil_off" selectedImage="ic_profil_on" id="Agh-U5-6iz"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>
@@ -471,5 +471,9 @@
             <point key="canvasLocation" x="1849" y="2262"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_profil_off" width="24" height="24"/>
+        <image name="ic_profil_on" width="24" height="24"/>
+    </resources>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //настройка цвета фона navigationbar
         UINavigationBar.appearance().barTintColor = UIColor.ASWColor.black
+        
+        //настройка цвета таб бара
+        UITabBar.appearance().barTintColor = UIColor.ASWColor.black
+        //настройка цвета выделенного tab item
+        UITabBar.appearance().tintColor = UIColor.ASWColor.yellow
+        
         return true
     }
 
