@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34A1C26B953245CCD1E2C027 /* Pods_AutoSportWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD1E5F44F60D84860CF52A9 /* Pods_AutoSportWorld.framework */; };
 		CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */; };
 		CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323B261F379ADA007157D4 /* AppDelegate.swift */; };
 		CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2A1F379ADA007157D4 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */; };
 		CA584CE11F48AD5D0011E653 /* ASWNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */; };
 		CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */; };
+		CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */; };
 		CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */; };
 		CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */; };
 		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
@@ -46,13 +48,10 @@
 		CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */; };
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
-		CF08E3489C328F2A0512BB8D /* Pods_AutoSportWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E20C5F8446F51102604876 /* Pods_AutoSportWorld.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18E20C5F8446F51102604876 /* Pods_AutoSportWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoSportWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		32B8D326E307DC926A817251 /* Pods-AutoSportWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.debug.xcconfig"; sourceTree = "<group>"; };
-		7BEF857705869DD342CEFB0C /* Pods-AutoSportWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.release.xcconfig"; sourceTree = "<group>"; };
+		28A2F53C11FCB6D31EB35541 /* Pods-AutoSportWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegistrationViewController.swift; sourceTree = "<group>"; };
 		CA323B231F379ADA007157D4 /* AutoSportWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoSportWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA323B261F379ADA007157D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEmailValidator.swift; sourceTree = "<group>"; };
 		CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWNameValidator.swift; sourceTree = "<group>"; };
 		CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWPasswordValidator.swift; sourceTree = "<group>"; };
+		CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWFeedViewController.swift; sourceTree = "<group>"; };
 		CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionItem.swift; sourceTree = "<group>"; };
 		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -94,6 +94,8 @@
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		F05C7954E0B01EF37AF64E18 /* Pods-AutoSportWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.release.xcconfig"; sourceTree = "<group>"; };
+		FDD1E5F44F60D84860CF52A9 /* Pods_AutoSportWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoSportWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,19 +103,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF08E3489C328F2A0512BB8D /* Pods_AutoSportWorld.framework in Frameworks */,
+				34A1C26B953245CCD1E2C027 /* Pods_AutoSportWorld.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		369797B78F1C6C22D928FB11 /* Frameworks */ = {
+		2E3A0880BAE299190E20EF75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				18E20C5F8446F51102604876 /* Pods_AutoSportWorld.framework */,
+				FDD1E5F44F60D84860CF52A9 /* Pods_AutoSportWorld.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A06F18DE1DCB8BEC93182A72 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28A2F53C11FCB6D31EB35541 /* Pods-AutoSportWorld.debug.xcconfig */,
+				F05C7954E0B01EF37AF64E18 /* Pods-AutoSportWorld.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		CA323B1A1F379ADA007157D4 = {
@@ -121,8 +132,8 @@
 			children = (
 				CA323B251F379ADA007157D4 /* AutoSportWorld */,
 				CA323B241F379ADA007157D4 /* Products */,
-				EE5DD5BF85E5D6595FC1E543 /* Pods */,
-				369797B78F1C6C22D928FB11 /* Frameworks */,
+				A06F18DE1DCB8BEC93182A72 /* Pods */,
+				2E3A0880BAE299190E20EF75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +169,7 @@
 				CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */,
 				CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */,
 				CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */,
+				CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -269,15 +281,6 @@
 			name = DataSources;
 			sourceTree = "<group>";
 		};
-		EE5DD5BF85E5D6595FC1E543 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				32B8D326E307DC926A817251 /* Pods-AutoSportWorld.debug.xcconfig */,
-				7BEF857705869DD342CEFB0C /* Pods-AutoSportWorld.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,12 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA323B351F379ADA007157D4 /* Build configuration list for PBXNativeTarget "AutoSportWorld" */;
 			buildPhases = (
-				0D7CE26B0A30877AF3C14A82 /* [CP] Check Pods Manifest.lock */,
+				DCC19A2EDEDEAAFA92380F88 /* [CP] Check Pods Manifest.lock */,
 				CA323B1F1F379ADA007157D4 /* Sources */,
 				CA323B201F379ADA007157D4 /* Frameworks */,
 				CA323B211F379ADA007157D4 /* Resources */,
-				636BD401E6F288DEE4FE3A7E /* [CP] Embed Pods Frameworks */,
-				204A3023FF45E6D6DB5F42E7 /* [CP] Copy Pods Resources */,
+				70AE55981CC8C3DAAEC3D5D7 /* [CP] Embed Pods Frameworks */,
+				105D31CC3245BAC01894499F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -358,22 +361,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D7CE26B0A30877AF3C14A82 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		204A3023FF45E6D6DB5F42E7 /* [CP] Copy Pods Resources */ = {
+		105D31CC3245BAC01894499F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -388,7 +376,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		636BD401E6F288DEE4FE3A7E /* [CP] Embed Pods Frameworks */ = {
+		70AE55981CC8C3DAAEC3D5D7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -403,6 +391,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DCC19A2EDEDEAAFA92380F88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -410,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */,
 				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
 				CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */,
@@ -550,7 +554,7 @@
 		};
 		CA323B361F379ADA007157D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32B8D326E307DC926A817251 /* Pods-AutoSportWorld.debug.xcconfig */;
+			baseConfigurationReference = 28A2F53C11FCB6D31EB35541 /* Pods-AutoSportWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BZ5C8942NC;
@@ -564,7 +568,7 @@
 		};
 		CA323B371F379ADA007157D4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BEF857705869DD342CEFB0C /* Pods-AutoSportWorld.release.xcconfig */;
+			baseConfigurationReference = F05C7954E0B01EF37AF64E18 /* Pods-AutoSportWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BZ5C8942NC;

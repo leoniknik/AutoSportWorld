@@ -158,17 +158,28 @@
         <!--События-->
         <scene sceneID="Ime-0G-SHu">
             <objects>
-                <viewController id="lby-ck-1rP" sceneMemberID="viewController">
+                <viewController id="lby-ck-1rP" customClass="ASWFeedViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="86h-Go-CHs"/>
                         <viewControllerLayoutGuide type="bottom" id="rsM-xi-E2Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eIO-xD-gna">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-LA-cY0" customClass="ASWFeedTableView" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="События" id="sKQ-m9-GJb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="e1D-LA-cY0" id="JcQ-i9-JGD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nti-L5-dNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
