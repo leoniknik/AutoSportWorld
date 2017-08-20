@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		563844218152B2644DEED340 /* Pods_AutoSportWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287BEAB3E0FE8039DE28685F /* Pods_AutoSportWorld.framework */; };
 		CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323B261F379ADA007157D4 /* AppDelegate.swift */; };
 		CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2A1F379ADA007157D4 /* Main.storyboard */; };
 		CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2D1F379ADA007157D4 /* Assets.xcassets */; };
@@ -30,9 +31,16 @@
 		CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */; };
 		CACB58571F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */; };
 		CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */; };
+		DE88FF781F4858E800A8D1D1 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE88FF771F4858E800A8D1D1 /* Calendar.storyboard */; };
+		DE88FF7A1F4858F100A8D1D1 /* ASWCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88FF791F4858F100A8D1D1 /* ASWCalendarViewController.swift */; };
+		DE88FF831F489DC400A8D1D1 /* OKSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = DE88FF821F489DC400A8D1D1 /* OKSDK.m */; };
+		DE88FF851F489DF100A8D1D1 /* OKStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE88FF841F489DF100A8D1D1 /* OKStoryboard.storyboard */; };
+		DE88FF8F1F4977E000A8D1D1 /* OKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE88FF8E1F4977E000A8D1D1 /* OKViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		287BEAB3E0FE8039DE28685F /* Pods_AutoSportWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoSportWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85015DD5AC05EEF3A1C7B91E /* Pods-AutoSportWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.release.xcconfig"; sourceTree = "<group>"; };
 		CA323B231F379ADA007157D4 /* AutoSportWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoSportWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA323B261F379ADA007157D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA323B2B1F379ADA007157D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +66,14 @@
 		CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWRegionCell.xib; sourceTree = "<group>"; };
 		CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWChangeRegionsViewController.swift; sourceTree = "<group>"; };
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
+		D4B9994612137445F63A4147 /* Pods-AutoSportWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.debug.xcconfig"; sourceTree = "<group>"; };
+		DE88FF771F4858E800A8D1D1 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		DE88FF791F4858F100A8D1D1 /* ASWCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCalendarViewController.swift; sourceTree = "<group>"; };
+		DE88FF801F489D8200A8D1D1 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		DE88FF811F489DC400A8D1D1 /* OKSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKSDK.h; sourceTree = "<group>"; };
+		DE88FF821F489DC400A8D1D1 /* OKSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKSDK.m; sourceTree = "<group>"; };
+		DE88FF841F489DF100A8D1D1 /* OKStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OKStoryboard.storyboard; sourceTree = "<group>"; };
+		DE88FF8E1F4977E000A8D1D1 /* OKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OKViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +81,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563844218152B2644DEED340 /* Pods_AutoSportWorld.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4B78FBED98B59B550415683 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				287BEAB3E0FE8039DE28685F /* Pods_AutoSportWorld.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA323B1A1F379ADA007157D4 = {
 			isa = PBXGroup;
 			children = (
 				CA323B251F379ADA007157D4 /* AutoSportWorld */,
 				CA323B241F379ADA007157D4 /* Products */,
+				DE52AA8C4D9E5D2C4B3577C8 /* Pods */,
+				B4B78FBED98B59B550415683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +130,7 @@
 		CA3710A61F37AD9F003578E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DE88FF791F4858F100A8D1D1 /* ASWCalendarViewController.swift */,
 				CA3710B81F37C94E003578E5 /* ASWSettingsViewController.swift */,
 				CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */,
 				CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */,
@@ -125,6 +153,10 @@
 		CA3710AC1F37B530003578E5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DE88FF811F489DC400A8D1D1 /* OKSDK.h */,
+				DE88FF821F489DC400A8D1D1 /* OKSDK.m */,
+				DE88FF801F489D8200A8D1D1 /* Bridge.h */,
+				DE88FF8E1F4977E000A8D1D1 /* OKViewController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -175,11 +207,22 @@
 		CA8C00411F39BB26005CF27E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				DE88FF771F4858E800A8D1D1 /* Calendar.storyboard */,
 				CA323B2F1F379ADA007157D4 /* LaunchScreen.storyboard */,
 				CA323B2A1F379ADA007157D4 /* Main.storyboard */,
 				CA8C003F1F39BAEF005CF27E /* Profile.storyboard */,
+				DE88FF841F489DF100A8D1D1 /* OKStoryboard.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		DE52AA8C4D9E5D2C4B3577C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4B9994612137445F63A4147 /* Pods-AutoSportWorld.debug.xcconfig */,
+				85015DD5AC05EEF3A1C7B91E /* Pods-AutoSportWorld.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,9 +232,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA323B351F379ADA007157D4 /* Build configuration list for PBXNativeTarget "AutoSportWorld" */;
 			buildPhases = (
+				E15FAF2A3F58DC0F02EB992A /* [CP] Check Pods Manifest.lock */,
 				CA323B1F1F379ADA007157D4 /* Sources */,
 				CA323B201F379ADA007157D4 /* Frameworks */,
 				CA323B211F379ADA007157D4 /* Resources */,
+				F3A716C686863FF006B8415C /* [CP] Embed Pods Frameworks */,
+				EBB4E72B9F1B931971FF9A60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,6 +261,7 @@
 					CA323B221F379ADA007157D4 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BZ5C8942NC;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -244,8 +291,10 @@
 			files = (
 				CA323B311F379ADA007157D4 /* LaunchScreen.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
+				DE88FF851F489DF100A8D1D1 /* OKStoryboard.storyboard in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
+				DE88FF781F4858E800A8D1D1 /* Calendar.storyboard in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
 				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
@@ -253,6 +302,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E15FAF2A3F58DC0F02EB992A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EBB4E72B9F1B931971FF9A60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3A716C686863FF006B8415C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA323B1F1F379ADA007157D4 /* Sources */ = {
@@ -265,6 +362,8 @@
 				CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
+				DE88FF831F489DC400A8D1D1 /* OKSDK.m in Sources */,
+				DE88FF8F1F4977E000A8D1D1 /* OKViewController.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */,
@@ -274,6 +373,7 @@
 				CACB58571F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift in Sources */,
 				CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */,
 				CA3710B91F37C94E003578E5 /* ASWSettingsViewController.swift in Sources */,
+				DE88FF7A1F4858F100A8D1D1 /* ASWCalendarViewController.swift in Sources */,
 				CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,26 +495,33 @@
 		};
 		CA323B361F379ADA007157D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4B9994612137445F63A4147 /* Pods-AutoSportWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = BZ5C8942NC;
 				INFOPLIST_FILE = AutoSportWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Volodin-Enterprise.AutoSportWorld";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = AutoSportWorld/Bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CA323B371F379ADA007157D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85015DD5AC05EEF3A1C7B91E /* Pods-AutoSportWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = BZ5C8942NC;
 				INFOPLIST_FILE = AutoSportWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Volodin-Enterprise.AutoSportWorld";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = AutoSportWorld/Bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
