@@ -36,7 +36,6 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     //настройка UI
     func setupUI() {
-        setupBottomRedButton()
         setupSettingsTable()
     }
     
