@@ -167,13 +167,18 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-LA-cY0" customClass="ASWFeedTableView" customModule="AutoSportWorld" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-LA-cY0" customClass="ASWFeedTableView" customModule="AutoSportWorld" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="e1D-LA-cY0" secondAttribute="trailing" id="Mg9-cU-F11"/>
+                            <constraint firstItem="e1D-LA-cY0" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leading" id="WMb-Gy-SX4"/>
+                            <constraint firstItem="e1D-LA-cY0" firstAttribute="top" secondItem="86h-Go-CHs" secondAttribute="bottom" id="XJZ-Nl-3tI"/>
+                            <constraint firstItem="rsM-xi-E2Q" firstAttribute="top" secondItem="e1D-LA-cY0" secondAttribute="bottom" id="ej9-ff-DCS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="События" image="ic_lenta_off" selectedImage="ic_lenta_on" id="sKQ-m9-GJb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -207,7 +212,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="4An-kO-sGW">
             <objects>
-                <tabBarController id="MDR-gb-j9R" sceneMemberID="viewController">
+                <tabBarController id="MDR-gb-j9R" customClass="ASWTabBarController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="Cfm-58-Wei">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		34A1C26B953245CCD1E2C027 /* Pods_AutoSportWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD1E5F44F60D84860CF52A9 /* Pods_AutoSportWorld.framework */; };
+		CA25D85F1F5090E700D65B26 /* ASWAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */; };
+		CA25D8611F50954D00D65B26 /* ASWTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */; };
 		CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */; };
 		CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323B261F379ADA007157D4 /* AppDelegate.swift */; };
 		CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA323B2A1F379ADA007157D4 /* Main.storyboard */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		28A2F53C11FCB6D31EB35541 /* Pods-AutoSportWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.debug.xcconfig"; sourceTree = "<group>"; };
+		CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAnimationManager.swift; sourceTree = "<group>"; };
+		CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWTabBarController.swift; sourceTree = "<group>"; };
 		CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegistrationViewController.swift; sourceTree = "<group>"; };
 		CA323B231F379ADA007157D4 /* AutoSportWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoSportWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA323B261F379ADA007157D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 			children = (
 				CA584CDD1F48856F0011E653 /* Validators */,
 				CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */,
+				CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */,
 				CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */,
 				CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */,
+				CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
 				CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */,
+				CA25D8611F50954D00D65B26 /* ASWTabBarController.swift in Sources */,
 				CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */,
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
@@ -425,6 +432,7 @@
 				CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */,
 				CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
+				CA25D85F1F5090E700D65B26 /* ASWAnimationManager.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */,
 				CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */,
