@@ -7,21 +7,36 @@
 //
 
 import UIKit
+import VK_ios_sdk
+
+fileprivate var SCOPE: [Any]? = nil
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        //настройка цвета фона navigationbar
-        UINavigationBar.appearance().barTintColor = UIColor.ASWColor.black
         
-        //настройка цвета таб бара
-        UITabBar.appearance().barTintColor = UIColor.ASWColor.black
-        //настройка цвета выделенного tab item
-        UITabBar.appearance().tintColor = UIColor.ASWColor.yellow
+        setupUI()
+        
+        VKSdk.initialize(withAppId: "6162114")
+        SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
+        VKSdk.wakeUpSession(SCOPE, complete: {(_ state: VKAuthorizationState, _ error: Error?) -> Void in
+            if error != nil {
+                let alertVC = UIAlertController(title: "", message: error.debugDescription, preferredStyle: UIAlertControllerStyle.alert)
+                alertVC.addAction(okButton)
+                self.window?.rootViewController?.present(alertVC, animated: true, completion: nil)
+            }
+            else if state == VKAuthorizationState.authorized{
+                print("авторизован")
+                
+                
+            }
+            else if state != VKAuthorizationState.authorized {
+                print("не авторизован")
+            }
+        })
         
         return true
     }
@@ -49,5 +64,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func setupUI() {
+        //настройка цвета фона navigationbar
+        UINavigationBar.appearance().barTintColor = UIColor.ASWColor.black
+        
+        //настройка цвета таб бара
+        UITabBar.appearance().barTintColor = UIColor.ASWColor.black
+        //настройка цвета выделенного tab item
+        UITabBar.appearance().tintColor = UIColor.ASWColor.yellow
+    }
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        VKSdk.processOpen(url, fromApplication: UIApplicationOpenURLOptionsKey.sourceApplication.rawValue)
+        print("application URL")
+        return true
+    }
 }
 
