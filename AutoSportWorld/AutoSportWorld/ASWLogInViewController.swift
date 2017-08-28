@@ -43,17 +43,17 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
             print(result.token.email)
             
         } else if (result.error != nil) {
-            let alertVC = UIAlertController(title: "", message: "Access denied\n\(result.error)", preferredStyle: UIAlertControllerStyle.alert)
-            alertVC.addAction(okButton)
-            self.present(alertVC, animated: true, completion: nil)
+//            let alertVC = UIAlertController(title: "", message: "Access denied\n\(result.error)", preferredStyle: UIAlertControllerStyle.alert)
+//            alertVC.addAction(okButton)
+//            self.present(alertVC, animated: true, completion: nil)
         }
         
     }
     
     func vkSdkUserAuthorizationFailed() {
-        let alertVC = UIAlertController(title: "", message: "Access denied", preferredStyle: UIAlertControllerStyle.alert)
-        alertVC.addAction(okButton)
-        self.present(alertVC, animated: true, completion: nil)
+//        let alertVC = UIAlertController(title: "", message: "Access denied", preferredStyle: UIAlertControllerStyle.alert)
+//        alertVC.addAction(okButton)
+//        self.present(alertVC, animated: true, completion: nil)
     }
     
 }

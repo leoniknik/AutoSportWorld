@@ -45,7 +45,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="XC6-ww-bvG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="XC6-ww-bvG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -103,9 +103,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-aJ-Jl9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
-                            </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-TA-Ny5">
                                 <rect key="frame" x="0.0" y="444" width="375" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,18 +124,24 @@
                                 </constraints>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="pageControlValueChanged:" destination="Pul-1K-c8N" eventType="valueChanged" id="9aY-ZS-p1y"/>
+                                </connections>
                             </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdX-Wb-Jhd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DEg-aJ-Jl9" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="5Dw-0U-zOD"/>
-                            <constraint firstAttribute="trailing" secondItem="DEg-aJ-Jl9" secondAttribute="trailing" id="7uW-br-1zq"/>
                             <constraint firstAttribute="trailing" secondItem="aSX-ex-loQ" secondAttribute="trailing" id="9fH-Rz-fSn"/>
-                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="DEg-aJ-Jl9" secondAttribute="bottom" id="HdM-4v-u15"/>
                             <constraint firstItem="aqn-TA-Ny5" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="Irp-6w-kg6"/>
+                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="zdX-Wb-Jhd" secondAttribute="bottom" id="Uot-lj-VFv"/>
+                            <constraint firstAttribute="trailing" secondItem="zdX-Wb-Jhd" secondAttribute="trailing" id="WUH-DA-CPa"/>
                             <constraint firstItem="aSX-ex-loQ" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="ZYH-eS-Jus"/>
-                            <constraint firstItem="DEg-aJ-Jl9" firstAttribute="top" secondItem="dPY-fO-IXs" secondAttribute="bottom" id="aUP-gq-ySh"/>
+                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="lBb-DT-OBF"/>
                             <constraint firstAttribute="trailing" secondItem="aqn-TA-Ny5" secondAttribute="trailing" id="lwI-xG-IxL"/>
+                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="top" secondItem="dPY-fO-IXs" secondAttribute="bottom" id="oC9-ye-FSh"/>
                             <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aSX-ex-loQ" secondAttribute="bottom" constant="-5" id="whV-FJ-WS6"/>
                             <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aqn-TA-Ny5" secondAttribute="bottom" id="yBd-km-JCc"/>
                         </constraints>
@@ -147,13 +150,13 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
-                        <outlet property="mapView" destination="DEg-aJ-Jl9" id="d7L-Wc-2nq"/>
                         <outlet property="pageControl" destination="aSX-ex-loQ" id="gfl-RJ-4gL"/>
+                        <outlet property="viewForMap" destination="zdX-Wb-Jhd" id="vKK-TN-FDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyF-e6-aIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="1243"/>
+            <point key="canvasLocation" x="2936.8000000000002" y="1201.3493253373315"/>
         </scene>
         <!--События-->
         <scene sceneID="Ime-0G-SHu">

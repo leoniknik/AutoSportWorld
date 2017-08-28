@@ -8,6 +8,7 @@
 
 import UIKit
 import VK_ios_sdk
+import GoogleMaps
 
 fileprivate var SCOPE: [Any]? = nil
 
@@ -19,24 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         setupUI()
-        
-        VKSdk.initialize(withAppId: "6162114")
-        SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
-        VKSdk.wakeUpSession(SCOPE, complete: {(_ state: VKAuthorizationState, _ error: Error?) -> Void in
-            if error != nil {
-                let alertVC = UIAlertController(title: "", message: error.debugDescription, preferredStyle: UIAlertControllerStyle.alert)
-                alertVC.addAction(okButton)
-                self.window?.rootViewController?.present(alertVC, animated: true, completion: nil)
-            }
-            else if state == VKAuthorizationState.authorized{
-                print("авторизован")
-                
-                
-            }
-            else if state != VKAuthorizationState.authorized {
-                print("не авторизован")
-            }
-        })
+        initVK()
+        initGoogleMap()
         
         return true
     }
@@ -81,5 +66,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("application URL")
         return true
     }
+    
+    func initVK() {
+        VKSdk.initialize(withAppId: "6162114")
+        SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
+        VKSdk.wakeUpSession(SCOPE, complete: {(_ state: VKAuthorizationState, _ error: Error?) -> Void in
+            if error != nil {
+                //                let alertVC = UIAlertController(title: "", message: error.debugDescription, preferredStyle: UIAlertControllerStyle.alert)
+                //                alertVC.addAction(okButton)
+                //                self.window?.rootViewController?.present(alertVC, animated: true, completion: nil)
+            }
+            else if state == VKAuthorizationState.authorized{
+                print("авторизован")
+                
+                
+            }
+            else if state != VKAuthorizationState.authorized {
+                print("не авторизован")
+            }
+        })
+    }
+    
+    func initGoogleMap() {
+        GMSServices.provideAPIKey("AIzaSyD32daYcxUE9uE7DqStnmkPh75TvzwoUtQ")
+    }
+    
 }
 

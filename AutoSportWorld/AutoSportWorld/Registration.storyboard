@@ -16,7 +16,7 @@
         <scene sceneID="Cgg-wF-ndO">
             <objects>
                 <navigationController id="cFW-UU-ztQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" barStyle="black" translucent="NO" id="t5e-yv-eVM">
+                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="t5e-yv-eVM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,6 +163,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="paf-F3-y18"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SY-ec-h57" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
