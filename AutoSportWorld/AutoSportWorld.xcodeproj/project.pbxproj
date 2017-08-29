@@ -47,6 +47,8 @@
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
 		CF08E3489C328F2A0512BB8D /* Pods_AutoSportWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E20C5F8446F51102604876 /* Pods_AutoSportWorld.framework */; };
+		DEEA353C1F49A69A00F4129D /* AboutApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEA353B1F49A69A00F4129D /* AboutApp.storyboard */; };
+		DEEA353E1F49A95F00F4129D /* ASWAboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA353D1F49A95F00F4129D /* ASWAboutAppViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		DEEA353B1F49A69A00F4129D /* AboutApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutApp.storyboard; sourceTree = "<group>"; };
+		DEEA353D1F49A95F00F4129D /* ASWAboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAboutAppViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */,
 				CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */,
 				CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */,
+				DEEA353D1F49A95F00F4129D /* ASWAboutAppViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				CA584CD31F4843A30011E653 /* Registration.storyboard */,
 				CA323B2A1F379ADA007157D4 /* Main.storyboard */,
 				CA8C003F1F39BAEF005CF27E /* Profile.storyboard */,
+				DEEA353B1F49A69A00F4129D /* AboutApp.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				CA584CD61F4843A30011E653 /* Registration.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
 				CA584CD51F4843A30011E653 /* LauchScreenStoryboard.storyboard in Resources */,
+				DEEA353C1F49A69A00F4129D /* AboutApp.storyboard in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
@@ -418,6 +425,7 @@
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
+				DEEA353E1F49A95F00F4129D /* ASWAboutAppViewController.swift in Sources */,
 				CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */,
 				CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
