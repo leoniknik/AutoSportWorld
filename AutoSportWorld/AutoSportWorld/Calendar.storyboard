@@ -15,7 +15,7 @@
             <objects>
                 <navigationController id="3dX-a0-oGQ" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -39,10 +39,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="90L-dO-ZUr">
-                                <rect key="frame" x="0.0" y="452.5" width="375" height="150.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-Gh-VpS" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="452.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -121,19 +117,50 @@
                                     <constraint firstItem="dHS-cU-BnA" firstAttribute="leading" secondItem="pPf-Dr-e9z" secondAttribute="trailing" id="ty7-Px-Z56"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rCM-RN-PUO">
+                                <rect key="frame" x="0.0" y="452.5" width="375" height="150.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KmU-zL-e86">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rG3-JD-eHN">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ovy-BA-f2Y">
+                                <rect key="frame" x="150.5" y="583" width="75" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Qnn-LD-mD2"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.86981121845807952" green="1" blue="0.92660787966125113" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="ovy-BA-f2Y" firstAttribute="width" secondItem="rCM-RN-PUO" secondAttribute="width" multiplier="0.2" id="0Iy-5E-hW7"/>
                             <constraint firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" id="CEd-GA-Yzp"/>
-                            <constraint firstItem="90L-dO-ZUr" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="FeS-xn-Wbs"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="I7g-kC-caz"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="JPF-OL-gec"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="height" secondItem="c0B-MD-UzX" secondAttribute="height" multiplier="0.1" id="MKo-B1-2Cc"/>
+                            <constraint firstItem="rCM-RN-PUO" firstAttribute="top" secondItem="e8a-Gh-VpS" secondAttribute="bottom" id="MQg-qb-RpQ"/>
+                            <constraint firstItem="rCM-RN-PUO" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="NOl-QJ-3HZ"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="height" secondItem="c0B-MD-UzX" secondAttribute="height" multiplier="0.75" id="RQe-ej-GK8"/>
-                            <constraint firstItem="90L-dO-ZUr" firstAttribute="top" secondItem="e8a-Gh-VpS" secondAttribute="bottom" id="csX-iC-je5"/>
-                            <constraint firstItem="X0g-Xw-LkD" firstAttribute="top" secondItem="90L-dO-ZUr" secondAttribute="bottom" id="g7A-hY-1aB"/>
+                            <constraint firstItem="ovy-BA-f2Y" firstAttribute="centerX" secondItem="FOX-ia-6S5" secondAttribute="centerX" id="W32-t1-ULo"/>
+                            <constraint firstItem="rCM-RN-PUO" firstAttribute="width" secondItem="c0B-MD-UzX" secondAttribute="width" id="XOA-qs-hCH"/>
+                            <constraint firstItem="X0g-Xw-LkD" firstAttribute="top" secondItem="ovy-BA-f2Y" secondAttribute="bottom" constant="10" id="gfG-Ua-v29"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" id="llD-sw-M6V"/>
-                            <constraint firstAttribute="trailing" secondItem="90L-dO-ZUr" secondAttribute="trailing" id="wUW-fZ-OHf"/>
+                            <constraint firstItem="X0g-Xw-LkD" firstAttribute="top" secondItem="rCM-RN-PUO" secondAttribute="bottom" id="tJ9-2n-Ihn"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" id="wfZ-Hh-WVi"/>
                             <constraint firstAttribute="trailing" secondItem="FOX-ia-6S5" secondAttribute="trailing" id="ywR-p0-rqC"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" id="zRH-4L-6gm"/>
@@ -142,7 +169,9 @@
                     <navigationItem key="navigationItem" id="lBP-EG-CON"/>
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
+                        <outlet property="collectionView" destination="rCM-RN-PUO" id="9VC-QY-9yw"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
+                        <outlet property="pageControl" destination="ovy-BA-f2Y" id="t7M-od-Dci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-VV-MeO" userLabel="First Responder" sceneMemberID="firstResponder"/>

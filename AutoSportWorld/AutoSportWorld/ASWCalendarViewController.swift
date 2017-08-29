@@ -9,7 +9,8 @@ import UIKit
 import FSCalendar
 
 
-class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
+
+class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
 
     
@@ -17,6 +18,8 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var collectionView: UICollectionView!
    
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
@@ -63,9 +66,65 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
        
         calendar.select(Date())
         updateMonthLabel()
+        
+        
+        //collection view
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
+        //setupLocationManager()
+        setupUI()
+        //setupMap()
+        
+        //временный код
+        var event = ASWEvent()
+        event.latitude = 55.3
+        event.longitude = 37.4
+        event.title = "1"
+        events.append(event)
+        
+        event = ASWEvent()
+        event.latitude = 55.1
+        event.longitude = 37.6
+        event.title = "2"
+        events.append(event)
+        collectionView.reloadData()
     }
 
-   
+
+    
+    var events: [ASWEvent] = []
+
+    
+    func setupUI() {
+        pageControl.hidesForSinglePage = true
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        pageControl.numberOfPages = events.count
+        //mapView.clear()
+        
+        return events.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWMapAndCalendarCell", for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.size.width, height: 110)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageWidth: CGFloat = self.collectionView.frame.size.width
+        let previousPage = pageControl.currentPage
+        let newPage = Int(self.collectionView.contentOffset.x / pageWidth)
+        pageControl.currentPage = newPage
+        
+    }
+
    
     func todayItemClicked(sender: AnyObject) {
         self.calendar.setCurrentPage(Date(), animated: false)
