@@ -18,7 +18,11 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     @IBOutlet weak var monthLabel: UILabel!
     
     @IBOutlet weak var titleView: UIView!
-   
+    
+    @IBOutlet weak var prevMonthButton: UIButton!
+    
+    @IBOutlet weak var nextMonthButton: UIButton!
+    
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     
@@ -128,23 +132,41 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         calendar.dataSource = self
         calendar.allowsMultipleSelection = false
         calendar.swipeToChooseGesture.isEnabled = false
+        
+        //бекграунд
         calendar.backgroundColor = UIColor.white
         
         //first day = monday
         calendar.firstWeekday = 0
         calendar.appearance.headerMinimumDissolvedAlpha = 0;
+        
+        // kill native title
         calendar.appearance.headerTitleFont = calendar.appearance.headerTitleFont.withSize(0)
-        calendar.appearance.titleFont.withSize(26)
+        
+        //font for cells
+        //calendar.appearance.titleFont.withSize(26)
+        
+        //дни недели
         calendar.appearance.weekdayFont.withSize(26)
+        calendar.appearance.weekdayTextColor = UIColor.ASWColor.grey;
         
         calendar.appearance.borderRadius = 0// квадрат
         
+        //today cell color
         calendar.appearance.todayColor = UIColor.white
+        
+        //setup next prev month buttons
+        prevMonthButton.setTitleColor(UIColor.ASWColor.grey, for: [])
+        nextMonthButton.setTitleColor(UIColor.ASWColor.grey, for: [])
+        
         
         
         calendar.appearance.borderSelectionColor = UIColor.gray.withAlphaComponent(0)
         calendar.appearance.selectionColor = UIColor.gray.withAlphaComponent(0)
         calendar.appearance.todaySelectionColor = UIColor.gray.withAlphaComponent(0)
+        
+        
+        
         
         calendar.layer.cornerRadius = 10.0
         calendar.clipsToBounds = true
@@ -155,6 +177,8 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         self.title = "Календарь событий"
        
         //calendar.select(Date())
+        self.calendar.setCurrentPage(Date(), animated: false)
+        updateMonthLabel()
     }
 
    

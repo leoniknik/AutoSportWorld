@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3dX-a0-oGQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3dX-a0-oGQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
                 <navigationController id="3dX-a0-oGQ" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -36,7 +36,7 @@
                         <viewControllerLayoutGuide type="bottom" id="X0g-Xw-LkD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c0B-MD-UzX">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="90L-dO-ZUr">
@@ -102,6 +102,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kf9-3i-dXL"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="&gt;"/>
                                         <connections>
                                             <action selector="nextMonth:" destination="IsW-B3-udk" eventType="touchUpInside" id="6DB-33-Fce"/>
@@ -112,6 +113,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="x5U-ag-8od"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="&lt;"/>
                                         <connections>
                                             <action selector="previousMonth:" destination="IsW-B3-udk" eventType="touchUpInside" id="Zg8-zv-1ye"/>
@@ -148,6 +150,8 @@
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
+                        <outlet property="nextMonthButton" destination="dHS-cU-BnA" id="Tae-do-LvO"/>
+                        <outlet property="prevMonthButton" destination="9r8-oq-tUg" id="FwI-ON-GQZ"/>
                         <outlet property="titleView" destination="FOX-ia-6S5" id="oii-en-gfd"/>
                     </connections>
                 </viewController>
