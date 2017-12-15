@@ -21,6 +21,7 @@ class ASWFeedViewController: UIViewController {
     }
 
     func setupUI() {
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     func setupRefreshView() {
