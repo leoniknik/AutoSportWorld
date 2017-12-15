@@ -126,12 +126,15 @@
                                     <constraint firstItem="dHS-cU-BnA" firstAttribute="leading" secondItem="pPf-Dr-e9z" secondAttribute="trailing" id="ty7-Px-Z56"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S0-m0-QeG">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S0-m0-QeG">
                                 <rect key="frame" x="5" y="49" width="365" height="396"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2V-1O-6Lt">
                                         <rect key="frame" x="355" y="0.0" width="10" height="10"/>
                                         <color key="backgroundColor" red="0.56476616859999995" green="0.77372318510000004" blue="0.35893973709999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="JAQ-38-TD8"/>
                                             <constraint firstAttribute="width" constant="10" id="VnP-cH-B5v"/>
@@ -140,6 +143,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMA-wX-7P6">
                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
                                         <color key="backgroundColor" red="0.56476616859999995" green="0.77372318510000004" blue="0.35893973709999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="33a-sj-O3K"/>
                                             <constraint firstAttribute="height" constant="10" id="fNh-ab-wXg"/>
@@ -151,6 +157,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCW-Pz-vwh">
                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="RpJ-q7-pf2"/>
                                                     <constraint firstAttribute="width" constant="10" id="e4Z-XV-5IF"/>
@@ -159,6 +168,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-vQ-GcN">
                                                 <rect key="frame" x="355" y="0.0" width="10" height="10"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="1XM-th-caJ"/>
                                                     <constraint firstAttribute="width" constant="10" id="Sup-BF-SIg"/>
@@ -166,6 +178,9 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstItem="uCW-Pz-vwh" firstAttribute="leading" secondItem="9hc-Kn-Uje" secondAttribute="leading" id="IXH-sn-by2"/>
                                             <constraint firstAttribute="trailing" secondItem="8fI-vQ-GcN" secondAttribute="trailing" id="Z6f-Uu-aNY"/>
@@ -175,6 +190,9 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="YMA-wX-7P6" firstAttribute="top" secondItem="7S0-m0-QeG" secondAttribute="top" id="4cR-OL-qDh"/>
                                     <constraint firstAttribute="bottom" secondItem="9hc-Kn-Uje" secondAttribute="bottom" id="C9W-DA-kXt"/>
