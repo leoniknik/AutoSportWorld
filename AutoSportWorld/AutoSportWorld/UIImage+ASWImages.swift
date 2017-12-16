@@ -11,5 +11,6 @@ import UIKit
 extension UIImage {
     
     static let backward = UIImage(named: "ic_backward")
-    
+    static let passwordSecureOnPicture = UIImage(named: "ic_password")
+    static let passwordSecureOffPicture = UIImage(named: "ic_password_on")
 }
