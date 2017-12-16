@@ -12,7 +12,7 @@ class ASWTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.ASWColor.black
+        setupNavbar()
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -26,6 +26,11 @@ class ASWTabBarController: UITabBarController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func setupNavbar() {
+        self.navigationController?.navigationBar.tintColor = .white
+//        self.navigationController?.navigationBar.barTintColor = .white
     }
     
 }

@@ -11,6 +11,7 @@ import UIKit
 class ASWFeedViewController: UIViewController {
     
     @IBOutlet weak var tableView: ASWFeedTableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let refreshControl = UIRefreshControl()
 
@@ -21,7 +22,14 @@ class ASWFeedViewController: UIViewController {
     }
 
     func setupUI() {
-        UIApplication.shared.statusBarStyle = .lightContent
+        setupNavbar()
+    }
+    
+    func setupNavbar() {
+        searchBar.backgroundColor = UIColor.ASWColor.black
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        //убираем полоску между хедером и навигейшен баром
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func setupRefreshView() {
