@@ -21,6 +21,14 @@
 		CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */; };
 		CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */; };
 		CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */; };
+		CA51D6561FE6D0AC00018CE9 /* ASWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6551FE6D0AC00018CE9 /* ASWNetworkManager.swift */; };
+		CA51D65D1FE6D77F00018CE9 /* ASWUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D65C1FE6D77F00018CE9 /* ASWUrls.swift */; };
+		CA51D65F1FE6D86400018CE9 /* ASWListRacesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D65E1FE6D86400018CE9 /* ASWListRacesRequest.swift */; };
+		CA51D6621FE6E33800018CE9 /* ASWRace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6611FE6E33800018CE9 /* ASWRace.swift */; };
+		CA51D6641FE6E9C000018CE9 /* ASWRaceRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6631FE6E9C000018CE9 /* ASWRaceRegion.swift */; };
+		CA51D6661FE6EA5800018CE9 /* ASWRaceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6651FE6EA5800018CE9 /* ASWRaceCategory.swift */; };
+		CA51D6681FE718A300018CE9 /* ASWListRacesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6671FE718A300018CE9 /* ASWListRacesResponse.swift */; };
+		CA51D66A1FE72F5500018CE9 /* NotificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6691FE72F5500018CE9 /* NotificationRouter.swift */; };
 		CA584CD41F4843A30011E653 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD11F4843A30011E653 /* Calendar.storyboard */; };
 		CA584CD51F4843A30011E653 /* LauchScreenStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD21F4843A30011E653 /* LauchScreenStoryboard.storyboard */; };
 		CA584CD61F4843A30011E653 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA584CD31F4843A30011E653 /* Registration.storyboard */; };
@@ -30,6 +38,7 @@
 		CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */; };
 		CA584CE11F48AD5D0011E653 /* ASWNameValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */; };
 		CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */; };
+		CA7150331FE5D8810058B522 /* ASWProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7150321FE5D8810058B522 /* ASWProfileViewController.swift */; };
 		CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */; };
 		CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */; };
 		CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */; };
@@ -43,7 +52,6 @@
 		CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */; };
 		CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */; };
 		CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */; };
-		CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */; };
 		CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB584E1F3E8068007E8E0B /* ASWSpacingCell.swift */; };
 		CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */; };
 		CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58521F3F3CF0007E8E0B /* ASWRegionCell.swift */; };
@@ -52,6 +60,7 @@
 		CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */; };
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
+		CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +82,14 @@
 		CA3710BA1F37D262003578E5 /* ASWSettingsUserDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsUserDataCell.swift; sourceTree = "<group>"; };
 		CA3710BC1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsSocialNetworkCell.swift; sourceTree = "<group>"; };
 		CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsFilterCell.swift; sourceTree = "<group>"; };
+		CA51D6551FE6D0AC00018CE9 /* ASWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWNetworkManager.swift; sourceTree = "<group>"; };
+		CA51D65C1FE6D77F00018CE9 /* ASWUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUrls.swift; sourceTree = "<group>"; };
+		CA51D65E1FE6D86400018CE9 /* ASWListRacesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWListRacesRequest.swift; sourceTree = "<group>"; };
+		CA51D6611FE6E33800018CE9 /* ASWRace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRace.swift; sourceTree = "<group>"; };
+		CA51D6631FE6E9C000018CE9 /* ASWRaceRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRaceRegion.swift; sourceTree = "<group>"; };
+		CA51D6651FE6EA5800018CE9 /* ASWRaceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRaceCategory.swift; sourceTree = "<group>"; };
+		CA51D6671FE718A300018CE9 /* ASWListRacesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWListRacesResponse.swift; sourceTree = "<group>"; };
+		CA51D6691FE72F5500018CE9 /* NotificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRouter.swift; sourceTree = "<group>"; };
 		CA584CD11F4843A30011E653 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		CA584CD21F4843A30011E653 /* LauchScreenStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LauchScreenStoryboard.storyboard; sourceTree = "<group>"; };
 		CA584CD31F4843A30011E653 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
@@ -82,6 +99,7 @@
 		CA584CDE1F4886990011E653 /* ASWEmailValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEmailValidator.swift; sourceTree = "<group>"; };
 		CA584CE01F48AD5D0011E653 /* ASWNameValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWNameValidator.swift; sourceTree = "<group>"; };
 		CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWPasswordValidator.swift; sourceTree = "<group>"; };
+		CA7150321FE5D8810058B522 /* ASWProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWProfileViewController.swift; sourceTree = "<group>"; };
 		CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWFeedViewController.swift; sourceTree = "<group>"; };
 		CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionItem.swift; sourceTree = "<group>"; };
@@ -95,7 +113,6 @@
 		CACB58421F3DFC12007E8E0B /* ASWEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEventCell.swift; sourceTree = "<group>"; };
 		CACB58431F3DFC12007E8E0B /* ASWEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWEventCell.xib; sourceTree = "<group>"; };
 		CACB58461F3E06FA007E8E0B /* ASWMyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWMyEventsViewController.swift; sourceTree = "<group>"; };
-		CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWFeedTableView.swift; sourceTree = "<group>"; };
 		CACB584E1F3E8068007E8E0B /* ASWSpacingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSpacingCell.swift; sourceTree = "<group>"; };
 		CACB584F1F3E8068007E8E0B /* ASWSpacingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWSpacingCell.xib; sourceTree = "<group>"; };
 		CACB58521F3F3CF0007E8E0B /* ASWRegionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionCell.swift; sourceTree = "<group>"; };
@@ -104,6 +121,7 @@
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFeedModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +197,7 @@
 				CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */,
 				CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */,
 				CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */,
+				CA7150321FE5D8810058B522 /* ASWProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -196,8 +215,10 @@
 		CA3710AC1F37B530003578E5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA51D6601FE6E30C00018CE9 /* NetworkModels */,
 				CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */,
 				CA9CCA351F51626D006494EB /* ASWEvent.swift */,
+				CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -207,6 +228,7 @@
 			children = (
 				CA3710B01F37B72A003578E5 /* UIColor+ASWColors.swift */,
 				CA3710B61F37C357003578E5 /* UIImage+ASWImages.swift */,
+				CA51D6691FE72F5500018CE9 /* NotificationRouter.swift */,
 			);
 			name = "Extensions ";
 			sourceTree = "<group>";
@@ -214,9 +236,13 @@
 		CA3710AE1F37B5C9003578E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CA51D65B1FE6D43300018CE9 /* Requests */,
+				CA51D65A1FE6D42D00018CE9 /* Responses */,
 				CA584CDD1F48856F0011E653 /* Validators */,
 				CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */,
 				CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */,
+				CA51D6551FE6D0AC00018CE9 /* ASWNetworkManager.swift */,
+				CA51D65C1FE6D77F00018CE9 /* ASWUrls.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -255,11 +281,36 @@
 			isa = PBXGroup;
 			children = (
 				CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */,
-				CACB584C1F3E70A6007E8E0B /* ASWFeedTableView.swift */,
 				CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */,
 				CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		CA51D65A1FE6D42D00018CE9 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				CA51D6671FE718A300018CE9 /* ASWListRacesResponse.swift */,
+			);
+			name = Responses;
+			sourceTree = "<group>";
+		};
+		CA51D65B1FE6D43300018CE9 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				CA51D65E1FE6D86400018CE9 /* ASWListRacesRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		CA51D6601FE6E30C00018CE9 /* NetworkModels */ = {
+			isa = PBXGroup;
+			children = (
+				CA51D6611FE6E33800018CE9 /* ASWRace.swift */,
+				CA51D6631FE6E9C000018CE9 /* ASWRaceRegion.swift */,
+				CA51D6651FE6EA5800018CE9 /* ASWRaceCategory.swift */,
+			);
+			path = NetworkModels;
 			sourceTree = "<group>";
 		};
 		CA584CDD1F48856F0011E653 /* Validators */ = {
@@ -426,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */,
+				CA51D65D1FE6D77F00018CE9 /* ASWUrls.swift in Sources */,
 				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
 				CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */,
@@ -434,18 +486,26 @@
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
+				CA7150331FE5D8810058B522 /* ASWProfileViewController.swift in Sources */,
+				CA51D6641FE6E9C000018CE9 /* ASWRaceRegion.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
 				CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */,
 				CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */,
+				CA51D66A1FE72F5500018CE9 /* NotificationRouter.swift in Sources */,
+				CA51D6621FE6E33800018CE9 /* ASWRace.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
 				CA25D85F1F5090E700D65B26 /* ASWAnimationManager.swift in Sources */,
+				CA51D65F1FE6D86400018CE9 /* ASWListRacesRequest.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
-				CACB584D1F3E70A6007E8E0B /* ASWFeedTableView.swift in Sources */,
+				CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */,
+				CA51D6661FE6EA5800018CE9 /* ASWRaceCategory.swift in Sources */,
 				CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */,
+				CA51D6561FE6D0AC00018CE9 /* ASWNetworkManager.swift in Sources */,
 				CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */,
 				CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */,
 				CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */,
 				CACB58571F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift in Sources */,
+				CA51D6681FE718A300018CE9 /* ASWListRacesResponse.swift in Sources */,
 				CA584CD91F48440D0011E653 /* ASWRaceTypeCell.swift in Sources */,
 				CA584CE11F48AD5D0011E653 /* ASWNameValidator.swift in Sources */,
 				CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */,

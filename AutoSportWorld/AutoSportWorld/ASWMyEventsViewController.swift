@@ -11,7 +11,7 @@ import UIKit
 class ASWMyEventsViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var eventsTable: ASWFeedTableView!
+    @IBOutlet weak var eventsTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ASWMyEventsViewController: UIViewController {
     }
     
     func setupTable() {
-        eventsTable.countOfRows = 2
+//        eventsTable.countOfRows = 2
     }
     
     @IBAction func goBack(_ sender: Any) {

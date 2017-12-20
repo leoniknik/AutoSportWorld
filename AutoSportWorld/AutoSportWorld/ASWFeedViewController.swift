@@ -8,19 +8,26 @@
 
 import UIKit
 
-class ASWFeedViewController: UIViewController {
+class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
     
-    @IBOutlet weak var tableView: ASWFeedTableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     let refreshControl = UIRefreshControl()
+    var model: ASWFeedsModelProtocol = ASWFeedsModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshView()
+        setupTableView()
         setupUI()
+        model.delegate = self
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateRefreshControl()
+    }
+    
     func setupUI() {
         setupNavbar()
     }
@@ -30,6 +37,9 @@ class ASWFeedViewController: UIViewController {
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         //убираем полоску между хедером и навигейшен баром
         navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationItem.title = "Лента новостей"
     }
     
     func setupRefreshView() {
@@ -40,14 +50,104 @@ class ASWFeedViewController: UIViewController {
             tableView.addSubview(refreshControl)
         }
         // Configure Refresh Control
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(getUpdate), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Обновление...", attributes: [:])
     }
     
+    func getUpdate() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.model.updateEvents()
+        }
+    }
+    
     //обновление данных
-    func refreshData(_ sender: Any) {
-        self.tableView.reloadData()
-        self.refreshControl.endRefreshing()
+    func refreshData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
+    func setupTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
+        self.tableView.register(UINib(nibName: "ASWEventCell", bundle: nil), forCellReuseIdentifier: "ASWEventCell")
+        self.tableView.register(UINib(nibName: "ASWSpacingCell", bundle: nil), forCellReuseIdentifier: "ASWSpacingCell")
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func update() {
+        refreshData()
+    }
+    
+    func updateRefreshControl() {
+        if (self.tableView.refreshControl?.isRefreshing ?? false) {
+            let offset = self.tableView.contentOffset
+            self.tableView.refreshControl?.endRefreshing()
+            self.tableView.refreshControl?.beginRefreshing()
+            self.tableView.contentOffset = offset
+        }
     }
     
 }
+
+extension ASWFeedViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.getNumberOfEvents() * 2
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.item % 2 != 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ASWEventCell", for: indexPath)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSpacingCell", for: indexPath)
+            return cell
+        }
+    }
+    
+}
+
+extension ASWFeedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.item % 2 != 0 {
+            return 187
+        }
+        else {
+            return 8
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.item % 2 != 0 {
+            return indexPath
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.item % 2 != 0 {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+
+
+
+
+
+

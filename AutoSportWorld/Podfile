@@ -6,9 +6,12 @@ target 'AutoSportWorld' do
     pod 'GoogleMaps'
     pod 'GooglePlaces'
     pod 'RealmSwift'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
 
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FSCalendar'
+    
 
 end
