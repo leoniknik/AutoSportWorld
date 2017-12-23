@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -111,6 +112,12 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет подключения к серверу" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTR-u4-vhS">
+                                <rect key="frame" x="16" y="266" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.36283841940957273" green="0.36283841940957273" blue="0.36283841940957273" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
                             <searchBar contentMode="redraw" placeholder="Поиск" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHa-FB-fjR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <color key="backgroundColor" red="0.2927517361111111" green="0.21660698784722221" blue="0.51082356770833337" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,11 +128,14 @@
                         <constraints>
                             <constraint firstItem="e1D-LA-cY0" firstAttribute="top" secondItem="OHa-FB-fjR" secondAttribute="bottom" id="17d-JF-JEo"/>
                             <constraint firstItem="OHa-FB-fjR" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leading" id="B8v-Zg-lb6"/>
+                            <constraint firstItem="eTR-u4-vhS" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leadingMargin" id="CK1-TJ-GWG"/>
                             <constraint firstAttribute="trailing" secondItem="e1D-LA-cY0" secondAttribute="trailing" id="Mg9-cU-F11"/>
                             <constraint firstItem="OHa-FB-fjR" firstAttribute="top" secondItem="86h-Go-CHs" secondAttribute="bottom" id="NzP-MH-OGa"/>
                             <constraint firstItem="e1D-LA-cY0" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leading" id="WMb-Gy-SX4"/>
+                            <constraint firstItem="eTR-u4-vhS" firstAttribute="centerY" secondItem="eIO-xD-gna" secondAttribute="centerY" id="XNS-t1-mdH"/>
                             <constraint firstItem="rsM-xi-E2Q" firstAttribute="top" secondItem="e1D-LA-cY0" secondAttribute="bottom" id="ej9-ff-DCS"/>
                             <constraint firstAttribute="trailing" secondItem="OHa-FB-fjR" secondAttribute="trailing" id="iDE-lj-fpq"/>
+                            <constraint firstItem="eTR-u4-vhS" firstAttribute="trailing" secondItem="eIO-xD-gna" secondAttribute="trailingMargin" id="pmP-mr-chr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Лента новостей" id="zqY-Tg-Bvm">
@@ -134,13 +144,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="errorLabel" destination="eTR-u4-vhS" id="cwf-oJ-LWc"/>
                         <outlet property="searchBar" destination="OHa-FB-fjR" id="EqE-x5-N9O"/>
                         <outlet property="tableView" destination="e1D-LA-cY0" id="JcQ-i9-JGD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nti-L5-dNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3929" y="-1245"/>
+            <point key="canvasLocation" x="3928.8000000000002" y="-1245.4272863568217"/>
         </scene>
         <!--Избранное-->
         <scene sceneID="TSr-cI-NoB">

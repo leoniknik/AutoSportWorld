@@ -12,6 +12,7 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var errorLabel: UILabel!
     
     let refreshControl = UIRefreshControl()
     var model: ASWFeedsModelProtocol = ASWFeedsModel()
@@ -22,11 +23,15 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         setupTableView()
         setupUI()
         model.delegate = self
+        self.refreshControl.beginRefreshing()
+        self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-self.refreshControl.frame.size.height), animated: false)
+        getUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         updateRefreshControl()
     }
+    
     
     func setupUI() {
         setupNavbar()
@@ -55,6 +60,7 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
     }
     
     func getUpdate() {
+        self.errorLabel.isHidden = true
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.model.updateEvents()
         }
@@ -84,6 +90,35 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         refreshData()
     }
     
+    func updateError() {
+        
+        if (self.model.getEvents().count == 0) {
+            DispatchQueue.main.async { [weak self] in
+                self?.errorLabel.isHidden = false
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }
+        else {
+            DispatchQueue.main.async { [weak self] in
+                self?.createAlert()
+            }
+        }
+    }
+    
+    func createAlert() {
+        let alert = UIAlertController(title: "Ошибка", message: "Не удалось подключиться к серверу", preferredStyle: UIAlertControllerStyle.alert)
+        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                self.tableView.refreshControl?.endRefreshing()
+            case .cancel:
+                self.tableView.refreshControl?.endRefreshing()
+            case .destructive:
+                self.tableView.refreshControl?.endRefreshing()
+            }}))
+    }
+    
     func updateRefreshControl() {
         if (self.tableView.refreshControl?.isRefreshing ?? false) {
             let offset = self.tableView.contentOffset
@@ -101,16 +136,26 @@ extension ASWFeedViewController: UITableViewDataSource {
         return model.getNumberOfEvents() * 2
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item % 2 != 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ASWEventCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ASWEventCell", for: indexPath) as! ASWEventCell
+            let race = model.getEvent(forIndex: indexPath.item / 2)
+            configureEvent(cell: cell, race: race)
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSpacingCell", for: indexPath)
             return cell
         }
+    }
+    
+    //конфигурация ячейки
+    func configureEvent(cell: ASWEventCell, race: ASWRace) {
+        cell.eventTitle.text = race.shortTitle
+        if let categories = race.categories {
+            let categoryText = " ".fla
+        }
+
     }
     
 }

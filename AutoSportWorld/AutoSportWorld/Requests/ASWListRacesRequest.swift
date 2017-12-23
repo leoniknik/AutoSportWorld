@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class ASWListRacesRequest {
+class ASWListRacesRequest: ASWRequest {
     /*
     var limit: Int? // лимит. если отсутствует, используется дефолтный
     
@@ -35,10 +35,9 @@ class ASWListRacesRequest {
     var canWatch: Bool? // если указан, то can_watch гонок в списке должен иметь такое значение
     */
     
-    var parameters: Parameters = [:]
-    
     init(limit: Int?, preferences: String?, level: Int?, cursor: String?, categories: String?, regions: String?, sort: String?, canJoin: Bool?, canWatch: Bool?) {
-
+        super.init()
+        url = self.baseURL + "/races"
         parameters["limit"] = limit
         parameters["preferences"] = preferences
         parameters["level"] = level

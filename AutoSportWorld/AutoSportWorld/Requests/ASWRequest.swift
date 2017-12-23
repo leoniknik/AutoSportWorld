@@ -7,12 +7,12 @@
 //
 
 import Foundation
+import Alamofire
 
-class ASWUrls {
+class ASWRequest {
     
-    static let baseURL = "http://34.214.102.142:4000"
+    var baseURL = "http://34.214.102.142:4000/api"
     
-    static let listRacesURL = "\(baseURL)/api/races" //список гонок
-    
-    
+    var parameters: Parameters = [:]
+    var url: String = ""
 }

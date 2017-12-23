@@ -21,15 +21,15 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     static func getEvents(request: ASWListRacesRequest) {
         
         func onSuccess(json: JSON) -> Void{
-            let response = ASWListRacesResponse(json: json)
+            let response = ASWListRacesParser(json: json)
             NotificationCenter.default.post(name: .eventsCallback, object: nil, userInfo: ["data": response])
         }
         
         func onError(error: Any) -> Void {
-            print(error)
+            NotificationCenter.default.post(name: .eventsCallbackError, object: nil)
         }
         
-        ASWNetworkManager.request(URL: ASWUrls.listRacesURL, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     

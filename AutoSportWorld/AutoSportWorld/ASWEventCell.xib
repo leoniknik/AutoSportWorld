@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="188" height="187"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvz-9a-3j7">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvz-9a-3j7">
                         <rect key="frame" x="195" y="11" width="164" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="fja-nQ-FI0"/>
@@ -178,7 +178,23 @@
                     <constraint firstAttribute="bottomMargin" secondItem="M7u-OJ-0MG" secondAttribute="bottom" id="z2x-nX-xBp"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="44.5" y="-311.5"/>
+            <connections>
+                <outlet property="categoriesLabel" destination="jPI-ew-ZEc" id="yct-ms-wPa"/>
+                <outlet property="eventImage" destination="uoU-bF-J5L" id="7NY-d1-l9h"/>
+                <outlet property="eventTitle" destination="Cvz-9a-3j7" id="F8j-jP-xaA"/>
+                <outlet property="favoriteImage" destination="veN-dt-Obk" id="3M4-sN-Jkq"/>
+                <outlet property="joinImage" destination="Ga9-1k-wTK" id="Cgh-gR-qby"/>
+                <outlet property="joinLabel" destination="Rxq-nE-KhH" id="NiZ-L7-z75"/>
+                <outlet property="likedImage" destination="M7u-OJ-0MG" id="iY3-hc-yLd"/>
+                <outlet property="likesLabel" destination="JmF-Ps-hji" id="hOl-0a-pks"/>
+                <outlet property="momeyImage" destination="aGL-8n-qqV" id="bDO-Bb-tEv"/>
+                <outlet property="timeLabel" destination="wGP-nc-p0S" id="0Av-e7-ohs"/>
+                <outlet property="watchImage" destination="uTV-w5-ZVp" id="tJu-iJ-FtF"/>
+                <outlet property="watchLabel" destination="uTV-w5-ZVp" id="Vwe-2v-gFB"/>
+                <outlet property="whereImage" destination="SBm-OP-bTh" id="BMt-J8-yrG"/>
+                <outlet property="whereLabel" destination="aPn-IW-ZoK" id="cTj-Td-fAo"/>
+            </connections>
+            <point key="canvasLocation" x="-45" y="-353"/>
         </tableViewCell>
     </objects>
     <resources>

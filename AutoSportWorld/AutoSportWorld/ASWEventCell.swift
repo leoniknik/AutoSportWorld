@@ -9,7 +9,24 @@
 import UIKit
 
 class ASWEventCell: UITableViewCell {
-
+    
+    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
+    @IBOutlet weak var joinLabel: UILabel!
+    @IBOutlet weak var watchLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    
+    @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var whereImage: UIImageView!
+    @IBOutlet weak var joinImage: UIImageView!
+    @IBOutlet weak var watchImage: UIImageView!
+    @IBOutlet weak var likedImage: UIImageView!
+    @IBOutlet weak var momeyImage: UIImageView!
+    @IBOutlet weak var favoriteImage: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -19,6 +19,7 @@ protocol ASWFeedsModelProtocol {
 
 protocol ASWFeedsModelDelegate: class {
     func update()
+    func updateError()
 }
 
 class ASWFeedsModel: ASWFeedsModelProtocol {
@@ -28,6 +29,7 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(eventsCallback(_:)), name: .eventsCallback, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(eventsCallbackError(_:)), name: .eventsCallbackError, object: nil)
     }
     
     func updateEvents() {
@@ -52,10 +54,14 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     }
     
     @objc func eventsCallback(_ notification: Notification) {
-        if let events = (notification.userInfo?["data"] as? ASWListRacesResponse)?.races {
+        if let events = (notification.userInfo?["data"] as? ASWListRacesParser)?.races {
             self.events = events
             delegate?.update()
         }
+    }
+    
+    @objc func eventsCallbackError(_ notification: Notification) {
+        delegate?.updateError()
     }
     
 }
