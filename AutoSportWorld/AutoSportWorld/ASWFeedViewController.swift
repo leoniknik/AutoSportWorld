@@ -16,6 +16,8 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
     
     let refreshControl = UIRefreshControl()
     var model: ASWFeedsModelProtocol = ASWFeedsModel()
+    
+    var cursor: String? = "0"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,6 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         updateRefreshControl()
     }
     
-    
     func setupUI() {
         setupNavbar()
     }
@@ -43,8 +44,15 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         //убираем полоску между хедером и навигейшен баром
         navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = "Лента новостей"
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
+    }
+    
+    @objc func showFilters() {
+        let viewController = ASWFiltersViewController()
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     func setupRefreshView() {
@@ -56,13 +64,13 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         }
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(getUpdate), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "Обновление...", attributes: [:])
+        refreshControl.attributedTitle = NSAttributedString(string: "Обновление", attributes: [:])
     }
     
-    func getUpdate() {
+    @objc func getUpdate() {
         self.errorLabel.isHidden = true
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.model.updateEvents()
+            self?.model.updateEvents(cursor: nil)
         }
     }
     
@@ -78,6 +86,7 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+        self.tableView.separatorStyle = .none
         self.tableView.register(UINib(nibName: "ASWEventCell", bundle: nil), forCellReuseIdentifier: "ASWEventCell")
         self.tableView.register(UINib(nibName: "ASWSpacingCell", bundle: nil), forCellReuseIdentifier: "ASWSpacingCell")
     }
@@ -86,7 +95,8 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         return .lightContent
     }
     
-    func update() {
+    func update(cursor: String?) {
+        self.cursor = cursor
         refreshData()
     }
     
@@ -141,6 +151,13 @@ extension ASWFeedViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWEventCell", for: indexPath) as! ASWEventCell
             let race = model.getEvent(forIndex: indexPath.item / 2)
             configureEvent(cell: cell, race: race)
+            
+            if ((model.getEvents().count - 3 - indexPath.item / 2 == 0) && self.cursor != nil) {
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                    self?.model.updateEvents(cursor: self?.cursor)
+                }
+            }
+            
             return cell
         }
         else {
@@ -152,10 +169,58 @@ extension ASWFeedViewController: UITableViewDataSource {
     //конфигурация ячейки
     func configureEvent(cell: ASWEventCell, race: ASWRace) {
         cell.eventTitle.text = race.shortTitle
+        
         if let categories = race.categories {
-            let categoryText = " ".fla
+            var categoryText = categories.map({"\($0.name ?? "")"}).joined(separator: "; ")
+            if (categoryText.isEmpty) {
+                categoryText = "Нет категорий"
+            }
+            cell.categoriesLabel.text = categoryText
         }
-
+        
+        cell.timeLabel.text = race.raspisanie
+        cell.whereLabel.text = race.whereRace
+        
+        if (race.canJoin ?? false) {
+            if let _ = race.jpriceFrom, let _ = race.jpriceTo {
+                cell.joinLabel.text = "Покататься - да"
+            }
+            else if let priceTo = race.jpriceTo, priceTo == 0 {
+                cell.joinLabel.text = "Покататься - бесплатно"
+            }
+            else if let priceFrom = race.jpriceFrom {
+                cell.joinLabel.text = "Покататься - от \(priceFrom) р."
+            }
+            else {
+                cell.joinLabel.text = "Покататься - да"
+            }
+        }
+        else {
+            cell.joinLabel.text = "Покататься - нет"
+        }
+        
+        if (race.canWatch ?? false) {
+            if let _ = race.wpriceFrom, let _ = race.wpriceTo {
+                cell.joinLabel.text = "Покататься - да"
+            }
+            else if let priceTo = race.wpriceTo, priceTo == 0 {
+                cell.joinLabel.text = "Покататься - бесплатно"
+            }
+            else if let priceFrom = race.wpriceFrom {
+                cell.joinLabel.text = "Покататься - от \(priceFrom) р."
+            }
+            else {
+                cell.joinLabel.text = "Покататься - да"
+            }
+        }
+        else {
+            cell.watchLabel.text = "Посмотреть - нет"
+        }
+        
+        cell.likesLabel.text = "Нравится: \(race.likes ?? 0)"
+        
+        cell.likedImage.image = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
+        
     }
     
 }

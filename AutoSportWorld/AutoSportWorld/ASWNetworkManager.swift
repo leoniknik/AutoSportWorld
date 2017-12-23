@@ -12,17 +12,25 @@ import SwiftyJSON
 
 protocol ASWNetworkManagerProtocol {
     
-    static func getEvents(request: ASWListRacesRequest)
+    static func getEvents(request: ASWListRacesRequest, cursor: String?)
     
 }
 
 class ASWNetworkManager: ASWNetworkManagerProtocol {
     
-    static func getEvents(request: ASWListRacesRequest) {
+    static func getEvents(request: ASWListRacesRequest, cursor: String?) {
         
         func onSuccess(json: JSON) -> Void{
+            
             let response = ASWListRacesParser(json: json)
-            NotificationCenter.default.post(name: .eventsCallback, object: nil, userInfo: ["data": response])
+            if (cursor != nil) {
+                NotificationCenter.default.post(name: .eventsCallback, object: nil, userInfo: ["data": response])
+            }
+            else {
+                NotificationCenter.default.post(name: .eventsInitCallback, object: nil, userInfo: ["data": response])
+            }
+            
+
         }
         
         func onError(error: Any) -> Void {

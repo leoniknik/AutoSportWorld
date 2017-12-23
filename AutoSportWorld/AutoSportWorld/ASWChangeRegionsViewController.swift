@@ -36,7 +36,7 @@ class ASWChangeRegionsViewController: ASWCollectionViewController {
     }
     
     func setupButton() {
-        let titleAttributed = NSMutableAttributedString(string: "Сохранить", attributes: [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 17),NSForegroundColorAttributeName:UIColor.white])
+        let titleAttributed = NSMutableAttributedString(string: "Сохранить", attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 17),NSAttributedStringKey.foregroundColor:UIColor.white])
         confirmButton.setAttributedTitle(titleAttributed, for: .normal)
     }
     

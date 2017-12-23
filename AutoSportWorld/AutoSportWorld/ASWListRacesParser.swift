@@ -11,9 +11,12 @@ import SwiftyJSON
 
 class ASWListRacesParser {
     
+    var cursor: String?
     var races: [ASWRace] = []
     
     init(json: JSON) {
+
+        self.cursor = json["cursor"].string
         
         for item in json["races"] {
             

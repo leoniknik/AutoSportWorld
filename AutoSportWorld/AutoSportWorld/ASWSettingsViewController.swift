@@ -157,7 +157,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: - functions
     
-    func exitFromAccount() {
+    @objc func exitFromAccount() {
         
     }
     
