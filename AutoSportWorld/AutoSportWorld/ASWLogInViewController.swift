@@ -12,8 +12,13 @@ import VK_ios_sdk
 let okButton = UIAlertAction(title: "OK", style: .destructive, handler: nil)
 fileprivate var SCOPE: [Any]? = nil
 
-class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
 
+class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registrationButton: UIButton!
+    
+    
     @IBAction func vkLogin(_ sender: UIButton) {
         print("вк_логин")
         SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
@@ -26,6 +31,18 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI(){
+        loginButton.layer.cornerRadius = 10
+        registrationButton.layer.cornerRadius = 10
+        
+        loginButton.clipsToBounds = true
+        registrationButton.clipsToBounds = true
+        
+        loginButton.backgroundColor = UIColor.ASWColor.grey
+        registrationButton.backgroundColor = UIColor.ASWColor.grey
     }
     
     func vkSdkShouldPresent(_ controller: UIViewController) {
@@ -43,17 +60,18 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
             print(result.token.email)
             
         } else if (result.error != nil) {
-//            let alertVC = UIAlertController(title: "", message: "Access denied\n\(result.error)", preferredStyle: UIAlertControllerStyle.alert)
-//            alertVC.addAction(okButton)
-//            self.present(alertVC, animated: true, completion: nil)
+            //            let alertVC = UIAlertController(title: "", message: "Access denied\n\(result.error)", preferredStyle: UIAlertControllerStyle.alert)
+            //            alertVC.addAction(okButton)
+            //            self.present(alertVC, animated: true, completion: nil)
         }
         
     }
     
     func vkSdkUserAuthorizationFailed() {
-//        let alertVC = UIAlertController(title: "", message: "Access denied", preferredStyle: UIAlertControllerStyle.alert)
-//        alertVC.addAction(okButton)
-//        self.present(alertVC, animated: true, completion: nil)
+        //        let alertVC = UIAlertController(title: "", message: "Access denied", preferredStyle: UIAlertControllerStyle.alert)
+        //        alertVC.addAction(okButton)
+        //        self.present(alertVC, animated: true, completion: nil)
     }
     
 }
+
