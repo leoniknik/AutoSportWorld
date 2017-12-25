@@ -225,6 +225,10 @@
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
+                        <outlet property="nextMonthButton" destination="dHS-cU-BnA" id="Tae-do-LvO"/>
+                        <outlet property="prevMonthButton" destination="9r8-oq-tUg" id="FwI-ON-GQZ"/>
+                        <outlet property="titleView" destination="FOX-ia-6S5" id="oii-en-gfd"/>
+                        <outlet property="v" destination="9hc-Kn-Uje" id="HbY-I5-Jcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpQ-VV-MeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
