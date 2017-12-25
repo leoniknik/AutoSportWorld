@@ -70,6 +70,9 @@
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
 		CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */; };
+		DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */; };
+		DE31D5251FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */; };
+		DE31D5271FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */; };
 		DEF487B91FF0E282008318BC /* ASWAboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */; };
 		DEF487BA1FF0E282008318BC /* ASWDevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */; };
 		DEF487BC1FF0E290008318BC /* AboutApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */; };
@@ -143,6 +146,9 @@
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFeedModel.swift; sourceTree = "<group>"; };
+		DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWLoginPasswordTextField.xib; sourceTree = "<group>"; };
+		DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginPasswordTextField.swift; sourceTree = "<group>"; };
+		DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginViaEmailViewController.swift; sourceTree = "<group>"; };
 		DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAboutAppViewController.swift; sourceTree = "<group>"; };
 		DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWDevelopersViewController.swift; sourceTree = "<group>"; };
 		DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutApp.storyboard; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 		CA0D21931FEEBEA300CF42FF /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */,
 				CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */,
 			);
 			name = Xibs;
@@ -230,6 +237,7 @@
 		CA3710A61F37AD9F003578E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */,
 				DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */,
 				DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */,
 				CA584CDB1F4844220011E653 /* ASWCalendarViewController.swift */,
@@ -324,6 +332,7 @@
 			children = (
 				CA0D21931FEEBEA300CF42FF /* Xibs */,
 				CA3710B21F37BC86003578E5 /* ASWBackBarButtonItem.swift */,
+				DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */,
 				CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */,
 				CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */,
 			);
@@ -470,6 +479,7 @@
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
 				CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */,
+				DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
 				CA584CDA1F48440D0011E653 /* ASWRaceTypeCell.xib in Resources */,
 				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
@@ -570,6 +580,7 @@
 				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
 				CA0D21821FEDBCD100CF42FF /* ASWGetRaceParser.swift in Sources */,
+				DE31D5251FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift in Sources */,
 				CACB58441F3DFC12007E8E0B /* ASWEventCell.swift in Sources */,
 				CA25D8611F50954D00D65B26 /* ASWTabBarController.swift in Sources */,
 				CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */,
@@ -594,6 +605,7 @@
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */,
 				CA51D6661FE6EA5800018CE9 /* ASWRaceCategory.swift in Sources */,
+				DE31D5271FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift in Sources */,
 				CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */,
 				CA51D6561FE6D0AC00018CE9 /* ASWNetworkManager.swift in Sources */,
 				CA0D21881FEDC1DB00CF42FF /* ASWRegionsRequest.swift in Sources */,

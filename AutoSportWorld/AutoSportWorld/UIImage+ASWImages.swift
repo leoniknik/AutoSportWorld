@@ -14,4 +14,6 @@ extension UIImage {
     static let location = UIImage(named: "ic_location")
     static let likedOff = UIImage(named: "ic_like_off")
     static let likedOn = UIImage(named: "ic_like_on")
+    static let passwordSecureOnPicture = UIImage(named: "ic_password")
+    static let passwordSecureOffPicture = UIImage(named: "ic_password_on")
 }
