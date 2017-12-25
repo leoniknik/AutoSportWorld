@@ -1,7 +1,7 @@
 target 'AutoSportWorld' do
   use_frameworks!
 
-    pod 'SkyFloatingLabelTextField', '~> 3.0'
+    pod 'SkyFloatingLabelTextField', '~> 3.0.0'
     pod 'VK-ios-sdk'
     pod 'GoogleMaps'
     pod 'GooglePlaces'
