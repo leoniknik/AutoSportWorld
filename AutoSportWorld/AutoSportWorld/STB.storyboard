@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gcy-Rk-nRi">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test Controller-->
+        <scene sceneID="XSH-b8-jS5">
+            <objects>
+                <viewController id="Gcy-Rk-nRi" customClass="testController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bKf-2d-bhp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIW-TX-82l" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="16" y="239" width="343" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="qfq-5D-GTY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OR1-O5-Ezz" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="16" y="288" width="343" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="nYP-RS-upJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4gM-0v-lZd" firstAttribute="trailing" secondItem="gIW-TX-82l" secondAttribute="trailing" constant="16" id="IDM-32-CSq"/>
+                            <constraint firstItem="OR1-O5-Ezz" firstAttribute="leading" secondItem="4gM-0v-lZd" secondAttribute="leading" constant="16" id="U1o-5T-sND"/>
+                            <constraint firstItem="gIW-TX-82l" firstAttribute="leading" secondItem="4gM-0v-lZd" secondAttribute="leading" constant="16" id="Ur7-Rr-lgJ"/>
+                            <constraint firstItem="4gM-0v-lZd" firstAttribute="trailing" secondItem="OR1-O5-Ezz" secondAttribute="trailing" constant="16" id="gMx-IP-Xju"/>
+                            <constraint firstItem="gIW-TX-82l" firstAttribute="top" secondItem="4gM-0v-lZd" secondAttribute="top" constant="219" id="jMZ-gq-r5Y"/>
+                            <constraint firstItem="OR1-O5-Ezz" firstAttribute="top" secondItem="gIW-TX-82l" secondAttribute="bottom" constant="28" id="pun-aS-Ox7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4gM-0v-lZd"/>
+                    </view>
+                    <connections>
+                        <outlet property="f1" destination="gIW-TX-82l" id="zNy-qt-WWs"/>
+                        <outlet property="f2" destination="OR1-O5-Ezz" id="kMw-Jy-Ort"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4FS-zl-vzp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-56.799999999999997" y="16.641679160419791"/>
+        </scene>
+    </scenes>
+</document>

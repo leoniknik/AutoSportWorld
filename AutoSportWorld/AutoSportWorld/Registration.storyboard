@@ -18,7 +18,7 @@
                 <navigationController id="cFW-UU-ztQ" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="t5e-yv-eVM">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -38,7 +38,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pNS-zm-rDT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jc8-5Y-U2w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background_one" translatesAutoresizingMaskIntoConstraints="NO" id="deG-Zs-VYv">
@@ -179,7 +179,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RaI-4e-FoN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pOI-Ui-Cae">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1q-7i-trA">
@@ -247,7 +247,7 @@
                         <viewControllerLayoutGuide type="bottom" id="z66-1i-3YY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sKD-0m-SYr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background_one" translatesAutoresizingMaskIntoConstraints="NO" id="iWd-dF-bql">
