@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASWFilterCell" id="KGk-i7-Jjw" customClass="ASWFilterCell" customModule="AutoSportWorld" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Qs-56-Op8">
+                        <rect key="frame" x="253" y="7" width="51" height="31"/>
+                    </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep3-rX-9Ns">
+                        <rect key="frame" x="16" y="12" width="229" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Oaq-pu-UZp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                        <color key="textColor" red="0.26821595748063876" green="0.26821595748063876" blue="0.26821595748063876" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ep3-rX-9Ns" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="0Vn-JV-kww"/>
+                    <constraint firstAttribute="trailing" secondItem="9Qs-56-Op8" secondAttribute="trailing" constant="18" id="D2O-KW-zNh"/>
+                    <constraint firstItem="ep3-rX-9Ns" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WeM-fa-2T6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ep3-rX-9Ns" secondAttribute="bottom" constant="1" id="XAs-lR-D92"/>
+                    <constraint firstItem="9Qs-56-Op8" firstAttribute="leading" secondItem="ep3-rX-9Ns" secondAttribute="trailing" constant="8" id="eXB-4C-aP1"/>
+                    <constraint firstAttribute="bottom" secondItem="9Qs-56-Op8" secondAttribute="bottom" constant="6.5" id="fVA-jl-xUV"/>
+                    <constraint firstItem="9Qs-56-Op8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="jK9-qt-28s"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="switchView" destination="9Qs-56-Op8" id="H9o-6o-RJU"/>
+                <outlet property="titleView" destination="ep3-rX-9Ns" id="ddx-9n-Qlw"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="53.5"/>
+        </tableViewCell>
+    </objects>
+</document>

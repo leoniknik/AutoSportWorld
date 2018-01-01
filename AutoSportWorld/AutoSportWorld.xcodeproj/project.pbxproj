@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AFEEC950AFA4001BAAD0C1EF /* Pods_AutoSportWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E92BF53B654759E4506E36A /* Pods_AutoSportWorld.framework */; };
+		CA04AAF41FFAC45500F1ACC3 /* ASWFilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04AAF31FFAC45500F1ACC3 /* ASWFilterService.swift */; };
+		CA04AAF61FFAC46F00F1ACC3 /* ASWFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04AAF51FFAC46F00F1ACC3 /* ASWFiltersModel.swift */; };
+		CA04AAF91FFAD4F900F1ACC3 /* ASWFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04AAF71FFAD4F900F1ACC3 /* ASWFilterCell.swift */; };
+		CA04AAFA1FFAD4F900F1ACC3 /* ASWFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04AAF81FFAD4F900F1ACC3 /* ASWFilterCell.xib */; };
 		CA0D217D1FEDB73300CF42FF /* ASWRaceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D217C1FEDB73300CF42FF /* ASWRaceRequest.swift */; };
 		CA0D21801FEDB8E100CF42FF /* ASWRaceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D217F1FEDB8E100CF42FF /* ASWRaceParser.swift */; };
 		CA0D21821FEDBCD100CF42FF /* ASWGetRaceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D21811FEDBCD100CF42FF /* ASWGetRaceParser.swift */; };
@@ -82,6 +86,10 @@
 		0B6411D19C7BC90CE2D8272C /* Pods-AutoSportWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		0E92BF53B654759E4506E36A /* Pods_AutoSportWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoSportWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6101D1ECC7B854873C0FFD98 /* Pods-AutoSportWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoSportWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld.release.xcconfig"; sourceTree = "<group>"; };
+		CA04AAF31FFAC45500F1ACC3 /* ASWFilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFilterService.swift; sourceTree = "<group>"; };
+		CA04AAF51FFAC46F00F1ACC3 /* ASWFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFiltersModel.swift; sourceTree = "<group>"; };
+		CA04AAF71FFAD4F900F1ACC3 /* ASWFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFilterCell.swift; sourceTree = "<group>"; };
+		CA04AAF81FFAD4F900F1ACC3 /* ASWFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWFilterCell.xib; sourceTree = "<group>"; };
 		CA0D217C1FEDB73300CF42FF /* ASWRaceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRaceRequest.swift; sourceTree = "<group>"; };
 		CA0D217F1FEDB8E100CF42FF /* ASWRaceParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRaceParser.swift; sourceTree = "<group>"; };
 		CA0D21811FEDBCD100CF42FF /* ASWGetRaceParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWGetRaceParser.swift; sourceTree = "<group>"; };
@@ -272,6 +280,7 @@
 				CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */,
 				CA9CCA351F51626D006494EB /* ASWEvent.swift */,
 				CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */,
+				CA04AAF51FFAC46F00F1ACC3 /* ASWFiltersModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,6 +302,7 @@
 				CA584CDD1F48856F0011E653 /* Validators */,
 				CACB58401F3DE03E007E8E0B /* ASWSegueRouter.swift */,
 				CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */,
+				CA04AAF31FFAC45500F1ACC3 /* ASWFilterService.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -323,6 +333,8 @@
 				CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */,
 				CAC70E601F4701E60098470F /* ASWMapAndCalendarCell.swift */,
 				CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */,
+				CA04AAF71FFAD4F900F1ACC3 /* ASWFilterCell.swift */,
+				CA04AAF81FFAD4F900F1ACC3 /* ASWFilterCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -475,6 +487,7 @@
 				CA584CD61F4843A30011E653 /* Registration.storyboard in Resources */,
 				CA323B2E1F379ADA007157D4 /* Assets.xcassets in Resources */,
 				CA584CD51F4843A30011E653 /* LauchScreenStoryboard.storyboard in Resources */,
+				CA04AAFA1FFAD4F900F1ACC3 /* ASWFilterCell.xib in Resources */,
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
@@ -594,6 +607,7 @@
 				CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */,
 				DEF487B91FF0E282008318BC /* ASWAboutAppViewController.swift in Sources */,
 				CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */,
+				CA04AAF61FFAC46F00F1ACC3 /* ASWFiltersModel.swift in Sources */,
 				CA51D66A1FE72F5500018CE9 /* NotificationRouter.swift in Sources */,
 				CA51D6621FE6E33800018CE9 /* ASWRace.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
@@ -602,6 +616,7 @@
 				DEF487BA1FF0E282008318BC /* ASWDevelopersViewController.swift in Sources */,
 				CA0D21861FEDC08700CF42FF /* ASWListCategoryParser.swift in Sources */,
 				CA51D65F1FE6D86400018CE9 /* ASWListRacesRequest.swift in Sources */,
+				CA04AAF91FFAD4F900F1ACC3 /* ASWFilterCell.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */,
 				CA51D6661FE6EA5800018CE9 /* ASWRaceCategory.swift in Sources */,
@@ -627,6 +642,7 @@
 				CA3710B91F37C94E003578E5 /* ASWSettingsViewController.swift in Sources */,
 				CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */,
 				CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */,
+				CA04AAF41FFAC45500F1ACC3 /* ASWFilterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
