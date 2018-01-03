@@ -1,51 +1,56 @@
 //
-//  ASWFeedViewController.swift
+//  ASWFavoriteViewController.swift
 //  AutoSportWorld
 //
-//  Created by Кирилл Володин on 20.08.17.
-//  Copyright © 2017 Кирилл Володин. All rights reserved.
+//  Created by Кирилл Володин on 03.01.2018.
+//  Copyright © 2018 Кирилл Володин. All rights reserved.
 //
 
 import UIKit
 
-class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
-    
+class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
+
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var errorLabel: UILabel!
     
     let refreshControl = UIRefreshControl()
-    var model: ASWFeedsModelProtocol = ASWFeedsModel()
+    var model = ASWFavoriteModel()
+    var shoudUpdate: Bool = true
     
-    var cursor: String? = "0"
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRefreshView()
         setupTableView()
-        setupUI()
         model.delegate = self
-        self.refreshControl.beginRefreshing()
-        self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-self.refreshControl.frame.size.height), animated: false)
-        getUpdate()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateRefreshControl()
+        if shoudUpdate {
+            model.events.removeAll()
+            model.results.removeAll()
+            tableView.reloadData()
+            setupUI()
+            getUpdate()
+        }
+        shoudUpdate = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        updateRefreshControl()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     func setupUI() {
         setupNavbar()
+        setupRefreshView()
+        self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-self.refreshControl.frame.size.height), animated: false)
+        updateRefreshControl()
     }
     
     func setupNavbar() {
-        searchBar.backgroundColor = UIColor.ASWColor.black
-        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        //убираем полоску между хедером и навигейшен баром
         navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationItem.title = "Лента новостей"
+        self.navigationItem.title = "Избранное"
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
     }
@@ -62,16 +67,16 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         } else {
             tableView.addSubview(refreshControl)
         }
-        // Configure Refresh Control
-        refreshControl.addTarget(self, action: #selector(getUpdate), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Обновление", attributes: [:])
     }
     
     @objc func getUpdate() {
+        self.refreshControl.beginRefreshing()
         self.errorLabel.isHidden = true
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.model.updateEvents(cursor: nil)
         }
+        
     }
     
     //обновление данных
@@ -79,6 +84,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl.endRefreshing()
             self?.tableView.reloadData()
+            self?.tableView.refreshControl = nil
         }
     }
     
@@ -96,22 +102,14 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     }
     
     func update(cursor: String?) {
-        self.cursor = cursor
         refreshData()
     }
     
     func updateError() {
-        
-        if (self.model.getEvents().count == 0) {
-            DispatchQueue.main.async { [weak self] in
-                self?.errorLabel.isHidden = false
-                self?.tableView.refreshControl?.endRefreshing()
-            }
-        }
-        else {
-            DispatchQueue.main.async { [weak self] in
-                self?.createAlert()
-            }
+        DispatchQueue.main.async { [weak self] in
+            self?.errorLabel.isHidden = false
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.refreshControl = nil
         }
     }
     
@@ -149,7 +147,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     
 }
 
-extension ASWFeedViewController: UITableViewDataSource {
+extension ASWFavoriteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.getNumberOfEvents() * 2
@@ -193,13 +191,6 @@ extension ASWFeedViewController: UITableViewDataSource {
                 cell.bookmarkButton.setImage(UIImage.bookmarkOff, for: .normal)
             }
             
-            //пагинация
-            if ((model.getEvents().count - 3 - indexPath.item / 2 == 0) && self.cursor != nil) {
-                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    self?.model.updateEvents(cursor: self?.cursor)
-                }
-            }
-            
             return cell
         }
         else {
@@ -207,7 +198,6 @@ extension ASWFeedViewController: UITableViewDataSource {
             return cell
         }
     }
-    
     
     //конфигурация ячейки
     func configureEvent(cell: ASWEventCell, race: ASWRace) {
@@ -277,7 +267,7 @@ extension ASWFeedViewController: UITableViewDataSource {
     
 }
 
-extension ASWFeedViewController: UITableViewDelegate {
+extension ASWFavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item % 2 != 0 {
             return 187
@@ -308,12 +298,3 @@ extension ASWFeedViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
-
-
-
-
-
-
-
-

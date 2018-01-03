@@ -18,4 +18,6 @@ extension UIImage {
     static let share = UIImage(named: "ic_share")
     static let bookmarkOff = #imageLiteral(resourceName: "ic_bookmark_tape_off")
     static let bookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tape_on")
+    static let cardBookmarkOff = #imageLiteral(resourceName: "ic_bookmark_card_off")
+    static let cardBookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tab_off")
 }

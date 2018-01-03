@@ -9,7 +9,12 @@
 import Foundation
 
 extension Notification.Name {
+    
     static let eventsCallback = Notification.Name("eventsCallback")
     static let eventsInitCallback = Notification.Name("eventsInitCallback")
     static let eventsCallbackError = Notification.Name("eventsCallbackError")
+    
+    static let eventCallback = Notification.Name("eventCallback")
+    static let eventCallbackError = Notification.Name("eventCallbackError")
+    
 }

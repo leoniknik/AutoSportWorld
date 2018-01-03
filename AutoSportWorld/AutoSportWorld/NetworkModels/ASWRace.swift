@@ -80,6 +80,38 @@ class ASWRace {
         
     }
     
+    func getShortShedule() -> String {
+        
+        guard let times = self.times else {
+            return "Время не указано"
+        }
+        let minTimes = times.map {$0.start ?? 0}
+        let minTime = minTimes.min() ?? 0
+        
+        if minTime == 0 {
+            return "Время не указано"
+        }
+        
+        let maxTimes = times.map {$0.end ?? 0}
+        let maxTime = maxTimes.max() ?? 0
+        
+        if maxTime == 0 {
+            return "Время не указано"
+        }
+        
+        let minDate = Date(timeIntervalSince1970: TimeInterval(minTime))
+        let maxDate = Date(timeIntervalSince1970: TimeInterval(maxTime))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YY"
+        
+        let minDateString = dateFormatter.string(from: minDate)
+        let maxDateString = dateFormatter.string(from: maxDate)
+        
+        let result = "\(minDateString) - \(maxDateString)"
+        return result
+    }
+    
 }
 
 class ASWRaceTime {

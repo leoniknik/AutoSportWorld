@@ -10,7 +10,7 @@ import UIKit
 
 protocol ASWFeedsModelProtocol {
     weak var delegate: ASWFeedsModelDelegate? {get set}
-    
+    var events: [ASWRace] {get set}
     func updateEvents(cursor: String?)
     func getEvents() -> [ASWRace]
     func getNumberOfEvents() -> Int
@@ -41,8 +41,9 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(eventsInitCallback(_:)), name: .eventsInitCallback, object: nil)
     }
     
+    
+    
     func updateEvents(cursor: String?) {
-        
         let request = ASWListRacesRequest(limit: defaultlimit, preferences: nil, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil)
         ASWNetworkManager.getEvents(request: request, cursor: cursor)
     }

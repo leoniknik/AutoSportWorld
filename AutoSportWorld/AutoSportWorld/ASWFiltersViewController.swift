@@ -43,6 +43,9 @@ class ASWFiltersViewController: UIViewController {
     }
     
     @objc func goBack() {
+        if let viewController = self.navigationController?.previousViewController() as? ASWFavoriteViewController {
+            viewController.shoudUpdate = false
+        }
         self.navigationController?.popViewController(animated: false)
     }
     
@@ -123,4 +126,18 @@ extension ASWFiltersViewController: UITableViewDataSource, UITableViewDelegate {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.ASWColor.lightGrey
     }
+}
+
+extension UINavigationController {
+    
+    ///Get previous view controller of the navigation stack
+    func previousViewController() -> UIViewController?{
+        
+        let lenght = self.viewControllers.count
+        
+        let previousViewController: UIViewController? = lenght >= 2 ? self.viewControllers[lenght-2] : nil
+        
+        return previousViewController
+    }
+    
 }

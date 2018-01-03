@@ -11,19 +11,29 @@ import RealmSwift
 
 class ASWDatabaseManager {
     
-    private let realm = try! Realm()
-    
     func getUser() -> ASWUserEntity? {
+        let realm = try! Realm()
         let predicate = NSPredicate(format: "isLogedIn == true")
         return realm.objects(ASWUserEntity.self).filter(predicate).first
     }
     
     func getRaceBy(id: Int) -> ASWRaceEntity? {
+        let realm = try! Realm()
         let predicate = NSPredicate(format: "id == \(id)")
         return realm.objects(ASWRaceEntity.self).filter(predicate).first
     }
     
+    func getRaceIds() -> [Int]? {
+        
+        guard let user = getUser() else {
+            return nil
+        }
+
+        return user.favoriteRaces.map{ $0.id }
+    }
+    
     func createTestUser() {
+        
         let testUser = ASWUserEntity()
         testUser.id = 0
         testUser.isLogedIn = true
@@ -31,6 +41,7 @@ class ASWDatabaseManager {
     }
     
     func bookmarkRace(withID id: Int) {
+        let realm = try! Realm()
         
         guard let user = getUser() else {
             return
@@ -82,12 +93,16 @@ class ASWDatabaseManager {
     }
     
     private func save(object: Object){
+        let realm = try! Realm()
+        
         try! realm.write {
             realm.add(object, update: true)
         }
     }
     
     private func delete(object: Object){
+        let realm = try! Realm()
+        
         try! realm.write {
             realm.delete(object)
         }

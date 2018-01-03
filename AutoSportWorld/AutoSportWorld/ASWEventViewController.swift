@@ -10,11 +10,15 @@ import UIKit
 
 class ASWEventViewController: UIViewController {
 
+    @IBOutlet weak var raceImage: UIImageView!
+    
     
     // расписание
     @IBOutlet weak var sheduleView: UIView!
     @IBOutlet weak var timeImage: UIImageView!
     @IBOutlet weak var sheduleLabel: UILabel!
+    
+    
     
     var race: ASWRace
     
@@ -30,12 +34,21 @@ class ASWEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupRace()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // проверка избранного
     }
     
     func setupUI() {
         self.view.backgroundColor = UIColor.ASWColor.greyBackground
         setupNavItem()
         setupShedule()
+    }
+    
+    func setupRace() {
+        self.raceImage.image = race.image
     }
     
     func setupShedule() {
@@ -55,7 +68,7 @@ class ASWEventViewController: UIViewController {
         self.navigationItem.setLeftBarButton(backButton, animated: false)
         
         let shareButton = UIBarButtonItem(image: UIImage.share, style: .done, target: self, action: #selector(shareEvent))
-        let favoriteButton = UIBarButtonItem(image: UIImage.bookmarkOff, style: .done, target: self, action: #selector(setFavorite))
+        let favoriteButton = UIBarButtonItem(image: UIImage.cardBookmarkOff, style: .done, target: self, action: #selector(setFavorite))
         
         self.navigationItem.setRightBarButtonItems([favoriteButton, shareButton], animated: true)
         

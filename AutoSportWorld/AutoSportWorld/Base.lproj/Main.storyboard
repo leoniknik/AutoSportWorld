@@ -157,11 +157,36 @@
         <!--Избранное-->
         <scene sceneID="TSr-cI-NoB">
             <objects>
-                <viewController id="B8I-oz-LlR" sceneMemberID="viewController">
+                <viewController id="B8I-oz-LlR" customClass="ASWFavoriteViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OQb-sX-nGn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYZ-tm-Tvx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLD-kc-SaV">
+                                <rect key="frame" x="0.0" y="267" width="375" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="top" secondItem="IxW-sJ-yhk" secondAttribute="top" id="0TH-l0-iLE"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="leading" secondItem="IxW-sJ-yhk" secondAttribute="leading" id="APr-Sv-1u2"/>
+                            <constraint firstItem="sLD-kc-SaV" firstAttribute="trailing" secondItem="IxW-sJ-yhk" secondAttribute="trailing" id="EC8-M4-i3y"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="bottom" secondItem="IxW-sJ-yhk" secondAttribute="bottom" id="NpQ-44-OHm"/>
+                            <constraint firstItem="sLD-kc-SaV" firstAttribute="leading" secondItem="IxW-sJ-yhk" secondAttribute="leading" id="SFH-jh-dr4"/>
+                            <constraint firstItem="sLD-kc-SaV" firstAttribute="centerY" secondItem="OQb-sX-nGn" secondAttribute="centerY" id="YMa-LE-kGk"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="leading" secondItem="IxW-sJ-yhk" secondAttribute="leading" id="bXq-JC-0UD"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="bottom" secondItem="IxW-sJ-yhk" secondAttribute="bottom" id="eB6-k7-7HF"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="trailing" secondItem="IxW-sJ-yhk" secondAttribute="trailing" id="gXR-B2-EXI"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="trailing" secondItem="IxW-sJ-yhk" secondAttribute="trailing" id="nQp-fD-yhk"/>
+                            <constraint firstItem="mYZ-tm-Tvx" firstAttribute="top" secondItem="IxW-sJ-yhk" secondAttribute="top" id="oIY-F4-Bdc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="IxW-sJ-yhk"/>
                     </view>
                     <navigationItem key="navigationItem" title="Избранное" id="XuX-9d-9cd">
@@ -170,10 +195,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="sLD-kc-SaV" id="n6r-Sl-tQs"/>
+                        <outlet property="tableView" destination="mYZ-tm-Tvx" id="Efe-26-tdR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpV-9s-USZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4038" y="-342"/>
+            <point key="canvasLocation" x="4037.5999999999999" y="-342.27886056971516"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4An-kO-sGW">
@@ -265,7 +294,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Bs-CV-lWG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Избранное" image="ic_bookmark_tab_off" selectedImage="ic_bookmark_tab_on" id="kpI-Re-EdV"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NXx-ys-HS9">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="NXx-ys-HS9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

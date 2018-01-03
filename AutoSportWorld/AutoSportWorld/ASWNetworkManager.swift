@@ -33,13 +33,34 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
         
         func onError(error: Any) -> Void {
-            NotificationCenter.default.post(name: .eventsCallbackError, object: nil)
+            if (cursor != nil) {
+
+            }
+            else {
+                NotificationCenter.default.post(name: .eventsCallbackError, object: nil)
+            }
         }
         
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
+    static func getEvent(request: ASWRaceRequest) {
+        
+        func onSuccess(json: JSON) -> Void{
+
+            let response = ASWRaceParser(race: json)
+            NotificationCenter.default.post(name: .eventCallback, object: nil, userInfo: ["data": response])
+            
+        }
+        
+        func onError(error: Any) -> Void {
+            NotificationCenter.default.post(name: .eventCallbackError, object: nil)
+        }
+        
+        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
     
+    //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void) -> Void {
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
             switch response.result {
