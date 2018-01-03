@@ -111,7 +111,7 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
     func setupUI(){
         
         
-        var bottomEmailBorder = CALayer.init()
+        let bottomEmailBorder = CALayer.init()
         
         bottomEmailBorder.frame = CGRect.init(x: emailTextField.frame.origin.x, y: emailTextField.frame.size.height+emailTextField.frame.origin.y+1, width: emailTextField.frame.size.width, height: 1)
         

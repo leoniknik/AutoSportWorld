@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol ASWEventCellDelegate: class {
+    func likeEventTapped(id: Int)
+    func bookmarkEventTapped(id: Int)
+}
+
 class ASWEventCell: UITableViewCell {
+    
+    weak var delegate: ASWEventCellDelegate?
     
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var categoriesLabel: UILabel!
@@ -22,10 +29,12 @@ class ASWEventCell: UITableViewCell {
     @IBOutlet weak var whereImage: UIImageView!
     @IBOutlet weak var joinImage: UIImageView!
     @IBOutlet weak var watchImage: UIImageView!
-    @IBOutlet weak var likedImage: UIImageView!
     @IBOutlet weak var momeyImage: UIImageView!
-    @IBOutlet weak var favoriteImage: UIImageView!
     
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var bookmarkButton: UIButton!
+    
+    var id: Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,4 +46,19 @@ class ASWEventCell: UITableViewCell {
 
     }
     
+    @IBAction func likeEvent(_ sender: UIButton) {
+        delegate?.likeEventTapped(id: self.id)
+    }
+    
+    @IBAction func bookmarkEvent(_ sender: UIButton) {
+        delegate?.bookmarkEventTapped(id: self.id)
+    }
+    
 }
+
+
+
+
+
+
+

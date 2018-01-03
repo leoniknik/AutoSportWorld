@@ -27,7 +27,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     let sections = ["Данные пользователя", "Социальные сети", "Настройка фильтров"]
     
-    let items = [["Имя", "Эл.адрес", "Телефон", "Сменить пароль"], ["Вконтакте", "Одноклассники", "Facebook"], ["Регионы", "Категории гонок", "Действия"]]
+    let items = [["Имя", "Эл.адрес", "Телефон", "Сменить пароль"], ["Вконтакте", "Одноклассники", "Facebook"], ["Регионы", "Категории гонок"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,19 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     //настройка UI
     func setupUI() {
         setupSettingsTable()
+        setupNavbar()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func setupNavbar() {
+        //убираем полоску между хедером и навигейшен баром
+        navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     //настройка таблицы

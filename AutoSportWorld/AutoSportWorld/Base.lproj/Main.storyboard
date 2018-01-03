@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MDR-gb-j9R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MDR-gb-j9R">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,42 +7,41 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Календарь-->
+        <!--Календарь событий-->
         <scene sceneID="Yso-iX-6oT">
             <objects>
                 <viewController id="Ehe-5H-v8t" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2OS-f9-ujP"/>
-                        <viewControllerLayoutGuide type="bottom" id="QId-kD-HbL"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PaY-Qc-aEb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="xJN-YP-n88"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Календарь" image="ic_calendar_off" selectedImage="ic_calendar_on" id="8Qy-pH-ImZ"/>
+                    <navigationItem key="navigationItem" title="Календарь событий" id="9Lg-RZ-4wA">
+                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="FIh-vp-pTj">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thE-m8-acL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="431"/>
+            <point key="canvasLocation" x="4039" y="430"/>
         </scene>
-        <!--Карта-->
+        <!--События на карте-->
         <scene sceneID="vvv-aZ-HxK">
             <objects>
                 <viewController id="Pul-1K-c8N" customClass="ASWMapViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dPY-fO-IXs"/>
-                        <viewControllerLayoutGuide type="bottom" id="A0N-fL-bmQ"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ong-IN-PUv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-TA-Ny5">
-                                <rect key="frame" x="0.0" y="508" width="375" height="110"/>
+                                <rect key="frame" x="0.0" y="444" width="375" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="3GN-vM-4YX"/>
@@ -56,7 +55,7 @@
                                 <cells/>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aSX-ex-loQ">
-                                <rect key="frame" x="0.0" y="593" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="529" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6MG-Kp-omr"/>
                                 </constraints>
@@ -67,24 +66,29 @@
                                 </connections>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdX-Wb-Jhd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="488"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aSX-ex-loQ" secondAttribute="trailing" id="9fH-Rz-fSn"/>
-                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="Irp-6w-kg6"/>
-                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="zdX-Wb-Jhd" secondAttribute="bottom" id="Uot-lj-VFv"/>
-                            <constraint firstAttribute="trailing" secondItem="zdX-Wb-Jhd" secondAttribute="trailing" id="WUH-DA-CPa"/>
-                            <constraint firstItem="aSX-ex-loQ" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="ZYH-eS-Jus"/>
-                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="leading" secondItem="Ong-IN-PUv" secondAttribute="leading" id="lBb-DT-OBF"/>
-                            <constraint firstAttribute="trailing" secondItem="aqn-TA-Ny5" secondAttribute="trailing" id="lwI-xG-IxL"/>
-                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="top" secondItem="dPY-fO-IXs" secondAttribute="bottom" id="oC9-ye-FSh"/>
-                            <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aSX-ex-loQ" secondAttribute="bottom" constant="-5" id="whV-FJ-WS6"/>
-                            <constraint firstItem="A0N-fL-bmQ" firstAttribute="top" secondItem="aqn-TA-Ny5" secondAttribute="bottom" id="yBd-km-JCc"/>
+                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="trailing" secondItem="PQe-Jd-fSn" secondAttribute="trailing" id="8fs-uR-uGQ"/>
+                            <constraint firstItem="PQe-Jd-fSn" firstAttribute="trailing" secondItem="aSX-ex-loQ" secondAttribute="trailing" id="9fH-Rz-fSn"/>
+                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="Irp-6w-kg6"/>
+                            <constraint firstItem="aSX-ex-loQ" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="ZYH-eS-Jus"/>
+                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="top" secondItem="PQe-Jd-fSn" secondAttribute="top" id="aQD-in-Uiz"/>
+                            <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="zdX-Wb-Jhd" secondAttribute="bottom" id="gqR-li-w1J"/>
+                            <constraint firstItem="zdX-Wb-Jhd" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="lTy-1k-DDe"/>
+                            <constraint firstItem="PQe-Jd-fSn" firstAttribute="trailing" secondItem="aqn-TA-Ny5" secondAttribute="trailing" id="lwI-xG-IxL"/>
+                            <constraint firstItem="PQe-Jd-fSn" firstAttribute="bottom" secondItem="aSX-ex-loQ" secondAttribute="bottom" constant="-5" id="whV-FJ-WS6"/>
+                            <constraint firstItem="PQe-Jd-fSn" firstAttribute="bottom" secondItem="aqn-TA-Ny5" secondAttribute="bottom" id="yBd-km-JCc"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="PQe-Jd-fSn"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Карта" image="ic_map" selectedImage="ic_map_on" id="3t5-F1-SVf"/>
+                    <navigationItem key="navigationItem" title="События на карте" id="ms1-Nu-8FR">
+                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="v14-fY-kxG">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
@@ -94,16 +98,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyF-e6-aIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2936.8000000000002" y="1201.3493253373315"/>
+            <point key="canvasLocation" x="3748" y="1200"/>
         </scene>
         <!--Лента новостей-->
         <scene sceneID="Ime-0G-SHu">
             <objects>
                 <viewController id="lby-ck-1rP" customClass="ASWFeedViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="86h-Go-CHs"/>
-                        <viewControllerLayoutGuide type="bottom" id="rsM-xi-E2Q"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eIO-xD-gna">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,16 +127,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="e1D-LA-cY0" firstAttribute="top" secondItem="OHa-FB-fjR" secondAttribute="bottom" id="17d-JF-JEo"/>
-                            <constraint firstItem="OHa-FB-fjR" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leading" id="B8v-Zg-lb6"/>
+                            <constraint firstItem="OHa-FB-fjR" firstAttribute="leading" secondItem="bZA-iy-D0p" secondAttribute="leading" id="B8v-Zg-lb6"/>
                             <constraint firstItem="eTR-u4-vhS" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leadingMargin" id="CK1-TJ-GWG"/>
-                            <constraint firstAttribute="trailing" secondItem="e1D-LA-cY0" secondAttribute="trailing" id="Mg9-cU-F11"/>
-                            <constraint firstItem="OHa-FB-fjR" firstAttribute="top" secondItem="86h-Go-CHs" secondAttribute="bottom" id="NzP-MH-OGa"/>
-                            <constraint firstItem="e1D-LA-cY0" firstAttribute="leading" secondItem="eIO-xD-gna" secondAttribute="leading" id="WMb-Gy-SX4"/>
+                            <constraint firstItem="bZA-iy-D0p" firstAttribute="trailing" secondItem="e1D-LA-cY0" secondAttribute="trailing" id="Mg9-cU-F11"/>
+                            <constraint firstItem="OHa-FB-fjR" firstAttribute="top" secondItem="bZA-iy-D0p" secondAttribute="top" id="NzP-MH-OGa"/>
+                            <constraint firstItem="e1D-LA-cY0" firstAttribute="leading" secondItem="bZA-iy-D0p" secondAttribute="leading" id="WMb-Gy-SX4"/>
                             <constraint firstItem="eTR-u4-vhS" firstAttribute="centerY" secondItem="eIO-xD-gna" secondAttribute="centerY" id="XNS-t1-mdH"/>
-                            <constraint firstItem="rsM-xi-E2Q" firstAttribute="top" secondItem="e1D-LA-cY0" secondAttribute="bottom" id="ej9-ff-DCS"/>
-                            <constraint firstAttribute="trailing" secondItem="OHa-FB-fjR" secondAttribute="trailing" id="iDE-lj-fpq"/>
+                            <constraint firstItem="bZA-iy-D0p" firstAttribute="bottom" secondItem="e1D-LA-cY0" secondAttribute="bottom" id="ej9-ff-DCS"/>
+                            <constraint firstItem="bZA-iy-D0p" firstAttribute="trailing" secondItem="OHa-FB-fjR" secondAttribute="trailing" id="iDE-lj-fpq"/>
                             <constraint firstItem="eTR-u4-vhS" firstAttribute="trailing" secondItem="eIO-xD-gna" secondAttribute="trailingMargin" id="pmP-mr-chr"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="bZA-iy-D0p"/>
                     </view>
                     <navigationItem key="navigationItem" title="Лента новостей" id="zqY-Tg-Bvm">
                         <barButtonItem key="rightBarButtonItem" image="ic_tune" id="VtT-Ca-TIe">
@@ -157,20 +158,22 @@
         <scene sceneID="TSr-cI-NoB">
             <objects>
                 <viewController id="B8I-oz-LlR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7dH-56-vF8"/>
-                        <viewControllerLayoutGuide type="bottom" id="UUE-YR-NCB"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OQb-sX-nGn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="IxW-sJ-yhk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Избранное" image="ic_bookmark_tab_off" selectedImage="ic_bookmark_tab_on" id="kpI-Re-EdV"/>
+                    <navigationItem key="navigationItem" title="Избранное" id="XuX-9d-9cd">
+                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="ZoD-tJ-buO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UpV-9s-USZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="-341"/>
+            <point key="canvasLocation" x="4038" y="-342"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4An-kO-sGW">
@@ -187,9 +190,9 @@
                     <connections>
                         <outlet property="tabbar" destination="Cfm-58-Wei" id="C6q-51-Xk5"/>
                         <segue destination="fee-gk-cha" kind="relationship" relationship="viewControllers" id="Ku6-DG-fNc"/>
-                        <segue destination="B8I-oz-LlR" kind="relationship" relationship="viewControllers" id="RmP-4Z-MbH"/>
-                        <segue destination="Ehe-5H-v8t" kind="relationship" relationship="viewControllers" id="wid-kI-4ut"/>
-                        <segue destination="Pul-1K-c8N" kind="relationship" relationship="viewControllers" id="w6a-CX-4e3"/>
+                        <segue destination="0Bs-CV-lWG" kind="relationship" relationship="viewControllers" id="RmP-4Z-MbH"/>
+                        <segue destination="btF-ff-dPo" kind="relationship" relationship="viewControllers" id="wid-kI-4ut"/>
+                        <segue destination="w7L-8S-Yp8" kind="relationship" relationship="viewControllers" id="w6a-CX-4e3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4Z-jW-y8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -216,6 +219,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KjY-em-77m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3065.5999999999999" y="-1244.0779610194904"/>
+        </scene>
+        <!--Карта-->
+        <scene sceneID="P7F-SE-1Jy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w7L-8S-Yp8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Карта" image="ic_map" selectedImage="ic_map_on" id="3t5-F1-SVf"/>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="f8Z-XJ-Plq">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pul-1K-c8N" kind="relationship" relationship="rootViewController" id="vBi-sV-jEQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZg-78-nEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2936" y="1200.8995502248877"/>
+        </scene>
+        <!--Календарь-->
+        <scene sceneID="3Hf-cX-yJK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btF-ff-dPo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Календарь" image="ic_calendar_off" selectedImage="ic_calendar_on" id="8Qy-pH-ImZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="STE-Kb-xeE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ehe-5H-v8t" kind="relationship" relationship="rootViewController" id="sSE-g5-pyO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DyP-RD-1qX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142" y="430"/>
+        </scene>
+        <!--Избранное-->
+        <scene sceneID="Ics-tl-ju7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Bs-CV-lWG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Избранное" image="ic_bookmark_tab_off" selectedImage="ic_bookmark_tab_on" id="kpI-Re-EdV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NXx-ys-HS9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B8I-oz-LlR" kind="relationship" relationship="rootViewController" id="KPg-nn-ooA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvQ-Bl-DrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3140.8000000000002" y="-341.82908545727139"/>
         </scene>
     </scenes>
     <resources>

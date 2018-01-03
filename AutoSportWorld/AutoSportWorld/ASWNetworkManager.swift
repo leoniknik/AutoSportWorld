@@ -29,7 +29,6 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             else {
                 NotificationCenter.default.post(name: .eventsInitCallback, object: nil, userInfo: ["data": response])
             }
-            
 
         }
         

@@ -47,7 +47,26 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func setupUI() {
-       pageControl.hidesForSinglePage = true
+        pageControl.hidesForSinglePage = true
+        setupNavbar()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func setupNavbar() {
+        //убираем полоску между хедером и навигейшен баром
+        navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
+    }
+    
+    @objc func showFilters() {
+        let viewController = ASWFiltersViewController()
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     
@@ -59,6 +78,11 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
         updateColoredMarkers()
         return events.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let viewController = ASWEventViewController(race: )
+//        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -161,4 +185,6 @@ extension ASWMapViewController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
+    
+    
 }

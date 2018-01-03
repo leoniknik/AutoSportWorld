@@ -24,11 +24,26 @@ class ASWFiltersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
         setupTableView()
+        setupNavItem()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func setupNavItem() {
+        self.navigationItem.title = "Сортировка"
+
+        let backButton = UIBarButtonItem(image: UIImage.backward, style: .done, target: self, action: #selector(goBack))
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
+    }
+    
+    @objc func goBack() {
+        self.navigationController?.popViewController(animated: false)
     }
     
     func setupTableView() {
@@ -41,7 +56,7 @@ class ASWFiltersViewController: UIViewController {
         //настройка футера для таблицы
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 90))
         let button = setupBottomRedButton()
-        button.frame = CGRect(x: customView.bounds.minX, y: customView.bounds.minY + 40, width: customView.bounds.width, height: customView.bounds.height - 40)
+        button.frame = CGRect(x: 0, y: customView.bounds.minY + 40, width: customView.bounds.width, height: customView.bounds.height - 40)
         customView.addSubview(button)
         customView.backgroundColor = UIColor.ASWColor.greyBackground
         tableView.tableFooterView = customView
@@ -78,7 +93,7 @@ extension ASWFiltersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ASWFilterCell", for: indexPath) as! ASWFilterCell
-        cell.titleView.text = "Сначала новые"
+        cell.titleView.text = model.items[indexPath.section][indexPath.item]
         return cell
     }
     

@@ -12,8 +12,11 @@ class ASWProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let myTabBarItem5 = self.tabBarItem
-//        myTabBarItem5?.image = UIImage(named: "ic_profil_off")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+    }
+    
+    @IBAction func temp(_ sender: UIButton) {
+        let databaseManager = ASWDatabaseManager()
+        databaseManager.createTestUser()
     }
     
 }

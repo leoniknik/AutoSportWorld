@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ASWRace {
     
@@ -42,7 +43,8 @@ class ASWRace {
     
     var level: String? // id квалификации. "pro" - профессиональные, "nonpro" - любительские
 
-    var image: String? // ссылка на картинку
+    var imageURL: String? // ссылка на картинку
+    var image: UIImage? // картинка
 
     var link: String? // внешняя ссылка на мероприятие
 
@@ -70,7 +72,7 @@ class ASWRace {
         self.regions = regions
         self.categories = categories
         self.level = level
-        self.image = image
+        self.imageURL = image
         self.link = link
         self.likes = likes
         self.liked = liked

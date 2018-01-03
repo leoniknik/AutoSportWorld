@@ -85,7 +85,7 @@ class ASWRegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func emailDidChange(_ sender: UITextField) {
+    @objc func emailDidChange(_ sender: UITextField) {
         if var text = emailField.text {
             
             text = emailValidator.format(text)
@@ -103,7 +103,7 @@ class ASWRegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func passwordDidChange(_ sender: UITextField) {
+    @objc func passwordDidChange(_ sender: UITextField) {
         if var text = passwordField.text {
             
             text = passwordValidator.format(text)
@@ -121,7 +121,7 @@ class ASWRegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func repeatPasswordDidChange(_ sender: UITextField) {
+    @objc func repeatPasswordDidChange(_ sender: UITextField) {
         if var text = repeatPasswordField.text {
             
             text = passwordValidator.format(text)
@@ -139,7 +139,7 @@ class ASWRegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func nameDidChange(_ sender: UITextField) {
+    @objc func nameDidChange(_ sender: UITextField) {
         if var text = nameField.text {
             text = nameValidator.format(text)
             sender.text = text

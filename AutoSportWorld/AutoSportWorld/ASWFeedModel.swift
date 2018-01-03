@@ -6,7 +6,7 @@
 //  Copyright © 2017 Кирилл Володин. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ASWFeedsModelProtocol {
     weak var delegate: ASWFeedsModelDelegate? {get set}
@@ -15,6 +15,9 @@ protocol ASWFeedsModelProtocol {
     func getEvents() -> [ASWRace]
     func getNumberOfEvents() -> Int
     func getEvent(forIndex index: Int) -> ASWRace
+    func getImageFor(race: ASWRace, completion: @escaping () -> ())
+    func bookmarkRace(withID id: Int)
+    func checkBookmarkedRace(withID id: Int) -> Bool
 }
 
 protocol ASWFeedsModelDelegate: class {
@@ -24,8 +27,11 @@ protocol ASWFeedsModelDelegate: class {
 
 class ASWFeedsModel: ASWFeedsModelProtocol {
     
+    
     weak var delegate: ASWFeedsModelDelegate?
     var events = [ASWRace]()
+    private let imageService = ASWImageDownloader()
+    private let databaseService = ASWDatabaseManager()
     
     let defaultlimit = 10
     
@@ -53,6 +59,14 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
         return events[index]
     }
     
+    func checkBookmarkedRace(withID id: Int) -> Bool {
+        let race = getEvent(forIndex: id)
+        guard let id = getRaceID(race: race) else {
+            return false
+        }
+        return databaseService.checkBookmarkedRace(withID: id)
+    }
+    
     @objc func eventsCallback(_ notification: Notification) {
         if let response = (notification.userInfo?["data"] as? ASWListRacesParser) {
             self.events.append(contentsOf: response.races)
@@ -70,6 +84,33 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     
     @objc func eventsCallbackError(_ notification: Notification) {
         delegate?.updateError()
+    }
+
+    func getImageFor(race: ASWRace, completion: @escaping () -> ()) {
+        if let url = race.imageURL {
+            imageService.send(url: url, completionHandler: { (image) in
+                race.image = image
+                completion()
+            })
+        }
+    }
+    
+    func getRaceID(race: ASWRace) -> Int? {
+        guard let string = race.id else {
+            return nil
+        }
+        guard let id = Int(string) else {
+            return nil
+        }
+        return id
+    }
+    
+    func bookmarkRace(withID id: Int) {
+        let race = getEvent(forIndex: id)
+        guard let id = getRaceID(race: race) else {
+            return
+        }
+        databaseService.bookmarkRace(withID: id)
     }
     
 }

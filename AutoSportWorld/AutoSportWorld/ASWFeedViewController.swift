@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
+class ASWFeedViewController: UIViewController, ASWEventCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -138,6 +138,15 @@ class ASWFeedViewController: UIViewController, ASWFeedsModelDelegate {
         }
     }
     
+    func likeEventTapped(id: Int) {
+        
+    }
+    
+    func bookmarkEventTapped(id: Int) {
+        model.bookmarkRace(withID: id)
+        tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
+    }
+    
 }
 
 extension ASWFeedViewController: UITableViewDataSource {
@@ -148,10 +157,43 @@ extension ASWFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item % 2 != 0 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWEventCell", for: indexPath) as! ASWEventCell
+            
+            // установка id ячейки
+            cell.id = indexPath.item / 2
+            
+            //подписываемся на нажатия кнопок
+            cell.delegate = self
+            
+            //загрузка картинки в ячейку
             let race = model.getEvent(forIndex: indexPath.item / 2)
+            if let image = race.image {
+                cell.eventImage.image = image
+            }
+            else {
+                cell.eventImage.image = nil
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                    self?.model.getImageFor(race: race, completion: { () in
+                        DispatchQueue.main.async { [weak self] in
+                            self?.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                        }
+                    })
+                }
+            }
+            
+            //конфигурация ячейки
             configureEvent(cell: cell, race: race)
             
+            // проставляем иконку избранное у ячейки
+            if (model.checkBookmarkedRace(withID: indexPath.item / 2)) {
+                cell.bookmarkButton.setImage(UIImage.bookmarkOn, for: .normal)
+            }
+            else {
+                cell.bookmarkButton.setImage(UIImage.bookmarkOff, for: .normal)
+            }
+            
+            //пагинация
             if ((model.getEvents().count - 3 - indexPath.item / 2 == 0) && self.cursor != nil) {
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                     self?.model.updateEvents(cursor: self?.cursor)
@@ -166,8 +208,13 @@ extension ASWFeedViewController: UITableViewDataSource {
         }
     }
     
+    func configBookMark() {
+        
+    }
+    
     //конфигурация ячейки
     func configureEvent(cell: ASWEventCell, race: ASWRace) {
+        
         cell.eventTitle.text = race.shortTitle
         
         if let categories = race.categories {
@@ -219,7 +266,8 @@ extension ASWFeedViewController: UITableViewDataSource {
         
         cell.likesLabel.text = "Нравится: \(race.likes ?? 0)"
         
-        cell.likedImage.image = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
+        let likeImage = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
+        cell.likeButton.setBackgroundImage(likeImage, for: .normal)
         
     }
     
@@ -250,8 +298,15 @@ extension ASWFeedViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let race = model.getEvent(forIndex: indexPath.item / 2)
+        let viewController = ASWEventViewController(race: race)
+        self.navigationController?.pushViewController(viewController, animated: false)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+extension ASWFeedViewController: ASWFeedsModelDelegate {
+    
 }
 
 

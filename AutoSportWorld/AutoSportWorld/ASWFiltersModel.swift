@@ -13,14 +13,15 @@ class ASWFiltersModel {
     let service = ASWFiltersService()
     
     let headers = ["Дата", "Стоимость", "Действие", "Квалификация", "Спорт"]
-    let numberOfRows = [2,3,2,2,2]
+    
+    let items = [["Сначала новые", "Сначала старые"], ["Бесплатные", "Сначала подешевле", "Сначала подороже"], ["Покататься", "Посмотреть"], ["Любительские", "Профессиональные"], ["Мотоспорт", "Автоспорт"]]
     
     func getTitleForHeaderIn(section: Int) -> String {
         return headers[section]
     }
     
     func getNumberOfRowsIn(section: Int) -> Int {
-        return numberOfRows[section]
+        return items[section].count
     }
     
     func getNumberOfSections() -> Int {

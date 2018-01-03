@@ -9,6 +9,7 @@
 import UIKit
 import VK_ios_sdk
 import GoogleMaps
+import RealmSwift
 
 fileprivate var SCOPE: [Any]? = nil
 
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupUI()
         initVK()
         initGoogleMap()
+        printRealmConfig()
         
         return true
     }
@@ -82,6 +84,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initGoogleMap() {
         GMSServices.provideAPIKey("AIzaSyD32daYcxUE9uE7DqStnmkPh75TvzwoUtQ")
+    }
+    
+    func printRealmConfig() {
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        let config = Realm.Configuration(
+            
+            schemaVersion: 5,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+                
+                if (oldSchemaVersion < 5) {
+                    
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+        
     }
     
 }
