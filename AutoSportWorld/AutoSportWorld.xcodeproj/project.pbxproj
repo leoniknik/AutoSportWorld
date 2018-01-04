@@ -23,6 +23,8 @@
 		CA0D218A1FEDC26300CF42FF /* ASWCategoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D21891FEDC26300CF42FF /* ASWCategoriesRequest.swift */; };
 		CA0D21911FEEB92E00CF42FF /* ASWFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D218F1FEEB92E00CF42FF /* ASWFiltersViewController.swift */; };
 		CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */; };
+		CA159CB41FFD98FB00A501F4 /* ASWFullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA159CB21FFD98FB00A501F4 /* ASWFullImageViewController.swift */; };
+		CA159CB51FFD98FB00A501F4 /* ASWFullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */; };
 		CA25D85F1F5090E700D65B26 /* ASWAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */; };
 		CA25D8611F50954D00D65B26 /* ASWTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */; };
 		CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */; };
@@ -110,6 +112,8 @@
 		CA0D21891FEDC26300CF42FF /* ASWCategoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCategoriesRequest.swift; sourceTree = "<group>"; };
 		CA0D218F1FEEB92E00CF42FF /* ASWFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFiltersViewController.swift; sourceTree = "<group>"; };
 		CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWFiltersViewController.xib; sourceTree = "<group>"; };
+		CA159CB21FFD98FB00A501F4 /* ASWFullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFullImageViewController.swift; sourceTree = "<group>"; };
+		CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWFullImageViewController.xib; sourceTree = "<group>"; };
 		CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAnimationManager.swift; sourceTree = "<group>"; };
 		CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWTabBarController.swift; sourceTree = "<group>"; };
 		CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */,
 				CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */,
 				CA2BB60E1FFB905B000C746A /* ASWEventViewController.xib */,
+				CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				CA0D218F1FEEB92E00CF42FF /* ASWFiltersViewController.swift */,
 				CA2BB60D1FFB905B000C746A /* ASWEventViewController.swift */,
 				CA3ED32E1FFD11840026DBA6 /* ASWFavoriteViewController.swift */,
+				CA159CB21FFD98FB00A501F4 /* ASWFullImageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */,
 				DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
+				CA159CB51FFD98FB00A501F4 /* ASWFullImageViewController.xib in Resources */,
 				CA584CDA1F48440D0011E653 /* ASWRaceTypeCell.xib in Resources */,
 				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
 			);
@@ -690,6 +697,7 @@
 				CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */,
 				CA9CCA361F51626D006494EB /* ASWEvent.swift in Sources */,
 				CA0D21841FEDBDC900CF42FF /* ASWListRegionsParser.swift in Sources */,
+				CA159CB41FFD98FB00A501F4 /* ASWFullImageViewController.swift in Sources */,
 				CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */,
 				CA3710B91F37C94E003578E5 /* ASWSettingsViewController.swift in Sources */,
 				CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */,

@@ -18,8 +18,6 @@ class ASWEventViewController: UIViewController {
     @IBOutlet weak var timeImage: UIImageView!
     @IBOutlet weak var sheduleLabel: UILabel!
     
-    
-    
     var race: ASWRace
     
     init(race: ASWRace) {
@@ -48,13 +46,23 @@ class ASWEventViewController: UIViewController {
     }
     
     func setupRace() {
-        self.raceImage.image = race.image
+        if let image = race.image {
+            raceImage.image = image
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showFullImage))
+            raceImage.isUserInteractionEnabled = true
+            raceImage.addGestureRecognizer(tapGestureRecognizer)
+        }
     }
     
     func setupShedule() {
         if (sheduleLabel.text!.isEmpty) {
             sheduleView.isHidden = true
         }
+    }
+    
+    @objc func showFullImage() {
+        let viewController = ASWFullImageViewController(race: race)
+        self.present(viewController, animated: true, completion: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
