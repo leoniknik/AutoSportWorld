@@ -24,6 +24,9 @@ import UIKit
 
 class ASWRegistrationViewController: UIViewController, ASWCollectionViewControllerDelegate {
     
+    func updateSelectedRegions(regionsIDs: [Int]) {
+        // updates
+    }
     
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
         if auto {
@@ -42,7 +45,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         userEntity.moto = moto
         
         if (auto && moto){
-            stepAmaunt = 8
+            stepAmaunt = 7
         }else if (auto || moto){
             stepAmaunt = 5
         }else{
@@ -181,6 +184,9 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         } else if(currentStep == 1){
             currentStep+=1
             setStep()
+        } else if(currentStep == 2){
+            currentStep+=1
+            setStep()
         }
     }
     
@@ -209,27 +215,42 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.setupRightBarItem()
         }
         
+//        if (currentStep == 2){
+//            var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, userModel: userEntity)
+//            dataSource.auto = userEntity.auto
+//
+//            registerCollectionViewController.datasource = dataSource
+//            dataSource.delegate = registerCollectionViewController
+//            registerCollectionViewController.collectionView.dataSource = dataSource
+//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+//            registerCollectionViewController.delegate = self
+//            registerCollectionViewController.setupRightBarItem()
+//        }
+        
         if (currentStep == 2){
-            var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, userModel: userEntity)
-            dataSource.auto = userEntity.auto
+            
+            var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: [Int]())
+            
             
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
             registerCollectionViewController.collectionView.dataSource = dataSource
             registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+            registerCollectionViewController.searchBar.delegate = dataSource
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
         }
         
         if (currentStep == 3){
             
-            var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, userModel: userEntity)
-            dataSource.auto = userEntity.auto
+            var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: [Int]())
+            
             
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
             registerCollectionViewController.collectionView.dataSource = dataSource
             registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+            registerCollectionViewController.searchBar.delegate = dataSource
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
         }

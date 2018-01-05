@@ -9,10 +9,10 @@
 import Foundation
 import RealmSwift
 
-class ASWSportType: Object {
+class ASWRegionEntity: Object {
     
     @objc dynamic var id: Int = 0
-    let users = LinkingObjects(fromType: ASWUserEntity.self, property: "sportTypes") // скорее не надо
+    let users = LinkingObjects(fromType: ASWUserEntity.self, property: "regions") // скорее не надо
     
     override static func primaryKey() -> String? {
         return "id"

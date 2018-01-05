@@ -24,9 +24,11 @@ protocol ASWSportTypeCollectionViewDataSourceDelegate{
 
 class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     
-    var userModel:ASWUserEntity!
     var delegate:ASWSportTypeCollectionViewDataSourceDelegate?
     var titles = ["Автоспорт","Мотоспорт"]
+    
+    var moto = false
+    var auto = false
     
     init(collectionView: UICollectionView, userModel:ASWUserEntity) {
         super.init()
@@ -34,17 +36,18 @@ class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         self.collectionView = collectionView
         titleForSelectedItems = "Мои виды спорта"
         titleForAvailableItems = "Доступные виды спорта"
-        self.userModel = userModel
+        auto = userModel.auto
+        moto = userModel.moto
         //        0 - auto
         //        1 - moto
         
-        if userModel.auto {
+        if auto {
             rawSelectedItems.append(ASWCollectionItem(0))
         }else{
             rawAvailableItems.append(ASWCollectionItem(0))
         }
         
-        if userModel.moto {
+        if moto {
             rawSelectedItems.append(ASWCollectionItem(1))
         }else{
             rawAvailableItems.append(ASWCollectionItem(1))
@@ -115,8 +118,6 @@ class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     override func itemSelected(){
-        var auto = false
-        var moto = false
         for item in selectedItems{
             if item.id == 0 {
                 auto = true

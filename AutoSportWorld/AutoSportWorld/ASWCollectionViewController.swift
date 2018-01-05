@@ -19,9 +19,16 @@ protocol ASWCollectionViewControllerDelegate{
     func setupRightBarItem(avalible:Bool, title:String)
     func sportTypeSelected(moto:Bool, auto:Bool)
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool)
+    func updateSelectedRegions(regionsIDs: [Int])
 }
 
-class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate {
+class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate,ASWRegionsCollectionViewDataSourceDelegate {
+    
+    func updateSelectedRegions(regionsIDs: [Int]) {
+        delegate.updateSelectedRegions(regionsIDs: regionsIDs)
+    }
+
+    
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
         delegate.actionTypeSelected(auto: auto, watch: watch, join: join)
     }

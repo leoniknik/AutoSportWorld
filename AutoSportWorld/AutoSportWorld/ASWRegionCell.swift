@@ -13,6 +13,7 @@ class ASWRegionCell: UICollectionViewCell {
     @IBOutlet weak var checkmark: UIImageView!
     @IBOutlet weak var regionNumber: UILabel!
     
+    @IBOutlet weak var name: UILabel!
     var darkShadow = CALayer()
     
     override func awakeFromNib() {

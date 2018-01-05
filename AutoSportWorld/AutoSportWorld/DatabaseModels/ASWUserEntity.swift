@@ -28,7 +28,8 @@ class ASWUserEntity: Object {
     
     let favoriteRaces = List<ASWRaceEntity>()
     
-    let sportTypes = List<ASWSportType>()
+    let autoRegions = List<ASWRegionEntity>()
+    let motoRegions = List<ASWRegionEntity>()
     
     override static func primaryKey() -> String? {
         return "id"

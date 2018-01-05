@@ -22,6 +22,8 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     var titleForSelectedItems: String = ""
     var titleForAvailableItems: String = ""
     
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return selectedItems.count

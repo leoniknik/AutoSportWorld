@@ -24,10 +24,12 @@ protocol ASWActionTypeCollectionViewDataSourceDelegate{
 
 class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     
-    var userModel:ASWUserEntity!
+    
     var delegate:ASWActionTypeCollectionViewDataSourceDelegate?
     var auto:Bool = false
     
+    var watch:Bool = false
+    var join:Bool = false
 
     var titles = ["Посмотреть","Покаткаться"]
     init(collectionView: UICollectionView, userModel:ASWUserEntity) {
@@ -37,39 +39,33 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         titleForSelectedItems = "Мои действия"
         titleForAvailableItems = "Доступные действия"
 
+        if(auto){
+            watch = userModel.autoWatch
+            join = userModel.autoJoin
+        }else{
+            watch = userModel.motoWatch
+            join = userModel.motoJoin
+        }
         
         
-        self.userModel = userModel
         //        0 - watch
         //        1 - join
         
-        if(auto){
+        
             
-            if userModel.autoWatch {
+            if watch {
                 rawSelectedItems.append(ASWCollectionItem(0))
             }else{
                 rawAvailableItems.append(ASWCollectionItem(0))
             }
             
-            if userModel.autoJoin {
+            if join {
                 rawSelectedItems.append(ASWCollectionItem(1))
             }else{
                 rawAvailableItems.append(ASWCollectionItem(1))
             }
             
-        }else{
-            if userModel.motoWatch {
-                rawSelectedItems.append(ASWCollectionItem(0))
-            }else{
-                rawAvailableItems.append(ASWCollectionItem(0))
-            }
-            
-            if userModel.motoJoin {
-                rawSelectedItems.append(ASWCollectionItem(1))
-            }else{
-                rawAvailableItems.append(ASWCollectionItem(1))
-            }
-        }
+        
 
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
@@ -115,8 +111,6 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     override func itemSelected(){
-        var watch = false
-        var join = false
         for item in selectedItems{
             if item.id == 0 {
                 watch = true

@@ -60,6 +60,38 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
+    static func getRegions() {
+        var request = ASWRegionsRequest()
+        func onSuccess(json: JSON) -> Void{
+            
+            let response = ASWListRegionsParser(json: json)
+            NotificationCenter.default.post(name: .regionsCallback, object: nil, userInfo: ["data": response])
+            
+        }
+        
+        func onError(error: Any) -> Void {
+            NotificationCenter.default.post(name: .regionsCallbackError, object: nil)
+        }
+        
+        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
+    static func getRaceTypes() {
+//        var request = ASWRegionsRequest()
+//        func onSuccess(json: JSON) -> Void{
+//            
+//            let response = ASWListRegionsParser(json: json)
+//            NotificationCenter.default.post(name: .regionsCallback, object: nil, userInfo: ["data": response])
+//            
+//        }
+//        
+//        func onError(error: Any) -> Void {
+//            NotificationCenter.default.post(name: .regionsCallbackError, object: nil)
+//        }
+//        
+//        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void) -> Void {
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
