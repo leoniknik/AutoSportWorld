@@ -54,7 +54,7 @@ class ASWDatabaseManager {
             for (index, item) in user.favoriteRaces.enumerated() {
                 if item == race {
                     try! realm.write {
-                        user.favoriteRaces.remove(at: index)
+                        user.favoriteRaces.remove(objectAtIndex: index)
                     }
                     break
                 }

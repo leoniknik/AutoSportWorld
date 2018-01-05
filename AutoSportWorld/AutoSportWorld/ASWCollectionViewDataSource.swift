@@ -62,6 +62,10 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
         }
     }
     
+    func itemSelected(){
+        
+    }
+    
     func syncItems() {
         
         guard isSearching else {

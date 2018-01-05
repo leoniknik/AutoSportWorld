@@ -2,55 +2,35 @@
 //  ASWCollectionViewController.swift
 //  AutoSportWorld
 //
-//  Created by Aleksander Evtuhov on 04.01.2018.
-//  Copyright © 2018 Кирилл Володин. All rights reserved.
-//
-
-//
-//  ASWCollectionViewController.swift
-//  AutoSportWorld
-//
 //  Created by Кирилл Володин on 16.08.17.
 //  Copyright © 2017 Кирилл Володин. All rights reserved.
 //
 
 import UIKit
-protocol ASWCollectionViewControllerDelegate{
-    func setupRightBarItem(avalible:Bool, title:String)
-    func sportTypeSelected(moto:Bool, auto:Bool)
-    func actionTypeSelected(auto: Bool, watch: Bool, join: Bool)
-}
 
-class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate {
-    func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
-        delegate.actionTypeSelected(auto: auto, watch: watch, join: join)
-    }
-    
-    func sportTypeSelected(auto: Bool, moto: Bool) {
-        delegate.sportTypeSelected(moto: moto, auto: auto)
-    }
+class ASWCollectionViewControllerOLD: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var stepAndProgressView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var rightBarItem: UIBarButtonItem!
     
     fileprivate let cellSize: CGFloat = 100
     fileprivate let cellMargin: CGFloat = 18
     fileprivate let cellBigMargin: CGFloat = 40
     
     var datasource: ASWCollectionViewDataSource!
-    var delegate: ASWCollectionViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.register(UINib(nibName: "ASWRegionCell", bundle: nil), forCellWithReuseIdentifier: "ASWRegionCell")
-        collectionView.register(UINib(nibName: "ASWRaceTypeCell", bundle: nil), forCellWithReuseIdentifier: "ASWRaceTypeCell")
-
-        
         collectionView.delegate = self
         searchBar.delegate = datasource
         collectionView.dataSource = datasource
-        //setupUI()
+        setupUI()
     }
     
     
@@ -58,7 +38,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: cellSize, height: cellSize)
+            return CGSize(width: cellSize, height: cellSize)
     }
     
     
@@ -119,35 +99,48 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         //синхронизация
         datasource.syncItems()
         
-        //hideKeyboard()
+        hideKeyboard()
         
         setupRightBarItem()
         
         collectionView.reloadData()
-        datasource.itemSelected()
+        
     }
     
+    func setupUI() {
 
+        confirmButton.backgroundColor = UIColor.ASWColor.black
+        stepLabel.textColor = UIColor.ASWColor.grey
+        progressView.progressTintColor = UIColor.ASWColor.yellow
+        searchBar.backgroundColor = UIColor.ASWColor.black
+        searchBar.barTintColor = UIColor.ASWColor.black
         
-       
+        //убираем полоску между хедером и навигейшен баром
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        
+    }
     
     func setupRightBarItem() {
         if datasource.availableItems.count == 0 {
-            delegate.setupRightBarItem(avalible: true, title: "нет")
-            selectAllRightBarState = false
+            rightBarItem.title = "нет"
         }
         else {
-            delegate.setupRightBarItem(avalible: true, title: "да")
-            selectAllRightBarState = true
+            rightBarItem.title = "все"
         }
     }
     
-
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     
-    var selectAllRightBarState:Bool = true
+    @IBAction func buttonTapped(_ sender: Any) {
+        
+    }
     
-    func rightBarItemTapped() {
-        if !selectAllRightBarState {
+    @IBAction func rightBarItemTapped(_ sender: Any) {
+        if rightBarItem.title == "нет" {
             for _ in 0 ..< datasource.selectedItems.count {
                 let item = datasource.selectedItems[0]
                 datasource.selectedItems.remove(at: 0)
@@ -161,35 +154,33 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
                 datasource.selectedItems.append(item)
             }
         }
-        datasource.itemSelected()
         datasource.syncItems()
         hideKeyboard()
         datasource.collectionView.reloadData()
         setupRightBarItem()
     }
     
-//    func hideStepAndProgressView() {
-//        //установка высоты вьюхи с прогрессбаром и шагами в 0
-//        stepLabel.isHidden = true
-//        progressView.isHidden = true
-//        if let constraint = (stepAndProgressView.constraints.filter{$0.firstAttribute == .height}.first) {
-//            constraint.constant = 0.0
-//        }
-//    }
+    func hideStepAndProgressView() {
+        //установка высоты вьюхи с прогрессбаром и шагами в 0
+        stepLabel.isHidden = true
+        progressView.isHidden = true
+        if let constraint = (stepAndProgressView.constraints.filter{$0.firstAttribute == .height}.first) {
+            constraint.constant = 0.0
+        }
+    }
     
-//    func hideSearchBar() {
-//        if let constraint = (searchBar.constraints.filter{$0.firstAttribute == .height}.first) {
-//            constraint.constant = 0.0
-//        }
-//    }
+    func hideSearchBar() {
+        if let constraint = (searchBar.constraints.filter{$0.firstAttribute == .height}.first) {
+            constraint.constant = 0.0
+        }
+    }
     
     func hideKeyboard() {
         //убираем клавиатуру
         searchBar.resignFirstResponder()
-
+        
         //подчищаем текст
         searchBar.text = ""
     }
     
 }
-
