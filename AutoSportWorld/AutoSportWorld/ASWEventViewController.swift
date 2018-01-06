@@ -90,6 +90,19 @@ class ASWEventViewController: UIViewController {
         
     }
     
+    @IBAction func showMap(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func showSite(_ sender: UIButton) {
+        let viewController = ASWWebViewController(race: race)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func showAdditionalInformation(_ sender: UIButton) {
+        
+    }
+    
     @objc func goBack() {
         self.navigationController?.popViewController(animated: false)
     }

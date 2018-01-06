@@ -82,6 +82,8 @@
 		CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */; };
 		CACB58571F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */; };
 		CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */; };
+		CAD382FE1FFDB421000B4242 /* ASWWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD382FC1FFDB421000B4242 /* ASWWebViewController.swift */; };
+		CAD382FF1FFDB421000B4242 /* ASWWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD382FD1FFDB421000B4242 /* ASWWebViewController.xib */; };
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
 		CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */; };
@@ -173,6 +175,8 @@
 		CACB58531F3F3CF0007E8E0B /* ASWRegionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWRegionCell.xib; sourceTree = "<group>"; };
 		CACB58561F3F3F93007E8E0B /* ASWChangeRegionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWChangeRegionsViewController.swift; sourceTree = "<group>"; };
 		CACB58581F3F9680007E8E0B /* ASWCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionReusableView.swift; sourceTree = "<group>"; };
+		CAD382FC1FFDB421000B4242 /* ASWWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWWebViewController.swift; sourceTree = "<group>"; };
+		CAD382FD1FFDB421000B4242 /* ASWWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWWebViewController.xib; sourceTree = "<group>"; };
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFeedModel.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */,
 				CA2BB60E1FFB905B000C746A /* ASWEventViewController.xib */,
 				CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */,
+				CAD382FD1FFDB421000B4242 /* ASWWebViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				CA2BB60D1FFB905B000C746A /* ASWEventViewController.swift */,
 				CA3ED32E1FFD11840026DBA6 /* ASWFavoriteViewController.swift */,
 				CA159CB21FFD98FB00A501F4 /* ASWFullImageViewController.swift */,
+				CAD382FC1FFDB421000B4242 /* ASWWebViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				CA323B2C1F379ADA007157D4 /* Main.storyboard in Resources */,
 				CACB58511F3E8068007E8E0B /* ASWSpacingCell.xib in Resources */,
 				CACB58551F3F3CF0007E8E0B /* ASWRegionCell.xib in Resources */,
+				CAD382FF1FFDB421000B4242 /* ASWWebViewController.xib in Resources */,
 				CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */,
 				DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
@@ -672,6 +679,7 @@
 				CA04AB001FFB74EA00F1ACC3 /* ASWDatabaseManager.swift in Sources */,
 				CA51D65F1FE6D86400018CE9 /* ASWListRacesRequest.swift in Sources */,
 				CA04AAF91FFAD4F900F1ACC3 /* ASWFilterCell.swift in Sources */,
+				CAD382FE1FFDB421000B4242 /* ASWWebViewController.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CA3ED32F1FFD11840026DBA6 /* ASWFavoriteViewController.swift in Sources */,
 				CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */,

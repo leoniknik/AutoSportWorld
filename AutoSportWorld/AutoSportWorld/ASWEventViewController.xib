@@ -268,6 +268,9 @@
                                             <state key="normal" image="ic_forward">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="showMap:" destination="-1" eventType="touchUpInside" id="uCE-Eq-I1z"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpb-Ts-G7c">
                                             <rect key="frame" x="337" y="35" width="30" height="30"/>
@@ -276,6 +279,9 @@
                                                 <constraint firstAttribute="width" constant="30" id="uil-Ul-wRs"/>
                                             </constraints>
                                             <state key="normal" image="ic_forward"/>
+                                            <connections>
+                                                <action selector="showSite:" destination="-1" eventType="touchUpInside" id="Buw-II-wAF"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsh-da-iV0">
                                             <rect key="frame" x="337" y="68" width="30" height="30"/>
@@ -284,6 +290,9 @@
                                                 <constraint firstAttribute="width" constant="30" id="lTo-h2-7Ez"/>
                                             </constraints>
                                             <state key="normal" image="ic_down"/>
+                                            <connections>
+                                                <action selector="showAdditionalInformation:" destination="-1" eventType="touchUpInside" id="WnJ-Pk-Rpf"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -332,7 +341,7 @@
                 <constraint firstItem="wtG-Al-qdm" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="xcu-3r-GSK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-135" y="430"/>
+            <point key="canvasLocation" x="-137" y="488"/>
         </view>
     </objects>
     <resources>
