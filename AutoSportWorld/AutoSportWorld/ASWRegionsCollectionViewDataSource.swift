@@ -27,9 +27,8 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(regionsCallbackError(_:)), name: .regionsCallbackError, object: nil)
         
         self.collectionView = collectionView
-        
-        titleForSelectedItems = "Мои регионы"
-        titleForAvailableItems = "Доступные регионы"
+        titleForSelectedItems = "Выбранные регионы"
+        titleForAvailableItems = "Выберите интересующий регион"
         
         rawAvailableItems = []
         
@@ -45,7 +44,8 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
             regions = response.regions
             for region in response.regions{
                 var id = Int(region.id ?? "0") ?? 0
-                var collectionItem = ASWCollectionItem(id)
+                var string = "\(region.codes)\(region.name)\(region.centerCity)"
+                var collectionItem = ASWCollectionItem(id,string)
                 
                 if(selectedRegions.contains(id)){
                 //if let item = userEntity.autoRegions.first(where: { $0.id == id }){
@@ -58,9 +58,12 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
         weak var weakself = self
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             weakself?.collectionView?.reloadData()
+            self?.delegate?.updateSelectedRegions(regionsIDs: self?.selectedRegions ?? [Int]())
         }
+        
+        
         
         
         
@@ -80,10 +83,10 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
             cell.selectCell()
             var id = String(self.selectedItems[indexPath.item].id)
             if let item = regions.first(where: { $0.id == id }){
-                cell.regionNumber.text = id
+                cell.regionNumber.text = item.codes
                 cell.name.text = item.name
             }else{
-                cell.regionNumber.text = id
+                cell.regionNumber.text = "error"
             }
             
         }
@@ -91,10 +94,10 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
             cell.deselectCell()
             var id = String(self.availableItems[indexPath.item].id)
             if let item = regions.first(where: { $0.id == id }){
-                cell.regionNumber.text = id
+                cell.regionNumber.text = item.codes
                 cell.name.text = item.name
             }else{
-                cell.regionNumber.text = id
+                cell.regionNumber.text = "error"
             }
         }
         
@@ -104,8 +107,8 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         availableItems = searchText.isEmpty ? rawAvailableItems : rawAvailableItems.filter { (item: ASWCollectionItem) -> Bool in
-            let string = "\(item.id)"
-            return string.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            
+            return item.searchString.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         
         selectedItems = searchText.isEmpty ? rawSelectedItems : rawSelectedItems.filter { (item: ASWCollectionItem) -> Bool in

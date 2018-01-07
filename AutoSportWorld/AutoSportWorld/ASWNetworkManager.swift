@@ -76,20 +76,20 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func getRaceTypes() {
-//        var request = ASWRegionsRequest()
-//        func onSuccess(json: JSON) -> Void{
-//            
-//            let response = ASWListRegionsParser(json: json)
-//            NotificationCenter.default.post(name: .regionsCallback, object: nil, userInfo: ["data": response])
-//            
-//        }
-//        
-//        func onError(error: Any) -> Void {
-//            NotificationCenter.default.post(name: .regionsCallbackError, object: nil)
-//        }
-//        
-//        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    static func getRaceTypes(type:String) {
+        var request = ASWCategoriesRequest(categoryClass: type)
+        func onSuccess(json: JSON) -> Void{
+            
+            let response = ASWListCategoryParser(json: json)
+            NotificationCenter.default.post(name: .raceCategoryCallback, object: nil, userInfo: ["data": response])
+            
+        }
+        
+        func onError(error: Any) -> Void {
+            NotificationCenter.default.post(name: .raceCategoryCallbackError, object: nil)
+        }
+        
+        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     //get Request

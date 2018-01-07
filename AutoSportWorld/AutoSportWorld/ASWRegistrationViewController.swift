@@ -22,7 +22,19 @@
 
 import UIKit
 
-class ASWRegistrationViewController: UIViewController, ASWCollectionViewControllerDelegate {
+class ASWRegistrationViewController: UIViewController, ASWCollectionViewControllerDelegate, ASWRegisterAccountViewControllerDelegate {
+    
+    func updateUserLoginInfo(valid: Bool, login: String, email: String, password: String) {
+        confirmButton.isEnabled = valid
+        userEntity.login = login
+        userEntity.email = email
+        userEntity.password = password
+    }
+    
+    func updateSelectedRaceTypes(raceTypeIDs: [Int]) {
+        //updates
+    }
+    
     
     func updateSelectedRegions(regionsIDs: [Int]) {
         // updates
@@ -36,7 +48,6 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             userEntity.motoWatch = watch
             userEntity.motoJoin = join
         }
-        
     }
     
     
@@ -62,8 +73,8 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stepAndProgressView: UIView!
-
-
+    
+    
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     
     @IBOutlet weak var containerView: UIView!
@@ -73,9 +84,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     
     var userEntity = ASWUserEntity()
     
-    func nextStepIs(available:Bool){
-        
-    }
+
     
     private lazy var registerAccountViewController: ASWRegisterAccountViewController = {
         // Load Storyboard
@@ -125,14 +134,15 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         super.viewDidLoad()
         setupUI()
         add(asChildViewController: registerAccountViewController)
+        registerAccountViewController.delegate = self
         setupRightBarItem(avalible: false, title: "")
         setStepLabel()
-        //currentStep = 0
-        //setStep()
+        ASWButtonManager.setupButton(button: confirmButton)
+        confirmButton.isEnabled = false
     }
     
     func setupUI() {
-
+        
         confirmButton.backgroundColor = UIColor.ASWColor.black
         stepLabel.textColor = UIColor.ASWColor.grey
         progressView.progressTintColor = UIColor.ASWColor.yellow
@@ -160,14 +170,14 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         }
     }
     
-
+    
     
     @IBAction func rightBarItemTapped(_ sender: Any) {
         registerCollectionViewController.rightBarItemTapped()
     }
     
     func hideStepAndProgressView() {
-        //установка высоты вьюхи с прогрессбаром и шагами в 0
+        
         stepLabel.isHidden = true
         progressView.isHidden = true
         if let constraint = (stepAndProgressView.constraints.filter{$0.firstAttribute == .height}.first) {
@@ -175,11 +185,12 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         }
     }
     
+    
     @IBAction func performNextStep(_ sender: Any) {
         if(currentStep==0){
             //if(registerAccountViewController.isFormValid()){
-                currentStep+=1
-                setStep()
+            currentStep+=1
+            setStep()
             //}
         } else if(currentStep == 1){
             currentStep+=1
@@ -187,21 +198,51 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         } else if(currentStep == 2){
             currentStep+=1
             setStep()
+        }else if(currentStep == 3){
+            currentStep+=1
+            setStep()
+        }else if(currentStep == 4){
+            currentStep+=1
+            setStep()
+        }else if(currentStep == 5){
+            currentStep+=1
+            setStep()
+        }else if(currentStep == 6){
+            //registerUser
         }
+        
     }
     
     func setStep(){
         setStepLabel()
+        
+        // 0-email
+        // 1-sportType
+        // 2-regions
+        //     auto     moto    a+m
+        // 3-autoCat_motoCat_autoCat
+        // 4-autoAct_motoAct_motoCat
+        // 5-                autoAct
+        // 6-                motoAct
+        
+        
         if(currentStep == 0){
+            // email step
+            
             remove(asChildViewController: registerCollectionViewController)
             add(asChildViewController: registerAccountViewController)
-            registerAccountViewController.userModel = userEntity // setup model
+            registerAccountViewController.name = userEntity.login
+            registerAccountViewController.email = userEntity.email
+            registerAccountViewController.password = userEntity.password
             registerAccountViewController.fillFormFromUserModel()
+            registerAccountViewController.delegate = self
+            confirmButton.isEnabled = registerAccountViewController.isFormValid()
             setupRightBarItem(avalible: false, title: "")
         }
         
         if(currentStep == 1){
-            userEntity = registerAccountViewController.userModel
+            // sporttype step
+            //userEntity = registerAccountViewController.userModel
             remove(asChildViewController: registerAccountViewController)
             add(asChildViewController: registerCollectionViewController)
             
@@ -213,22 +254,11 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.collectionView.delegate = registerCollectionViewController
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
+            registerCollectionViewController.hideSearchBar()
         }
         
-//        if (currentStep == 2){
-//            var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, userModel: userEntity)
-//            dataSource.auto = userEntity.auto
-//
-//            registerCollectionViewController.datasource = dataSource
-//            dataSource.delegate = registerCollectionViewController
-//            registerCollectionViewController.collectionView.dataSource = dataSource
-//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-//            registerCollectionViewController.delegate = self
-//            registerCollectionViewController.setupRightBarItem()
-//        }
-        
         if (currentStep == 2){
-            
+            //regions step
             var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: [Int]())
             
             
@@ -239,13 +269,13 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.searchBar.delegate = dataSource
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
+            registerCollectionViewController.showSearchBar()
+            
         }
         
         if (currentStep == 3){
-            
-            var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: [Int]())
-            
-            
+            // auto or moto types
+            var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: [Int](), auto: userEntity.auto)
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
             registerCollectionViewController.collectionView.dataSource = dataSource
@@ -253,11 +283,52 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.searchBar.delegate = dataSource
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
+            registerCollectionViewController.showSearchBar()
         }
         
-        
-        
-        
+        if (currentStep == 4){
+            // auto action or moto action or moto type
+
+            if(userEntity.auto && userEntity.moto){
+                var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: [Int](), auto: false)
+                registerCollectionViewController.datasource = dataSource
+                dataSource.delegate = registerCollectionViewController
+                registerCollectionViewController.collectionView.dataSource = dataSource
+                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+                registerCollectionViewController.searchBar.delegate = dataSource
+                registerCollectionViewController.delegate = self
+                registerCollectionViewController.setupRightBarItem()
+                registerCollectionViewController.showSearchBar()
+            }else {
+                var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:userEntity.auto, userModel: userEntity)
+                
+                registerCollectionViewController.datasource = dataSource
+                dataSource.delegate = registerCollectionViewController
+                registerCollectionViewController.collectionView.dataSource = dataSource
+                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+                registerCollectionViewController.delegate = self
+                registerCollectionViewController.setupRightBarItem()
+                registerCollectionViewController.hideSearchBar()
+            }
+        }
+        if (currentStep == 5 || currentStep == 6){
+            var dataSource:ASWActionTypeCollectionViewDataSource!
+            
+            if (currentStep == 5){
+                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, userModel: userEntity)
+            }else{
+                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:false, userModel: userEntity)
+            }
+            
+            registerCollectionViewController.datasource = dataSource
+            dataSource.delegate = registerCollectionViewController
+            registerCollectionViewController.collectionView.dataSource = dataSource
+            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+            registerCollectionViewController.delegate = self
+            registerCollectionViewController.setupRightBarItem()
+            registerCollectionViewController.hideSearchBar()
+        }
+
     }
     
     func setStepLabel(){
@@ -265,4 +336,6 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         progressView.setProgress((Float(currentStep+1)/(Float(stepAmaunt))), animated: true)
     }
     
+    
+
 }

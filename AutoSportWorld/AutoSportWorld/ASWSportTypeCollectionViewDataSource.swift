@@ -118,6 +118,8 @@ class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     override func itemSelected(){
+        auto = false
+        moto = false
         for item in selectedItems{
             if item.id == 0 {
                 auto = true

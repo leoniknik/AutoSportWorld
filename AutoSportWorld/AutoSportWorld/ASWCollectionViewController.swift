@@ -20,21 +20,30 @@ protocol ASWCollectionViewControllerDelegate{
     func sportTypeSelected(moto:Bool, auto:Bool)
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool)
     func updateSelectedRegions(regionsIDs: [Int])
+    func updateSelectedRaceTypes(raceTypeIDs: [Int])
 }
 
-class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate,ASWRegionsCollectionViewDataSourceDelegate {
+class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate,ASWRegionsCollectionViewDataSourceDelegate, ASWRaceCategoryCollectionViewDataSourceDelegate {
+    func updateSelectedRaceTypes(raceTypeIDs: [Int]) {
+        delegate.updateSelectedRaceTypes(raceTypeIDs: raceTypeIDs)
+        setupRightBarItem()
+    }
+    
     
     func updateSelectedRegions(regionsIDs: [Int]) {
         delegate.updateSelectedRegions(regionsIDs: regionsIDs)
+        setupRightBarItem()
     }
 
     
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
         delegate.actionTypeSelected(auto: auto, watch: watch, join: join)
+        setupRightBarItem()
     }
     
     func sportTypeSelected(auto: Bool, moto: Bool) {
         delegate.sportTypeSelected(moto: moto, auto: auto)
+        setupRightBarItem()
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -109,6 +118,29 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         return CGSize(width: self.collectionView.frame.size.width, height: 46)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let string = datasource.selectedItems[indexPath.item]
+            datasource.selectedItems.remove(at: indexPath.item)
+            datasource.availableItems.append(string)
+        }
+        else {
+            let string = datasource.availableItems[indexPath.item]
+            datasource.availableItems.remove(at: indexPath.item)
+            datasource.selectedItems.append(string)
+        }
+        
+        //синхронизация
+        datasource.syncItems()
+        
+        //hideKeyboard()
+        
+        
+        
+        collectionView.reloadData()
+        datasource.itemSelected()
+        setupRightBarItem()
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -128,10 +160,11 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         
         //hideKeyboard()
         
-        setupRightBarItem()
+        
         
         collectionView.reloadData()
         datasource.itemSelected()
+        setupRightBarItem()
     }
     
 
@@ -139,18 +172,16 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
        
     
     func setupRightBarItem() {
-        if datasource.availableItems.count == 0 {
-            delegate.setupRightBarItem(avalible: true, title: "нет")
-            selectAllRightBarState = false
-        }
-        else {
-            delegate.setupRightBarItem(avalible: true, title: "да")
+        if datasource.availableItems.count != 0 {
+            delegate.setupRightBarItem(avalible: true, title: "Все")
             selectAllRightBarState = true
         }
+        else {
+            delegate.setupRightBarItem(avalible: true, title: "Нет")
+            selectAllRightBarState = false
+        }
     }
-    
-
-    
+ 
     var selectAllRightBarState:Bool = true
     
     func rightBarItemTapped() {
@@ -175,20 +206,22 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         setupRightBarItem()
     }
     
-//    func hideStepAndProgressView() {
-//        //установка высоты вьюхи с прогрессбаром и шагами в 0
-//        stepLabel.isHidden = true
-//        progressView.isHidden = true
-//        if let constraint = (stepAndProgressView.constraints.filter{$0.firstAttribute == .height}.first) {
-//            constraint.constant = 0.0
-//        }
-//    }
+
     
-//    func hideSearchBar() {
-//        if let constraint = (searchBar.constraints.filter{$0.firstAttribute == .height}.first) {
-//            constraint.constant = 0.0
-//        }
-//    }
+    func hideSearchBar() {
+        for constraint in (searchBar.constraints.filter{$0.firstAttribute == .height}){
+            constraint.constant = 0
+        }
+
+    }
+    
+    func showSearchBar() {
+        //if let constraints =
+        for constraint in (searchBar.constraints.filter{$0.firstAttribute == .height}){
+            constraint.constant = 56.0
+        }
+
+    }
     
     func hideKeyboard() {
         //убираем клавиатуру

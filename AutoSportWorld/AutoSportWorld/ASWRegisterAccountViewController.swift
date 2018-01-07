@@ -17,23 +17,36 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+protocol ASWRegisterAccountViewControllerDelegate{
+    func updateUserLoginInfo(valid:Bool,login:String,email:String,password:String)
+}
+
 class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     
-    var userModel = ASWUserEntity()
     
     let emailValidator = ASWEmailValidator()
     let passwordValidator = ASWPasswordValidator()
     let nameValidator = ASWNameValidator()
     
-    var emailField: SkyFloatingLabelTextField!
-    var passwordField: SkyFloatingLabelTextField!
-    var repeatPasswordField: SkyFloatingLabelTextField!
-    var nameField: SkyFloatingLabelTextField!
+    var delegate: ASWRegisterAccountViewControllerDelegate?
     
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var passwordView: UIView!
-    @IBOutlet weak var repeatPasswordView: UIView!
-    @IBOutlet weak var nameView: UIView!
+    var email = ""
+    var password = ""
+    var name = ""
+    
+    
+    @IBOutlet weak var emailField: ASWLoginPasswordTextField!
+    
+    @IBOutlet weak var passwordField: ASWLoginPasswordTextField!
+    
+    @IBOutlet weak var repeatPasswordField: ASWLoginPasswordTextField!
+    
+    @IBOutlet weak var nameField: ASWLoginPasswordTextField!
+    
+    
+    
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,153 +64,168 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupNameField() {
-        nameField = SkyFloatingLabelTextField(frame: nameView.frame)
-        nameField.placeholder = "Введите свое имя"
-        nameField.title = "Введите свое имя:"
-        nameField.tintColor = UIColor.ASWColor.black
-        nameField.selectedTitleColor = UIColor.ASWColor.grey
-        
-        nameField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
-        self.view.addSubview(nameField)
+        nameField.upperPlaceholderMode = true
+        nameField.blackBackgroundStyle = false
+        nameField.placeHolder = "Введите имя:"
+        nameField.textField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
+        nameField.setupUI()
     }
     
     func setupEmailField() {
-        emailField = SkyFloatingLabelTextField(frame: emailView.frame)
-        emailField.placeholder = "Введите адрес эл. почты"
-        emailField.title = "Введите адрес эл. почты:"
-        emailField.tintColor = UIColor.ASWColor.black
-        emailField.selectedTitleColor = UIColor.ASWColor.grey
-        
-        emailField.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
-        self.view.addSubview(emailField)
+        emailField.upperPlaceholderMode = true
+        emailField.blackBackgroundStyle = false
+        emailField.placeHolder = "Введите адрес эл. почты:"
+        emailField.textField.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
+        emailField.setupUI()
     }
     
     func setupPasswordField() {
-        passwordField = SkyFloatingLabelTextField(frame: passwordView.frame)
-        passwordField.placeholder = "Придумайте пароль"
-        passwordField.title = "Придумайте пароль:"
-        passwordField.tintColor = UIColor.ASWColor.black
-        passwordField.selectedTitleColor = UIColor.ASWColor.grey
-        passwordField.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
-        
-        self.view.addSubview(passwordField)
+        passwordField.upperPlaceholderMode = true
+        passwordField.blackBackgroundStyle = false
+        passwordField.placeHolder = "Придумайте пароль (мин. 6 знаков):"
+        passwordField.textField.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
+        passwordField.setupUI()
     }
     
     func setupRepeatPasswordField() {
-        repeatPasswordField = SkyFloatingLabelTextField(frame: repeatPasswordView.frame)
-        repeatPasswordField.placeholder = "Повторите пароль"
-        repeatPasswordField.title = "Повторите пароль:"
-        repeatPasswordField.tintColor = UIColor.ASWColor.black
-        repeatPasswordField.selectedTitleColor = UIColor.ASWColor.grey
-        repeatPasswordField.addTarget(self, action: #selector(repeatPasswordDidChange(_:)), for: .editingChanged)
-        
-        self.view.addSubview(repeatPasswordField)
+        repeatPasswordField.upperPlaceholderMode = true
+        repeatPasswordField.blackBackgroundStyle = false
+        repeatPasswordField.placeHolder = "Повторите пароль:"
+        repeatPasswordField.textField.addTarget(self, action: #selector(repeatPasswordDidChange(_:)), for: .editingChanged)
+        repeatPasswordField.setupUI()
     }
     
     
     @objc func emailDidChange(_ sender: UITextField) {
-        if var text = emailField.text {
-            
+        if var text = emailField.textField.text {
             text = emailValidator.format(text)
             sender.text = text
-            userModel.email = text
-            if !emailValidator.isValid(text) && !text.isEmpty {
-                emailField.selectedLineColor = UIColor.red
-                emailField.lineColor = UIColor.red
-            }
-            else {
-                emailField.selectedLineColor = UIColor.black
-                emailField.lineColor = UIColor.ASWColor.grey
-            }
+            email = text
+            emailField.incorrectMod = (!emailValidator.isValid(text) && !text.isEmpty)
         }
+        delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
     
     
     @objc func passwordDidChange(_ sender: UITextField) {
-        if var text = passwordField.text {
-            
+        if var text = passwordField.textField.text {
             text = passwordValidator.format(text)
             sender.text = text
-            userModel.password = text
-            if !passwordValidator.isValid(text) && !text.isEmpty  {
-                passwordField.selectedLineColor = UIColor.red
-                passwordField.lineColor = UIColor.red
-            }
-            else {
-                passwordField.selectedLineColor = UIColor.black
-                passwordField.lineColor = UIColor.ASWColor.grey
-            }
+            password = text
+            passwordField.incorrectMod =  !passwordValidator.isValid(text) && !text.isEmpty
         }
+        delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
     
     
     @objc func repeatPasswordDidChange(_ sender: UITextField) {
-        if var text = repeatPasswordField.text {
-            
+        if var text = repeatPasswordField.textField.text {
+
             text = passwordValidator.format(text)
             sender.text = text
-            
-            if !passwordValidator.isValid(text) && !text.isEmpty && text == passwordField.text {
-                repeatPasswordField.selectedLineColor = UIColor.red
-                repeatPasswordField.lineColor = UIColor.red
-            }
-            else {
-                repeatPasswordField.selectedLineColor = UIColor.black
-                repeatPasswordField.lineColor = UIColor.ASWColor.grey
-            }
+
+            repeatPasswordField.incorrectMod = !passwordValidator.isValid(text) && !text.isEmpty && text == passwordField.textField.text
         }
+        delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
     
     
     @objc func nameDidChange(_ sender: UITextField) {
-        if var text = nameField.text {
-            userModel.login = text
+        if var text = nameField.textField.text {
+            name = text
             text = nameValidator.format(text)
             sender.text = text
+            nameField.incorrectMod = !nameValidator.isValid(text)
         }
+        delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
     
     func fillFormFromUserModel(){
-        nameField.text = userModel.login
-        
-        emailField.text = userModel.email
-        
-        repeatPasswordField.text = userModel.password
-        passwordField.text = userModel.password
+        nameField.textField.text = name
+        emailField.textField.text = email
+        repeatPasswordField.textField.text = password
+        passwordField.textField.text = password
     }
     
     func isFormValid() -> Bool {
-        guard passwordValidator.isValid(passwordField.text ?? "") else {
+        guard passwordValidator.isValid(passwordField.textField.text ?? "") else {
             return false
         }
-        
-        guard passwordValidator.isValid(repeatPasswordField.text ?? "") else {
+
+        guard passwordValidator.isValid(repeatPasswordField.textField.text ?? "") else {
             return false
         }
-        
-        if let name = nameField.text {
-            guard name.characters.count != 0 else {
+
+        if let nameData = nameField.textField.text {
+            guard nameData.count != 0 else {
                 return false
             }
         }
         else {
             return false
         }
-        
-        guard emailValidator.isValid(emailField.text ?? "") else {
+
+        guard emailValidator.isValid(emailField.textField.text ?? "") else {
             return false
         }
-        
-        guard passwordField.text! == repeatPasswordField.text! else {
+
+        guard passwordField.textField.text ?? "-1" == repeatPasswordField.textField.text ?? "1" else {
             return false
         }
-        
+
         return true
     }
     
-    @IBAction func act(_ sender: Any) {
-        fillFormFromUserModel()
-    }
+//    @IBAction func act(_ sender: Any) {
+//        fillFormFromUserModel()
+//    }
     
 }
+
+
+
+//func setupNameField() {
+//    nameField = SkyFloatingLabelTextField(frame: nameView.frame)
+//    nameField.placeholder = "Введите свое имя"
+//    nameField.title = "Введите свое имя:"
+//    nameField.tintColor = UIColor.ASWColor.black
+//    nameField.selectedTitleColor = UIColor.ASWColor.grey
+//
+//    nameField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
+//    self.view.addSubview(nameField)
+//}
+//
+//func setupEmailField() {
+//    emailField = SkyFloatingLabelTextField(frame: emailView.frame)
+//    emailField.placeholder = "Введите адрес эл. почты"
+//    emailField.title = "Введите адрес эл. почты:"
+//    emailField.tintColor = UIColor.ASWColor.black
+//    emailField.selectedTitleColor = UIColor.ASWColor.grey
+//
+//    emailField.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
+//    self.view.addSubview(emailField)
+//}
+//
+//func setupPasswordField() {
+//    passwordField = SkyFloatingLabelTextField(frame: passwordView.frame)
+//    passwordField.placeholder = "Придумайте пароль"
+//    passwordField.title = "Придумайте пароль:"
+//    passwordField.tintColor = UIColor.ASWColor.black
+//    passwordField.selectedTitleColor = UIColor.ASWColor.grey
+//    passwordField.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
+//
+//    self.view.addSubview(passwordField)
+//}
+//
+//func setupRepeatPasswordField() {
+//    repeatPasswordField = SkyFloatingLabelTextField(frame: repeatPasswordView.frame)
+//    repeatPasswordField.placeholder = "Повторите пароль"
+//    repeatPasswordField.title = "Повторите пароль:"
+//    repeatPasswordField.tintColor = UIColor.ASWColor.black
+//    repeatPasswordField.selectedTitleColor = UIColor.ASWColor.grey
+//    repeatPasswordField.addTarget(self, action: #selector(repeatPasswordDidChange(_:)), for: .editingChanged)
+//
+//    self.view.addSubview(repeatPasswordField)
+//}
+//
 

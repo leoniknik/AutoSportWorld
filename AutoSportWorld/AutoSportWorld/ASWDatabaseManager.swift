@@ -17,6 +17,47 @@ class ASWDatabaseManager {
         return realm.objects(ASWUserEntity.self).filter(predicate).first
     }
     
+    func getUserBy(id:Int) -> ASWUserEntity? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(id)")
+        return realm.objects(ASWUserEntity.self).filter(predicate).first
+    }
+    
+    func setUserRegions(user:ASWUserEntity, regionIDs:[Int]){
+        
+        let realm = try! Realm()
+        
+        for (index, item) in user.favoriteRaces.enumerated() {
+            
+            try! realm.write {
+                user.favoriteRaces.remove(objectAtIndex: index)
+            }
+            
+        }
+        
+        for id in regionIDs{
+            if let region = getRegionBy(id: id) {
+                try! realm.write {
+                    user.regions.append(region)
+                }
+            }
+            else {
+                let region = ASWRegionEntity()
+                region.id = id
+                try! realm.write {
+                    user.regions.append(region)
+                }
+            }
+            
+            
+        }
+    }
+    
+    func saveUser(user:ASWUserEntity){
+        save(object: user)
+    }
+    
+    
     func getRaceBy(id: Int) -> ASWRaceEntity? {
         let realm = try! Realm()
         let predicate = NSPredicate(format: "id == \(id)")
@@ -28,8 +69,21 @@ class ASWDatabaseManager {
         guard let user = getUser() else {
             return nil
         }
-
+        
         return user.favoriteRaces.map{ $0.id }
+    }
+    
+    func getRegionBy(id: Int) -> ASWRegionEntity? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(id)")
+        return realm.objects(ASWRegionEntity.self).filter(predicate).first
+    }
+    
+    func getRegionsIds(user:ASWUserEntity) -> [Int]? {
+        guard let user = getUser() else {
+            return nil
+        }
+        return user.regions.map{ $0.id }
     }
     
     func createTestUser() {
@@ -65,7 +119,7 @@ class ASWDatabaseManager {
             if let race = getRaceBy(id: id) {
                 try! realm.write {
                     user.favoriteRaces.append(race)
-                 }
+                }
             }
             else {
                 let race: ASWRaceEntity = ASWRaceEntity()
@@ -77,6 +131,7 @@ class ASWDatabaseManager {
         }
     }
     
+    
     func checkBookmarkedRace(withID id: Int) -> Bool {
         
         guard let user = getUser() else {
@@ -84,7 +139,7 @@ class ASWDatabaseManager {
         }
         
         let predicate = NSPredicate(format: "id == \(id)")
-
+        
         guard let _ = user.favoriteRaces.filter(predicate).first else {
             return false
         }

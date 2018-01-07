@@ -30,9 +30,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_backward" translatesAutoresizingMaskIntoConstraints="NO" id="nYI-W4-qpx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_elevation" translatesAutoresizingMaskIntoConstraints="NO" id="nYI-W4-qpx">
                         <rect key="frame" x="74" y="4" width="22" height="22"/>
-                        <color key="backgroundColor" red="0.37343376900000003" green="1" blue="0.2576099282" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="0Mz-cX-kA8"/>
                             <constraint firstAttribute="height" constant="22" id="oIq-xw-bZ0"/>
@@ -61,5 +60,6 @@
     </objects>
     <resources>
         <image name="ic_backward" width="24" height="24"/>
+        <image name="ic_elevation" width="24" height="24"/>
     </resources>
 </document>

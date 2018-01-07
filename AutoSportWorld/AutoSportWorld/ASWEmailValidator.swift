@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class ASWEmailValidator {
+class ASWEmailValidator : ASWValidator{
 
     func isValid(_ string:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

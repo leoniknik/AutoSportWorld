@@ -20,4 +20,17 @@ extension UIImage {
     static let bookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tape_on")
     static let cardBookmarkOff = #imageLiteral(resourceName: "ic_bookmark_card_off")
     static let cardBookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tab_off")
+    
+    static func from(_ r:Int, _ g:Int, _ b:Int) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        context!.setFillColor(UIColor.init(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: 1.0).cgColor)
+        context!.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
+    
 }
