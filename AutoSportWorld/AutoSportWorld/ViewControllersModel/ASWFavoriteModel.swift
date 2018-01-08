@@ -26,10 +26,15 @@ class ASWFavoriteModel: ASWFeedsModelProtocol {
     func updateEvents(cursor: String?) {
         
         guard let racesIDs = databaseService.getRaceIds() else {
+            delegate?.updateError()
             return
         }
         
         countOfEvents = racesIDs.count
+        
+        if countOfEvents == 0 {
+            delegate?.updateError()
+        }
         
         for id in racesIDs {
             let request = ASWRaceRequest(raceID: id)

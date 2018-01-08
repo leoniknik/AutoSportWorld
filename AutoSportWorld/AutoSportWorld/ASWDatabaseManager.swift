@@ -29,7 +29,7 @@ class ASWDatabaseManager {
             return nil
         }
 
-        return user.favoriteRaces.map{ $0.id }
+        return user.favoriteRaces.map{$0.id}
     }
     
     func createTestUser() {

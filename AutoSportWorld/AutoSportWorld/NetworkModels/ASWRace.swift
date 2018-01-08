@@ -112,6 +112,50 @@ class ASWRace {
         return result
     }
     
+    func getFullShedule() -> String {
+        
+        var result = ""
+        guard let times = self.times else {
+            return "Время не указано"
+        }
+        
+        for item in times {
+            if let start = item.start, let end = item.end {
+                let startTime = Date(timeIntervalSince1970: TimeInterval(start))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = (item.dateOnly ?? true) == true ? "с dd.MM.YY" : "с HH:MM dd.MM.YY"
+                let startTimeString = "\(dateFormatter.string(from: startTime))"
+                
+                let endTime = Date(timeIntervalSince1970: TimeInterval(end))
+                dateFormatter.dateFormat = " - dd.MM.YY"
+                let endTimeString = "\(dateFormatter.string(from: endTime))\n"
+                
+                result.append(startTimeString + endTimeString)
+            }
+            else if let start = item.start {
+                let time = Date(timeIntervalSince1970: TimeInterval(start))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = (item.dateOnly ?? true) == true ? "с dd.MM.YY" : "с dd.MM.YY HH:MM"
+                result.append("\(dateFormatter.string(from: time))\n")
+            }
+            else if let end = item.end {
+                let time = Date(timeIntervalSince1970: TimeInterval(end))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "до dd.MM.YY"
+                result.append("\(dateFormatter.string(from: time))\n")
+            }
+            else {
+                continue
+            }
+        }
+        
+        return result
+    }
+    
+    func getRaceCategories() -> String {
+        return (self.categories ?? []).map{$0.name ?? ""}.joined(separator: "; ")
+    }
+    
 }
 
 class ASWRaceTime {

@@ -84,6 +84,17 @@ class ASWEventViewController: UIViewController {
     
     @objc func shareEvent() {
         
+        let textToShare = """
+            \(race.title ?? "")\n
+            \(race.getRaceCategories())\n
+            \(race.getFullShedule())\n
+            \(race.whereRace ?? "")
+        """
+        
+        let objectsToShare = [textToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     @objc func setFavorite() {

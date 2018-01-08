@@ -70,7 +70,11 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     
     @objc func eventsCallback(_ notification: Notification) {
         if let response = (notification.userInfo?["data"] as? ASWListRacesParser) {
-            self.events.append(contentsOf: response.races)
+            for race in response.races {
+                if (!self.events.map{$0.id ?? "-1"}.contains(race.id ?? "-1")) {
+                    self.events.append(race)
+                }
+            }
             delegate?.update(cursor: response.cursor)
         }
     }

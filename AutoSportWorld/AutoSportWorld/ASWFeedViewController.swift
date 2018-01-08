@@ -32,6 +32,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     
     override func viewWillAppear(_ animated: Bool) {
         updateRefreshControl()
+        tableView.reloadData()
     }
     
     func setupUI() {

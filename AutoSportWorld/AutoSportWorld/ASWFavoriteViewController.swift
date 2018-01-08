@@ -204,13 +204,12 @@ extension ASWFavoriteViewController: UITableViewDataSource {
         
         cell.eventTitle.text = race.shortTitle
         
-        if let categories = race.categories {
-            var categoryText = categories.map({"\($0.name ?? "")"}).joined(separator: "; ")
-            if (categoryText.isEmpty) {
-                categoryText = "Нет категорий"
-            }
-            cell.categoriesLabel.text = categoryText
+        var categoryText = race.getRaceCategories()
+        if (categoryText.isEmpty) {
+            categoryText = "Нет категорий"
         }
+        cell.categoriesLabel.text = categoryText
+        
         
         cell.timeLabel.text = race.getShortShedule()
         cell.whereLabel.text = race.whereRace
