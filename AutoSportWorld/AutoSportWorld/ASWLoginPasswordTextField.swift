@@ -22,7 +22,8 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
             if(isPasswordHiddenMode){
                 passwordModeButton.setImage(UIImage.passwordSecureOnPicture, for: .normal)
             }else{
-                passwordModeButton.setImage(UIImage.passwordSecureOffPicture, for: .normal)
+                
+                passwordModeButton.setImage(blackBackgroundStyle ?   UIImage.passwordSecureOffPictureBlackBack:UIImage.passwordSecureOffPictureWhiteBack, for: .normal)
             }
             
             let when = DispatchTime.now() + 0.01 // change 2 to desired number of seconds
@@ -59,12 +60,17 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
     var placeHolder:String = ""{
         didSet{
             placeHolderLabel.text = placeHolder
-            upperPlaceHolderLabel.text = placeHolder
+        }
+    }
+    
+    var upperPlaceHolder:String = ""{
+        didSet{
+            upperPlaceHolderLabel.text = upperPlaceHolder
         }
     }
     
     
-    var validator: ASWValidator?
+
     var blackBackgroundStyle:Bool = false
     var upperPlaceholderMode:Bool = false
     
@@ -127,6 +133,7 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
         }
         
         textFieldDidEndEditing(self.textField)
+        isPasswordHiddenMode = true
         view.setNeedsDisplay()
     }
 

@@ -19,8 +19,8 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     var availableItems: [ASWCollectionItem] = []
     var selectedItems: [ASWCollectionItem] = []
     
-    var titleForSelectedItems: String = ""
-    var titleForAvailableItems: String = ""
+    var titleForSelectedItems: [String] = ["","",""]
+    var titleForAvailableItems: [String] = ["","",""]
     
 
     
@@ -50,13 +50,27 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
         case UICollectionElementKindSectionHeader:
             
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,withReuseIdentifier: "ASWCollectionReusableView", for: indexPath) as! ASWCollectionReusableView
+            
+            headerView.header.lineBreakMode = .byWordWrapping
+            headerView.header.numberOfLines = 2
+            headerView.header.textAlignment = .center
+            
             if indexPath.section == 0 {
-                headerView.header.text = self.titleForSelectedItems + " (\(self.selectedItems.count))"
+                
+                var ending = titleForSelectedItems[2] + " (\(self.selectedItems.count))"
+                let title = ASWAtributedString.getAtributedString(begining: titleForSelectedItems[0], bold: titleForSelectedItems[1], end: ending,color:UIColor.ASWColor.grey)
+                headerView.header.attributedText = title
             }
             else {
-                headerView.header.text = self.titleForAvailableItems + " (\(self.availableItems.count))"
+                var ending = titleForAvailableItems[2] + " (\(self.availableItems.count))"
+                let title = ASWAtributedString.getAtributedString(begining: titleForAvailableItems[0], bold: titleForAvailableItems[1], end: ending, color: UIColor.ASWColor.grey)
+                headerView.header.attributedText = title
+//                headerView.header.text = self.titleForAvailableItems + " (\(self.availableItems.count))"
             }
-            headerView.header.textColor = UIColor.ASWColor.grey
+            
+            //headerView.header.text = "11111 222222   3333333 444444 555555 66666 888888 9999999 9999999"
+            
+           // headerView.header.textColor = UIColor.ASWColor.grey
             return headerView
         default:
             assert(false, "Unexpected element kind")
@@ -70,11 +84,11 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     
     func syncItems() {
         
-        guard isSearching else {
-            rawAvailableItems = availableItems
-            rawSelectedItems = selectedItems
-            return
-        }
+//        guard isSearching else {
+//            rawAvailableItems = availableItems
+//            rawSelectedItems = selectedItems
+//            return
+//        }
         
         for availableItem in availableItems {
             if let index = rawSelectedItems.index(where: { $0.id == availableItem.id }){
@@ -82,21 +96,21 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
                 rawAvailableItems.append(availableItem)
             }
         }
-        
+
         for selectedItem in selectedItems {
             if let index = rawAvailableItems.index(where: { $0.id == selectedItem.id }){
                 rawAvailableItems.remove(at: index)
                 rawSelectedItems.append(selectedItem)
             }
         }
-        
-        availableItems = rawAvailableItems
-        selectedItems = rawSelectedItems
-        isSearching = false
+//
+//        availableItems = rawAvailableItems
+//        selectedItems = rawSelectedItems
+        //isSearching = false
         
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearching = true
+        //isSearching = true
     }
 }

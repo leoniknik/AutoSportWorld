@@ -27,8 +27,8 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(regionsCallbackError(_:)), name: .regionsCallbackError, object: nil)
         
         self.collectionView = collectionView
-        titleForSelectedItems = "Выбранные регионы"
-        titleForAvailableItems = "Выберите интересующий регион"
+        titleForSelectedItems = ["Выбранные регионы","",""]
+        titleForAvailableItems = ["Выберите интересующий регион","",""]
         
         rawAvailableItems = []
         
@@ -105,19 +105,21 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if !searchText.isEmpty{
         availableItems = searchText.isEmpty ? rawAvailableItems : rawAvailableItems.filter { (item: ASWCollectionItem) -> Bool in
             
             return item.searchString.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         
         selectedItems = searchText.isEmpty ? rawSelectedItems : rawSelectedItems.filter { (item: ASWCollectionItem) -> Bool in
-            let string = "\(item.id)"
-            return string.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+           
+            return item.searchString.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            }}else{
+            selectedItems = rawSelectedItems
+            availableItems = rawAvailableItems
         }
 
-        collectionView.reloadData()
-    }
+        collectionView.reloadData()    }
     
     override func itemSelected() {
         var selectedIDs = [Int]()

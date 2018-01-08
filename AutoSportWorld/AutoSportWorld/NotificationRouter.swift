@@ -23,4 +23,7 @@ extension Notification.Name {
     static let raceCategoryCallback = Notification.Name("raceCategoryCallback")
     static let raceCategoryCallbackError = Notification.Name("raceCategoryCallbackError")
     
+    static let signupCallback = Notification.Name("signupCallback")
+    static let signupCallbackError = Notification.Name("signupCallbackError")
+    
 }

@@ -29,6 +29,8 @@ class ASWUserEntity: Object {
     let favoriteRaces = List<ASWRaceEntity>()
     
     let regions = List<ASWRegionEntity>()
+    let autoCategories = List<ASWRaceCategoryEntity>()
+    let motoCategories = List<ASWRaceCategoryEntity>()
     
     
     

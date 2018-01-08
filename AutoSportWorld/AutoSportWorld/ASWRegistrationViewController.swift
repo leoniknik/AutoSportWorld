@@ -24,50 +24,79 @@ import UIKit
 
 class ASWRegistrationViewController: UIViewController, ASWCollectionViewControllerDelegate, ASWRegisterAccountViewControllerDelegate {
     
-    func updateUserLoginInfo(valid: Bool, login: String, email: String, password: String) {
-        confirmButton.isEnabled = valid
-        userEntity.login = login
-        userEntity.email = email
-        userEntity.password = password
+    struct RawUserParams{
+        var login:String = ""
+        var email:String = ""
+        var password:String = ""
+        
+        var auto:Bool = false
+        var moto:Bool = false
+        
+        var autoWatch:Bool = false
+        var autoJoin:Bool = false
+        var motoWatch:Bool = false
+        var motoJoin:Bool = false
+        
+        var regions:[Int] = [Int]()
+        var autoCategories:[Int] = [Int]()
+        var motoCategories:[Int] = [Int]()
+        
     }
     
-    func updateSelectedRaceTypes(raceTypeIDs: [Int]) {
-        //updates
+    func updateUserLoginInfo(valid: Bool, login: String, email: String, password: String) {
+        confirmButton.isEnabled = valid
+        rawUser.login = login
+        rawUser.email = email
+        rawUser.password = password
+//        userEntity.login = login
+//        userEntity.email = email
+//        userEntity.password = password
+    }
+    
+    func updateSelectedRaceTypes(auto:Bool,raceTypeIDs: [Int]) {
+        if auto{
+            rawUser.autoCategories = raceTypeIDs
+        }else{
+            rawUser.motoCategories = raceTypeIDs
+        }
+        //databaseManager.setUserRaceCategories(categoriesIDs: raceTypeIDs, auto: auto)
+        confirmButton.isEnabled = raceTypeIDs.count>0
     }
     
     
     func updateSelectedRegions(regionsIDs: [Int]) {
-        // updates
+        rawUser.regions = regionsIDs
+        //databaseManager.setUserRegions(regionIDs: regionsIDs)
+        confirmButton.isEnabled = regionsIDs.count>0
     }
     
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
         if auto {
-            userEntity.autoWatch = watch
-            userEntity.autoJoin = join
+            rawUser.autoWatch = watch
+            rawUser.autoJoin = join
         }else{
-            userEntity.motoWatch = watch
-            userEntity.motoJoin = join
+            rawUser.motoWatch = watch
+            rawUser.motoJoin = join
         }
+        //databaseManager.setUserActions(auto: auto, watch: watch, join: join)
+        confirmButton.isEnabled = watch || join
     }
     
     
     func sportTypeSelected(moto: Bool, auto: Bool) {
-        userEntity.auto = auto
-        userEntity.moto = moto
-        
+//        userEntity.auto = auto
+//        userEntity.moto = moto
+        rawUser.moto = moto
+        rawUser.auto = auto
+    
         if (auto && moto){
             stepAmaunt = 7
         }else if (auto || moto){
             stepAmaunt = 5
-        }else{
-            stepAmaunt = 2
         }
-        
+        confirmButton.isEnabled = auto||moto
         setStepLabel()
     }
-    
-    
-    
     
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
@@ -80,12 +109,15 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     @IBOutlet weak var containerView: UIView!
     
     var currentStep:Int = 0
-    var stepAmaunt:Int = 2
+    var stepAmaunt:Int = 5
+    var databaseManager = ASWDatabaseManager()
+    var rawUser = RawUserParams()
     
-    var userEntity = ASWUserEntity()
+    
+    
+    
     
 
-    
     private lazy var registerAccountViewController: ASWRegisterAccountViewController = {
         // Load Storyboard
         let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -132,20 +164,43 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         setupUI()
         add(asChildViewController: registerAccountViewController)
+        
+        //testcode
+
+//        userEntity.login = "123123"
+//        userEntity.email = "edd@dede.ru"
+//        userEntity.password = "123123"
+//        registerAccountViewController.name = userEntity.login
+//        registerAccountViewController.email = userEntity.email
+//        registerAccountViewController.password = userEntity.password
+        
+        rawUser.login = "123123"
+        rawUser.email = "edd@dede.ru"
+        rawUser.password = "123123"
+        registerAccountViewController.name = rawUser.login
+        registerAccountViewController.email = rawUser.email
+        registerAccountViewController.password = rawUser.password
+        
+        registerAccountViewController.fillFormFromUserModel()
+        
+        
         registerAccountViewController.delegate = self
         setupRightBarItem(avalible: false, title: "")
         setStepLabel()
         ASWButtonManager.setupButton(button: confirmButton)
-        confirmButton.isEnabled = false
+        //confirmButton.isEnabled = false
+        
+        
     }
     
     func setupUI() {
         
         confirmButton.backgroundColor = UIColor.ASWColor.black
         stepLabel.textColor = UIColor.ASWColor.grey
-        progressView.progressTintColor = UIColor.ASWColor.yellow
+        //progressView.progressTintColor = UIColor.ASWColor.black
         
         //
         //важно вынести в отдельную функцию
@@ -185,37 +240,91 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         }
     }
     
+    func setConfirmButtonText(_ final:Bool){
+        if final{
+            confirmButton.setTitle("Завершить регистрацию", for: .normal)
+            confirmButton.setTitle("Завершить регистрацию", for: .disabled)
+        }else{
+            confirmButton.setTitle("Далее", for: .normal)
+            confirmButton.setTitle("Далее", for: .disabled)
+        }
+        self.view.setNeedsDisplay()
+    }
+    
+    
+    
+//    func registerUser(){
+//        userEntity = ASWDatabaseManager().createUser(login: userEntity.login, password: userEntity.password)
+//        registerUserSucsess()
+//    }
+//
+//    func registerUserSucsess(){
+//        let alert = UIAlertController(title: "Регистрация", message: "Пользователь успешно создан", preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//        currentStep+=1
+//        setStep()
+//        setConfirmButtonText(false)
+//    }
+    
+    func checkEmail(){
+        if(Int(arc4random_uniform(2))==1){
+            currentStep+=1
+            setStep()
+            setConfirmButtonText(false)
+        }else{
+            let alert = UIAlertController(title: "Регистрация", message: "Такой email уже зарегистрирован", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     
     @IBAction func performNextStep(_ sender: Any) {
         if(currentStep==0){
-            //if(registerAccountViewController.isFormValid()){
-            currentStep+=1
-            setStep()
-            //}
+            checkEmail()
         } else if(currentStep == 1){
             currentStep+=1
             setStep()
+            setConfirmButtonText(false)
         } else if(currentStep == 2){
             currentStep+=1
             setStep()
+            setConfirmButtonText(false)
         }else if(currentStep == 3){
             currentStep+=1
             setStep()
+            setConfirmButtonText(!(rawUser.auto&&rawUser.moto))
         }else if(currentStep == 4){
-            currentStep+=1
-            setStep()
+            if ((rawUser.auto&&rawUser.moto)){
+                currentStep+=1
+                setStep()
+                setConfirmButtonText(false)
+            }else{
+                completeRegistration()
+            }
         }else if(currentStep == 5){
             currentStep+=1
             setStep()
+               setConfirmButtonText(true)
         }else if(currentStep == 6){
-            //registerUser
+            completeRegistration()
         }
+        
+    }
+    
+    func completeRegistration(){
+        
+        let alert = UIAlertController(title: "Регистрация", message: "Регистрация завершена", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
         
     }
     
     func setStep(){
         setStepLabel()
-        
+        registerCollectionViewController.searchBar?.text = ""
         // 0-email
         // 1-sportType
         // 2-regions
@@ -231,9 +340,9 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             
             remove(asChildViewController: registerCollectionViewController)
             add(asChildViewController: registerAccountViewController)
-            registerAccountViewController.name = userEntity.login
-            registerAccountViewController.email = userEntity.email
-            registerAccountViewController.password = userEntity.password
+            registerAccountViewController.name = rawUser.login
+            registerAccountViewController.email = rawUser.email
+            registerAccountViewController.password = rawUser.password
             registerAccountViewController.fillFormFromUserModel()
             registerAccountViewController.delegate = self
             confirmButton.isEnabled = registerAccountViewController.isFormValid()
@@ -241,12 +350,10 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         }
         
         if(currentStep == 1){
-            // sporttype step
-            //userEntity = registerAccountViewController.userModel
             remove(asChildViewController: registerAccountViewController)
             add(asChildViewController: registerCollectionViewController)
             
-            var dataSource = ASWSportTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, userModel: userEntity)
+            var dataSource = ASWSportTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, auto: rawUser.auto,moto:rawUser.moto)
             
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
@@ -255,11 +362,14 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
             registerCollectionViewController.hideSearchBar()
+            confirmButton.isEnabled = rawUser.auto || rawUser.moto
         }
         
         if (currentStep == 2){
             //regions step
-            var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: [Int]())
+            var selectedRegions = rawUser.regions
+            
+            var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: selectedRegions)
             
             
             registerCollectionViewController.datasource = dataSource
@@ -270,12 +380,14 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
             registerCollectionViewController.showSearchBar()
-            
+            confirmButton.isEnabled = selectedRegions.count>0
         }
         
         if (currentStep == 3){
             // auto or moto types
-            var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: [Int](), auto: userEntity.auto)
+            var selectedRaceTypes = rawUser.auto ? rawUser.autoCategories : rawUser.motoCategories
+            
+            var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: rawUser.auto)
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
             registerCollectionViewController.collectionView.dataSource = dataSource
@@ -284,13 +396,22 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
             registerCollectionViewController.showSearchBar()
+            
+            //if (userEntity.auto){
+                confirmButton.isEnabled = selectedRaceTypes.count>0
+            //}else{
+            //    confirmButton.isEnabled = selectedMotoRaceTypes.count>0
+            //}
         }
         
         if (currentStep == 4){
             // auto action or moto action or moto type
 
-            if(userEntity.auto && userEntity.moto){
-                var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: [Int](), auto: false)
+            if(rawUser.auto && rawUser.moto){
+                
+                var selectedRaceTypes = rawUser.auto ? rawUser.autoCategories : rawUser.motoCategories
+                
+                var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: false)
                 registerCollectionViewController.datasource = dataSource
                 dataSource.delegate = registerCollectionViewController
                 registerCollectionViewController.collectionView.dataSource = dataSource
@@ -299,8 +420,9 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 registerCollectionViewController.delegate = self
                 registerCollectionViewController.setupRightBarItem()
                 registerCollectionViewController.showSearchBar()
+                confirmButton.isEnabled = selectedRaceTypes.count>0
             }else {
-                var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:userEntity.auto, userModel: userEntity)
+                var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:rawUser.auto, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin,watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch)
                 
                 registerCollectionViewController.datasource = dataSource
                 dataSource.delegate = registerCollectionViewController
@@ -309,15 +431,22 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 registerCollectionViewController.delegate = self
                 registerCollectionViewController.setupRightBarItem()
                 registerCollectionViewController.hideSearchBar()
+                if(rawUser.auto){
+                    confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
+                }else{
+                    confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
+                }
             }
         }
         if (currentStep == 5 || currentStep == 6){
             var dataSource:ASWActionTypeCollectionViewDataSource!
             
             if (currentStep == 5){
-                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, userModel: userEntity)
+                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.autoJoin,watch: rawUser.autoWatch)
+                confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
             }else{
-                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:false, userModel: userEntity)
+                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.motoJoin,watch: rawUser.motoWatch)
+                confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
             }
             
             registerCollectionViewController.datasource = dataSource
@@ -335,7 +464,5 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         stepLabel.text = "шаг \(currentStep+1) из \(stepAmaunt)"
         progressView.setProgress((Float(currentStep+1)/(Float(stepAmaunt))), animated: true)
     }
-    
-    
 
 }

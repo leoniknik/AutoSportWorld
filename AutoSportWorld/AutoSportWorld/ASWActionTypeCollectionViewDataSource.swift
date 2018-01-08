@@ -32,25 +32,20 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     var join:Bool = false
 
     var titles = ["Посмотреть","Покаткаться"]
-    init(collectionView: UICollectionView, auto:Bool, userModel:ASWUserEntity) {
+    init(collectionView: UICollectionView, auto:Bool, join:Bool, watch:Bool) {
         super.init()
         self.auto = auto
         self.collectionView = collectionView
-        
-        
-        titleForSelectedItems = "Мои действия"
-        titleForAvailableItems = "Доступные действия"
-
+        self.watch = watch
+        self.join = join
         if(auto){
-            watch = userModel.autoWatch
-            join = userModel.autoJoin
-            titleForSelectedItems = "Выбранные действия для автогонок"
-            titleForAvailableItems = "Выберите интересующее действие для автогонок"
+            
+            titleForSelectedItems = ["Выбранные действия для ","автогонок",""]
+            titleForAvailableItems = ["Выберите интересующее действие для ","автогонок",""]
         }else{
-            watch = userModel.motoWatch
-            join = userModel.motoJoin
-            titleForSelectedItems = "Выбранные действия для мотогонок"
-            titleForAvailableItems = "Выберите интересующее действие для мотогонок"
+            
+            titleForSelectedItems = ["Выбранные действия для ","мотогонок",""]
+            titleForAvailableItems = ["Выберите интересующее действие для ","мотогонок",""]
         }
         
         

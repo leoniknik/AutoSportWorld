@@ -51,9 +51,12 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    override func viewDidLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupForm()
+    }
+    override func viewDidLayoutSubviews() {
+        
     }
     
     func setupForm() {
@@ -66,7 +69,9 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     func setupNameField() {
         nameField.upperPlaceholderMode = true
         nameField.blackBackgroundStyle = false
+        nameField.isPasswordField = false
         nameField.placeHolder = "Введите имя:"
+        nameField.upperPlaceHolder = "Введите имя:"
         nameField.textField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
         nameField.setupUI()
     }
@@ -74,7 +79,9 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     func setupEmailField() {
         emailField.upperPlaceholderMode = true
         emailField.blackBackgroundStyle = false
+        emailField.isPasswordField = false
         emailField.placeHolder = "Введите адрес эл. почты:"
+        emailField.upperPlaceHolder = "Введите адрес эл. почты:"
         emailField.textField.addTarget(self, action: #selector(emailDidChange(_:)), for: .editingChanged)
         emailField.setupUI()
     }
@@ -82,8 +89,10 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     func setupPasswordField() {
         passwordField.upperPlaceholderMode = true
         passwordField.blackBackgroundStyle = false
-        passwordField.placeHolder = "Придумайте пароль (мин. 6 знаков):"
+        passwordField.placeHolder = "Придумайте пароль"
+        passwordField.upperPlaceHolder = "Придумайте пароль (мин. 6 знаков):"
         passwordField.textField.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
+        passwordField.isPasswordField = true
         passwordField.setupUI()
     }
     
@@ -91,7 +100,9 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
         repeatPasswordField.upperPlaceholderMode = true
         repeatPasswordField.blackBackgroundStyle = false
         repeatPasswordField.placeHolder = "Повторите пароль:"
+        repeatPasswordField.upperPlaceHolder = "Повторите пароль:"
         repeatPasswordField.textField.addTarget(self, action: #selector(repeatPasswordDidChange(_:)), for: .editingChanged)
+        repeatPasswordField.isPasswordField = true
         repeatPasswordField.setupUI()
     }
     
@@ -101,7 +112,7 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
             text = emailValidator.format(text)
             sender.text = text
             email = text
-            emailField.incorrectMod = (!emailValidator.isValid(text) && !text.isEmpty)
+            emailField.incorrectMod = !(emailValidator.isValid(text) && !text.isEmpty)
         }
         delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
@@ -112,7 +123,7 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
             text = passwordValidator.format(text)
             sender.text = text
             password = text
-            passwordField.incorrectMod =  !passwordValidator.isValid(text) && !text.isEmpty
+            passwordField.incorrectMod =  !(passwordValidator.isValid(text) && !text.isEmpty)
         }
         delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
@@ -124,7 +135,7 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
             text = passwordValidator.format(text)
             sender.text = text
 
-            repeatPasswordField.incorrectMod = !passwordValidator.isValid(text) && !text.isEmpty && text == passwordField.textField.text
+            repeatPasswordField.incorrectMod = !(passwordValidator.isValid(text) &&  text == passwordField.textField.text)
         }
         delegate?.updateUserLoginInfo(valid: isFormValid(), login: name, email: email, password: password)
     }
@@ -145,6 +156,7 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
         emailField.textField.text = email
         repeatPasswordField.textField.text = password
         passwordField.textField.text = password
+        setupForm()
     }
     
     func isFormValid() -> Bool {

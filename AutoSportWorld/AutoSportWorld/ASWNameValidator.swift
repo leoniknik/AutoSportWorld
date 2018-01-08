@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class ASWNameValidator : ASWValidator {
+class ASWNameValidator {
     
     func isValid(_ string: String) -> Bool {
         return string.count > 1

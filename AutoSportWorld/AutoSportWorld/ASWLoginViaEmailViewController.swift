@@ -16,25 +16,34 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
 
         override func viewDidLayoutSubviews() {
             
-            setupUI()
+            
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUI()
+    }
     
     func setupUI(){
         ASWButtonManager.setupLoginButton(button: loginButton)
         
         loginField.blackBackgroundStyle = true
         loginField.placeHolder = "Логин"
+        passwordField.isPasswordField = false
         loginField.setupUI()
         
         passwordField.blackBackgroundStyle = true
         passwordField.isPasswordField = true
         passwordField.placeHolder = "Пароль"
         passwordField.setupUI()
+        
+        
+        loginField.textField.text = "e@gmail.com"
+        passwordField.textField.text = "rootroot"
     }
 
     let emailValidator = ASWEmailValidator()
     let passwordValidator = ASWPasswordValidator()
-    let nameValidator = ASWNameValidator()
     
     @IBOutlet weak var loginField: ASWLoginPasswordTextField!
     
@@ -45,6 +54,20 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
     
     
     @IBAction func loginPressed(_ sender: Any) {
+        var login = loginField.textField.text ?? ""
+        var password = passwordField.textField.text ?? ""
+        if(emailValidator.isValid(login)&&passwordValidator.isValid(password)){
+            
+            func sucsessFunc(log:String,pas:String){
+                ASWDatabaseManager().loginUser(login: log, password: pas)
+            }
+            
+            func errorFunc(){
+                
+            }
+            
+            ASWNetworkManager.loginUser(email: login, password: password, sucsessFunc: sucsessFunc, errorFunc: errorFunc)
+        }
     }
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {

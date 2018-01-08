@@ -18,7 +18,7 @@
 import UIKit
 
 protocol ASWRaceCategoryCollectionViewDataSourceDelegate{
-    func updateSelectedRaceTypes(raceTypeIDs:[Int])
+    func updateSelectedRaceTypes(auto:Bool,raceTypeIDs:[Int])
 }
 
 class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
@@ -42,11 +42,11 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         self.auto = auto
         
         if(auto){
-            titleForSelectedItems = "Выбранные виды автогонок"
-            titleForAvailableItems = "Выберите интересующий вид автогонок"
+            titleForSelectedItems = ["Выбранные виды ","автогонок",""]
+            titleForAvailableItems = ["Выберите интересующий вид ","автогонок",""]
         }else{
-            titleForSelectedItems = "Выбранные виды мотогонок"
-            titleForAvailableItems = "Выберите интересующий вид мотогонок"
+            titleForSelectedItems = ["Выбранные виды ","мотогонок",""]
+            titleForAvailableItems = ["Выберите интересующий вид ","мотогонок",""]
         }
         
         
@@ -80,7 +80,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         weak var weakself = self
         DispatchQueue.main.async { [weak self] in
             self?.collectionView?.reloadData()
-            self?.delegate?.updateSelectedRaceTypes(raceTypeIDs: self?.selectedRaceCategory ?? [Int]())
+            self?.delegate?.updateSelectedRaceTypes(auto:self?.auto ?? false, raceTypeIDs: self?.selectedRaceCategory ?? [Int]())
         }
         
 
@@ -146,8 +146,8 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         availableItems = searchText.isEmpty ? rawAvailableItems : rawAvailableItems.filter { (item: ASWCollectionItem) -> Bool in
-            let string = "\(item.id)"
-            return string.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            
+            return item.searchString.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         
         selectedItems = searchText.isEmpty ? rawSelectedItems : rawSelectedItems.filter { (item: ASWCollectionItem) -> Bool in
@@ -163,7 +163,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         for item in rawSelectedItems{
             selectedIDs.append(item.id)
         }
-        delegate?.updateSelectedRaceTypes(raceTypeIDs: selectedIDs)
+        delegate?.updateSelectedRaceTypes(auto:auto, raceTypeIDs: selectedIDs)
     }
     
 }

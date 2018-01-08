@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class ASWPasswordValidator : ASWValidator {
+class ASWPasswordValidator  {
     
     func isValid(_ string:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z]{6,16}"

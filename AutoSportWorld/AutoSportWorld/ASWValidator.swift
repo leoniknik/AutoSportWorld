@@ -8,7 +8,8 @@
 
 import UIKit
 
-protocol ASWValidator{
-    func isValid(_ string:String) -> Bool
-    func format(_ string: String) -> String
-}
+//protocol ASWValidator{
+//    func isValid(_ string:String) -> Bool
+//    func format(_ string: String) -> String
+//}
+

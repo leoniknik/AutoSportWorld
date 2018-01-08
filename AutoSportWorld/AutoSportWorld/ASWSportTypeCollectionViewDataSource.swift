@@ -30,14 +30,14 @@ class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     var moto = false
     var auto = false
     
-    init(collectionView: UICollectionView, userModel:ASWUserEntity) {
+    init(collectionView: UICollectionView, auto:Bool, moto:Bool) {
         super.init()
         
         self.collectionView = collectionView
-        titleForSelectedItems = "Мои виды спорта"
-        titleForAvailableItems = "Доступные виды спорта"
-        auto = userModel.auto
-        moto = userModel.moto
+        titleForSelectedItems = ["Мои виды спорта","",""]
+        titleForAvailableItems = ["Доступные виды спорта","",""]
+        self.auto = auto
+        self.moto = moto
         //        0 - auto
         //        1 - moto
         
