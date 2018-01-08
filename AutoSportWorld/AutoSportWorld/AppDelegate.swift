@@ -25,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initGoogleMap()
         printRealmConfig()
         
+        //func test(){}
+        
+        //ASWNetworkManager.signupUser(email:"e@gmail.com",password:"rootroot", sucsessFunc: test, errorFunc: test)
+        
+        //ASWNetworkManager.loginUser(email:"evtuhov.aleksander@gmail.com",password:"rootroot")
+        //ASWNetworkManager.signupUser(email:"evtuhov.aleksander@gmail.com",password:"rootroot")
         return true
     }
 

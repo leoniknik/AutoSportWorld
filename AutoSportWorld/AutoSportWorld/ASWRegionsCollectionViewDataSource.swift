@@ -42,19 +42,26 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         if let response = (notification.userInfo?["data"] as? ASWListRegionsParser) {
             rawAvailableItems  = []
             regions = response.regions
-            for region in response.regions{
-                var id = Int(region.id ?? "0") ?? 0
-                var string = "\(region.codes)\(region.name)\(region.centerCity)"
-                var collectionItem = ASWCollectionItem(id,string)
-                
-                if(selectedRegions.contains(id)){
-                //if let item = userEntity.autoRegions.first(where: { $0.id == id }){
-                    rawSelectedItems.append(collectionItem)
-                }else{
-                    rawAvailableItems.append(collectionItem)
-                }
+            setSelectedRegions(regionsIDs: selectedRegions)
+        }
+    }
+    
+    func setSelectedRegions(regionsIDs:[Int]){
+        selectedRegions = regionsIDs
+        rawAvailableItems = []
+        rawSelectedItems = []
+        for region in regions{
+            var id = Int(region.id ?? "0") ?? 0
+            var string = "\(region.codes)\(region.name)\(region.centerCity)"
+            var collectionItem = ASWCollectionItem(id,string)
+            
+            if(selectedRegions.contains(id)){
+                rawSelectedItems.append(collectionItem)
+            }else{
+                rawAvailableItems.append(collectionItem)
             }
         }
+        
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
         weak var weakself = self
@@ -62,11 +69,6 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
             weakself?.collectionView?.reloadData()
             self?.delegate?.updateSelectedRegions(regionsIDs: self?.selectedRegions ?? [Int]())
         }
-        
-        
-        
-        
-        
     }
     
     @objc func regionsCallbackError(_ notification: Notification) {

@@ -127,6 +127,8 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         return viewController
     }()
     
+    
+    
     private lazy var registerCollectionViewController: ASWCollectionViewController = {
         // Load Storyboard
         let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -135,6 +137,47 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         var viewController = storyboard.instantiateViewController(withIdentifier: "rr") as! ASWCollectionViewController
         return viewController
     }()
+    
+    var _regionsDataSource: ASWRegionsCollectionViewDataSource? = nil
+    var regionsDataSource: ASWRegionsCollectionViewDataSource{
+        get{
+            if _regionsDataSource == nil{
+                _regionsDataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: rawUser.regions)
+            }else{
+                _regionsDataSource?.collectionView = registerCollectionViewController.collectionView
+                _regionsDataSource?.setSelectedRegions(regionsIDs: rawUser.regions)
+            }
+            return _regionsDataSource!
+        }
+    }
+    
+    var _autoCategoryDataSource: ASWRaceCategoryCollectionViewDataSource? = nil
+    var autoCategoryDataSource: ASWRaceCategoryCollectionViewDataSource{
+        get{
+            if _autoCategoryDataSource == nil{
+                _autoCategoryDataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: rawUser.autoCategories, auto: true)
+            }else{
+                _autoCategoryDataSource?.collectionView = registerCollectionViewController.collectionView
+                _autoCategoryDataSource?.setSelectedCategories(categoryIDs: rawUser.autoCategories)
+            }
+            return _autoCategoryDataSource!
+        }
+    }
+    
+    var _motoCategoryDataSource: ASWRaceCategoryCollectionViewDataSource? = nil
+    var motoCategoryDataSource: ASWRaceCategoryCollectionViewDataSource{
+        get{
+            if _motoCategoryDataSource == nil{
+                _motoCategoryDataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: rawUser.motoCategories, auto: false)
+            }else{
+                _motoCategoryDataSource?.collectionView = registerCollectionViewController.collectionView
+                _motoCategoryDataSource?.setSelectedCategories(categoryIDs: rawUser.autoCategories)
+            }
+            return _motoCategoryDataSource!
+        }
+    }
+    
+    
     
     private func add(asChildViewController viewController: UIViewController) {
         // Add Child View Controller
@@ -241,6 +284,17 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     }
     
     func setConfirmButtonText(_ final:Bool){
+//        DispatchQueue.main.async {
+//            [weak self] in
+//            if final{
+//                self?.confirmButton.setTitle("Завершить регистрацию", for: .normal)
+//                self?.confirmButton.setTitle("Завершить регистрацию", for: .disabled)
+//            }else{
+//                self?.confirmButton.setTitle("Далее", for: .normal)
+//                self?.confirmButton.setTitle("Далее", for: .disabled)
+//            }
+//            self?.view.setNeedsDisplay()
+//        }
         if final{
             confirmButton.setTitle("Завершить регистрацию", for: .normal)
             confirmButton.setTitle("Завершить регистрацию", for: .disabled)
@@ -251,32 +305,56 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         self.view.setNeedsDisplay()
     }
     
+    func login(){
+        
+        func loginSucsess(){
+            
+        }
+        
+        func loginError(){
+            
+        }
+        
+    }
     
-    
-//    func registerUser(){
-//        userEntity = ASWDatabaseManager().createUser(login: userEntity.login, password: userEntity.password)
-//        registerUserSucsess()
-//    }
-//
-//    func registerUserSucsess(){
-//        let alert = UIAlertController(title: "Регистрация", message: "Пользователь успешно создан", preferredStyle: .actionSheet)
-//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-//        currentStep+=1
-//        setStep()
-//        setConfirmButtonText(false)
-//    }
+    func registerUser(){
+        
+        func registerUserSucsess(){
+            
+        }
+        
+        func registerUserError(){
+            
+        }
+        //userEntity = ASWDatabaseManager().createUser(login: userEntity.login, password: userEntity.password)
+        //registerUserSucsess()
+    }
+
+    func registerUserSucsess(){
+        let alert = UIAlertController(title: "Регистрация", message: "Пользователь успешно создан", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        currentStep+=1
+        setStep()
+        setConfirmButtonText(false)
+    }
     
     func checkEmail(){
-        if(Int(arc4random_uniform(2))==1){
+        
+        func sucsessCheck(){
             currentStep+=1
             setStep()
             setConfirmButtonText(false)
-        }else{
+        }
+        
+        func errorCheck(){
             let alert = UIAlertController(title: "Регистрация", message: "Такой email уже зарегистрирован", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        
+        
+        ASWNetworkManager.checkEmail(email: rawUser.email, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
     
@@ -368,9 +446,9 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         if (currentStep == 2){
             //regions step
             var selectedRegions = rawUser.regions
-            
-            var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: selectedRegions)
-            
+            var dataSource: ASWRegionsCollectionViewDataSource!
+            //var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: selectedRegions)
+            dataSource = regionsDataSource
             
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
@@ -387,7 +465,8 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             // auto or moto types
             var selectedRaceTypes = rawUser.auto ? rawUser.autoCategories : rawUser.motoCategories
             
-            var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: rawUser.auto)
+            //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: rawUser.auto)
+            var dataSource = rawUser.auto ? autoCategoryDataSource : motoCategoryDataSource
             registerCollectionViewController.datasource = dataSource
             dataSource.delegate = registerCollectionViewController
             registerCollectionViewController.collectionView.dataSource = dataSource
@@ -411,7 +490,8 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 
                 var selectedRaceTypes = rawUser.auto ? rawUser.autoCategories : rawUser.motoCategories
                 
-                var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: false)
+                //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: false)
+                var dataSource = rawUser.auto ? autoCategoryDataSource : motoCategoryDataSource
                 registerCollectionViewController.datasource = dataSource
                 dataSource.delegate = registerCollectionViewController
                 registerCollectionViewController.collectionView.dataSource = dataSource

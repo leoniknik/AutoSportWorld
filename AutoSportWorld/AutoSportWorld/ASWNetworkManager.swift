@@ -92,20 +92,26 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-//    static func signupUser(email:String,password:String) {
-//        var request = ASWSignupRequest(email:email,password:password)
-//
-//        func onSuccess(json: JSON) -> Void{
-//            //let response = ASWListCategoryParser(json: json)
-//            NotificationCenter.default.post(name: .signupCallback, object: nil, userInfo: nil)
-//        }
-//
-//        func onError(error: Any) -> Void {
-//            NotificationCenter.default.post(name: .signupCallbackError, object: nil)
-//        }
-//
-//        ASWNetworkManager.request(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
-//    }
+    static func checkEmail(email:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping ()->Void) {
+        var request = ASWLoginRequest(email:email,password:"")
+        
+        func onSuccess(json: JSON) -> Void{
+            sucsessFunc()
+        }
+        
+        func onError(error: JSON) -> Void {
+            errorFunc()
+        }
+        
+        if(Int(arc4random_uniform(2))==1){
+            sucsessFunc()
+        }else{
+            errorFunc()
+        }
+        
+        //ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
     
     static func loginUser(email:String,password:String, sucsessFunc: @escaping (String,String)->Void,  errorFunc: @escaping ()->Void) {
         var request = ASWLoginRequest(email:email,password:password)
@@ -119,7 +125,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             errorFunc()
         }
         
-        ASWNetworkManager.loginRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     static func signupUser(email:String,password:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping ()->Void) {
@@ -135,7 +141,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             errorFunc()
         }
         
-        ASWNetworkManager.loginRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     //get Request
@@ -155,7 +161,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
     }
     
-    private static func loginRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON) -> Void) -> Void {
+    private static func authRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON) -> Void) -> Void {
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):

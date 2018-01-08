@@ -62,31 +62,34 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         if let response = (notification.userInfo?["data"] as? ASWListCategoryParser) {
             rawAvailableItems  = []
             raceCategories = response.categories
-            for category in response.categories{
-                var id = Int(category.id ?? "0") ?? 0
-                var string = "\(category.name)"
-                var collectionItem = ASWCollectionItem(id,string)
-
-                if(selectedRaceCategory.contains(id)){
-                    //if let item = userEntity.autoRegions.first(where: { $0.id == id }){
-                    rawSelectedItems.append(collectionItem)
-                }else{
-                    rawAvailableItems.append(collectionItem)
-                }
+            setSelectedCategories(categoryIDs: selectedRaceCategory)
+        }
+}
+    
+    func setSelectedCategories(categoryIDs:[Int]){
+        rawAvailableItems = []
+        rawSelectedItems = []
+        selectedRaceCategory = categoryIDs
+        for category in raceCategories{
+            var id = Int(category.id ?? "0") ?? 0
+            var string = "\(category.name)"
+            var collectionItem = ASWCollectionItem(id,string)
+            
+            if(selectedRaceCategory.contains(id)){
+                //if let item = userEntity.autoRegions.first(where: { $0.id == id }){
+                rawSelectedItems.append(collectionItem)
+            }else{
+                rawAvailableItems.append(collectionItem)
             }
         }
+        
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
-        weak var weakself = self
         DispatchQueue.main.async { [weak self] in
             self?.collectionView?.reloadData()
             self?.delegate?.updateSelectedRaceTypes(auto:self?.auto ?? false, raceTypeIDs: self?.selectedRaceCategory ?? [Int]())
         }
-        
-
-
-}
-    
+    }
     @objc func raceCategoryCallbackError(_ notification: Notification) {
         
     }

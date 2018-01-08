@@ -18,23 +18,31 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
     
     var isPasswordHiddenMode:Bool = true{
         didSet{
+            setupPasswordHiddenMode()
+        }
+    }
+    
+    func setupPasswordHiddenMode(){
+        if(isPasswordField){
             self.textField.isSecureTextEntry = isPasswordHiddenMode
-            if(isPasswordHiddenMode){
-                passwordModeButton.setImage(UIImage.passwordSecureOnPicture, for: .normal)
-            }else{
-                
-                passwordModeButton.setImage(blackBackgroundStyle ?   UIImage.passwordSecureOffPictureBlackBack:UIImage.passwordSecureOffPictureWhiteBack, for: .normal)
-            }
+        }else{
+            self.textField.isSecureTextEntry = false
+        }
+        
+        if(isPasswordHiddenMode){
+            passwordModeButton.setImage(UIImage.passwordSecureOnPicture, for: .normal)
+        }else{
             
-            let when = DispatchTime.now() + 0.01 // change 2 to desired number of seconds
-            DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
-                if let newPosition = self?.textField.beginningOfDocument{
-                    self?.textField.selectedTextRange = self?.textField.textRange(from: newPosition, to: newPosition)
-                }
-                if let newPosition = self?.textField.endOfDocument{
-                    self?.textField.selectedTextRange = self?.textField.textRange(from: newPosition, to: newPosition)
-                }
-                
+            passwordModeButton.setImage(blackBackgroundStyle ?   UIImage.passwordSecureOffPictureBlackBack:UIImage.passwordSecureOffPictureWhiteBack, for: .normal)
+        }
+        
+        let when = DispatchTime.now() + 0.01 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
+            if let newPosition = self?.textField.beginningOfDocument{
+                self?.textField.selectedTextRange = self?.textField.textRange(from: newPosition, to: newPosition)
+            }
+            if let newPosition = self?.textField.endOfDocument{
+                self?.textField.selectedTextRange = self?.textField.textRange(from: newPosition, to: newPosition)
             }
             
         }
@@ -133,7 +141,7 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
         }
         
         textFieldDidEndEditing(self.textField)
-        isPasswordHiddenMode = true
+        setupPasswordHiddenMode()
         view.setNeedsDisplay()
     }
 
