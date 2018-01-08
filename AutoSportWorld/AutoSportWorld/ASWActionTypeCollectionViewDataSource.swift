@@ -79,33 +79,23 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWRaceTypeCell", for: indexPath) as! ASWRaceTypeCell
         
-        
+        var id = 0
         
         if indexPath.section == 0 {
             cell.selectCell()
-            
-            var image = UIImage.init(named: "ic_auto") ?? UIImage()
             cell.label.text = titles[self.selectedItems[indexPath.item].id]
-//            if (self.selectedItems[indexPath.item].id == 0){
-//                cell.label.text = watchTitle
-//                //image =
-//            }else{
-//                cell.label.text = joinTitle
-//            }
-            //cell.label.text = "\(self.selectedItems[indexPath.item].id)"
+            id = self.selectedItems[indexPath.item].id
         }
         else {
             cell.deselectCell()
             cell.label.text = titles[self.availableItems[indexPath.item].id]
-            var image = UIImage.init(named: "ic_auto") ?? UIImage()
-            
-//            if (self.availableItems[indexPath.item].id == 0){
-//                cell.label.text = watchTitle
-//                //image =
-//            }else{
-//                cell.label.text = joinTitle
-//            }
-            //cell.label.text = "\(self.availableItems[indexPath.item].id)"
+            id = self.availableItems[indexPath.item].id
+        }
+        
+        if id == 0 {
+            cell.image.image = auto ? UIImage.autoWatch : UIImage.motoWatch
+        }else{
+            cell.image.image = auto ? UIImage.autoJoin : UIImage.motoJoin
         }
         
         return cell

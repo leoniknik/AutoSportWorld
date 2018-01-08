@@ -60,9 +60,14 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
     
     @objc func raceCategoryCallback(_ notification: Notification) {
         if let response = (notification.userInfo?["data"] as? ASWListCategoryParser) {
-            rawAvailableItems  = []
-            raceCategories = response.categories
-            setSelectedCategories(categoryIDs: selectedRaceCategory)
+            if let category = response.categories.first{
+                if(category.auto == auto){
+                    rawAvailableItems  = []
+                    raceCategories = response.categories
+                    setSelectedCategories(categoryIDs: selectedRaceCategory)
+                }
+            }
+            
         }
 }
     
@@ -126,7 +131,6 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                         curItem.image = image
                         DispatchQueue.main.async { [weak self] in
                             self?.collectionView.reloadItems(at: [indexPath])
-                            
                         }
                     })
                     

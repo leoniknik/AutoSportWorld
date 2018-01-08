@@ -333,10 +333,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     func registerUserSucsess(){
         let alert = UIAlertController(title: "Регистрация", message: "Пользователь успешно создан", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        currentStep+=1
-        setStep()
-        setConfirmButtonText(false)
+        self.present(alert, animated: true, completion: { [weak self] in print("fr")})
     }
     
     func checkEmail(){
@@ -475,7 +472,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupRightBarItem()
             registerCollectionViewController.showSearchBar()
-            
+            dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
             //if (userEntity.auto){
                 confirmButton.isEnabled = selectedRaceTypes.count>0
             //}else{
@@ -488,10 +485,10 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
 
             if(rawUser.auto && rawUser.moto){
                 
-                var selectedRaceTypes = rawUser.auto ? rawUser.autoCategories : rawUser.motoCategories
+                var selectedRaceTypes =  rawUser.motoCategories
                 
                 //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: false)
-                var dataSource = rawUser.auto ? autoCategoryDataSource : motoCategoryDataSource
+                var dataSource =  motoCategoryDataSource
                 registerCollectionViewController.datasource = dataSource
                 dataSource.delegate = registerCollectionViewController
                 registerCollectionViewController.collectionView.dataSource = dataSource
@@ -500,6 +497,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 registerCollectionViewController.delegate = self
                 registerCollectionViewController.setupRightBarItem()
                 registerCollectionViewController.showSearchBar()
+                dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
                 confirmButton.isEnabled = selectedRaceTypes.count>0
             }else {
                 var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:rawUser.auto, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin,watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch)
@@ -525,7 +523,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.autoJoin,watch: rawUser.autoWatch)
                 confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
             }else{
-                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.motoJoin,watch: rawUser.motoWatch)
+                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:false, join: rawUser.motoJoin,watch: rawUser.motoWatch)
                 confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
             }
             

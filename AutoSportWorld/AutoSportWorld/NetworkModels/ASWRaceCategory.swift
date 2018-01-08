@@ -14,11 +14,14 @@ class ASWRaceCategory {
     var categoryClass: String? // "auto" или "moto"
     var imageUrl: String?
     var image: UIImage?
+    var auto:Bool
     
     init(id: String?, name: String?, categoryClass: String?, image: String?) {
         self.id = id
         self.name = name
         self.categoryClass = categoryClass
         self.imageUrl = image
+        
+        self.auto = (categoryClass ?? "" == "auto")
     }
 }

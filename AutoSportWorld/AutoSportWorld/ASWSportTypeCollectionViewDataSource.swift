@@ -84,34 +84,29 @@ class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWRaceTypeCell", for: indexPath) as! ASWRaceTypeCell
         
+        
      
+        var id = 0
         
         if indexPath.section == 0 {
             cell.selectCell()
 
-            var image = UIImage.init(named: "ic_auto") ?? UIImage()
-            cell.label.text = titles[self.selectedItems[indexPath.item].id]
             
-//            if (self.selectedItems[indexPath.item].id == 0){
-//                cell.label.text = "Автоспорт"
-//                //image =
-//            }else{
-//                cell.label.text = "Мотоспорт"
-//            }
-            //cell.label.text = "\(self.selectedItems[indexPath.item].id)"
+            cell.label.text = titles[self.selectedItems[indexPath.item].id]
+            id = self.selectedItems[indexPath.item].id
         }
         else {
             cell.deselectCell()
 
-            var image = UIImage.init(named: "ic_auto") ?? UIImage()
+            
             cell.label.text = titles[self.availableItems[indexPath.item].id]
-//            if (self.availableItems[indexPath.item].id == 0){
-//                cell.label.text = "Автоспорт"
-//                //image =
-//            }else{
-//                cell.label.text = "Мотоспорт"
-//            }
-            //cell.label.text = "\(self.availableItems[indexPath.item].id)"
+            id = self.availableItems[indexPath.item].id
+        }
+        
+        if(id == 0){
+            cell.image.image = UIImage.auto
+        }else{
+            cell.image.image = UIImage.moto
         }
         
         return cell
