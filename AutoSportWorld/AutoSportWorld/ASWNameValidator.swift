@@ -12,7 +12,7 @@ import SkyFloatingLabelTextField
 class ASWNameValidator {
     
     func isValid(_ string: String) -> Bool {
-        return true
+        return string.count > 1
     }
     
     

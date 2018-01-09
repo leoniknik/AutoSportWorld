@@ -15,13 +15,52 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
             self.setupUI()
         }
     }
+    
     var isPasswordHiddenMode:Bool = true{
         didSet{
+            setupPasswordHiddenMode()
+        }
+    }
+    
+    func setupPasswordHiddenMode(){
+        if(isPasswordField){
             self.textField.isSecureTextEntry = isPasswordHiddenMode
-            if(isPasswordHiddenMode){
-                passwordModeButton.setImage(UIImage.passwordSecureOnPicture, for: .normal)
-            }else{
-                passwordModeButton.setImage(UIImage.passwordSecureOffPicture, for: .normal)
+        }else{
+            self.textField.isSecureTextEntry = false
+        }
+        
+        if(isPasswordHiddenMode){
+            passwordModeButton.setImage(UIImage.passwordSecureOnPicture, for: .normal)
+        }else{
+            
+            passwordModeButton.setImage(blackBackgroundStyle ?   UIImage.passwordSecureOffPictureBlackBack:UIImage.passwordSecureOffPictureWhiteBack, for: .normal)
+        }
+        
+        let when = DispatchTime.now() + 0.01 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) { [weak self] in
+            if let newPosition = self?.textField.beginningOfDocument{
+                self?.textField.selectedTextRange = self?.textField.textRange(from: newPosition, to: newPosition)
+            }
+            if let newPosition = self?.textField.endOfDocument{
+                self?.textField.selectedTextRange = self?.textField.textRange(from: newPosition, to: newPosition)
+            }
+            
+        }
+    }
+    
+    var incorrectMod:Bool = false{
+        didSet{
+            DispatchQueue.main.async {
+                [weak self] in
+                if(self?.incorrectMod ?? false){
+                    self?.lineView.backgroundColor = .red
+                }else{
+                    if(self?.blackBackgroundStyle ?? false){
+                        self?.lineView.backgroundColor = UIColor.white
+                    }else{
+                        self?.lineView.backgroundColor = UIColor.black
+                    }
+                }
             }
         }
     }
@@ -32,8 +71,16 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
         }
     }
     
-    let secureOnPicture = "ic_"
-    let secureOffPicture = ""
+    var upperPlaceHolder:String = ""{
+        didSet{
+            upperPlaceHolderLabel.text = upperPlaceHolder
+        }
+    }
+    
+    
+
+    var blackBackgroundStyle:Bool = false
+    var upperPlaceholderMode:Bool = false
     
     @IBOutlet weak var textField: UITextField!
     
@@ -41,6 +88,9 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
     
     @IBOutlet var view: UIView!
     
+    @IBOutlet weak var upperPlaceHolderLabel: UILabel!
+    
+    @IBOutlet weak var lineView: UIView!
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setupUI()
@@ -75,6 +125,24 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
             textField.isSecureTextEntry = false
         }
         
+        textField.layer.borderWidth = 0
+        textField.layer.borderColor = UIColor.clear.cgColor
+        
+        upperPlaceHolderLabel.textColor = UIColor.ASWColor.grey
+        
+        if(blackBackgroundStyle){
+            lineView.backgroundColor = UIColor.white
+            placeHolderLabel.textColor = UIColor.white
+            textField.textColor = UIColor.white
+        }else{
+            lineView.backgroundColor = UIColor.black
+            placeHolderLabel.textColor = UIColor.black
+            textField.textColor = UIColor.black
+        }
+        
+        textFieldDidEndEditing(self.textField)
+        setupPasswordHiddenMode()
+        view.setNeedsDisplay()
     }
 
     @IBAction func switchShowPasswordMode(_ sender: Any) {
@@ -86,17 +154,20 @@ class ASWLoginPasswordTextField: UIView, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         placeHolderLabel.isHidden = true
+        upperPlaceHolderLabel.isHidden = !upperPlaceholderMode
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if(textField.text==""){
             placeHolderLabel.isHidden = false
+            upperPlaceHolderLabel.isHidden = true
         }else{
             placeHolderLabel.isHidden = true
+            upperPlaceHolderLabel.isHidden = !upperPlaceholderMode
         }
     }
     
-//    func textDidChange(_:UITextField){
-//
-//    }
+    
+    
+
 }

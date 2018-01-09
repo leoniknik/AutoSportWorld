@@ -17,6 +17,173 @@ class ASWDatabaseManager {
         return realm.objects(ASWUserEntity.self).filter(predicate).first
     }
     
+    func unloginAllUsers(){
+        let realm = try! Realm()
+        for user in realm.objects(ASWUserEntity.self){
+            user.isLogedIn = false
+            save(object: user)
+        }
+    }
+    
+    func loginUser(login:String,password:String)->ASWUserEntity{
+        unloginAllUsers()
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "email == \(login)")
+        if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
+            user.password = password
+            save(object: user)
+            return user
+        }else{
+            return createUser(login:login,password:password)
+        }
+    }
+    
+    func createUser(login:String,password:String)->ASWUserEntity{
+        unloginAllUsers()
+        
+        var user = ASWUserEntity()
+        user.id =  Int(Date().timeIntervalSince1970)
+        user.email = login
+        user.password = password
+        user.isLogedIn = true
+        save(object: user)
+        return user
+    }
+    
+    func updateUserInfoFromServer(){
+        // some info
+    }
+    
+    func getUserBy(id:Int) -> ASWUserEntity? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(id)")
+        return realm.objects(ASWUserEntity.self).filter(predicate).first
+    }
+    
+    func setUserRegions(regionIDs:[Int]){
+        let realm = try! Realm()
+        
+        guard let user = getUser() else{
+            return
+        }
+        
+        for (index, item) in user.regions.enumerated() {
+            try! realm.write {
+                user.regions.remove(objectAtIndex: index)
+            }
+        }
+        
+        for id in regionIDs{
+            if let region = getRegionBy(id: id) {
+                try! realm.write {
+                    user.regions.append(region)
+                }
+            }
+            else {
+                let region = ASWRegionEntity()
+                region.id = id
+                save(object: region)
+                try! realm.write {
+                    user.regions.append(region)
+                }
+            }
+        }
+    }
+    
+    func setUserRaceCategories(categoriesIDs:[Int], auto:Bool){
+        let realm = try! Realm()
+        
+        guard let user = getUser() else{
+            return
+        }
+        
+        if auto {
+            for (index, item) in user.autoCategories.enumerated() {
+                try! realm.write {
+                    user.regions.remove(objectAtIndex: index)
+                }
+            }
+        }else{
+            for (index, item) in user.motoCategories.enumerated() {
+                try! realm.write {
+                    user.regions.remove(objectAtIndex: index)
+                }
+            }
+        }
+        
+        if auto{
+            for id in categoriesIDs{
+                if let category = getCategoryBy(id: id) {
+                    try! realm.write {
+                        user.autoCategories.append(category)
+                    }
+                }
+                else {
+                    let category = ASWRaceCategoryEntity()
+                    category.id = id
+                    save(object: category)
+                    try! realm.write {
+                        user.autoCategories.append(category)
+                    }
+                }
+            }
+        }else{
+            for id in categoriesIDs{
+                if let category = getCategoryBy(id: id) {
+                    try! realm.write {
+                        user.motoCategories.append(category)
+                    }
+                }
+                else {
+                    let category = ASWRaceCategoryEntity()
+                    category.id = id
+                    save(object: category)
+                    try! realm.write {
+                        user.motoCategories.append(category)
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+    func setUserSportTypes(auto:Bool,moto:Bool){
+        let realm = try! Realm()
+        
+        guard let user = getUser() else{
+            return
+        }
+        
+        try! realm.write {
+            user.auto = auto
+            user.moto = moto
+        }
+    }
+    
+    func setUserActions(auto:Bool,watch:Bool,join:Bool){
+        let realm = try! Realm()
+        
+        guard let user = getUser() else{
+            return
+        }
+        
+        try! realm.write {
+            if auto {
+                user.autoWatch = watch
+                user.autoJoin = join
+            }else{
+                user.motoWatch = watch
+                user.motoJoin = join
+            }
+        }
+    }
+    
+    func saveUser(user:ASWUserEntity){
+        save(object: user)
+    }
+    
+    
     func getRaceBy(id: Int) -> ASWRaceEntity? {
         let realm = try! Realm()
         let predicate = NSPredicate(format: "id == \(id)")
@@ -28,8 +195,40 @@ class ASWDatabaseManager {
         guard let user = getUser() else {
             return nil
         }
+<<<<<<< HEAD
 
         return user.favoriteRaces.map{$0.id}
+=======
+        
+        return user.favoriteRaces.map{ $0.id }
+>>>>>>> 67180cfe160263d8290692a997cab5f0a63a731c
+    }
+    
+    func getRegionBy(id: Int) -> ASWRegionEntity? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(id)")
+        return realm.objects(ASWRegionEntity.self).filter(predicate).first
+    }
+    
+    func getCategoryBy(id: Int) -> ASWRaceCategoryEntity? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id == \(id)")
+        return realm.objects(ASWRaceCategoryEntity.self).filter(predicate).first
+    }
+    
+    func getRegionsIds() -> [Int]? {
+        guard let user = getUser() else {
+            return nil
+        }
+        return user.regions.map{ $0.id }
+    }
+    
+    func getCategoriesIds(auto:Bool) -> [Int]? {
+        guard let user = getUser() else {
+            return nil
+        }
+        
+        return auto ? user.autoCategories.map{ $0.id } : user.motoCategories.map{ $0.id }
     }
     
     func createTestUser() {
@@ -54,7 +253,7 @@ class ASWDatabaseManager {
             for (index, item) in user.favoriteRaces.enumerated() {
                 if item == race {
                     try! realm.write {
-                        user.favoriteRaces.remove(at: index)
+                        user.favoriteRaces.remove(objectAtIndex: index)
                     }
                     break
                 }
@@ -65,7 +264,7 @@ class ASWDatabaseManager {
             if let race = getRaceBy(id: id) {
                 try! realm.write {
                     user.favoriteRaces.append(race)
-                 }
+                }
             }
             else {
                 let race: ASWRaceEntity = ASWRaceEntity()
@@ -77,6 +276,7 @@ class ASWDatabaseManager {
         }
     }
     
+    
     func checkBookmarkedRace(withID id: Int) -> Bool {
         
         guard let user = getUser() else {
@@ -84,7 +284,7 @@ class ASWDatabaseManager {
         }
         
         let predicate = NSPredicate(format: "id == \(id)")
-
+        
         guard let _ = user.favoriteRaces.filter(predicate).first else {
             return false
         }

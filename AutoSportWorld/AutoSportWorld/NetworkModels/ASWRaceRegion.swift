@@ -14,11 +14,21 @@ class ASWRaceRegion {
     var name: String?
     var centerCity: String?
     var image: String?
+    var codes: String?
 
-    init(id: String?, name: String?, centerCity: String?, image: String?) {
+    init(id: String?, name: String?, centerCity: String?, image: String?, codes:[Int]) {
         self.id = id
         self.name = name
         self.centerCity = centerCity
         self.image = image
+        var codeString = ""
+        for code in codes{
+            if codeString == ""{
+                codeString += "\(code)"
+            }else{
+                codeString += "/\(code)"
+            }
+        }
+        self.codes = codeString
     }
 }

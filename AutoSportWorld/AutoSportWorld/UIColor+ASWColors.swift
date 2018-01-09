@@ -25,6 +25,8 @@ extension UIColor {
         static let greyBackground = UIColor.init(red: 243/255.0, green: 243/255.0, blue: 243/255.0, alpha: 1.0)
         
         static let pink = UIColor.init(red: 251/255.0, green: 24/255.0, blue: 104/255.0, alpha: 1.0)
+        
+        
 
     }
     
