@@ -24,6 +24,14 @@ extension UIImage {
     static let cardBookmarkOff = #imageLiteral(resourceName: "ic_bookmark_card_off")
     static let cardBookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tab_off")
     
+    static let autoWatch = #imageLiteral(resourceName: "ic_bookmark_tape_on")
+    static let auto = #imageLiteral(resourceName: "ic_bookmark_tape_on")
+    static let autoJoin = #imageLiteral(resourceName: "ic_bookmark_tape_off")
+    
+    static let moto = #imageLiteral(resourceName: "ic_bookmark_tab_off")
+    static let motoJoin = #imageLiteral(resourceName: "ic_bookmark_tab_off")
+    static let motoWatch = #imageLiteral(resourceName: "ic_bookmark_card_off")
+    
     static func from(_ r:Int, _ g:Int, _ b:Int) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)

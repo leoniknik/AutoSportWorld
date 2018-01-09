@@ -47,7 +47,6 @@ class ASWDatabaseManager {
         user.password = password
         user.isLogedIn = true
         save(object: user)
-        
         return user
     }
     

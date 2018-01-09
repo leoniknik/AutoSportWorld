@@ -54,7 +54,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
- 
+        
         ASWNetworkManager.getRaceTypes(type: auto ? "auto" : "moto")
     }
     
@@ -69,7 +69,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
             }
             
         }
-}
+    }
     
     func setSelectedCategories(categoryIDs:[Int]){
         rawAvailableItems = []
@@ -134,11 +134,6 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                         }
                     })
                     
-//                    self?.model.getImageFor(race: race, completion: { () in
-//                        DispatchQueue.main.async { [weak self] in
-//                            self?.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-//                        }
-//                    })
                 }
             }
         }else{
