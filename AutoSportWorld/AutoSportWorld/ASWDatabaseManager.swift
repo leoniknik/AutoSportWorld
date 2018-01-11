@@ -195,13 +195,10 @@ class ASWDatabaseManager {
         guard let user = getUser() else {
             return nil
         }
-<<<<<<< HEAD
 
-        return user.favoriteRaces.map{$0.id}
-=======
         
         return user.favoriteRaces.map{ $0.id }
->>>>>>> 67180cfe160263d8290692a997cab5f0a63a731c
+
     }
     
     func getRegionBy(id: Int) -> ASWRegionEntity? {

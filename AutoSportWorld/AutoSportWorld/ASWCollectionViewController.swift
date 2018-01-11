@@ -24,19 +24,18 @@ protocol ASWCollectionViewControllerDelegate{
 }
 
 class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate,ASWRegionsCollectionViewDataSourceDelegate, ASWRaceCategoryCollectionViewDataSourceDelegate {
+    
+    
     func updateSelectedRaceTypes(auto: Bool, raceTypeIDs: [Int]) {
         delegate.updateSelectedRaceTypes(auto:auto, raceTypeIDs: raceTypeIDs)
         setupRightBarItem()
     }
-    
-    
     
     func updateSelectedRegions(regionsIDs: [Int]) {
         delegate.updateSelectedRegions(regionsIDs: regionsIDs)
         setupRightBarItem()
     }
 
-    
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
         delegate.actionTypeSelected(auto: auto, watch: watch, join: join)
         setupRightBarItem()
@@ -50,12 +49,17 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    
     fileprivate let cellSize: CGFloat = 100
     fileprivate let cellMargin: CGFloat = 18
     fileprivate let cellBigMargin: CGFloat = 40
     
     var datasource: ASWCollectionViewDataSource!
     var delegate: ASWCollectionViewControllerDelegate!
+    
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +78,34 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         navigationController?.navigationBar.shadowImage = UIImage()
         
         
+    }
+    
+    
+    func setupRefreshView() {
+        //добавление активити для обновления
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(getUpdate), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Обновление", attributes: [:])
+    }
+    
+    func getUpdate() {
+        self.errorLabel.isHidden = true
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.model.updateEvents(cursor: nil)
+        }
+    }
+    
+    //обновление данных
+    func refreshData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
+            self?.tableView.reloadData()
+        }
     }
     
     

@@ -616,6 +616,12 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVB-7B-1M6">
+                                <rect key="frame" x="141" y="361.5" width="93" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -627,6 +633,8 @@
                             <constraint firstItem="2AF-T4-ank" firstAttribute="trailing" secondItem="Sjc-3v-aEY" secondAttribute="trailing" id="dBo-KC-1BB"/>
                             <constraint firstItem="Sjc-3v-aEY" firstAttribute="leading" secondItem="2AF-T4-ank" secondAttribute="leading" id="eZa-S8-7Rg"/>
                             <constraint firstItem="txd-hq-3ez" firstAttribute="leading" secondItem="2AF-T4-ank" secondAttribute="leading" id="nPa-RU-cqC"/>
+                            <constraint firstItem="SVB-7B-1M6" firstAttribute="centerY" secondItem="Sjc-3v-aEY" secondAttribute="centerY" id="oHW-aT-cfX"/>
+                            <constraint firstItem="SVB-7B-1M6" firstAttribute="centerX" secondItem="Sjc-3v-aEY" secondAttribute="centerX" id="zZT-Mg-2F1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2AF-T4-ank"/>
                     </view>
@@ -639,6 +647,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Sjc-3v-aEY" id="Wum-md-JoT"/>
+                        <outlet property="errorLabel" destination="SVB-7B-1M6" id="vA9-OZ-hWU"/>
                         <outlet property="searchBar" destination="txd-hq-3ez" id="V1Q-0z-KzN"/>
                     </connections>
                 </viewController>
