@@ -427,34 +427,29 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         if(currentStep == 1){
             remove(asChildViewController: registerAccountViewController)
             add(asChildViewController: registerCollectionViewController)
-            
-            var dataSource = ASWSportTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, auto: rawUser.auto,moto:rawUser.moto)
-            
-            registerCollectionViewController.datasource = dataSource
-            dataSource.delegate = registerCollectionViewController
-            registerCollectionViewController.collectionView.dataSource = dataSource
-            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
             registerCollectionViewController.delegate = self
-            registerCollectionViewController.setupRightBarItem()
-            registerCollectionViewController.hideSearchBar()
+            registerCollectionViewController.setupSportTypeDatasource(auto: rawUser.auto, moto: rawUser.moto)
+//            var dataSource = ASWSportTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, auto: rawUser.auto,moto:rawUser.moto)
+//
+//            registerCollectionViewController.datasource = dataSource
+//            dataSource.delegate = registerCollectionViewController
+//            registerCollectionViewController.collectionView.dataSource = dataSource
+//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+//            registerCollectionViewController.delegate = self
+//            registerCollectionViewController.setupRightBarItem()
+//            registerCollectionViewController.hideSearchBar()
             confirmButton.isEnabled = rawUser.auto || rawUser.moto
         }
         
         if (currentStep == 2){
             //regions step
             var selectedRegions = rawUser.regions
-            var dataSource: ASWRegionsCollectionViewDataSource!
-            //var dataSource = ASWRegionsCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRegions: selectedRegions)
-            dataSource = regionsDataSource
+            var dataSource: ASWRegionsCollectionViewDataSource! = regionsDataSource
             
-            registerCollectionViewController.datasource = dataSource
-            dataSource.delegate = registerCollectionViewController
-            registerCollectionViewController.collectionView.dataSource = dataSource
-            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-            registerCollectionViewController.searchBar.delegate = dataSource
-            registerCollectionViewController.delegate = self
-            registerCollectionViewController.setupRightBarItem()
-            registerCollectionViewController.showSearchBar()
+            registerCollectionViewController.setupRegionsDatasource(datasource: dataSource, selectedRegions: selectedRegions)
+            if dataSource.isEmptyDatasource(){
+                registerCollectionViewController.getUpdate()
+            }
             confirmButton.isEnabled = selectedRegions.count>0
         }
         
@@ -464,20 +459,23 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             
             //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: rawUser.auto)
             var dataSource = rawUser.auto ? autoCategoryDataSource : motoCategoryDataSource
-            registerCollectionViewController.datasource = dataSource
-            dataSource.delegate = registerCollectionViewController
-            registerCollectionViewController.collectionView.dataSource = dataSource
-            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-            registerCollectionViewController.searchBar.delegate = dataSource
-            registerCollectionViewController.delegate = self
-            registerCollectionViewController.setupRightBarItem()
-            registerCollectionViewController.showSearchBar()
-            dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
-            //if (userEntity.auto){
-                confirmButton.isEnabled = selectedRaceTypes.count>0
-            //}else{
-            //    confirmButton.isEnabled = selectedMotoRaceTypes.count>0
-            //}
+            registerCollectionViewController.setupRaceCategoriesDatasource(datasource: dataSource, auto: dataSource.auto, selectedRaceCategories: selectedRaceTypes)
+            if dataSource.isEmptyDatasource(){
+                registerCollectionViewController.getUpdate()
+            }
+            
+//            registerCollectionViewController.datasource = dataSource
+//            dataSource.delegate = registerCollectionViewController
+//            registerCollectionViewController.collectionView.dataSource = dataSource
+//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+//            registerCollectionViewController.searchBar.delegate = dataSource
+//            registerCollectionViewController.delegate = self
+//            registerCollectionViewController.setupRightBarItem()
+//            registerCollectionViewController.showSearchBar()
+//            dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
+            
+            confirmButton.isEnabled = selectedRaceTypes.count>0
+
         }
         
         if (currentStep == 4){
@@ -489,26 +487,32 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 
                 //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: false)
                 var dataSource =  motoCategoryDataSource
-                registerCollectionViewController.datasource = dataSource
-                dataSource.delegate = registerCollectionViewController
-                registerCollectionViewController.collectionView.dataSource = dataSource
-                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-                registerCollectionViewController.searchBar.delegate = dataSource
-                registerCollectionViewController.delegate = self
-                registerCollectionViewController.setupRightBarItem()
-                registerCollectionViewController.showSearchBar()
-                dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
+                registerCollectionViewController.setupRaceCategoriesDatasource(datasource: dataSource, auto: dataSource.auto, selectedRaceCategories: selectedRaceTypes)
+                if dataSource.isEmptyDatasource(){
+                    registerCollectionViewController.getUpdate()
+                }
+                
+//                registerCollectionViewController.datasource = dataSource
+//                dataSource.delegate = registerCollectionViewController
+//                registerCollectionViewController.collectionView.dataSource = dataSource
+//                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+//                registerCollectionViewController.searchBar.delegate = dataSource
+//                registerCollectionViewController.delegate = self
+//                registerCollectionViewController.setupRightBarItem()
+//                registerCollectionViewController.showSearchBar()
+//                dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
                 confirmButton.isEnabled = selectedRaceTypes.count>0
             }else {
-                var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:rawUser.auto, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin,watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch)
-                
-                registerCollectionViewController.datasource = dataSource
-                dataSource.delegate = registerCollectionViewController
-                registerCollectionViewController.collectionView.dataSource = dataSource
-                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-                registerCollectionViewController.delegate = self
-                registerCollectionViewController.setupRightBarItem()
-                registerCollectionViewController.hideSearchBar()
+//                var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:rawUser.auto, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin,watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch)
+//
+//                registerCollectionViewController.datasource = dataSource
+//                dataSource.delegate = registerCollectionViewController
+//                registerCollectionViewController.collectionView.dataSource = dataSource
+//                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+//                registerCollectionViewController.delegate = self
+//                registerCollectionViewController.setupRightBarItem()
+//                registerCollectionViewController.hideSearchBar()
+                registerCollectionViewController.setupActionTypeDatasource(auto: rawUser.auto, watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin)
                 if(rawUser.auto){
                     confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
                 }else{
@@ -520,20 +524,22 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             var dataSource:ASWActionTypeCollectionViewDataSource!
             
             if (currentStep == 5){
-                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.autoJoin,watch: rawUser.autoWatch)
+//                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.autoJoin,watch: rawUser.autoWatch)
+                registerCollectionViewController.setupActionTypeDatasource(auto: true, watch: rawUser.autoWatch, join: rawUser.autoJoin)
                 confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
             }else{
-                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:false, join: rawUser.motoJoin,watch: rawUser.motoWatch)
+//                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:false, join: rawUser.motoJoin,watch: rawUser.motoWatch)
+                registerCollectionViewController.actionTypeSelected(auto: false, watch: rawUser.motoWatch, join: rawUser.motoJoin)
                 confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
             }
             
-            registerCollectionViewController.datasource = dataSource
-            dataSource.delegate = registerCollectionViewController
-            registerCollectionViewController.collectionView.dataSource = dataSource
-            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-            registerCollectionViewController.delegate = self
-            registerCollectionViewController.setupRightBarItem()
-            registerCollectionViewController.hideSearchBar()
+//            registerCollectionViewController.datasource = dataSource
+//            dataSource.delegate = registerCollectionViewController
+//            registerCollectionViewController.collectionView.dataSource = dataSource
+//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
+//            registerCollectionViewController.delegate = self
+//            registerCollectionViewController.setupRightBarItem()
+//            registerCollectionViewController.hideSearchBar()
         }
 
     }

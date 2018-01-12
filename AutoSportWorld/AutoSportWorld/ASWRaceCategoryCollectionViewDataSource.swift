@@ -17,7 +17,7 @@
 
 import UIKit
 
-protocol ASWRaceCategoryCollectionViewDataSourceDelegate{
+protocol ASWRaceCategoryCollectionViewDataSourceDelegate:ASWCollectionViewDataSourceDelegate{
     func updateSelectedRaceTypes(auto:Bool,raceTypeIDs:[Int])
 }
 
@@ -55,6 +55,10 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
         
+        //ASWNetworkManager.getRaceTypes(type: auto ? "auto" : "moto")
+    }
+    
+    override func updateData() {
         ASWNetworkManager.getRaceTypes(type: auto ? "auto" : "moto")
     }
     
@@ -65,6 +69,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                     rawAvailableItems  = []
                     raceCategories = response.categories
                     setSelectedCategories(categoryIDs: selectedRaceCategory)
+                    delegate?.dataReceived()
                 }
             }
             

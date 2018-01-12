@@ -25,6 +25,31 @@ protocol ASWCollectionViewControllerDelegate{
 
 class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate,ASWRegionsCollectionViewDataSourceDelegate, ASWRaceCategoryCollectionViewDataSourceDelegate {
     
+    func dataReceived() {
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
+            if(self?.datasource.isEmptyDatasource()) ?? false{
+                self?.errorLabel.text = "Нет данных"
+                self?.errorLabel.isHidden = false
+            }else{
+                self?.errorLabel.isHidden = true
+            }
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func networkErrorOccured() {
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
+            self?.errorLabel.text = "Ошибка сетевого подключения"
+            self?.errorLabel.isHidden = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        errorLabel.isHidden = true
+    }
     
     func updateSelectedRaceTypes(auto: Bool, raceTypeIDs: [Int]) {
         delegate.updateSelectedRaceTypes(auto:auto, raceTypeIDs: raceTypeIDs)
@@ -35,7 +60,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         delegate.updateSelectedRegions(regionsIDs: regionsIDs)
         setupRightBarItem()
     }
-
+    
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
         delegate.actionTypeSelected(auto: auto, watch: watch, join: join)
         setupRightBarItem()
@@ -68,12 +93,12 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         
         collectionView.register(UINib(nibName: "ASWRegionCell", bundle: nil), forCellWithReuseIdentifier: "ASWRegionCell")
         collectionView.register(UINib(nibName: "ASWRaceTypeCell", bundle: nil), forCellWithReuseIdentifier: "ASWRaceTypeCell")
-
+        
         
         collectionView.delegate = self
         searchBar.delegate = datasource
         collectionView.dataSource = datasource
-        
+        setupRefreshView()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -82,6 +107,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     
     
     func setupRefreshView() {
+        self.collectionView.alwaysBounceVertical = true;
         //добавление активити для обновления
         if #available(iOS 10.0, *) {
             collectionView.refreshControl = refreshControl
@@ -93,22 +119,19 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         refreshControl.attributedTitle = NSAttributedString(string: "Обновление", attributes: [:])
     }
     
-    func getUpdate() {
+    @objc func getUpdate() {
         self.errorLabel.isHidden = true
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.collectionView.setContentOffset(CGPoint(x: 0, y: (self?.collectionView.contentOffset.y) ?? CGFloat(0) - ((self?.refreshControl.frame.size.height) ?? CGFloat(0))), animated: false)
+            self?.refreshControl.beginRefreshing()
+            self?.collectionView.refreshControl?.beginRefreshing()
+        }
+        
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.model.updateEvents(cursor: nil)
+            self?.datasource.updateData()
         }
     }
-    
-    //обновление данных
-    func refreshData() {
-        DispatchQueue.main.async { [weak self] in
-            self?.refreshControl.endRefreshing()
-            self?.tableView.reloadData()
-        }
-    }
-    
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -157,32 +180,32 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         return CGSize(width: self.collectionView.frame.size.width, height: 46)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        if indexPath.section == 0 {
-//            let string = datasource.selectedItems[indexPath.item]
-//            datasource.selectedItems.remove(at: indexPath.item)
-//            datasource.availableItems.append(string)
-//        }
-//        else {
-//            let string = datasource.availableItems[indexPath.item]
-//            datasource.availableItems.remove(at: indexPath.item)
-//            datasource.selectedItems.append(string)
-//        }
-//
-//        //синхронизация
-//        datasource.syncItems()
-//
-//        //hideKeyboard()
-//
-//
-//
-//        collectionView.reloadData()
-//        datasource.itemSelected()
-//        setupRightBarItem()
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    //        if indexPath.section == 0 {
+    //            let string = datasource.selectedItems[indexPath.item]
+    //            datasource.selectedItems.remove(at: indexPath.item)
+    //            datasource.availableItems.append(string)
+    //        }
+    //        else {
+    //            let string = datasource.availableItems[indexPath.item]
+    //            datasource.availableItems.remove(at: indexPath.item)
+    //            datasource.selectedItems.append(string)
+    //        }
+    //
+    //        //синхронизация
+    //        datasource.syncItems()
+    //
+    //        //hideKeyboard()
+    //
+    //
+    //
+    //        collectionView.reloadData()
+    //        datasource.itemSelected()
+    //        setupRightBarItem()
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         if indexPath.section == 0 {
             let string = datasource.selectedItems[indexPath.item]
             datasource.selectedItems.remove(at: indexPath.item)
@@ -193,22 +216,22 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             datasource.availableItems.remove(at: indexPath.item)
             datasource.selectedItems.append(string)
         }
-
+        
         //синхронизация
         datasource.syncItems()
-
+        
         //hideKeyboard()
-
-
-
+        
+        
+        
         collectionView.reloadData()
         datasource.itemSelected()
         setupRightBarItem()
     }
     
-
-        
-       
+    
+    
+    
     
     func setupRightBarItem() {
         if datasource.availableItems.count != 0 {
@@ -220,7 +243,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             selectAllRightBarState = false
         }
     }
- 
+    
     var selectAllRightBarState:Bool = true
     
     func rightBarItemTapped() {
@@ -245,41 +268,110 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         setupRightBarItem()
     }
     
-
+    
     
     func hideSearchBar() {
         for constraint in (searchBar.constraints.filter{$0.firstAttribute == .height}){
             constraint.constant = 0
         }
-
+        
     }
     
     
     
     func showSearchBar() {
-//        for view in searchBar.subviews {
-//            for subview in view.subviews {
-//                if subview is UITextField {
-//                    let textField: UITextField = subview as! UITextField
-//                    textField.backgroundColor = UIColor.white
-//                }else{
-//                    subview.backgroundColor = .black
-//                }
-//            }
-//        }
+        //        for view in searchBar.subviews {
+        //            for subview in view.subviews {
+        //                if subview is UITextField {
+        //                    let textField: UITextField = subview as! UITextField
+        //                    textField.backgroundColor = UIColor.white
+        //                }else{
+        //                    subview.backgroundColor = .black
+        //                }
+        //            }
+        //        }
         searchBar.backgroundColor = UIColor.ASWColor.black
         for constraint in (searchBar.constraints.filter{$0.firstAttribute == .height}){
             constraint.constant = 56.0
         }
-
+        
     }
     
     func hideKeyboard() {
         //убираем клавиатуру
         searchBar.resignFirstResponder()
-
+        
         //подчищаем текст
         searchBar.text = ""
+    }
+    
+    func setupRegionsDatasource(datasource:ASWRegionsCollectionViewDataSource?,selectedRegions:[Int]){
+        if datasource == nil{
+            self.datasource = ASWRegionsCollectionViewDataSource(collectionView: self.collectionView, selectedRegions: selectedRegions)
+        }else{
+            self.datasource = datasource
+            (self.datasource as! ASWRegionsCollectionViewDataSource).setSelectedRegions(regionsIDs: selectedRegions)
+        }
+
+        (self.datasource as! ASWRegionsCollectionViewDataSource).delegate = self
+        collectionView.dataSource = self.datasource
+        collectionView.delegate = self
+        searchBar.delegate = self.datasource
+        setupRightBarItem()
+        showSearchBar()
+    }
+    
+    func setupRaceCategoriesDatasource(datasource:ASWRaceCategoryCollectionViewDataSource?,auto:Bool,selectedRaceCategories:[Int]){
+        if datasource == nil{
+            self.datasource = ASWRaceCategoryCollectionViewDataSource(collectionView: self.collectionView, selectedRaceCategory: selectedRaceCategories, auto: auto)
+             (self.datasource as! ASWRaceCategoryCollectionViewDataSource).auto = auto
+        }else{
+            self.datasource = datasource
+            (self.datasource as! ASWRaceCategoryCollectionViewDataSource).setSelectedCategories(categoryIDs: selectedRaceCategories)
+        }
+        
+        (self.datasource as! ASWRaceCategoryCollectionViewDataSource).delegate = self
+        collectionView.dataSource = self.datasource
+        collectionView.delegate = self
+        searchBar.delegate = self.datasource
+        setupRightBarItem()
+        showSearchBar()
+        
+    }
+    
+    func setupSportTypeDatasource(auto: Bool,moto:Bool){
+        self.datasource = ASWSportTypeCollectionViewDataSource(collectionView: self.collectionView, auto: auto, moto: moto)
+        
+        (self.datasource as! ASWSportTypeCollectionViewDataSource).delegate = self
+        collectionView.dataSource = self.datasource
+        collectionView.delegate = self
+        searchBar.delegate = nil
+        setupRightBarItem()
+        hideSearchBar()
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func setupActionTypeDatasource(auto: Bool,watch:Bool,join:Bool){
+        
+        self.datasource = ASWActionTypeCollectionViewDataSource(collectionView: self.collectionView,auto:auto, join: join,watch: watch)
+        
+        (self.datasource as! ASWActionTypeCollectionViewDataSource).delegate = self
+        collectionView.dataSource = self.datasource
+        collectionView.delegate = self
+        searchBar.delegate = nil
+        setupRightBarItem()
+        hideSearchBar()
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func setupDatasource(){
+       
     }
     
 }

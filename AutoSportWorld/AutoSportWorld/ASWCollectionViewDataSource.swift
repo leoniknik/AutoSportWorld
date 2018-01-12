@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ASWCollectionViewDataSourceDelegate{
+    func dataReceived()
+    func networkErrorOccured()
+}
+
 class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
     
     var collectionView: UICollectionView!
@@ -22,7 +27,13 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     var titleForSelectedItems: [String] = ["","",""]
     var titleForAvailableItems: [String] = ["","",""]
     
-
+    func updateData(){
+        
+    }
+    
+    func isEmptyDatasource()->Bool{
+        return rawSelectedItems.count == 0 && rawAvailableItems.count == 0
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {

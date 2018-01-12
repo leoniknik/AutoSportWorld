@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ASWRegionsCollectionViewDataSourceDelegate{
+protocol ASWRegionsCollectionViewDataSourceDelegate:ASWCollectionViewDataSourceDelegate{
     func updateSelectedRegions(regionsIDs:[Int])
 }
 
@@ -35,6 +35,10 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
         
+        //ASWNetworkManager.getRegions()
+    }
+    
+    override func updateData() {
         ASWNetworkManager.getRegions()
     }
     
@@ -43,6 +47,7 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
             rawAvailableItems  = []
             regions = response.regions
             setSelectedRegions(regionsIDs: selectedRegions)
+            delegate?.dataReceived()
         }
     }
     
@@ -64,16 +69,20 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
+        
         weak var weakself = self
         DispatchQueue.main.async { [weak self] in
             weakself?.collectionView?.reloadData()
-            self?.delegate?.updateSelectedRegions(regionsIDs: self?.selectedRegions ?? [Int]())
+            //self?.delegate?.updateSelectedRegions(regionsIDs: self?.selectedRegions ?? [Int]())
         }
     }
     
     @objc func regionsCallbackError(_ notification: Notification) {
-        
+        delegate?.networkErrorOccured()
     }
+    
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

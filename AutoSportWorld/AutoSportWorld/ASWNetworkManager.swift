@@ -103,7 +103,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             errorFunc()
         }
         
-        if(Int(arc4random_uniform(2))==1){
+        if(Int(arc4random_uniform(2))==1||true){
             sucsessFunc()
         }else{
             errorFunc()
@@ -146,6 +146,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void) -> Void {
+        print("requesting URL \(URL)")
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
