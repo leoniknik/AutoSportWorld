@@ -159,7 +159,7 @@
         <!--Register Account View Controller-->
         <scene sceneID="EZV-9P-VeD">
             <objects>
-                <viewController storyboardIdentifier="rg" id="QvA-rV-szs" customClass="ASWRegisterAccountViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerAccountView" id="QvA-rV-szs" customClass="ASWRegisterAccountViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w6e-OS-o3M"/>
                         <viewControllerLayoutGuide type="bottom" id="RaI-4e-FoN"/>
@@ -565,7 +565,7 @@
         <!--Заголовок-->
         <scene sceneID="72y-gm-hEl">
             <objects>
-                <viewController storyboardIdentifier="rr" id="ZO8-wS-FT5" customClass="ASWCollectionViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="collectionView" id="ZO8-wS-FT5" customClass="ASWCollectionViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xzU-wo-lrC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -913,6 +913,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUO-cv-Yed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-991" y="1764"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eLb-gQ-dlQ">
+            <objects>
+                <viewController storyboardIdentifier="changePasswordView" id="EIg-nM-83B" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zvF-v7-CiY"/>
+                        <viewControllerLayoutGuide type="bottom" id="VF2-aY-XQI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="clP-R3-J0j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ij-WU-AUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="110" y="1373"/>
         </scene>
     </scenes>
     <resources>

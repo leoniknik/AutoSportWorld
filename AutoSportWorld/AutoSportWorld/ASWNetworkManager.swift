@@ -92,24 +92,25 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func checkEmail(email:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping ()->Void) {
-        var request = ASWLoginRequest(email:email,password:"")
+    static func validateLogin(email:String,password:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping ()->Void) {
+        
+        var request = ASWValidateLoginRequest(email:email,password:password)
         
         func onSuccess(json: JSON) -> Void{
-            sucsessFunc()
+            sucsessFunc(ASWValidateLoginParser(json: json))
         }
         
         func onError(error: JSON) -> Void {
             errorFunc()
         }
         
-        if(Int(arc4random_uniform(2))==1||true){
-            sucsessFunc()
-        }else{
-            errorFunc()
-        }
+//        if(Int(arc4random_uniform(2))==1||true){
+//            sucsessFunc()
+//        }else{
+//            errorFunc()
+//        }
         
-        //ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     
@@ -144,6 +145,9 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
+    
+    
+    
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void) -> Void {
         print("requesting URL \(URL)")
@@ -167,7 +171,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                DispatchQueue.global(qos: .userInitiated).async {
+                DispatchQueue.main.async {
                     onSuccess(json)
                 }
             case .failure(let error):
@@ -175,7 +179,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
                 if let data = response.data {
                     json = JSON(data: data)
                 }
-                DispatchQueue.global(qos: .userInitiated).async {
+                DispatchQueue.main.async {
                     onError(json)
                 }
             }

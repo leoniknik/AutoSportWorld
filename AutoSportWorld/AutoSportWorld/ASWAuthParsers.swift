@@ -85,3 +85,42 @@ class ASWSignupParser {
         }
     }
 }
+
+class ASWValidateLoginParser {
+    
+    var valid = false
+    
+    var email:String = ""
+    var password:String = ""
+    var totalErrorString:String = ""
+    
+    init(json: JSON) {
+        
+        print(json["message"].stringValue)
+        valid = json["valid"].boolValue
+        if(valid){
+            
+        }else{
+            
+            let errors = json["errors"]
+            
+            for error in errors["email"].arrayValue{
+                if (email != ""){
+                    email += "\n"
+                }
+                email += error.stringValue
+            }
+            
+            for error in errors["password"].arrayValue{
+                if (password != ""){
+                    password += "\n"
+                }
+                password += error.stringValue
+            }
+            
+            totalErrorString = email + "\n" + password
+        }
+    }
+}
+
+

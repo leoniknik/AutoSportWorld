@@ -123,7 +123,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
         
         // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: "rg") as! ASWRegisterAccountViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: ASWStoryboardIDManager.Registration.registerAccountView) as! ASWRegisterAccountViewController
         return viewController
     }()
     
@@ -134,7 +134,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
         
         // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: "rr") as! ASWCollectionViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: ASWStoryboardIDManager.Registration.collectionView) as! ASWCollectionViewController
         return viewController
     }()
     
@@ -296,9 +296,11 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
 //            self?.view.setNeedsDisplay()
 //        }
         if final{
+            confirmButton.titleLabel?.text = "Завершить регистрацию"
             confirmButton.setTitle("Завершить регистрацию", for: .normal)
             confirmButton.setTitle("Завершить регистрацию", for: .disabled)
         }else{
+            confirmButton.titleLabel?.text = "Далее"
             confirmButton.setTitle("Далее", for: .normal)
             confirmButton.setTitle("Далее", for: .disabled)
         }
@@ -338,20 +340,23 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     
     func checkEmail(){
         
-        func sucsessCheck(){
-            currentStep+=1
-            setStep()
-            setConfirmButtonText(false)
+        func sucsessCheck(parser:ASWValidateLoginParser){
+            if(parser.valid){
+                currentStep+=1
+                setStep()
+                setConfirmButtonText(false)
+            }else{
+                let alert = UIAlertController(title: "Регистрация", message: parser.totalErrorString, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }
         
         func errorCheck(){
-            let alert = UIAlertController(title: "Регистрация", message: "Такой email уже зарегистрирован", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+
         }
-        
-        
-        ASWNetworkManager.checkEmail(email: rawUser.email, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
+        ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
     
