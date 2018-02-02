@@ -12,11 +12,9 @@ import SkyFloatingLabelTextField
 
 class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
     
-
-
-        override func viewDidLayoutSubviews() {
-            
-            
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            hideKeyboardWhenTappedAround()
         }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +36,8 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
         passwordField.setupUI()
         
         
-        loginField.textField.text = "e@gmail.com"
-        passwordField.textField.text = "rootroot"
+        loginField.textField.text = "edd@dede.ru"
+        passwordField.textField.text = "123123"
     }
 
     let emailValidator = ASWEmailValidator()

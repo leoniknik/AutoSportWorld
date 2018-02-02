@@ -24,7 +24,7 @@ import UIKit
 
 class ASWRegistrationViewController: UIViewController, ASWCollectionViewControllerDelegate, ASWRegisterAccountViewControllerDelegate {
     
-    struct RawUserParams{
+    public struct RawUserParams{
         var login:String = ""
         var email:String = ""
         var password:String = ""
@@ -71,13 +71,13 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     }
     
     func actionTypeSelected(auto: Bool, watch: Bool, join: Bool) {
-        if auto {
+//        if auto {
             rawUser.autoWatch = watch
             rawUser.autoJoin = join
-        }else{
+//        }else{
             rawUser.motoWatch = watch
             rawUser.motoJoin = join
-        }
+//        }
         //databaseManager.setUserActions(auto: auto, watch: watch, join: join)
         confirmButton.isEnabled = watch || join
     }
@@ -90,7 +90,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         rawUser.auto = auto
     
         if (auto && moto){
-            stepAmaunt = 7
+            stepAmaunt = 6
         }else if (auto || moto){
             stepAmaunt = 5
         }
@@ -124,6 +124,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         
         // Instantiate View Controller
         var viewController = storyboard.instantiateViewController(withIdentifier: ASWStoryboardIDManager.Registration.registerAccountView) as! ASWRegisterAccountViewController
+        viewController.hideKeyboardWhenTappedAround()
         return viewController
     }()
     
@@ -135,6 +136,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         
         // Instantiate View Controller
         var viewController = storyboard.instantiateViewController(withIdentifier: ASWStoryboardIDManager.Registration.collectionView) as! ASWCollectionViewController
+        viewController.hideKeyboardWhenTappedAround()
         return viewController
     }()
     
@@ -221,7 +223,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
 //        registerAccountViewController.password = userEntity.password
         
         rawUser.login = "123123"
-        rawUser.email = "edd@dede.ru"
+        rawUser.email = "edd\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
         rawUser.password = "123123"
         registerAccountViewController.name = rawUser.login
         registerAccountViewController.email = rawUser.email
@@ -284,23 +286,12 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     }
     
     func setConfirmButtonText(_ final:Bool){
-//        DispatchQueue.main.async {
-//            [weak self] in
-//            if final{
-//                self?.confirmButton.setTitle("Завершить регистрацию", for: .normal)
-//                self?.confirmButton.setTitle("Завершить регистрацию", for: .disabled)
-//            }else{
-//                self?.confirmButton.setTitle("Далее", for: .normal)
-//                self?.confirmButton.setTitle("Далее", for: .disabled)
-//            }
-//            self?.view.setNeedsDisplay()
-//        }
+
         if final{
-            confirmButton.titleLabel?.text = "Завершить регистрацию"
             confirmButton.setTitle("Завершить регистрацию", for: .normal)
             confirmButton.setTitle("Завершить регистрацию", for: .disabled)
+
         }else{
-            confirmButton.titleLabel?.text = "Далее"
             confirmButton.setTitle("Далее", for: .normal)
             confirmButton.setTitle("Далее", for: .disabled)
         }
@@ -361,50 +352,85 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     
     
     @IBAction func performNextStep(_ sender: Any) {
+        
+        //new logic
+        // 0-email
+        // 1-regions
+        // 2-sportType
+        //     auto     moto    a+m   - выбор пользователя
+        // 3-autoCat_motoCat_autoCat
+        // 4-  Act     Act   motoCat
+        // 5-                  Act
+        
         if(currentStep==0){
+            // 0-email
             checkEmail()
         } else if(currentStep == 1){
+            // 1-regions
             currentStep+=1
             setStep()
             setConfirmButtonText(false)
         } else if(currentStep == 2){
+            // 2-sportType
             currentStep+=1
             setStep()
             setConfirmButtonText(false)
         }else if(currentStep == 3){
+            // 3-autoCat_motoCat_autoCat
             currentStep+=1
             setStep()
             setConfirmButtonText(!(rawUser.auto&&rawUser.moto))
         }else if(currentStep == 4){
+            // 4-  Act     Act   motoCat
             if ((rawUser.auto&&rawUser.moto)){
                 currentStep+=1
                 setStep()
-                setConfirmButtonText(false)
+                setConfirmButtonText(true)
             }else{
                 completeRegistration()
             }
         }else if(currentStep == 5){
-            currentStep+=1
-            setStep()
-               setConfirmButtonText(true)
-        }else if(currentStep == 6){
             completeRegistration()
         }
         
+//        if(currentStep==0){
+//            checkEmail()
+//        } else if(currentStep == 1){
+//            currentStep+=1
+//            setStep()
+//            setConfirmButtonText(false)
+//        } else if(currentStep == 2){
+//            currentStep+=1
+//            setStep()
+//            setConfirmButtonText(false)
+//        }else if(currentStep == 3){
+//            currentStep+=1
+//            setStep()
+//            setConfirmButtonText(!(rawUser.auto&&rawUser.moto))
+//        }else if(currentStep == 4){
+//            if ((rawUser.auto&&rawUser.moto)){
+//                currentStep+=1
+//                setStep()
+//                setConfirmButtonText(false)
+//            }else{
+//                completeRegistration()
+//            }
+//        }else if(currentStep == 5){
+//            currentStep+=1
+//            setStep()
+//               setConfirmButtonText(true)
+//        }else if(currentStep == 6){
+//            completeRegistration()
+//        }
+//
     }
     
-    func completeRegistration(){
-        
-        let alert = UIAlertController(title: "Регистрация", message: "Регистрация завершена", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-        
-    }
+    
     
     func setStep(){
         setStepLabel()
         registerCollectionViewController.searchBar?.text = ""
+        //old logic
         // 0-email
         // 1-sportType
         // 2-regions
@@ -413,6 +439,16 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         // 4-autoAct_motoAct_motoCat
         // 5-                autoAct
         // 6-                motoAct
+        
+        //new logic
+        // 0-email
+        // 1-regions
+        // 2-sportType
+        //     auto     moto    a+m   - выбор пользователя
+        // 3-autoCat_motoCat_autoCat
+        // 4-  Act     Act   motoCat
+        // 5-                  Act
+
         
         
         if(currentStep == 0){
@@ -433,20 +469,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             remove(asChildViewController: registerAccountViewController)
             add(asChildViewController: registerCollectionViewController)
             registerCollectionViewController.delegate = self
-            registerCollectionViewController.setupSportTypeDatasource(auto: rawUser.auto, moto: rawUser.moto)
-//            var dataSource = ASWSportTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, auto: rawUser.auto,moto:rawUser.moto)
-//
-//            registerCollectionViewController.datasource = dataSource
-//            dataSource.delegate = registerCollectionViewController
-//            registerCollectionViewController.collectionView.dataSource = dataSource
-//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-//            registerCollectionViewController.delegate = self
-//            registerCollectionViewController.setupRightBarItem()
-//            registerCollectionViewController.hideSearchBar()
-            confirmButton.isEnabled = rawUser.auto || rawUser.moto
-        }
-        
-        if (currentStep == 2){
+            
             //regions step
             var selectedRegions = rawUser.regions
             var dataSource: ASWRegionsCollectionViewDataSource! = regionsDataSource
@@ -456,6 +479,15 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 registerCollectionViewController.getUpdate()
             }
             confirmButton.isEnabled = selectedRegions.count>0
+
+        }
+        
+        if (currentStep == 2){
+            
+            registerCollectionViewController.delegate = self
+            registerCollectionViewController.setupSportTypeDatasource(auto: rawUser.auto, moto: rawUser.moto)
+            confirmButton.isEnabled = rawUser.auto || rawUser.moto
+
         }
         
         if (currentStep == 3){
@@ -468,55 +500,23 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             if dataSource.isEmptyDatasource(){
                 registerCollectionViewController.getUpdate()
             }
-            
-//            registerCollectionViewController.datasource = dataSource
-//            dataSource.delegate = registerCollectionViewController
-//            registerCollectionViewController.collectionView.dataSource = dataSource
-//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-//            registerCollectionViewController.searchBar.delegate = dataSource
-//            registerCollectionViewController.delegate = self
-//            registerCollectionViewController.setupRightBarItem()
-//            registerCollectionViewController.showSearchBar()
-//            dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
-            
             confirmButton.isEnabled = selectedRaceTypes.count>0
 
         }
         
         if (currentStep == 4){
-            // auto action or moto action or moto type
-
             if(rawUser.auto && rawUser.moto){
                 
                 var selectedRaceTypes =  rawUser.motoCategories
-                
-                //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: false)
+
                 var dataSource =  motoCategoryDataSource
                 registerCollectionViewController.setupRaceCategoriesDatasource(datasource: dataSource, auto: dataSource.auto, selectedRaceCategories: selectedRaceTypes)
                 if dataSource.isEmptyDatasource(){
                     registerCollectionViewController.getUpdate()
                 }
-                
-//                registerCollectionViewController.datasource = dataSource
-//                dataSource.delegate = registerCollectionViewController
-//                registerCollectionViewController.collectionView.dataSource = dataSource
-//                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-//                registerCollectionViewController.searchBar.delegate = dataSource
-//                registerCollectionViewController.delegate = self
-//                registerCollectionViewController.setupRightBarItem()
-//                registerCollectionViewController.showSearchBar()
-//                dataSource.setSelectedCategories(categoryIDs: selectedRaceTypes)
+
                 confirmButton.isEnabled = selectedRaceTypes.count>0
             }else {
-//                var dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:rawUser.auto, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin,watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch)
-//
-//                registerCollectionViewController.datasource = dataSource
-//                dataSource.delegate = registerCollectionViewController
-//                registerCollectionViewController.collectionView.dataSource = dataSource
-//                registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-//                registerCollectionViewController.delegate = self
-//                registerCollectionViewController.setupRightBarItem()
-//                registerCollectionViewController.hideSearchBar()
                 registerCollectionViewController.setupActionTypeDatasource(auto: rawUser.auto, watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin)
                 if(rawUser.auto){
                     confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
@@ -525,26 +525,14 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 }
             }
         }
-        if (currentStep == 5 || currentStep == 6){
+        if (currentStep == 5){
             var dataSource:ASWActionTypeCollectionViewDataSource!
             
             if (currentStep == 5){
-//                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:true, join: rawUser.autoJoin,watch: rawUser.autoWatch)
+
                 registerCollectionViewController.setupActionTypeDatasource(auto: true, watch: rawUser.autoWatch, join: rawUser.autoJoin)
                 confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
-            }else{
-//                dataSource = ASWActionTypeCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView,auto:false, join: rawUser.motoJoin,watch: rawUser.motoWatch)
-                registerCollectionViewController.actionTypeSelected(auto: false, watch: rawUser.motoWatch, join: rawUser.motoJoin)
-                confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
             }
-            
-//            registerCollectionViewController.datasource = dataSource
-//            dataSource.delegate = registerCollectionViewController
-//            registerCollectionViewController.collectionView.dataSource = dataSource
-//            registerCollectionViewController.collectionView.delegate = registerCollectionViewController
-//            registerCollectionViewController.delegate = self
-//            registerCollectionViewController.setupRightBarItem()
-//            registerCollectionViewController.hideSearchBar()
         }
 
     }
@@ -553,5 +541,161 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         stepLabel.text = "шаг \(currentStep+1) из \(stepAmaunt)"
         progressView.setProgress((Float(currentStep+1)/(Float(stepAmaunt))), animated: true)
     }
+    
+    
+    func completeRegistration(){
+        func sucsessSignup(parser:ASWSignupParser){
+            if(parser.valid){
+                var user = ASWDatabaseManager().createUserFrom(login: rawUser.login,
+                                                               email: rawUser.email,
+                                                               password: rawUser.password,
+                                                               auto: rawUser.auto,
+                                                               moto: rawUser.moto,
+                                                               autoWatch: rawUser.autoWatch,
+                                                               autoJoin: rawUser.autoJoin,
+                                                               motoWatch: rawUser.motoWatch,
+                                                               motoJoin: rawUser.motoJoin,
+                                                               regions: rawUser.regions,
+                                                               autoCategories: rawUser.autoCategories,
+                                                               motoCategories: rawUser.motoCategories)
+                ASWDatabaseManager().setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+                sendUserInfoToServer()
+            }else{
+                let alert = UIAlertController(title: "Регистрация", message: parser.email, preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+        func errorSignup(){
+            
+        }
+        
+        ASWNetworkManager.signupUser(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessSignup, errorFunc: errorSignup)
+    }
+    
+    func sendUserInfoToServer(){
+        func sucsessSend(){
+            goToMainStoryboard()
+        }
+        ASWDatabaseManager().sendUserInfoToServer(completion: sucsessSend)
+    }
+    
+    
+    func goToMainStoryboard(){
+        let alert = UIAlertController(title: "Регистрация", message: "Регистрация завершена", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
+
+//func setStep(){
+//    setStepLabel()
+//    registerCollectionViewController.searchBar?.text = ""
+//    //old logic
+//    // 0-email
+//    // 1-sportType
+//    // 2-regions
+//    //     auto     moto    a+m
+//    // 3-autoCat_motoCat_autoCat
+//    // 4-autoAct_motoAct_motoCat
+//    // 5-                autoAct
+//    // 6-                motoAct
+//
+//    //new logic
+//    // 0-email
+//    // 1-regions
+//    // 2-sportType
+//    //     auto     moto    a+m   - выбор пользователя
+//    // 3-autoCat_motoCat_autoCat
+//    // 4-  Act     Act   motoCat
+//    // 5-                  Act
+//
+//
+//
+//    if(currentStep == 0){
+//        // email step
+//
+//        remove(asChildViewController: registerCollectionViewController)
+//        add(asChildViewController: registerAccountViewController)
+//        registerAccountViewController.name = rawUser.login
+//        registerAccountViewController.email = rawUser.email
+//        registerAccountViewController.password = rawUser.password
+//        registerAccountViewController.fillFormFromUserModel()
+//        registerAccountViewController.delegate = self
+//        confirmButton.isEnabled = registerAccountViewController.isFormValid()
+//        setupRightBarItem(avalible: false, title: "")
+//    }
+//
+//    if(currentStep == 1){
+//        remove(asChildViewController: registerAccountViewController)
+//        add(asChildViewController: registerCollectionViewController)
+//        registerCollectionViewController.delegate = self
+//        registerCollectionViewController.setupSportTypeDatasource(auto: rawUser.auto, moto: rawUser.moto)
+//        confirmButton.isEnabled = rawUser.auto || rawUser.moto
+//    }
+//
+//    if (currentStep == 2){
+//        //regions step
+//        var selectedRegions = rawUser.regions
+//        var dataSource: ASWRegionsCollectionViewDataSource! = regionsDataSource
+//
+//        registerCollectionViewController.setupRegionsDatasource(datasource: dataSource, selectedRegions: selectedRegions)
+//        if dataSource.isEmptyDatasource(){
+//            registerCollectionViewController.getUpdate()
+//        }
+//        confirmButton.isEnabled = selectedRegions.count>0
+//    }
+//
+//    if (currentStep == 3){
+//        // auto or moto types
+//        var selectedRaceTypes = rawUser.auto ? rawUser.autoCategories : rawUser.motoCategories
+//
+//        //var dataSource = ASWRaceCategoryCollectionViewDataSource(collectionView: registerCollectionViewController.collectionView, selectedRaceCategory: selectedRaceTypes, auto: rawUser.auto)
+//        var dataSource = rawUser.auto ? autoCategoryDataSource : motoCategoryDataSource
+//        registerCollectionViewController.setupRaceCategoriesDatasource(datasource: dataSource, auto: dataSource.auto, selectedRaceCategories: selectedRaceTypes)
+//        if dataSource.isEmptyDatasource(){
+//            registerCollectionViewController.getUpdate()
+//        }
+//        confirmButton.isEnabled = selectedRaceTypes.count>0
+//
+//    }
+//
+//    if (currentStep == 4){
+//        if(rawUser.auto && rawUser.moto){
+//
+//            var selectedRaceTypes =  rawUser.motoCategories
+//
+//            var dataSource =  motoCategoryDataSource
+//            registerCollectionViewController.setupRaceCategoriesDatasource(datasource: dataSource, auto: dataSource.auto, selectedRaceCategories: selectedRaceTypes)
+//            if dataSource.isEmptyDatasource(){
+//                registerCollectionViewController.getUpdate()
+//            }
+//
+//            confirmButton.isEnabled = selectedRaceTypes.count>0
+//        }else {
+//            registerCollectionViewController.setupActionTypeDatasource(auto: rawUser.auto, watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin)
+//            if(rawUser.auto){
+//                confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
+//            }else{
+//                confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
+//            }
+//        }
+//    }
+//    if (currentStep == 5 || currentStep == 6){
+//        var dataSource:ASWActionTypeCollectionViewDataSource!
+//
+//        if (currentStep == 5){
+//
+//            registerCollectionViewController.setupActionTypeDatasource(auto: true, watch: rawUser.autoWatch, join: rawUser.autoJoin)
+//            confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
+//        }else{
+//            registerCollectionViewController.actionTypeSelected(auto: false, watch: rawUser.motoWatch, join: rawUser.motoJoin)
+//            confirmButton.isEnabled = rawUser.motoJoin||rawUser.motoWatch
+//        }
+//
+//    }
+//
+//}
+

@@ -135,7 +135,26 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                     self?.imageService.send(url: curItem.imageUrl!, completionHandler: { (image) in
                         curItem.image = image
                         DispatchQueue.main.async { [weak self] in
-                            self?.collectionView.reloadItems(at: [indexPath])
+                            
+//                            if indexPath.section <= 1 {
+//                                if(indexPath.section == 0){
+//                                    if(self?.availableItems.count ?? 0 <= indexPath.row){
+//                                        self?.collectionView.reloadItems(at: [indexPath])
+//                                    }
+//                                }else{
+//                                    if(self?.selectedItems.count ?? 0 <= indexPath.row){
+//                                        self?.collectionView.reloadItems(at: [indexPath])
+//                                    }
+//                                }
+//                            }
+                            self?.collectionView.reloadData()
+                            
+                           
+//                            if cell != nil{
+//                                //self?.collectionView.reloadItems(at: [indexPath])
+//                                self?.collectionView.reloadData()
+//                            }
+                            
                         }
                     })
                     

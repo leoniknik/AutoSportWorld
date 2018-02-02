@@ -129,12 +129,12 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func signupUser(email:String,password:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping ()->Void) {
+    static func signupUser(email:String,password:String, sucsessFunc: @escaping (ASWSignupParser)->Void,  errorFunc: @escaping ()->Void) {
         var request = ASWSignupRequest(email:email,password:password)
         
         func onSuccess(json: JSON) -> Void{
             let response = ASWSignupParser(json: json)
-            sucsessFunc()
+            sucsessFunc(response)
         }
         
         func onError(error: JSON) -> Void {
@@ -145,13 +145,48 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
+    static func sendUserInfo(regions:[Int], categories: [Int], watch: Bool, join: Bool, sucsessFunc: @escaping (ASWUserInfoSendParser)->Void,  errorFunc: @escaping ()->Void) {
+        var request = ASWUserInfoSendRequest(regions: regions, categories: categories, watch: watch, join: join)
+        
+        func onSuccess(json: JSON) -> Void{
+            let response = ASWUserInfoSendParser(json: json)
+            sucsessFunc(response)
+        }
+        
+        func onError(error: Any) -> Void {
+            errorFunc()
+        }
+        
+        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
+    }
     
     
+ 
     
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void) -> Void {
         print("requesting URL \(URL)")
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                DispatchQueue.global(qos: .userInitiated).async {
+                    onSuccess(json)
+                }
+            case .failure(let error):
+                DispatchQueue.global(qos: .userInitiated).async {
+                    onError(error)
+                }
+            }
+        }
+    }
+    
+    private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, acessToken:String) -> Void {
+        print("requesting URL \(URL)")
+        
+        var headers = ["x-access-token":acessToken]
+        
+        Alamofire.request(URL, method: method, parameters: parameters,encoding: JSONEncoding.default, headers: headers ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

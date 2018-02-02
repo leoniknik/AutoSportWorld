@@ -14,15 +14,21 @@ class ASWDatabaseManager {
     func getUser() -> ASWUserEntity? {
         let realm = try! Realm()
         let predicate = NSPredicate(format: "isLogedIn == true")
-        return realm.objects(ASWUserEntity.self).filter(predicate).first
+        var loggedInUsers = realm.objects(ASWUserEntity.self).filter(predicate)
+        return loggedInUsers.first
     }
     
     func unloginAllUsers(){
         let realm = try! Realm()
-        for user in realm.objects(ASWUserEntity.self){
-            user.isLogedIn = false
-            save(object: user)
-        }
+        //try! realm.write {
+            for user in realm.objects(ASWUserEntity.self){
+                try! realm.write {
+                user.isLogedIn = false
+                }
+//                save(object: user)
+            }
+            
+        //}
     }
     
     func loginUser(login:String,password:String)->ASWUserEntity{
@@ -34,15 +40,15 @@ class ASWDatabaseManager {
             save(object: user)
             return user
         }else{
-            return createUser(login:login,password:password)
+            return createUserFrom(login:login,password:password)
         }
     }
     
-    func createUser(login:String,password:String)->ASWUserEntity{
+    func createUserFrom(login:String,password:String)->ASWUserEntity{
         unloginAllUsers()
         
         var user = ASWUserEntity()
-        user.id =  Int(Date().timeIntervalSince1970)
+        user.id =  Int(Date().timeIntervalSince1970*1000)
         user.email = login
         user.password = password
         user.isLogedIn = true
@@ -50,8 +56,87 @@ class ASWDatabaseManager {
         return user
     }
     
+    func createUserFrom(login:String,
+                        email:String,
+                        password:String,
+                        
+                        auto:Bool,
+                        moto:Bool,
+                        
+                        autoWatch:Bool,
+                        autoJoin:Bool,
+                        motoWatch:Bool,
+                        motoJoin:Bool,
+                        
+                        regions:[Int],
+                        autoCategories:[Int],
+                        motoCategories:[Int])->ASWUserEntity{
+        
+        unloginAllUsers()
+        
+        var user = ASWUserEntity()
+
+            
+            user.id =  Int(Date().timeIntervalSince1970*1000)
+            user.email = login
+            user.password = password
+            user.isLogedIn = true
+            user.login = login
+            user.auto=auto
+            user.moto=moto
+            user.autoWatch = autoWatch
+            user.autoJoin = autoJoin
+            user.motoWatch = motoWatch
+            user.motoJoin = motoJoin
+            
+        
+        save(object: user)
+        
+        setUserRegions(regionIDs: regions)
+        setUserRaceCategories(categoriesIDs: autoCategories, auto: true)
+        setUserRaceCategories(categoriesIDs: motoCategories, auto: false)
+        return user
+    }
+    
+    func setSessionInfo(refresh_token:String,access_token:String,expires_at:Int){
+        let realm = try! Realm()
+        var user = getUser()!
+        try! realm.write {
+            user.refresh_token = refresh_token
+            user.access_token = access_token
+            user.expires_at = expires_at
+        }
+    }
+    
     func updateUserInfoFromServer(){
-        // some info
+        
+        func sucsessGet(parser:ASWUserInfoGetParser){
+            
+        }
+        
+        func errorGet(){
+            
+        }
+        
+    }
+    
+    func sendUserInfoToServer(completion:@escaping ()->Void){
+        func sucsess(parser:ASWUserInfoSendParser){
+            completion()
+        }
+        
+        func error(){
+            
+        }
+        
+        guard let user = getUser() else{
+            return
+        }
+        
+        var categories = getCategoriesIds(auto: true) ?? [Int]()
+        categories.append(contentsOf: getCategoriesIds(auto: false) ?? [Int]())
+        ASWNetworkManager.sendUserInfo(regions: getRegionsIds() ?? [], categories: categories, watch: user.autoWatch, join: user.motoJoin, sucsessFunc: sucsess, errorFunc: error)
+        
     }
     
     func getUserBy(id:Int) -> ASWUserEntity? {
@@ -195,10 +280,10 @@ class ASWDatabaseManager {
         guard let user = getUser() else {
             return nil
         }
-
+        
         
         return user.favoriteRaces.map{ $0.id }
-
+        
     }
     
     func getRegionBy(id: Int) -> ASWRegionEntity? {

@@ -67,21 +67,29 @@ class ASWSignupErrorParser {
 
 class ASWSignupParser {
     
-    var wrongEmail:Bool = false
-    var wrongPassword:Bool = false
+    //var wrongEmail:Bool = false
+    //var wrongPassword:Bool = false
+    
+    var email = ""
+    var valid = false
+    
+    var refresh_token = ""
+    var access_token = ""
+    var expires_at = 0
     
     init(json: JSON) {
         
         print(json["message"].stringValue)
-        
-        switch json["message"].stringValue {
-        case "wrong email":
-            wrongEmail = true
-            break
-        case "1":
-            break
-        default:
-            break
+        let code = json["code"].stringValue
+        valid = code == "ok"
+        if valid {
+            let sessionInfo = json["session"]
+            refresh_token = sessionInfo["refresh_token"].stringValue
+            access_token = sessionInfo["access_token"].stringValue
+            expires_at = sessionInfo["expires_at"].intValue
+        }else{
+            let errors = json["errors"]
+            email = errors[email].array?.first?.stringValue ?? "emailError"
         }
     }
 }
@@ -119,6 +127,35 @@ class ASWValidateLoginParser {
             }
             
             totalErrorString = email + "\n" + password
+        }
+    }
+}
+
+class ASWLoginParser {
+    
+    //var wrongEmail:Bool = false
+    //var wrongPassword:Bool = false
+    
+    var email = ""
+    var valid = false
+    
+    var refresh_token = ""
+    var access_token = ""
+    var expires_at = 0
+    
+    init(json: JSON) {
+        
+        print(json["message"].stringValue)
+        let code = json["code"].stringValue
+        valid = code == "ok"
+        if valid {
+            let sessionInfo = json["session"]
+            refresh_token = sessionInfo["refresh_token"].stringValue
+            access_token = sessionInfo["access_token"].stringValue
+            expires_at = sessionInfo["expires_at"].intValue
+        }else{
+            let errors = json["errors"]
+            email = errors[email].array?.first?.stringValue ?? "emailError"
         }
     }
 }

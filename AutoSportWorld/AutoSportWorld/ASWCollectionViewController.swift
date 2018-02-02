@@ -132,6 +132,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             self?.datasource.updateData()
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

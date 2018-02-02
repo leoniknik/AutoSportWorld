@@ -38,14 +38,24 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         self.collectionView = collectionView
         self.watch = watch
         self.join = join
+//        if(auto){
+//
+//            titleForSelectedItems = ["Выбранные действия для ","автогонок",""]
+//            titleForAvailableItems = ["Выберите интересующее действие для ","автогонок",""]
+//        }else{
+//
+//            titleForSelectedItems = ["Выбранные действия для ","мотогонок",""]
+//            titleForAvailableItems = ["Выберите интересующее действие для ","мотогонок",""]
+//        }
+        
         if(auto){
             
-            titleForSelectedItems = ["Выбранные действия для ","автогонок",""]
-            titleForAvailableItems = ["Выберите интересующее действие для ","автогонок",""]
+            titleForSelectedItems = ["Выбранные действия ","",""]
+            titleForAvailableItems = ["Выберите интересующее действие","",""]
         }else{
             
-            titleForSelectedItems = ["Выбранные действия для ","мотогонок",""]
-            titleForAvailableItems = ["Выберите интересующее действие для ","мотогонок",""]
+            titleForSelectedItems = ["Выбранные действия","",""]
+            titleForAvailableItems = ["Выберите интересующее действие","",""]
         }
         
         

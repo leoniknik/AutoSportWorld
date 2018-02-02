@@ -26,6 +26,10 @@ class ASWUserEntity: Object {
     @objc dynamic var motoWatch: Bool = false
     @objc dynamic var motoJoin: Bool = false
     
+    @objc dynamic var refresh_token: String?
+    @objc dynamic var access_token: String?
+    @objc dynamic var expires_at: Int = 0
+
     let favoriteRaces = List<ASWRaceEntity>()
     
     let regions = List<ASWRegionEntity>()
