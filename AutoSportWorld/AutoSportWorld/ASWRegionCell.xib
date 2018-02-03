@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -42,7 +42,7 @@
                         <attributedString key="attributedText">
                             <fragment content="78/47">
                                 <attributes>
-                                    <font key="NSFont" size="30" name="Arial-Black"/>
+                                    <font key="NSFont" size="24" name="Arial-Black"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -68,9 +68,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-is-Tjn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avto" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-is-Tjn">
                                 <rect key="frame" x="34" y="0.0" width="28" height="16"/>
-                                <color key="backgroundColor" red="0.78230754950000003" green="0.42004393400000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="49Q-Jt-8WM"/>
                                     <constraint firstAttribute="height" constant="16" id="vxC-wT-6Du"/>
@@ -78,9 +77,8 @@
                             </imageView>
                         </subviews>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_backward" translatesAutoresizingMaskIntoConstraints="NO" id="H8L-CL-3He">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_elevation" translatesAutoresizingMaskIntoConstraints="NO" id="H8L-CL-3He">
                         <rect key="frame" x="74" y="4" width="22" height="22"/>
-                        <color key="backgroundColor" red="0.19990382696202261" green="0.72340381145477295" blue="0.16092284105966903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="be6-3M-ZPr"/>
                             <constraint firstAttribute="width" constant="22" id="xCM-pB-zwU"/>
@@ -106,12 +104,14 @@
             <size key="customSize" width="100" height="100"/>
             <connections>
                 <outlet property="checkmark" destination="H8L-CL-3He" id="yA6-26-Uqx"/>
+                <outlet property="name" destination="I1b-hh-2Ck" id="ni1-TX-tEM"/>
                 <outlet property="regionNumber" destination="mxz-oA-xjr" id="Eja-Pf-QbX"/>
             </connections>
             <point key="canvasLocation" x="-48" y="-95"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_backward" width="24" height="24"/>
+        <image name="ic_avto" width="100" height="100"/>
+        <image name="ic_elevation" width="24" height="24"/>
     </resources>
 </document>

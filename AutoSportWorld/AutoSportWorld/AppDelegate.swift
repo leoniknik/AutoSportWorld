@@ -25,6 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initGoogleMap()
         printRealmConfig()
         
+//        func test(){}
+//        
+//        func sucsessCheck(parser:ASWValidateLoginParser){
+//        }
+//        
+//        func errorCheck(){
+//        }
+//        
+//        ASWNetworkManager.validateLogin(email: "lol", password: "", sucsessFunc: sucsessCheck, errorFunc: errorCheck)
+//        
         return true
     }
 
@@ -76,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let config = Realm.Configuration(
             
-            schemaVersion: 5,
+            schemaVersion: 8,
             
             migrationBlock: { migration, oldSchemaVersion in
                 

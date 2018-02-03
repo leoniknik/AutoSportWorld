@@ -18,6 +18,7 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
     
+    @IBOutlet weak var vkButton: UIButton!
     
     @IBAction func vkLogin(_ sender: UIButton) {
         print("вк_логин")
@@ -35,14 +36,9 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     func setupUI(){
-        loginButton.layer.cornerRadius = 10
-        registrationButton.layer.cornerRadius = 10
-        
-        loginButton.clipsToBounds = true
-        registrationButton.clipsToBounds = true
-        
-        loginButton.backgroundColor = UIColor.ASWColor.grey
-        registrationButton.backgroundColor = UIColor.ASWColor.grey
+        ASWButtonManager.setupLoginButton(button: loginButton)
+        ASWButtonManager.setupLoginButton(button: registrationButton)
+        ASWButtonManager.setupVKButton(button: vkButton)
     }
     
     func vkSdkShouldPresent(_ controller: UIViewController) {
