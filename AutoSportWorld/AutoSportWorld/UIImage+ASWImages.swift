@@ -16,8 +16,14 @@ extension UIImage {
     static let passwordSecureOnPicture = UIImage(named: "ic_password")
     static let passwordSecureOffPicture = UIImage(named: "ic_password_on")
     static let share = UIImage(named: "ic_share")
-    static let bookmarkOff = #imageLiteral(resourceName: "ic_bookmark_tape_off")
-    static let bookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tape_on")
-    static let cardBookmarkOff = #imageLiteral(resourceName: "ic_bookmark_card_off")
-    static let cardBookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tab_off")
+    
+    static let bookmarkOff = #imageLiteral(resourceName: "ic_star_gray_off_48")
+    static let bookmarkOn = #imageLiteral(resourceName: "ic_star_gray_48")
+    
+    static let cardBookmarkOff = #imageLiteral(resourceName: "fab")
+    static let cardBookmarkOn = #imageLiteral(resourceName: "ic_star_white_on")
+    
+    static let cardLikedOff = #imageLiteral(resourceName: "ic_like_black_32")
+    static let cardLikedOn = #imageLiteral(resourceName: "ic_like_blue")
+    
 }

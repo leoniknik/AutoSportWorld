@@ -147,13 +147,55 @@ class ASWRace {
             else {
                 continue
             }
+            
         }
+        result = String(result.dropLast())
         
         return result
     }
     
     func getRaceCategories() -> String {
         return (self.categories ?? []).map{$0.name ?? ""}.joined(separator: "; ")
+    }
+    
+    func getJoinDescription() -> String {
+        if (canJoin ?? false) {
+            if let _ = jpriceFrom, let _ = jpriceTo {
+                return "Покататься - да"
+            }
+            else if let priceTo = jpriceTo, priceTo == 0 {
+                return "Покататься - бесплатно"
+            }
+            else if let priceFrom = jpriceFrom {
+                return "Покататься - от \(priceFrom) р."
+            }
+            else {
+                return "Покататься - да"
+            }
+        }
+        else {
+            return "Покататься - нет"
+        }
+    }
+    
+    func getWatchDescription() -> String {
+        if canWatch ?? false {
+            if let _ = wpriceFrom, let _ = wpriceTo {
+                return "Посмотреть - да"
+            }
+            else if let priceTo = wpriceTo, priceTo == 0 {
+                return "Посмотреть - бесплатно"
+            }
+            else if let priceFrom = wpriceFrom {
+                return "Посмотреть - от \(priceFrom) р."
+            }
+            else {
+                return "Посмотреть - да"
+            }
+        }
+        else {
+            return "Посмотреть - нет"
+        }
     }
     
 }

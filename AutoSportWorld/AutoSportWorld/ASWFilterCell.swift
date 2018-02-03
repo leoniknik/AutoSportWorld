@@ -16,7 +16,7 @@ class ASWFilterCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        switchView.onTintColor = UIColor.ASWColor.yellow
+        switchView.onTintColor = UIColor.ASWColor.darkBlue
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

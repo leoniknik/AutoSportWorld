@@ -24,6 +24,7 @@ class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeed
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.backgroundColor = UIColor.ASWColor.greyBackground
         updateRefreshControl()
         if shoudUpdate {
             model.events.removeAll()
@@ -250,13 +251,6 @@ extension ASWFavoriteViewController: UITableViewDataSource {
             cell.watchLabel.text = "Посмотреть - нет"
         }
         
-        if (cell.watchLabel.text == "Посмотреть - бесплатно" && cell.joinLabel.text == "Покататься - бесплатно") {
-            cell.momeyImage.isHidden = true
-        }
-        else {
-            cell.momeyImage.isHidden = false
-        }
-        
         cell.likesLabel.text = "Нравится: \(race.likes ?? 0)"
         
         let likeImage = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
@@ -269,7 +263,7 @@ extension ASWFavoriteViewController: UITableViewDataSource {
 extension ASWFavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item % 2 != 0 {
-            return 187
+            return 166
         }
         else {
             return 8

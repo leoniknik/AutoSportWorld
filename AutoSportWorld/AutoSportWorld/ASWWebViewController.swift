@@ -25,16 +25,51 @@ class ASWWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBlackOpaqueNavBar()
+        showWebView()
+        addBackButton()
+    }
+    
+    func showWebView() {
         
-        // проверить если нет префикса - его добавить
-//        убрать таб бар
-        
-//        if let string = race.link {
-        if let url = URL(string: "https://vk.com/autofest15") {
+        if var urlString = race.link {
+            if !urlString.hasPrefix("https://") {
+                urlString = "https://".appending(urlString)
+            }
+            if let url = URL(string: urlString) {
                 let urlRequest = URLRequest(url: url)
                 self.webView.loadRequest(urlRequest)
             }
-//        }
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
+}
+
+extension UIViewController {
+    //убрать таб бар
+    
+    //убрать прозрачность
+    func setupBlackOpaqueNavBar() {
+        navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barStyle = .blackOpaque
+    }
+
+    func addBackButton() {
+        let backButton = UIBarButtonItem(image: UIImage.backward, style: .done, target: self, action: #selector(goBackDefault))
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
+
+    }
+    
+    @objc func goBackDefault() {
+        self.navigationController?.popViewController(animated: false)
+    }
+    
+    func hideTabBarView() {
+        self.tabBarController?.tabBar.isHidden = true
+    }
 }

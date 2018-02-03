@@ -77,7 +77,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
     }
     
-    class func defaultOnSuccess(json: JSON) -> Void{
+    class func defaultOnSuccess(json: JSON) -> Void {
         print(json)
     }
     

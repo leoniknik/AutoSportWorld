@@ -36,6 +36,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     }
     
     func setupUI() {
+        self.tableView.backgroundColor = UIColor.ASWColor.greyBackground
         setupNavbar()
     }
     
@@ -200,7 +201,6 @@ extension ASWFeedViewController: UITableViewDataSource {
                     self?.model.updateEvents(cursor: self?.cursor)
                 }
             }
-            
             return cell
         }
         else {
@@ -226,48 +226,8 @@ extension ASWFeedViewController: UITableViewDataSource {
         cell.timeLabel.text = race.getShortShedule()
         cell.whereLabel.text = race.whereRace
         
-        if (race.canJoin ?? false) {
-            if let _ = race.jpriceFrom, let _ = race.jpriceTo {
-                cell.joinLabel.text = "Покататься - да"
-            }
-            else if let priceTo = race.jpriceTo, priceTo == 0 {
-                cell.joinLabel.text = "Покататься - бесплатно"
-            }
-            else if let priceFrom = race.jpriceFrom {
-                cell.joinLabel.text = "Покататься - от \(priceFrom) р."
-            }
-            else {
-                cell.joinLabel.text = "Покататься - да"
-            }
-        }
-        else {
-            cell.joinLabel.text = "Покататься - нет"
-        }
-        
-        if (race.canWatch ?? false) {
-            if let _ = race.wpriceFrom, let _ = race.wpriceTo {
-                cell.watchLabel.text = "Посмотреть - да"
-            }
-            else if let priceTo = race.wpriceTo, priceTo == 0 {
-                cell.watchLabel.text = "Посмотреть - бесплатно"
-            }
-            else if let priceFrom = race.wpriceFrom {
-                cell.watchLabel.text = "Посмотреть - от \(priceFrom) р."
-            }
-            else {
-                cell.watchLabel.text = "Посмотреть - да"
-            }
-        }
-        else {
-            cell.watchLabel.text = "Посмотреть - нет"
-        }
-        
-        if (cell.watchLabel.text == "Посмотреть - бесплатно" && cell.joinLabel.text == "Покататься - бесплатно") {
-            cell.momeyImage.isHidden = true
-        }
-        else {
-            cell.momeyImage.isHidden = false
-        }
+        cell.joinLabel.text = race.getJoinDescription()
+        cell.watchLabel.text = race.getWatchDescription()
         
         cell.likesLabel.text = "Нравится: \(race.likes ?? 0)"
         
@@ -281,7 +241,7 @@ extension ASWFeedViewController: UITableViewDataSource {
 extension ASWFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item % 2 != 0 {
-            return 187
+            return 166
         }
         else {
             return 8
@@ -305,6 +265,7 @@ extension ASWFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let race = model.getEvent(forIndex: indexPath.item / 2)
         let viewController = ASWEventViewController(race: race)
+        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: false)
         tableView.deselectRow(at: indexPath, animated: true)
     }

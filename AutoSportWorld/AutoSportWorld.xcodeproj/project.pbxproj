@@ -25,6 +25,7 @@
 		CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */; };
 		CA159CB41FFD98FB00A501F4 /* ASWFullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA159CB21FFD98FB00A501F4 /* ASWFullImageViewController.swift */; };
 		CA159CB51FFD98FB00A501F4 /* ASWFullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */; };
+		CA25D5F8202528CC00FF8B88 /* ASWEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D5F7202528CC00FF8B88 /* ASWEventModel.swift */; };
 		CA25D85F1F5090E700D65B26 /* ASWAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */; };
 		CA25D8611F50954D00D65B26 /* ASWTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */; };
 		CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */; };
@@ -116,6 +117,7 @@
 		CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWFiltersViewController.xib; sourceTree = "<group>"; };
 		CA159CB21FFD98FB00A501F4 /* ASWFullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFullImageViewController.swift; sourceTree = "<group>"; };
 		CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWFullImageViewController.xib; sourceTree = "<group>"; };
+		CA25D5F7202528CC00FF8B88 /* ASWEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWEventModel.swift; sourceTree = "<group>"; };
 		CA25D85E1F5090E700D65B26 /* ASWAnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAnimationManager.swift; sourceTree = "<group>"; };
 		CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWTabBarController.swift; sourceTree = "<group>"; };
 		CA27FFDA1F47404F00E0BD78 /* ASWRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */,
 				CA04AAF51FFAC46F00F1ACC3 /* ASWFiltersModel.swift */,
 				CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */,
+				CA25D5F7202528CC00FF8B88 /* ASWEventModel.swift */,
 			);
 			path = ViewControllersModel;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA25D5F8202528CC00FF8B88 /* ASWEventModel.swift in Sources */,
 				CA3ED3291FFBEBCA0026DBA6 /* ASWImageDownloader.swift in Sources */,
 				CA04AAFE1FFAE8A600F1ACC3 /* ASWNavigationItem.swift in Sources */,
 				CA0D21911FEEB92E00CF42FF /* ASWFiltersViewController.swift in Sources */,
