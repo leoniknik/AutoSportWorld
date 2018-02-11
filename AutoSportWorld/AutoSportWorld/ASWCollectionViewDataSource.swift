@@ -114,11 +114,6 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
                 rawSelectedItems.append(selectedItem)
             }
         }
-//
-//        availableItems = rawAvailableItems
-//        selectedItems = rawSelectedItems
-        //isSearching = false
-        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

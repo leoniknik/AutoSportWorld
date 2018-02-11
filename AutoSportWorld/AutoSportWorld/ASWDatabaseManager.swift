@@ -20,27 +20,48 @@ class ASWDatabaseManager {
     
     func unloginAllUsers(){
         let realm = try! Realm()
-        //try! realm.write {
-            for user in realm.objects(ASWUserEntity.self){
-                try! realm.write {
+        for user in realm.objects(ASWUserEntity.self){
+            try! realm.write {
                 user.isLogedIn = false
-                }
-//                save(object: user)
             }
             
-        //}
+        }
     }
     
     func loginUser(login:String,password:String)->ASWUserEntity{
         unloginAllUsers()
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "email == \(login)")
-        if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
+        let predicate = NSPredicate(format: "email == '\(login)'")
+        if (realm.objects(ASWUserEntity.self).filter(predicate).count>1){
+            for user in realm.objects(ASWUserEntity.self).filter(predicate){
+                realm.delete(user)
+            }
+            return createUserFrom(login:login,password:password)
+        } else if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
             user.password = password
             save(object: user)
             return user
         }else{
             return createUserFrom(login:login,password:password)
+        }
+    }
+    
+    func loginUser(parser:ASWLoginSucsessParser)->ASWUserEntity{
+        unloginAllUsers()
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "email == '\(parser.email)'")
+        if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
+            try! realm.write {
+                user.password = parser.password
+                user.isLogedIn = true
+            }
+            save(object: user)
+            setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            return user
+        }else{
+            var user = createUserFrom(login:parser.email,password:parser.password)
+                setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            return user
         }
     }
     
@@ -74,10 +95,12 @@ class ASWDatabaseManager {
         
         unloginAllUsers()
         
-        var user = ASWUserEntity()
-
+        var user = loginUser(login:login,password:password)
+        let realm = try! Realm()
+        try! realm.write {
             
-            user.id =  Int(Date().timeIntervalSince1970*1000)
+        
+           
             user.email = login
             user.password = password
             user.isLogedIn = true
@@ -89,7 +112,7 @@ class ASWDatabaseManager {
             user.motoWatch = motoWatch
             user.motoJoin = motoJoin
             
-        
+        }
         save(object: user)
         
         setUserRegions(regionIDs: regions)
@@ -108,16 +131,20 @@ class ASWDatabaseManager {
         }
     }
     
-    func updateUserInfoFromServer(){
-        
-        func sucsessGet(parser:ASWUserInfoGetParser){
+    func setUserInfo(parser:ASWUserInfoGetParser){
+        let realm = try! Realm()
+        var user = getUser()!
+        try! realm.write {
+            user.autoWatch = parser.canWatch
+            user.motoWatch = parser.canWatch
             
+            user.autoJoin = parser.canJoin
+            user.motoJoin = parser.canJoin
         }
         
-        func errorGet(){
-            
-        }
-        
+        setUserRaceCategories(categoriesIDs: parser.categoriesParser.autoCategoryIDs, auto: true)
+        setUserRaceCategories(categoriesIDs: parser.categoriesParser.motoCategoryIDs, auto: false)
+        setUserRegions(regionIDs: parser.regionsParser.regionsIDs)
     }
     
     func sendUserInfoToServer(completion:@escaping ()->Void){
@@ -136,7 +163,6 @@ class ASWDatabaseManager {
         var categories = getCategoriesIds(auto: true) ?? [Int]()
         categories.append(contentsOf: getCategoriesIds(auto: false) ?? [Int]())
         ASWNetworkManager.sendUserInfo(regions: getRegionsIds() ?? [], categories: categories, watch: user.autoWatch, join: user.motoJoin, sucsessFunc: sucsess, errorFunc: error)
-        
     }
     
     func getUserBy(id:Int) -> ASWUserEntity? {
@@ -151,11 +177,8 @@ class ASWDatabaseManager {
         guard let user = getUser() else{
             return
         }
-        
-        for (index, item) in user.regions.enumerated() {
-            try! realm.write {
-                user.regions.remove(objectAtIndex: index)
-            }
+        try! realm.write {
+            user.regions.removeAll()
         }
         
         for id in regionIDs{
@@ -183,16 +206,13 @@ class ASWDatabaseManager {
         }
         
         if auto {
-            for (index, item) in user.autoCategories.enumerated() {
-                try! realm.write {
-                    user.regions.remove(objectAtIndex: index)
-                }
+            try! realm.write {
+                user.autoCategories.removeAll()
             }
+            
         }else{
-            for (index, item) in user.motoCategories.enumerated() {
-                try! realm.write {
-                    user.regions.remove(objectAtIndex: index)
-                }
+            try! realm.write {
+                user.motoCategories.removeAll()
             }
         }
         

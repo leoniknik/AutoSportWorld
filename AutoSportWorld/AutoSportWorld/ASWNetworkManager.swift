@@ -103,22 +103,19 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         func onError(error: JSON) -> Void {
             errorFunc()
         }
-        
-//        if(Int(arc4random_uniform(2))==1||true){
-//            sucsessFunc()
-//        }else{
-//            errorFunc()
-//        }
-        
+
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     
-    static func loginUser(email:String,password:String, sucsessFunc: @escaping (String,String)->Void,  errorFunc: @escaping ()->Void) {
+    static func loginUser(email:String,password:String, sucsessFunc: @escaping (ASWLoginSucsessParser)->Void,  errorFunc: @escaping ()->Void) {
         var request = ASWLoginRequest(email:email,password:password)
         
         func onSuccess(json: JSON) -> Void{
-            sucsessFunc(email,password)
+            let response = ASWLoginSucsessParser(json:json)
+            response.email = email
+            response.password = password
+            sucsessFunc(response)
         }
         
         func onError(error: JSON) -> Void {
@@ -150,6 +147,21 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         
         func onSuccess(json: JSON) -> Void{
             let response = ASWUserInfoSendParser(json: json)
+            sucsessFunc(response)
+        }
+        
+        func onError(error: Any) -> Void {
+            errorFunc()
+        }
+        
+        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
+    }
+    
+    static func getUserInfo(sucsessFunc: @escaping (ASWUserInfoGetParser)->Void,  errorFunc: @escaping ()->Void) {
+        var request = ASWUserInfoGetRequest()
+        
+        func onSuccess(json: JSON) -> Void{
+            let response = ASWUserInfoGetParser(json: json)
             sucsessFunc(response)
         }
         

@@ -222,8 +222,8 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
 //        registerAccountViewController.email = userEntity.email
 //        registerAccountViewController.password = userEntity.password
         
-        rawUser.login = "123123"
-        rawUser.email = "edd\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
+        rawUser.login = "testUser@gmail.com"//"123123"
+        rawUser.email = "testUser@gmail.com"//"edd\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
         rawUser.password = "123123"
         registerAccountViewController.name = rawUser.login
         registerAccountViewController.email = rawUser.email

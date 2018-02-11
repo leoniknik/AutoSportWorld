@@ -12,7 +12,7 @@ import SwiftyJSON
 class ASWListRegionsParser {
     
     var regions: [ASWRaceRegion] = []
-    
+    var regionsIDs: [Int] = []
     init(json: JSON) {
         for item in json["regions"] {
             let raceRegion = item.1
@@ -22,6 +22,7 @@ class ASWListRegionsParser {
             let image = raceRegion["image"].string
             let codes = (raceRegion["codes"].arrayObject ?? [Int]()) as! [Int]
             regions.append(ASWRaceRegion(id: id, name: name, centerCity: centerCity, image: image,codes:codes))
+            regionsIDs.append(Int(id ?? "") ?? 0)
         }
     }
     

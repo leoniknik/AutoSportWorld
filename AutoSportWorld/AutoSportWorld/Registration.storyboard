@@ -274,6 +274,10 @@
                                     <action selector="loginPressed:" destination="tqw-5e-UON" eventType="touchUpInside" id="UqD-6t-sXA"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OO0-6z-DVc">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" red="0.042092806230000002" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -281,6 +285,7 @@
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="top" secondItem="Ehh-wt-xn6" secondAttribute="bottom" constant="20" id="5qS-W8-Fys"/>
                             <constraint firstItem="HMB-B2-HPe" firstAttribute="width" secondItem="iWd-dF-bql" secondAttribute="width" id="FAZ-uB-RBu"/>
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="centerX" secondItem="sKD-0m-SYr" secondAttribute="centerX" id="Gxd-M3-IxZ"/>
+                            <constraint firstItem="OO0-6z-DVc" firstAttribute="centerY" secondItem="sKD-0m-SYr" secondAttribute="centerY" id="JUZ-Zz-Qpl"/>
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="height" secondItem="Ehh-wt-xn6" secondAttribute="height" id="Jwb-uJ-JHy"/>
                             <constraint firstItem="Ehh-wt-xn6" firstAttribute="top" secondItem="HMB-B2-HPe" secondAttribute="bottom" constant="95" id="KF3-T8-D2m"/>
                             <constraint firstItem="HMB-B2-HPe" firstAttribute="centerX" secondItem="iWd-dF-bql" secondAttribute="centerX" id="NYH-3r-fXj"/>
@@ -296,6 +301,7 @@
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="width" secondItem="Ehh-wt-xn6" secondAttribute="width" id="muC-ZK-n41"/>
                             <constraint firstItem="jVl-gK-rmz" firstAttribute="centerX" secondItem="sKD-0m-SYr" secondAttribute="centerX" id="nyE-Co-fgh"/>
                             <constraint firstItem="iWd-dF-bql" firstAttribute="top" secondItem="ki9-4e-LZO" secondAttribute="bottom" id="q4z-xh-HYz"/>
+                            <constraint firstItem="OO0-6z-DVc" firstAttribute="centerX" secondItem="sKD-0m-SYr" secondAttribute="centerX" id="s6i-WX-oa5"/>
                             <constraint firstItem="HMB-B2-HPe" firstAttribute="top" secondItem="ki9-4e-LZO" secondAttribute="bottom" constant="43" id="yMG-KW-atw"/>
                         </constraints>
                     </view>
@@ -308,6 +314,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="OO0-6z-DVc" id="qeW-dU-3MK"/>
                         <outlet property="loginButton" destination="jVl-gK-rmz" id="PTh-BO-blz"/>
                         <outlet property="loginField" destination="Ehh-wt-xn6" id="t7U-ZE-6a6"/>
                         <outlet property="passwordField" destination="2Zd-WP-QbD" id="wxf-8d-adF"/>
