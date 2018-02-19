@@ -116,6 +116,7 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
             }
             
             func errorFunc(){
+                UIAlertController(title: "xui", message: "xui", preferredStyle: .alert)
                 leaveWaitModeWithError()
             }
             
@@ -128,6 +129,7 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
         func sucsessFunc(parser:ASWUserInfoGetParser){
             ASWDatabaseManager().setUserInfo(parser:parser)
             leaveWaitMode()
+            
         }
         
         func errorFunc(){

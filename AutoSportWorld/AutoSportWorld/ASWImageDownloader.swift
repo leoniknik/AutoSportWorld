@@ -30,6 +30,6 @@ class ASWImageDownloader {
             completionHandler(image)
         }
         
-        task.resume()
+        //task.resume()
     }
 }

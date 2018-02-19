@@ -38,8 +38,9 @@ class ASWDatabaseManager {
             }
             return createUserFrom(login:login,password:password)
         } else if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
-            user.password = password
-            save(object: user)
+            try! realm.write {
+                user.password = password
+            }
             return user
         }else{
             return createUserFrom(login:login,password:password)
@@ -98,9 +99,6 @@ class ASWDatabaseManager {
         var user = loginUser(login:login,password:password)
         let realm = try! Realm()
         try! realm.write {
-            
-        
-           
             user.email = login
             user.password = password
             user.isLogedIn = true
@@ -111,7 +109,6 @@ class ASWDatabaseManager {
             user.autoJoin = autoJoin
             user.motoWatch = motoWatch
             user.motoJoin = motoJoin
-            
         }
         save(object: user)
         
@@ -147,22 +144,22 @@ class ASWDatabaseManager {
         setUserRegions(regionIDs: parser.regionsParser.regionsIDs)
     }
     
-    func sendUserInfoToServer(completion:@escaping ()->Void){
+    func sendUserInfoToServer(completion:@escaping ()->Void,error:@escaping ()->Void){
         func sucsess(parser:ASWUserInfoSendParser){
             completion()
         }
         
         func error(){
-            
+            error()
         }
         
         guard let user = getUser() else{
             return
         }
         
-        var categories = getCategoriesIds(auto: true) ?? [Int]()
-        categories.append(contentsOf: getCategoriesIds(auto: false) ?? [Int]())
-        ASWNetworkManager.sendUserInfo(regions: getRegionsIds() ?? [], categories: categories, watch: user.autoWatch, join: user.motoJoin, sucsessFunc: sucsess, errorFunc: error)
+        var categories = getStringCategoriesIds(auto: true) ?? [String]()
+        categories.append(contentsOf: getStringCategoriesIds(auto: false) ?? [String]())
+        ASWNetworkManager.sendUserInfo(regions: getStringRegionsIds() ?? [String](), categories: categories, watch: user.autoWatch, join: user.motoJoin, sucsessFunc: sucsess, errorFunc: error)
     }
     
     func getUserBy(id:Int) -> ASWUserEntity? {
@@ -325,12 +322,27 @@ class ASWDatabaseManager {
         return user.regions.map{ $0.id }
     }
     
+    func getStringRegionsIds() -> [String]? {
+        guard let user = getUser() else {
+            return nil
+        }
+        return user.regions.map{ String($0.id) }
+    }
+    
     func getCategoriesIds(auto:Bool) -> [Int]? {
         guard let user = getUser() else {
             return nil
         }
         
         return auto ? user.autoCategories.map{ $0.id } : user.motoCategories.map{ $0.id }
+    }
+    
+    func getStringCategoriesIds(auto:Bool) -> [String]? {
+        guard let user = getUser() else {
+            return nil
+        }
+        
+        return auto ? user.autoCategories.map{ String($0.id) } : user.motoCategories.map{ String($0.id) }
     }
     
     func createTestUser() {

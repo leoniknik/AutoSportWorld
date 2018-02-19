@@ -92,7 +92,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func validateLogin(email:String,password:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func validateLogin(email:String,password:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping (Bool)->Void) {
         
         var request = ASWValidateLoginRequest(email:email,password:password)
         
@@ -100,8 +100,9 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             sucsessFunc(ASWValidateLoginParser(json: json))
         }
         
-        func onError(error: JSON) -> Void {
-            errorFunc()
+        func onError(json: JSON, error: Error) -> Void {
+            errorFunc((error as! NSError).code == -1009)
+            
         }
 
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
@@ -118,8 +119,8 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             sucsessFunc(response)
         }
         
-        func onError(error: JSON) -> Void {
-            let response = ASWLoginErrorParser(json: error)
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWLoginErrorParser(json: json)
             errorFunc()
         }
         
@@ -134,15 +135,15 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             sucsessFunc(response)
         }
         
-        func onError(error: JSON) -> Void {
-            let response = ASWSignupErrorParser(json: error)
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWSignupErrorParser(json: json)
             errorFunc()
         }
         
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func sendUserInfo(regions:[Int], categories: [Int], watch: Bool, join: Bool, sucsessFunc: @escaping (ASWUserInfoSendParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func sendUserInfo(regions:[String], categories: [String], watch: Bool, join: Bool, sucsessFunc: @escaping (ASWUserInfoSendParser)->Void,  errorFunc: @escaping ()->Void) {
         var request = ASWUserInfoSendRequest(regions: regions, categories: categories, watch: watch, join: join)
         
         func onSuccess(json: JSON) -> Void{
@@ -197,7 +198,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, acessToken:String) -> Void {
         print("requesting URL \(URL)")
         
-        let headers = ["x-access-token":acessToken]
+        let headers = ["x-access-token":acessToken,"Content-Type":"application/json"]
         
         Alamofire.request(URL, method: method, parameters: parameters,encoding: JSONEncoding.default, headers: headers ).validate().responseJSON { response in
             switch response.result {
@@ -214,7 +215,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
     }
     
-    private static func authRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON) -> Void) -> Void {
+    private static func authRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,Error) -> Void) -> Void {
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -229,11 +230,11 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
                     do {
                         try json = JSON(data: data)
                         DispatchQueue.main.async {
-                            onError(json)
+                            onError(json,error)
                         }
                     }
                     catch{
-                        
+                        onError(JSON(),error)
                     }
                 }
             }

@@ -27,8 +27,10 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     var titleForSelectedItems: [String] = ["","",""]
     var titleForAvailableItems: [String] = ["","",""]
     
+    var isLoading: Bool = false
+    
     func updateData(){
-        
+        isLoading = true
     }
     
     func isEmptyDatasource()->Bool{

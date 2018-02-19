@@ -34,6 +34,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             }else{
                 self?.errorLabel.isHidden = true
             }
+            self?.setupRightBarItem()
             self?.collectionView.reloadData()
         }
     }
@@ -252,6 +253,14 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             for _ in 0 ..< datasource.selectedItems.count {
                 let item = datasource.selectedItems[0]
                 datasource.selectedItems.remove(at: 0)
+                for i in 0 ..< datasource.rawSelectedItems.count{
+                    let rawItem = datasource.rawSelectedItems[0]
+                    if(rawItem.id == item.id){
+                        datasource.rawSelectedItems.remove(at: i)
+                        datasource.rawAvailableItems.append(rawItem)
+                        break
+                    }
+                }
                 datasource.availableItems.append(item)
             }
         }
@@ -259,6 +268,14 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
             for _ in 0 ..< datasource.availableItems.count {
                 let item = datasource.availableItems[0]
                 datasource.availableItems.remove(at: 0)
+                for i in 0 ..< datasource.rawAvailableItems.count{
+                    let rawItem = datasource.rawAvailableItems[0]
+                    if(rawItem.id == item.id){
+                        datasource.rawAvailableItems.remove(at: i)
+                        datasource.rawSelectedItems.append(rawItem)
+                        break
+                    }
+                }
                 datasource.selectedItems.append(item)
             }
         }
@@ -303,7 +320,7 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         searchBar.resignFirstResponder()
         
         //подчищаем текст
-        searchBar.text = ""
+        //searchBar.text = ""
     }
     
     func setupRegionsDatasource(datasource:ASWRegionsCollectionViewDataSource?,selectedRegions:[Int]){
@@ -320,6 +337,10 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         searchBar.delegate = self.datasource
         setupRightBarItem()
         showSearchBar()
+        if(!(datasource?.isLoading ?? false)){
+            self.refreshControl.endRefreshing()
+        }
+        
     }
     
     func setupRaceCategoriesDatasource(datasource:ASWRaceCategoryCollectionViewDataSource?,auto:Bool,selectedRaceCategories:[Int]){

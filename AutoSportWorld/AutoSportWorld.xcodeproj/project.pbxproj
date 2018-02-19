@@ -92,6 +92,9 @@
 		DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */; };
 		DE31D5251FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */; };
 		DE31D5271FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */; };
+		DE41F3312039A33D00E63497 /* UIViewControllerWithActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3302039A33D00E63497 /* UIViewControllerWithActivityIndicator.swift */; };
+		DE41F3332039A59400E63497 /* IUViewController+NavBarSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3322039A59400E63497 /* IUViewController+NavBarSetup.swift */; };
+		DE4A2C78203ADBF700AE800C /* ASWAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4A2C77203ADBF700AE800C /* ASWAlertPresenter.swift */; };
 		DE6B03B2201AFBF3002BFE85 /* ASWValidateLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B1201AFBF3002BFE85 /* ASWValidateLoginRequest.swift */; };
 		DE6B03B4201B2258002BFE85 /* ASWUserInfoSendParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B3201B2258002BFE85 /* ASWUserInfoSendParser.swift */; };
 		DE6B03B6201B22A6002BFE85 /* ASWUserInfoSendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B5201B22A6002BFE85 /* ASWUserInfoSendRequest.swift */; };
@@ -206,6 +209,9 @@
 		DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWLoginPasswordTextField.xib; sourceTree = "<group>"; };
 		DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginPasswordTextField.swift; sourceTree = "<group>"; };
 		DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginViaEmailViewController.swift; sourceTree = "<group>"; };
+		DE41F3302039A33D00E63497 /* UIViewControllerWithActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerWithActivityIndicator.swift; sourceTree = "<group>"; };
+		DE41F3322039A59400E63497 /* IUViewController+NavBarSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IUViewController+NavBarSetup.swift"; sourceTree = "<group>"; };
+		DE4A2C77203ADBF700AE800C /* ASWAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWAlertPresenter.swift; sourceTree = "<group>"; };
 		DE6B03B1201AFBF3002BFE85 /* ASWValidateLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWValidateLoginRequest.swift; sourceTree = "<group>"; };
 		DE6B03B3201B2258002BFE85 /* ASWUserInfoSendParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUserInfoSendParser.swift; sourceTree = "<group>"; };
 		DE6B03B5201B22A6002BFE85 /* ASWUserInfoSendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUserInfoSendRequest.swift; sourceTree = "<group>"; };
@@ -328,6 +334,7 @@
 		CA3710A61F37AD9F003578E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DE41F3302039A33D00E63497 /* UIViewControllerWithActivityIndicator.swift */,
 				DEDC453D20073D3F00AE5B72 /* ASWRegisterAccountViewController.swift */,
 				DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */,
 				DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */,
@@ -382,6 +389,7 @@
 				CA3710B61F37C357003578E5 /* UIImage+ASWImages.swift */,
 				CA51D6691FE72F5500018CE9 /* NotificationRouter.swift */,
 				DE153DFA202190C0009E8CC1 /* UIViewController+HideKeyboard.swift */,
+				DE41F3322039A59400E63497 /* IUViewController+NavBarSetup.swift */,
 			);
 			name = "Extensions ";
 			sourceTree = "<group>";
@@ -398,6 +406,7 @@
 				CA04AAF31FFAC45500F1ACC3 /* ASWFilterService.swift */,
 				CA04AAFF1FFB74EA00F1ACC3 /* ASWDatabaseManager.swift */,
 				DE7D180220089D7A00156FDA /* ASWStoryboardIDManager.swift */,
+				DE4A2C77203ADBF700AE800C /* ASWAlertPresenter.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -707,6 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE41F3332039A59400E63497 /* IUViewController+NavBarSetup.swift in Sources */,
 				CA25D5F8202528CC00FF8B88 /* ASWEventModel.swift in Sources */,
 				CA3ED3291FFBEBCA0026DBA6 /* ASWImageDownloader.swift in Sources */,
 				DEDC45512007415400AE5B72 /* ASWSignupRequest.swift in Sources */,
@@ -766,6 +776,7 @@
 				CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */,
 				CA51D6661FE6EA5800018CE9 /* ASWRaceCategory.swift in Sources */,
 				DE31D5271FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift in Sources */,
+				DE41F3312039A33D00E63497 /* UIViewControllerWithActivityIndicator.swift in Sources */,
 				CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */,
 				CA51D6561FE6D0AC00018CE9 /* ASWNetworkManager.swift in Sources */,
 				CA0D21881FEDC1DB00CF42FF /* ASWRegionsRequest.swift in Sources */,
@@ -783,6 +794,7 @@
 				CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */,
 				CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */,
 				DE7D180320089D7A00156FDA /* ASWStoryboardIDManager.swift in Sources */,
+				DE4A2C78203ADBF700AE800C /* ASWAlertPresenter.swift in Sources */,
 				CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */,
 				CAB4EA4B1F50EE2700C35BE6 /* ASWLogInViewController.swift in Sources */,
 				CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */,

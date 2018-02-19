@@ -113,11 +113,6 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     var databaseManager = ASWDatabaseManager()
     var rawUser = RawUserParams()
     
-    
-    
-    
-    
-
     private lazy var registerAccountViewController: ASWRegisterAccountViewController = {
         // Load Storyboard
         let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -127,8 +122,6 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         viewController.hideKeyboardWhenTappedAround()
         return viewController
     }()
-    
-    
     
     private lazy var registerCollectionViewController: ASWCollectionViewController = {
         // Load Storyboard
@@ -223,7 +216,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
 //        registerAccountViewController.password = userEntity.password
         
         rawUser.login = "testUser@gmail.com"//"123123"
-        rawUser.email = "testUser@gmail.com"//"edd\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
+        rawUser.email = "eded\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
         rawUser.password = "123123"
         registerAccountViewController.name = rawUser.login
         registerAccountViewController.email = rawUser.email
@@ -237,22 +230,14 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         setStepLabel()
         ASWButtonManager.setupButton(button: confirmButton)
         //confirmButton.isEnabled = false
-        
-        
+        //registerAccountViewController.activityIndicator?.startAnimating()
     }
     
     func setupUI() {
         
         confirmButton.backgroundColor = UIColor.ASWColor.black
         stepLabel.textColor = UIColor.ASWColor.grey
-        //progressView.progressTintColor = UIColor.ASWColor.black
-        
         //
-        //важно вынести в отдельную функцию
-        //убираем полоску между хедером и навигейшен баром
-        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        //navigationController?.navigationBar.shadowImage = UIImage()
-        //searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
     
     func setupRightBarItem(avalible: Bool, title: String) {
@@ -270,14 +255,11 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         }
     }
     
-    
-    
     @IBAction func rightBarItemTapped(_ sender: Any) {
         registerCollectionViewController.rightBarItemTapped()
     }
     
     func hideStepAndProgressView() {
-        
         stepLabel.isHidden = true
         progressView.isHidden = true
         if let constraint = (stepAndProgressView.constraints.filter{$0.firstAttribute == .height}.first) {
@@ -286,11 +268,9 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     }
     
     func setConfirmButtonText(_ final:Bool){
-
         if final{
             confirmButton.setTitle("Завершить регистрацию", for: .normal)
             confirmButton.setTitle("Завершить регистрацию", for: .disabled)
-
         }else{
             confirmButton.setTitle("Далее", for: .normal)
             confirmButton.setTitle("Далее", for: .disabled)
@@ -298,31 +278,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         self.view.setNeedsDisplay()
     }
     
-    func login(){
-        
-        func loginSucsess(){
-            
-        }
-        
-        func loginError(){
-            
-        }
-        
-    }
     
-    func registerUser(){
-        
-        func registerUserSucsess(){
-            
-        }
-        
-        func registerUserError(){
-            
-        }
-        //userEntity = ASWDatabaseManager().createUser(login: userEntity.login, password: userEntity.password)
-        //registerUserSucsess()
-    }
-
     func registerUserSucsess(){
         let alert = UIAlertController(title: "Регистрация", message: "Пользователь успешно создан", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -341,12 +297,29 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            confirmButton.isEnabled = true;
+            registerAccountViewController.activityIndicator?.stopAnimating()
             
         }
         
-        func errorCheck(){
-
+        func errorCheck(connectionError:Bool){
+            
+            registerAccountViewController.activityIndicator?.stopAnimating()
+            confirmButton.isEnabled = true;
+            if(connectionError){
+                let alert = UIAlertController(title: "Нет сети", message: "Проверьте подключение к интернету и повторите попытку", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                let alert = UIAlertController(title: "Ошибка на сервере", message: "Повторите попытку или попробуйде позже", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }
+        
+        confirmButton.isEnabled = false;
+        registerAccountViewController.activityIndicator?.startAnimating()
         ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
@@ -544,6 +517,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     
     
     func completeRegistration(){
+        
         func sucsessSignup(parser:ASWSignupParser){
             if(parser.valid){
                 var user = ASWDatabaseManager().createUserFrom(login: rawUser.login,
@@ -562,15 +536,16 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 sendUserInfoToServer()
             }else{
                 let alert = UIAlertController(title: "Регистрация", message: parser.email, preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Error", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }
         
         func errorSignup(){
-            
+            confirmButton.isEnabled = registerCollectionViewController.datasource.rawSelectedItems.count>0
         }
         
+        confirmButton.isEnabled = false
         ASWNetworkManager.signupUser(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessSignup, errorFunc: errorSignup)
     }
     
@@ -578,7 +553,10 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         func sucsessSend(){
             goToMainStoryboard()
         }
-        ASWDatabaseManager().sendUserInfoToServer(completion: sucsessSend)
+        func errorSend(){
+            
+        }
+        ASWDatabaseManager().sendUserInfoToServer(completion: sucsessSend,error:errorSend)
     }
     
     

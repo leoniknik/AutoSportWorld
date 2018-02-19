@@ -21,7 +21,7 @@ protocol ASWRegisterAccountViewControllerDelegate{
     func updateUserLoginInfo(valid:Bool,login:String,email:String,password:String)
 }
 
-class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
+class ASWRegisterAccountViewController: UIViewControllerWithActivityMonitor, UITextFieldDelegate {
     
     
     let emailValidator = ASWEmailValidator()
@@ -42,11 +42,6 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var repeatPasswordField: ASWLoginPasswordTextField!
     
     @IBOutlet weak var nameField: ASWLoginPasswordTextField!
-    
-    
-    
-    
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,11 +182,6 @@ class ASWRegisterAccountViewController: UIViewController, UITextFieldDelegate {
 
         return true
     }
-    
-//    @IBAction func act(_ sender: Any) {
-//        fillFormFromUserModel()
-//    }
-    
 }
 
 
