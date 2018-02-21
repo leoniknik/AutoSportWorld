@@ -45,15 +45,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         return formatter
     }()
     
-    
-    
     var datesWithEvent = ["2017-10-29","2017-11-01","2017-11-03"]
     var datesWithMultipleEvents = ["2017-11-04","2017-11-05","2017-11-06"]
-    
-    
-    
-    
-    
+
     //    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
     //        calendar.allowsMultipleSelection = false
     //        var cell = calendar.cell(for: date, at: monthPosition)
@@ -94,6 +88,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         cell.contentView.layer.cornerRadius = 10.0
         cell.contentView.clipsToBounds = true
         cell.clipsToBounds = true
+        cell.titleLabel.textColor = UIColor.black
         
         if(selected && dateFormatter1.string(from: date) == dateFormatter1.string(from: Date())){
             //выделена сегодняшняя ячейка
@@ -133,13 +128,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     cell.eventIndicator.color = UIColor.ASWColor.grey
                 }
             }
-            
-            //            if(dateFormatter1.string(from: date) == dateFormatter1.string(from: Date())){
-            //                //сегодняшняя ячейка
-            //                cell.contentView.layer.borderWidth = borderWidth
-            //                cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
-            //                cell.backgroundColor = UIColor.white
-            //            }
         }
         
         return cell
@@ -238,6 +226,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     //month change
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         updateMonthLabel()
+        self.calendar.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
