@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ASWStoryboardIDManager{
-    struct Registration{
-        static let registerAccountView = "registerAccountView"
-        static let collectionView = "collectionView"
-        static let changePasswordView = "changePasswordView"
-        static let registerView = "registerView"
-    }
-}
+//class ASWStoryboardIDManager{
+//    struct Registration{
+//        static let registerAccountView = "registerAccountView"
+//        static let collectionView = "collectionView"
+//        static let changePasswordView = "changePasswordView"
+//        static let registerView = "registerView"
+//    }
+//}
 
 class ASWViewControllerManager{
     struct Registration{
@@ -47,5 +47,21 @@ class ASWViewControllerManager{
 //                return storyboard.instantiateViewController(withIdentifier: "changePasswordView") as! ASWChangeRegionsViewController
 //            }
 //        }
+    }
+    
+    struct AboutApp{
+        private static var storyboard = "AboutApp"
+        static var aboutAppViewController: ASWAboutAppViewController {
+            get{
+                let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
+                return storyboard.instantiateViewController(withIdentifier: "aboutApp") as! ASWAboutAppViewController
+            }
+        }
+        static var developersViewController: ASWDevelopersViewController {
+            get{
+                let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
+                return storyboard.instantiateViewController(withIdentifier: "developers") as! ASWDevelopersViewController
+            }
+        }
     }
 }
