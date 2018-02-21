@@ -207,13 +207,21 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         
         
         //test code
-        v.backgroundColor=UIColor.clear
+//        v.backgroundColor=UIColor.clear
         v.layer.cornerRadius = 10.0
         v.clipsToBounds = true
-        v.layer.borderColor = UIColor.red.cgColor
-        v.layer.borderWidth = 1
-        calendar.layer.borderColor = UIColor.red.cgColor
+//        v.layer.borderColor = UIColor.red.cgColor
+//        v.layer.borderWidth = 1
+//        calendar.layer.borderColor = UIColor.red.cgColor
         
+        self.view.backgroundColor = UIColor.ASWColor.greyBackground
+        v.backgroundColor = UIColor.clear
+        
+        ubvl.backgroundColor = UIColor.ASWColor.greyBackground
+        ubvr.backgroundColor = UIColor.ASWColor.greyBackground
+        
+        ufvl.backgroundColor = UIColor.white
+        ufvr.backgroundColor = UIColor.white
     }
     
     
@@ -260,15 +268,13 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         date = Calendar.current.date(byAdding: .month, value: 1, to: date)!
         calendar.setCurrentPage(date, animated: true)
     }
-    
-    
-    
-    
+
     @IBOutlet weak var v: UIView!
     
-    
-    
-    
+    @IBOutlet weak var ubvl: UIView!
+    @IBOutlet weak var ubvr: UIView!
+    @IBOutlet weak var ufvl: UIView!
+    @IBOutlet weak var ufvr: UIView!
     
 }
 
