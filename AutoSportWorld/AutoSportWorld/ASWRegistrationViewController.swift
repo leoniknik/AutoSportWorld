@@ -120,21 +120,13 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     var changeSettingsSuccessMessage:String = ""
     
     private lazy var registerAccountViewController: ASWRegisterAccountViewController = {
-        // Load Storyboard
-        let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
-        
-        // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: ASWStoryboardIDManager.Registration.registerAccountView) as! ASWRegisterAccountViewController
+        var viewController =  ASWViewControllersManager.RegistrationViewControllers.registerAccountViewController
         viewController.hideKeyboardWhenTappedAround()
         return viewController
     }()
     
     private lazy var registerCollectionViewController: ASWCollectionViewController = {
-        // Load Storyboard
-        let storyboard = UIStoryboard(name: "Registration", bundle: Bundle.main)
-        
-        // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: ASWStoryboardIDManager.Registration.collectionView) as! ASWCollectionViewController
+        var viewController = ASWViewControllersManager.RegistrationViewControllers.registerCollectionViewController
         viewController.hideKeyboardWhenTappedAround()
         return viewController
     }()

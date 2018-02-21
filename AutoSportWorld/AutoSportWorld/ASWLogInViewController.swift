@@ -28,9 +28,9 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
 //        VKSdk.authorize(SCOPE)
 //        print("авторизация прошла")
         
-        let vc = ASWViewControllerManager.Registration.registerViewController
-        vc.configChangeRegions()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = ASWViewControllerManager.Registration.registerViewController
+//        vc.configChangeRegions()
+        self.navigationController?.pushViewController(ASWViewControllersManager.calendarViewController, animated: true)
     }
     
     override func viewDidLoad() {
