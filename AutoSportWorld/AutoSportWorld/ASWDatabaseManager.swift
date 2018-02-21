@@ -38,9 +38,9 @@ class ASWDatabaseManager {
             }
             return createUserFrom(login:login,password:password)
         } else if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
-            try! realm.write {
-                user.password = password
-            }
+            //try! realm.write {
+                //user.password = password
+            //}
             return user
         }else{
             return createUserFrom(login:login,password:password)
@@ -53,7 +53,7 @@ class ASWDatabaseManager {
         let predicate = NSPredicate(format: "email == '\(parser.email)'")
         if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
             try! realm.write {
-                user.password = parser.password
+                //user.password = parser.password
                 user.isLogedIn = true
             }
             save(object: user)
@@ -61,7 +61,7 @@ class ASWDatabaseManager {
             return user
         }else{
             var user = createUserFrom(login:parser.email,password:parser.password)
-                setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
             return user
         }
     }
@@ -72,12 +72,53 @@ class ASWDatabaseManager {
         var user = ASWUserEntity()
         user.id =  Int(Date().timeIntervalSince1970*1000)
         user.email = login
-        user.password = password
+        //user.password = password
         user.isLogedIn = true
         save(object: user)
         return user
     }
     
+    func updateUserFrom(login:String,
+                        email:String,
+                        password:String,
+                        
+                        auto:Bool,
+                        moto:Bool,
+                        
+                        //autoWatch:Bool,
+        //autoJoin:Bool,
+        //motoWatch:Bool,
+        //motoJoin:Bool,
+        join:Bool,
+        watch:Bool,
+        
+        regions:[Int],
+        autoCategories:[Int],
+        motoCategories:[Int])->ASWUserEntity{
+        
+        var user = getUser() ?? ASWUserEntity()
+        let realm = try! Realm()
+        try! realm.write {
+            user.email = login
+            //user.password = password
+            user.isLogedIn = true
+            user.login = login
+            user.auto=auto
+            user.moto=moto
+            //            user.autoWatch = autoWatch
+            //            user.autoJoin = autoJoin
+            //            user.motoWatch = motoWatch
+            //            user.motoJoin = motoJoin
+            user.watch = watch
+            user.join = join
+        }
+        save(object: user)
+        
+        setUserRegions(regionIDs: regions)
+        setUserRaceCategories(categoriesIDs: autoCategories, auto: true)
+        setUserRaceCategories(categoriesIDs: motoCategories, auto: false)
+        return user
+    }
     func createUserFrom(login:String,
                         email:String,
                         password:String,
@@ -85,14 +126,16 @@ class ASWDatabaseManager {
                         auto:Bool,
                         moto:Bool,
                         
-                        autoWatch:Bool,
-                        autoJoin:Bool,
-                        motoWatch:Bool,
-                        motoJoin:Bool,
-                        
-                        regions:[Int],
-                        autoCategories:[Int],
-                        motoCategories:[Int])->ASWUserEntity{
+                        //autoWatch:Bool,
+        //autoJoin:Bool,
+        //motoWatch:Bool,
+        //motoJoin:Bool,
+        join:Bool,
+        watch:Bool,
+        
+        regions:[Int],
+        autoCategories:[Int],
+        motoCategories:[Int])->ASWUserEntity{
         
         unloginAllUsers()
         
@@ -100,15 +143,17 @@ class ASWDatabaseManager {
         let realm = try! Realm()
         try! realm.write {
             user.email = login
-            user.password = password
+            //user.password = password
             user.isLogedIn = true
             user.login = login
             user.auto=auto
             user.moto=moto
-            user.autoWatch = autoWatch
-            user.autoJoin = autoJoin
-            user.motoWatch = motoWatch
-            user.motoJoin = motoJoin
+            //            user.autoWatch = autoWatch
+            //            user.autoJoin = autoJoin
+            //            user.motoWatch = motoWatch
+            //            user.motoJoin = motoJoin
+            user.watch = watch
+            user.join = join
         }
         save(object: user)
         
@@ -131,12 +176,17 @@ class ASWDatabaseManager {
     func setUserInfo(parser:ASWUserInfoGetParser){
         let realm = try! Realm()
         var user = getUser()!
+//        try! realm.write {
+//            user.autoWatch = parser.canWatch
+//            user.motoWatch = parser.canWatch
+//
+//            user.autoJoin = parser.canJoin
+//            user.motoJoin = parser.canJoin
+//        }
+        
         try! realm.write {
-            user.autoWatch = parser.canWatch
-            user.motoWatch = parser.canWatch
-            
-            user.autoJoin = parser.canJoin
-            user.motoJoin = parser.canJoin
+            user.join = parser.canJoin
+            user.watch = parser.canWatch
         }
         
         setUserRaceCategories(categoriesIDs: parser.categoriesParser.autoCategoryIDs, auto: true)
@@ -159,7 +209,7 @@ class ASWDatabaseManager {
         
         var categories = getStringCategoriesIds(auto: true) ?? [String]()
         categories.append(contentsOf: getStringCategoriesIds(auto: false) ?? [String]())
-        ASWNetworkManager.sendUserInfo(regions: getStringRegionsIds() ?? [String](), categories: categories, watch: user.autoWatch, join: user.motoJoin, sucsessFunc: sucsess, errorFunc: error)
+        ASWNetworkManager.sendUserInfo(regions: getStringRegionsIds() ?? [String](), categories: categories, watch: user.watch, join: user.join, sucsessFunc: sucsess, errorFunc: error)
     }
     
     func getUserBy(id:Int) -> ASWUserEntity? {
@@ -271,13 +321,17 @@ class ASWDatabaseManager {
         }
         
         try! realm.write {
-            if auto {
-                user.autoWatch = watch
-                user.autoJoin = join
-            }else{
-                user.motoWatch = watch
-                user.motoJoin = join
-            }
+            //            if auto {
+            //                user.autoWatch = watch
+            //                user.autoJoin = join
+            //            }else{
+            //                user.motoWatch = watch
+            //                user.motoJoin = join
+            //            }
+            
+            user.watch = watch
+            user.join = join
+            
         }
     }
     

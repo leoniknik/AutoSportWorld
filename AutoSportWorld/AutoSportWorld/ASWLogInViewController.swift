@@ -21,13 +21,16 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     @IBOutlet weak var vkButton: UIButton!
     
     @IBAction func vkLogin(_ sender: UIButton) {
-        print("вк_логин")
-        SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
-        VKSdk.instance().register(self)
-        VKSdk.instance().uiDelegate = self
+//        print("вк_логин")
+//        SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
+//        VKSdk.instance().register(self)
+//        VKSdk.instance().uiDelegate = self
+//        VKSdk.authorize(SCOPE)
+//        print("авторизация прошла")
         
-        VKSdk.authorize(SCOPE)
-        print("авторизация прошла")
+        let vc = ASWViewControllerManager.Registration.registerViewController
+        vc.configChangeRegions()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {

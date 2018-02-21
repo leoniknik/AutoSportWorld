@@ -10,7 +10,7 @@ import UIKit
 
 import SkyFloatingLabelTextField
 
-class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
+class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UITextFieldDelegate {
     
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -25,7 +25,6 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
     func setupUI(){
         ASWButtonManager.setupLoginButton(button: loginButton)
         
-        activityIndicator.hidesWhenStopped = true
         
         loginField.blackBackgroundStyle = true
         loginField.placeHolder = "Логин"
@@ -49,7 +48,7 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
     let emailValidator = ASWEmailValidator()
     let passwordValidator = ASWPasswordValidator()
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     @IBOutlet weak var loginField: ASWLoginPasswordTextField!
     
     @IBOutlet weak var passwordField: ASWLoginPasswordTextField!
@@ -82,14 +81,14 @@ class ASWLoginViaEmailViewController:UIViewController, UITextFieldDelegate {
     }
     
     func enterWaitMode(){
-        activityIndicator.startAnimating()
+        activityIndicator?.startAnimating()
         loginButton.isEnabled = false
     }
     
     func leaveWaitMode(){
         DispatchQueue.main.async {
             [weak self] in
-            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator?.stopAnimating()
             self?.updateFormValid()
         }
     }

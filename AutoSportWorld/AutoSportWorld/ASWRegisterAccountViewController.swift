@@ -49,6 +49,7 @@ class ASWRegisterAccountViewController: UIViewControllerWithActivityMonitor, UIT
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupForm()
+        self.view.showASWErrorView()
     }
     override func viewDidLayoutSubviews() {
         

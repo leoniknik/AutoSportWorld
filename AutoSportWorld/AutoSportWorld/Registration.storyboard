@@ -54,6 +54,9 @@
                                 <state key="normal" title="Пропустить &gt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="eik-4L-BV6" kind="show" id="eUB-dB-lbg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PE-6Z-NYu">
                                 <rect key="frame" x="37" y="437" width="300" height="37"/>
@@ -222,6 +225,31 @@
             </objects>
             <point key="canvasLocation" x="104.8" y="-158.77061469265368"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="PWy-Kv-38U">
+            <objects>
+                <viewController id="eik-4L-BV6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X48-Yu-2s9"/>
+                        <viewControllerLayoutGuide type="bottom" id="hX1-JK-v4q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vhX-Oe-iK4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Da-P4-iY7" customClass="ASWErrorView" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="67" y="237" width="240" height="279"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.042092806230000002" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K40-Iu-OnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1972" y="1326.3868065967017"/>
+        </scene>
         <!--Login Via Email View Controller-->
         <scene sceneID="75w-g8-rhm">
             <objects>
@@ -274,10 +302,6 @@
                                     <action selector="loginPressed:" destination="tqw-5e-UON" eventType="touchUpInside" id="UqD-6t-sXA"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OO0-6z-DVc">
-                                <rect key="frame" x="169" y="283" width="37" height="37"/>
-                                <color key="color" red="0.042092806230000002" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -285,7 +309,6 @@
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="top" secondItem="Ehh-wt-xn6" secondAttribute="bottom" constant="20" id="5qS-W8-Fys"/>
                             <constraint firstItem="HMB-B2-HPe" firstAttribute="width" secondItem="iWd-dF-bql" secondAttribute="width" id="FAZ-uB-RBu"/>
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="centerX" secondItem="sKD-0m-SYr" secondAttribute="centerX" id="Gxd-M3-IxZ"/>
-                            <constraint firstItem="OO0-6z-DVc" firstAttribute="centerY" secondItem="sKD-0m-SYr" secondAttribute="centerY" id="JUZ-Zz-Qpl"/>
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="height" secondItem="Ehh-wt-xn6" secondAttribute="height" id="Jwb-uJ-JHy"/>
                             <constraint firstItem="Ehh-wt-xn6" firstAttribute="top" secondItem="HMB-B2-HPe" secondAttribute="bottom" constant="95" id="KF3-T8-D2m"/>
                             <constraint firstItem="HMB-B2-HPe" firstAttribute="centerX" secondItem="iWd-dF-bql" secondAttribute="centerX" id="NYH-3r-fXj"/>
@@ -301,7 +324,6 @@
                             <constraint firstItem="2Zd-WP-QbD" firstAttribute="width" secondItem="Ehh-wt-xn6" secondAttribute="width" id="muC-ZK-n41"/>
                             <constraint firstItem="jVl-gK-rmz" firstAttribute="centerX" secondItem="sKD-0m-SYr" secondAttribute="centerX" id="nyE-Co-fgh"/>
                             <constraint firstItem="iWd-dF-bql" firstAttribute="top" secondItem="ki9-4e-LZO" secondAttribute="bottom" id="q4z-xh-HYz"/>
-                            <constraint firstItem="OO0-6z-DVc" firstAttribute="centerX" secondItem="sKD-0m-SYr" secondAttribute="centerX" id="s6i-WX-oa5"/>
                             <constraint firstItem="HMB-B2-HPe" firstAttribute="top" secondItem="ki9-4e-LZO" secondAttribute="bottom" constant="43" id="yMG-KW-atw"/>
                         </constraints>
                     </view>
@@ -314,7 +336,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicator" destination="OO0-6z-DVc" id="qeW-dU-3MK"/>
                         <outlet property="loginButton" destination="jVl-gK-rmz" id="PTh-BO-blz"/>
                         <outlet property="loginField" destination="Ehh-wt-xn6" id="t7U-ZE-6a6"/>
                         <outlet property="passwordField" destination="2Zd-WP-QbD" id="wxf-8d-adF"/>
@@ -462,12 +483,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4GK-m5-ikA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991" y="-481"/>
+            <point key="canvasLocation" x="-4572" y="3014"/>
         </scene>
         <!--Регистрация-->
         <scene sceneID="W1P-FS-Zfw">
             <objects>
-                <viewController id="vQx-1r-mzr" customClass="ASWRegistrationViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerView" id="vQx-1r-mzr" customClass="ASWRegistrationViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hc1-X7-RiS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -787,7 +808,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJA-GK-dkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1972" y="1236"/>
+            <point key="canvasLocation" x="-6012" y="3014"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="mYX-Zy-KdQ">
@@ -911,7 +932,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUO-cv-Yed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991" y="1764"/>
+            <point key="canvasLocation" x="-5282" y="3014"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eLb-gQ-dlQ">
@@ -929,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ij-WU-AUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="1373"/>
+            <point key="canvasLocation" x="-3874" y="3014"/>
         </scene>
     </scenes>
     <resources>

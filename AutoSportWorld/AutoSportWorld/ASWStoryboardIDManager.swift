@@ -13,12 +13,13 @@ class ASWStoryboardIDManager{
         static let registerAccountView = "registerAccountView"
         static let collectionView = "collectionView"
         static let changePasswordView = "changePasswordView"
+        static let registerView = "registerView"
     }
 }
 
 class ASWViewControllerManager{
     struct Registration{
-        static var storyboard = "Registration"
+        private static var storyboard = "Registration"
         static var registerAccountViewController:ASWRegisterAccountViewController{
             get{
                 let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
@@ -33,16 +34,18 @@ class ASWViewControllerManager{
             }
         }
         
-        static var changePasswordViewController:ASWChangeRegionsViewController{
+        static var registerViewController:ASWRegistrationViewController{
             get{
                 let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
-                return storyboard.instantiateViewController(withIdentifier: "changePasswordView") as! ASWChangeRegionsViewController
+                return storyboard.instantiateViewController(withIdentifier: "registerView") as! ASWRegistrationViewController
             }
         }
+        
+//        static var changePasswordViewController:ASWChangeRegionsViewController{
+//            get{
+//                let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
+//                return storyboard.instantiateViewController(withIdentifier: "changePasswordView") as! ASWChangeRegionsViewController
+//            }
+//        }
     }
-//    struct Registration{
-//        static let registerAccountView = "registerAccountView"
-//        static let collectionView = "collectionView"
-//        static let changePasswordView = "changePasswordView"
-//    }
 }
