@@ -12,6 +12,8 @@ import SwiftyJSON
 class ASWListCategoryParser {
     
     var categories = [ASWRaceCategory]()
+    var autoCategoryIDs: [Int] = []
+    var motoCategoryIDs: [Int] = []
     
     init(json: JSON) {
         for item in json["categories"] {
@@ -21,6 +23,11 @@ class ASWListCategoryParser {
             let id = raceCategory["id"].string
             let image = raceCategory["image"].string
             categories.append(ASWRaceCategory(id: id, name: name, categoryClass: categoryClass, image: image))
+            if(categoryClass == "auto"){
+                autoCategoryIDs.append(Int(id ?? "") ?? 0)
+            }else{
+                motoCategoryIDs.append(Int(id ?? "") ?? 0)
+            }
         }
     }
     

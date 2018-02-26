@@ -190,6 +190,13 @@
                                 <rect key="frame" x="56" y="299" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RegisterAccount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXj-W8-Fv4">
+                                <rect key="frame" x="68" y="607" width="239" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -455,12 +462,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4GK-m5-ikA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991" y="-481"/>
+            <point key="canvasLocation" x="-4572" y="3014"/>
         </scene>
         <!--Регистрация-->
         <scene sceneID="W1P-FS-Zfw">
             <objects>
-                <viewController id="vQx-1r-mzr" customClass="ASWRegistrationViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerView" id="vQx-1r-mzr" customClass="ASWRegistrationViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hc1-X7-RiS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -780,7 +787,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJA-GK-dkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1972" y="1236"/>
+            <point key="canvasLocation" x="-6012" y="3014"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="mYX-Zy-KdQ">
@@ -904,7 +911,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUO-cv-Yed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991" y="1764"/>
+            <point key="canvasLocation" x="-5282" y="3014"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eLb-gQ-dlQ">
@@ -922,7 +929,173 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ij-WU-AUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="1373"/>
+            <point key="canvasLocation" x="-3874" y="3014"/>
+        </scene>
+        <!--Change User Info View Controller-->
+        <scene sceneID="CNJ-iX-wjy">
+            <objects>
+                <viewController storyboardIdentifier="changeUserInfo" id="rKj-QS-4fE" customClass="ASWChangeUserInfoViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cfT-bb-dQV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rxl-3o-b9I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3pf-Kz-Fiy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1a-RV-bpT" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="56.5" y="110" width="262.5" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="AWj-fZ-SU7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-ca-nK0" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="56" y="173" width="262.5" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="hcn-G7-2v4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVU-nU-bnt" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="56" y="236" width="262.5" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lXs-9L-y8i">
+                                <rect key="frame" x="56.5" y="609" width="262.5" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.28235294119999998" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Hjr-ki-IOb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Далее"/>
+                                <connections>
+                                    <action selector="confirmChange:" destination="rKj-QS-4fE" eventType="touchUpInside" id="A8b-96-Ox8"/>
+                                    <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="3BD-PX-qyg"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-0W-oGZ">
+                                <rect key="frame" x="93" y="0.0" width="239" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="y1a-RV-bpT" firstAttribute="centerX" secondItem="3pf-Kz-Fiy" secondAttribute="centerX" id="1j7-Um-DeO"/>
+                            <constraint firstItem="Rxl-3o-b9I" firstAttribute="top" secondItem="lXs-9L-y8i" secondAttribute="bottom" constant="8" id="8ng-hu-vgi"/>
+                            <constraint firstItem="lXs-9L-y8i" firstAttribute="centerX" secondItem="3pf-Kz-Fiy" secondAttribute="centerX" id="99s-H7-o7Y"/>
+                            <constraint firstItem="CIM-ca-nK0" firstAttribute="top" secondItem="y1a-RV-bpT" secondAttribute="bottom" constant="20" id="E2N-Ir-1s2"/>
+                            <constraint firstItem="y1a-RV-bpT" firstAttribute="top" secondItem="cfT-bb-dQV" secondAttribute="bottom" constant="90" id="FsW-qd-Wa6"/>
+                            <constraint firstItem="lXs-9L-y8i" firstAttribute="width" secondItem="3pf-Kz-Fiy" secondAttribute="width" multiplier="0.7" id="H3K-15-4UL"/>
+                            <constraint firstItem="vVU-nU-bnt" firstAttribute="centerX" secondItem="3pf-Kz-Fiy" secondAttribute="centerX" id="LMG-gd-QzQ"/>
+                            <constraint firstItem="CIM-ca-nK0" firstAttribute="centerX" secondItem="3pf-Kz-Fiy" secondAttribute="centerX" id="NMl-Rv-qnA"/>
+                            <constraint firstItem="vVU-nU-bnt" firstAttribute="height" secondItem="y1a-RV-bpT" secondAttribute="height" id="QI2-iG-90r"/>
+                            <constraint firstItem="CIM-ca-nK0" firstAttribute="width" secondItem="y1a-RV-bpT" secondAttribute="width" id="X9u-ua-o8O"/>
+                            <constraint firstItem="CIM-ca-nK0" firstAttribute="height" secondItem="y1a-RV-bpT" secondAttribute="height" id="ZuA-mz-Yr8"/>
+                            <constraint firstItem="vVU-nU-bnt" firstAttribute="width" secondItem="y1a-RV-bpT" secondAttribute="width" id="j6e-K1-7jR"/>
+                            <constraint firstItem="y1a-RV-bpT" firstAttribute="width" secondItem="3pf-Kz-Fiy" secondAttribute="width" multiplier="0.7" id="lmw-MT-WYN"/>
+                            <constraint firstItem="vVU-nU-bnt" firstAttribute="top" secondItem="CIM-ca-nK0" secondAttribute="bottom" constant="20" id="vu4-ch-JAd"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="button" destination="lXs-9L-y8i" id="Tlk-f0-TBi"/>
+                        <outlet property="emailField" destination="CIM-ca-nK0" id="Mty-hn-jHW"/>
+                        <outlet property="nameField" destination="y1a-RV-bpT" id="cou-Ym-Yf8"/>
+                        <outlet property="phoneField" destination="vVU-nU-bnt" id="c92-Kc-aY6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8I4-aP-B3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-991" y="1837"/>
+        </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="dWQ-zS-SOv">
+            <objects>
+                <viewController storyboardIdentifier="changePassword" id="3SA-VV-XyE" customClass="ASWChangePasswordViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ne0-Xt-KqS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yup-B3-NAE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lz2-kz-0mb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sas-uO-7ty" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="56.5" y="110" width="262.5" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Q7v-Yz-clT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP8-KN-r8e" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="56" y="173" width="262.5" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="L3r-mL-afO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-Er-nwP" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
+                                <rect key="frame" x="56" y="236" width="262.5" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzu-ul-yP1">
+                                <rect key="frame" x="62" y="12" width="251" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-tj-xjx">
+                                <rect key="frame" x="56.5" y="609" width="262.5" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.28235294119999998" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M7Q-Gt-dvQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Далее"/>
+                                <connections>
+                                    <action selector="confirmChange:" destination="3SA-VV-XyE" eventType="touchUpInside" id="zAt-Ja-zTj"/>
+                                    <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="nyK-Qv-63M"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Sas-uO-7ty" firstAttribute="centerX" secondItem="Lz2-kz-0mb" secondAttribute="centerX" id="3Il-uq-LXb"/>
+                            <constraint firstItem="eIl-Er-nwP" firstAttribute="top" secondItem="JP8-KN-r8e" secondAttribute="bottom" constant="20" id="FNQ-cT-Toe"/>
+                            <constraint firstItem="SLU-tj-xjx" firstAttribute="width" secondItem="Lz2-kz-0mb" secondAttribute="width" multiplier="0.7" id="Gkp-aj-e9C"/>
+                            <constraint firstItem="eIl-Er-nwP" firstAttribute="height" secondItem="Sas-uO-7ty" secondAttribute="height" id="MMh-18-POp"/>
+                            <constraint firstItem="JP8-KN-r8e" firstAttribute="centerX" secondItem="Lz2-kz-0mb" secondAttribute="centerX" id="MRd-rs-NkW"/>
+                            <constraint firstItem="JP8-KN-r8e" firstAttribute="top" secondItem="Sas-uO-7ty" secondAttribute="bottom" constant="20" id="OkK-Qh-v3l"/>
+                            <constraint firstItem="JP8-KN-r8e" firstAttribute="width" secondItem="Sas-uO-7ty" secondAttribute="width" id="Ph1-bX-Ae3"/>
+                            <constraint firstItem="Sas-uO-7ty" firstAttribute="width" secondItem="Lz2-kz-0mb" secondAttribute="width" multiplier="0.7" id="Uci-Sj-f9t"/>
+                            <constraint firstItem="eIl-Er-nwP" firstAttribute="centerX" secondItem="Lz2-kz-0mb" secondAttribute="centerX" id="a67-tN-fEi"/>
+                            <constraint firstItem="Sas-uO-7ty" firstAttribute="top" secondItem="Ne0-Xt-KqS" secondAttribute="bottom" constant="90" id="e6Y-54-jG9"/>
+                            <constraint firstItem="eIl-Er-nwP" firstAttribute="width" secondItem="Sas-uO-7ty" secondAttribute="width" id="nDF-Ry-MvD"/>
+                            <constraint firstItem="SLU-tj-xjx" firstAttribute="centerX" secondItem="Lz2-kz-0mb" secondAttribute="centerX" id="nRT-t5-R48"/>
+                            <constraint firstItem="JP8-KN-r8e" firstAttribute="height" secondItem="Sas-uO-7ty" secondAttribute="height" id="rh3-Y8-3WW"/>
+                            <constraint firstItem="Yup-B3-NAE" firstAttribute="top" secondItem="SLU-tj-xjx" secondAttribute="bottom" constant="8" id="xfo-D3-WM3"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="button" destination="SLU-tj-xjx" id="aid-BX-lUg"/>
+                        <outlet property="emailField" destination="JP8-KN-r8e" id="U8O-wh-4OP"/>
+                        <outlet property="oldPassField" destination="Sas-uO-7ty" id="xpB-Hv-Oew"/>
+                        <outlet property="passField" destination="JP8-KN-r8e" id="mOm-uz-zXZ"/>
+                        <outlet property="passwordField" destination="JP8-KN-r8e" id="Xv8-Pn-BN8"/>
+                        <outlet property="phoneField" destination="eIl-Er-nwP" id="KYG-9X-meP"/>
+                        <outlet property="repPassField" destination="eIl-Er-nwP" id="6tg-GU-q41"/>
+                        <outlet property="repeatPasswordField" destination="eIl-Er-nwP" id="Zqs-zt-ChA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q82-Th-EPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1746.4000000000001" y="1835.5322338830586"/>
         </scene>
     </scenes>
     <resources>

@@ -10,9 +10,17 @@ import Foundation
 import SwiftyJSON
 
 class ASWUserInfoGetParser {
+    var canWatch = false
+    var canJoin = false
+    
+    var categoriesParser: ASWListCategoryParser
+    var regionsParser: ASWListRegionsParser
     
     init(json: JSON) {
-        
+        canWatch = json["can_watch"].boolValue
+        canJoin = json["can_join"].boolValue
+        categoriesParser = ASWListCategoryParser(json:json)
+        regionsParser = ASWListRegionsParser(json:json)
     }
     
 }

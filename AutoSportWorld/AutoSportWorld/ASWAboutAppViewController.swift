@@ -11,21 +11,23 @@ import UIKit
 class ASWAboutAppViewController: UIViewController {
 
     @IBOutlet weak var serviceLabel: UILabel!
+    
     @IBOutlet weak var rateButton: UIButton!
+    
+    @IBOutlet weak var versionLabel: UILabel!
+    
+    @IBOutlet weak var termsOfUseButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "О приложении"
         setupUI()
-        
+        versionLabel.text = "Версия: \( UIApplication.versionBuild())"
     }
     
     func setupUI(){
-        rateButton.layer.cornerRadius = 10
-        rateButton.clipsToBounds=true
-        rateButton.layer.borderWidth = 1
-        rateButton.layer.borderColor = UIColor.ASWColor.pink.cgColor
-        rateButton.setTitleColor(UIColor.ASWColor.pink, for: .normal)
+        ASWButtonManager.setupButton(button: rateButton)
         serviceLabel.textColor = UIColor.ASWColor.grey
     }
     
@@ -34,7 +36,9 @@ class ASWAboutAppViewController: UIViewController {
         //UIApplication.shared.openURL(NSURL(string : "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=<iTUNES CONNECT APP ID>")! as URL)
     }
 
-
+    @IBAction func termsOfUseAction(_ sender: Any) {
+    }
+    
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

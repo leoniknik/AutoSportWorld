@@ -27,8 +27,16 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     var titleForSelectedItems: [String] = ["","",""]
     var titleForAvailableItems: [String] = ["","",""]
     
+    var isLoading: Bool = false
+    
+    var queue = OperationQueue.init()
+    
+    override init() {
+        queue.qualityOfService = .userInitiated
+    }
+    
     func updateData(){
-        
+        isLoading = true
     }
     
     func isEmptyDatasource()->Bool{
@@ -114,11 +122,6 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
                 rawSelectedItems.append(selectedItem)
             }
         }
-//
-//        availableItems = rawAvailableItems
-//        selectedItems = rawSelectedItems
-        //isSearching = false
-        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

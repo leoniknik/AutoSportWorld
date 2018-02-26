@@ -59,6 +59,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     override func updateData() {
+        super.updateData()
         ASWNetworkManager.getRaceTypes(type: auto ? "auto" : "moto")
     }
     
@@ -70,6 +71,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                     raceCategories = response.categories
                     setSelectedCategories(categoryIDs: selectedRaceCategory)
                     delegate?.dataReceived()
+                    isLoading = false;
                 }
             }
             
@@ -100,8 +102,10 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
             self?.delegate?.updateSelectedRaceTypes(auto:self?.auto ?? false, raceTypeIDs: self?.selectedRaceCategory ?? [Int]())
         }
     }
+    
     @objc func raceCategoryCallbackError(_ notification: Notification) {
-        
+        isLoading = false
+        delegate?.networkErrorOccured()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

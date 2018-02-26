@@ -39,6 +39,7 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     override func updateData() {
+        super.updateData()
         ASWNetworkManager.getRegions()
     }
     
@@ -48,6 +49,7 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
             regions = response.regions
             setSelectedRegions(regionsIDs: selectedRegions)
             delegate?.dataReceived()
+            isLoading = false
         }
     }
     
@@ -70,15 +72,15 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
         
-        weak var weakself = self
         DispatchQueue.main.async { [weak self] in
-            weakself?.collectionView?.reloadData()
+            self?.collectionView?.reloadData()
             //self?.delegate?.updateSelectedRegions(regionsIDs: self?.selectedRegions ?? [Int]())
         }
     }
     
     @objc func regionsCallbackError(_ notification: Notification) {
         delegate?.networkErrorOccured()
+        isLoading = false
     }
     
     

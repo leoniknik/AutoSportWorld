@@ -11,9 +11,9 @@ import Alamofire
 
 class ASWUserInfoGetRequest: ASWRequest {
     
-    init(email:String, password:String) {
+    override init() {
         super.init()
-        url = self.baseURL + "/api/preferences?filters=1"
+        url = self.baseURL + "/preferences?filters=true"
     }
     
 }

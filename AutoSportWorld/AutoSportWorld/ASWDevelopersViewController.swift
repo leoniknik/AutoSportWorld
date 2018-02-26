@@ -18,11 +18,11 @@ class ASWDevelopersViewController: UIViewController {
     }
     
     func setupUI(){
-        mailLabel.textColor = UIColor.ASWColor.pink
+        //mailLabel.textColor = UIColor.ASWColor.pink
     }
 
     @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    self.navigationController?.popViewController(animated: true)
     }
     
 }
