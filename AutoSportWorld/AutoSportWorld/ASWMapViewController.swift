@@ -226,6 +226,7 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
 //            zoom(onItem: 0)
 //        }
 //    }
+    }
     
 }
 

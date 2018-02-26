@@ -154,7 +154,7 @@ class ASWDatabaseManager {
         
         for (index, item) in user.regions.enumerated() {
             try! realm.write {
-                user.regions.remove(objectAtIndex: index)
+                user.regions.remove(at: index)
             }
         }
         
@@ -185,13 +185,13 @@ class ASWDatabaseManager {
         if auto {
             for (index, item) in user.autoCategories.enumerated() {
                 try! realm.write {
-                    user.regions.remove(objectAtIndex: index)
+                    user.regions.remove(at: index)
                 }
             }
         }else{
             for (index, item) in user.motoCategories.enumerated() {
                 try! realm.write {
-                    user.regions.remove(objectAtIndex: index)
+                    user.regions.remove(at: index)
                 }
             }
         }
@@ -335,7 +335,7 @@ class ASWDatabaseManager {
             for (index, item) in user.favoriteRaces.enumerated() {
                 if item == race {
                     try! realm.write {
-                        user.favoriteRaces.remove(objectAtIndex: index)
+                        user.favoriteRaces.remove(at: index)
                     }
                     break
                 }
