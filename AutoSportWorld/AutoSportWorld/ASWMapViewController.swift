@@ -11,16 +11,24 @@ import GoogleMaps
 
 class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var pageControl: UIPageControl!
+//    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var viewForMap: UIView!
-    
-    var events: [ASWEvent] = []
+    @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var zoomLevel: Float = 8.0
+    var zoomLevelMax: Float = 5.0
+    var markers = [GMSMarker]()
+    var lastItem: Int = 0
+    
+    enum LocationMarker: String {
+        case off = "ic_location_one"
+        case on = "ic_location_one_on"
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,24 +38,37 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         setupLocationManager()
         setupUI()
         setupMap()
-        
-        //временный код
-        var event = ASWEvent()
-        event.latitude = 55.3
-        event.longitude = 37.4
-        event.title = "1"
-        events.append(event)
-        
-        event = ASWEvent()
-        event.latitude = 55.1
-        event.longitude = 37.6
-        event.title = "2"
-        events.append(event)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupMapSize()
+        mapView.clear()
+        collectionView.reloadData()
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func setupMapSize() {
+        guard let myTBC = tabBarController as? ASWTabBarController else { return }
+        if myTBC.events.count == 0 {
+            collectionViewConstraint.constant = 0
+        } else {
+            collectionViewConstraint.constant = 78
+        }
+    }
+    
+    func zoomOnFirstMarker() {
+        guard let _ = markers.first else { return }
+        updateColoredMarkers(0)
+        zoom(onItem: 0)
     }
     
     func setupUI() {
-        pageControl.hidesForSinglePage = true
+//        pageControl.hidesForSinrglePage = true
         setupNavbar()
     }
     
@@ -71,13 +92,15 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pageControl.numberOfPages = events.count
-        mapView.clear()
-        for event in events {
-            addMarker(forEvent: event)
+        guard let myTBC = tabBarController as? ASWTabBarController else { return 0 }
+        markers.removeAll()
+        for event in myTBC.events {
+            if let marker = addMarker(forEvent: event) {
+                markers.append(marker)
+            }
         }
-        updateColoredMarkers()
-        return events.count
+        
+        return myTBC.events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -86,21 +109,63 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWMapAndCalendarCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWMapAndCalendarCell", for: indexPath) as? ASWMapAndCalendarCell,
+            let myTBC = tabBarController as? ASWTabBarController
+            else { return UICollectionViewCell() }
+        let event = myTBC.events[indexPath.row]
+        cell.titleLabel.text = event.title
+        cell.categories.text = event.getRaceCategories()
+        var canWatch: String = ""
+        var canJoin: String = ""
+        var place: String = ""
+        if event.canJoin ?? false {
+            canJoin = "Покататься; "
+        }
+        if event.canWatch ?? false {
+            canWatch = "Посмотреть; "
+        }
+        if let placeTemp = event.whereRace {
+            place = placeTemp + "; "
+        }
+        cell.descriptionLabel.text = place + canWatch + canJoin
+        
+        
+        if cell.categories.text?.isEmpty ?? false {
+            cell.categories.text = "Категории не указаны"
+        }
+        if cell.descriptionLabel.text?.isEmpty ?? false {
+            cell.descriptionLabel.text = "Описание не указано"
+        }
+        if cell.titleLabel.text?.isEmpty ?? false {
+            cell.titleLabel.text = "Заголовок не указан"
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.size.width, height: 110)
+        return CGSize(width: self.view.frame.size.width, height: 74)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageWidth: CGFloat = self.collectionView.frame.size.width
-        let previousPage = pageControl.currentPage
-        let newPage = Int(self.collectionView.contentOffset.x / pageWidth)
-        pageControl.currentPage = newPage
-        if previousPage != newPage {
-            updateColoredMarkers()
+        let width: CGFloat = self.collectionView.frame.size.width
+        let newItem = Int(self.collectionView.contentOffset.x / width)
+        updateColoredMarkers(newItem)
+        zoom(onItem: newItem)
+    }
+    
+    func zoom(onItem item: Int) {
+        guard let myTBC = tabBarController as? ASWTabBarController else { return }
+        let event = myTBC.events[item]
+        guard let latitude = event.latitude, let longitude = event.longitude else { return }
+        let camera = GMSCameraPosition.camera(withLatitude: latitude,
+                                              longitude: longitude,
+                                              zoom: zoomLevelMax)
+        if mapView.isHidden {
+            mapView.isHidden = false
+            mapView.camera = camera
+        } else {
+            mapView.animate(to: camera)
         }
     }
     
@@ -108,17 +173,29 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         let camera = GMSCameraPosition.camera(withLatitude:  55.7558, longitude: 37.6173, zoom: zoomLevel)
         mapView = GMSMapView.map(withFrame: viewForMap.frame, camera: camera)
         mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewForMap.addSubview(mapView)
+        mapView.delegate = self
     }
     
     
-    func addMarker(forEvent event: ASWEvent) {
+    
+    func addMarker(forEvent event: ASWRace) -> GMSMarker? {
+        guard let latitude = event.latitude, let longitude = event.longitude else { return nil }
         let marker = GMSMarker()
-        event.mapMarker = marker
-        marker.position = CLLocationCoordinate2D(latitude: event.latitude, longitude: event.longitude)
+        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         marker.title = event.title
+        add(imageName: .off, forMarker: marker)
         marker.map = mapView
+        return marker
+    }
+    
+    
+    func add(imageName name: LocationMarker, forMarker marker: GMSMarker) {
+        let markerImage = UIImage(named: name.rawValue)?.withRenderingMode(.alwaysOriginal)
+        let markerView = UIImageView(image: markerImage)
+        marker.iconView = markerView
     }
     
     
@@ -131,18 +208,24 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     
-    func updateColoredMarkers() {
-        let coloredIndex = pageControl.currentPage
-        for index in 0 ..< events.count {
-            var color = UIColor.ASWColor.black
-            if index == coloredIndex {
-                color = UIColor.ASWColor.yellow
-            }
-            if let marker = events[index].mapMarker {
-                marker.icon = GMSMarker.markerImage(with: color)
-            }
+    func updateColoredMarkers(_ item: Int) {
+        if markers.count > item {
+            markers.forEach({ (marker) in
+                add(imageName: .off, forMarker: marker)
+            })
+            let marker = markers[item]
+            add(imageName: .on, forMarker: marker)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let width: CGFloat = self.collectionView.frame.size.width
+//        let newItem = Int(self.collectionView.contentOffset.x / width)
+//        if indexPath.item == 0 && newItem == 0 {
+//            updateColoredMarkers(0)
+//            zoom(onItem: 0)
+//        }
+//    }
     
 }
 
@@ -151,7 +234,7 @@ extension ASWMapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location: CLLocation = locations.last!
+        guard let location: CLLocation = locations.last else { return }
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
@@ -185,6 +268,14 @@ extension ASWMapViewController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
-    
-    
+}
+
+
+extension ASWMapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        let coordinate = CLLocationCoordinate2D(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        mapView.animate(toLocation: coordinate)
+        mapView.animate(toZoom: zoomLevel)
+        return false
+    }
 }

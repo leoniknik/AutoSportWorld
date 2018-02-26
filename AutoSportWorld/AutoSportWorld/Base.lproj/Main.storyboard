@@ -40,13 +40,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-TA-Ny5">
-                                <rect key="frame" x="0.0" y="444" width="375" height="110"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-TA-Ny5">
+                                <rect key="frame" x="0.0" y="476" width="375" height="78"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="3GN-vM-4YX"/>
+                                    <constraint firstAttribute="height" constant="78" id="3GN-vM-4YX"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5lk-v8-jgd">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5lk-v8-jgd">
                                     <size key="itemSize" width="50" height="110"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -54,32 +54,18 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aSX-ex-loQ">
-                                <rect key="frame" x="0.0" y="529" width="375" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6MG-Kp-omr"/>
-                                </constraints>
-                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="pageControlValueChanged:" destination="Pul-1K-c8N" eventType="valueChanged" id="9aY-ZS-p1y"/>
-                                </connections>
-                            </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdX-Wb-Jhd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="444"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="476"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zdX-Wb-Jhd" firstAttribute="trailing" secondItem="PQe-Jd-fSn" secondAttribute="trailing" id="8fs-uR-uGQ"/>
-                            <constraint firstItem="PQe-Jd-fSn" firstAttribute="trailing" secondItem="aSX-ex-loQ" secondAttribute="trailing" id="9fH-Rz-fSn"/>
                             <constraint firstItem="aqn-TA-Ny5" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="Irp-6w-kg6"/>
-                            <constraint firstItem="aSX-ex-loQ" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="ZYH-eS-Jus"/>
                             <constraint firstItem="zdX-Wb-Jhd" firstAttribute="top" secondItem="PQe-Jd-fSn" secondAttribute="top" id="aQD-in-Uiz"/>
                             <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="zdX-Wb-Jhd" secondAttribute="bottom" id="gqR-li-w1J"/>
                             <constraint firstItem="zdX-Wb-Jhd" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="lTy-1k-DDe"/>
                             <constraint firstItem="PQe-Jd-fSn" firstAttribute="trailing" secondItem="aqn-TA-Ny5" secondAttribute="trailing" id="lwI-xG-IxL"/>
-                            <constraint firstItem="PQe-Jd-fSn" firstAttribute="bottom" secondItem="aSX-ex-loQ" secondAttribute="bottom" constant="-5" id="whV-FJ-WS6"/>
                             <constraint firstItem="PQe-Jd-fSn" firstAttribute="bottom" secondItem="aqn-TA-Ny5" secondAttribute="bottom" id="yBd-km-JCc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQe-Jd-fSn"/>
@@ -92,7 +78,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
-                        <outlet property="pageControl" destination="aSX-ex-loQ" id="gfl-RJ-4gL"/>
+                        <outlet property="collectionViewConstraint" destination="3GN-vM-4YX" id="h0g-xB-wSS"/>
                         <outlet property="viewForMap" destination="zdX-Wb-Jhd" id="vKK-TN-FDM"/>
                     </connections>
                 </viewController>
@@ -231,7 +217,7 @@
         <scene sceneID="eKl-rR-fiR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fee-gk-cha" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="События" image="ic_lenta_off" selectedImage="ic_lenta_on" id="sKQ-m9-GJb">
+                    <tabBarItem key="tabBarItem" title="События" id="sKQ-m9-GJb">
                         <color key="badgeColor" red="1" green="0.2007921007" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -252,7 +238,7 @@
         <scene sceneID="P7F-SE-1Jy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w7L-8S-Yp8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Карта" image="ic_map" selectedImage="ic_map_on" id="3t5-F1-SVf"/>
+                    <tabBarItem key="tabBarItem" title="Карта" id="3t5-F1-SVf"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="f8Z-XJ-Plq">
@@ -272,7 +258,7 @@
         <scene sceneID="3Hf-cX-yJK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btF-ff-dPo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Календарь" image="ic_calendar_off" selectedImage="ic_calendar_on" id="8Qy-pH-ImZ">
+                    <tabBarItem key="tabBarItem" title="Календарь" id="8Qy-pH-ImZ">
                         <color key="badgeColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -293,7 +279,7 @@
         <scene sceneID="Ics-tl-ju7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Bs-CV-lWG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Избранное" image="ic_bookmark_tab_off" selectedImage="ic_bookmark_tab_on" id="kpI-Re-EdV"/>
+                    <tabBarItem key="tabBarItem" title="Избранное" id="kpI-Re-EdV"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="NXx-ys-HS9">
@@ -311,14 +297,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_bookmark_tab_off" width="24" height="24"/>
-        <image name="ic_bookmark_tab_on" width="24" height="24"/>
-        <image name="ic_calendar_off" width="24" height="24"/>
-        <image name="ic_calendar_on" width="24" height="24"/>
-        <image name="ic_lenta_off" width="24" height="24"/>
-        <image name="ic_lenta_on" width="24" height="24"/>
-        <image name="ic_map" width="24" height="24"/>
-        <image name="ic_map_on" width="24" height="24"/>
-        <image name="ic_tune" width="24" height="24"/>
+        <image name="ic_tune" width="18" height="18"/>
     </resources>
 </document>

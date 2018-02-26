@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxz-oA-xjr">
-                        <rect key="frame" x="4" y="10" width="92" height="26"/>
+                        <rect key="frame" x="4" y="8" width="92" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="HUk-Iy-I3a"/>
                         </constraints>
@@ -57,7 +57,7 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="CPZ-Rc-G3N">
-                        <rect key="frame" x="19" y="42" width="62" height="16"/>
+                        <rect key="frame" x="19" y="39" width="62" height="16"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-Aq-c0Y">
                                 <rect key="frame" x="0.0" y="0.0" width="28" height="16"/>
@@ -68,7 +68,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avto" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-is-Tjn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_flag" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-is-Tjn">
                                 <rect key="frame" x="34" y="0.0" width="28" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="49Q-Jt-8WM"/>
@@ -93,13 +93,13 @@
                 <constraint firstItem="I1b-hh-2Ck" firstAttribute="top" secondItem="c26-YO-Pda" secondAttribute="bottom" constant="-1" id="LRn-xf-03p"/>
                 <constraint firstAttribute="trailing" secondItem="mxz-oA-xjr" secondAttribute="trailing" constant="4" id="Ohh-1H-geZ"/>
                 <constraint firstItem="I1b-hh-2Ck" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="YPM-Bc-NkZ"/>
-                <constraint firstItem="CPZ-Rc-G3N" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="YYg-fh-UH3"/>
+                <constraint firstItem="CPZ-Rc-G3N" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-3" id="YYg-fh-UH3"/>
                 <constraint firstItem="c26-YO-Pda" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="f9O-bj-x08"/>
-                <constraint firstItem="c26-YO-Pda" firstAttribute="top" secondItem="CPZ-Rc-G3N" secondAttribute="bottom" constant="4" id="fKx-wZ-nyk"/>
+                <constraint firstItem="c26-YO-Pda" firstAttribute="top" secondItem="CPZ-Rc-G3N" secondAttribute="bottom" constant="7" id="fKx-wZ-nyk"/>
                 <constraint firstAttribute="trailing" secondItem="c26-YO-Pda" secondAttribute="trailing" constant="4" id="kqv-h2-mu7"/>
                 <constraint firstAttribute="trailing" secondItem="I1b-hh-2Ck" secondAttribute="trailing" constant="4" id="nSR-rm-JwH"/>
                 <constraint firstItem="H8L-CL-3He" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="wC3-PB-Dkx"/>
-                <constraint firstItem="CPZ-Rc-G3N" firstAttribute="top" secondItem="mxz-oA-xjr" secondAttribute="bottom" constant="6" id="yr2-b5-w54"/>
+                <constraint firstItem="CPZ-Rc-G3N" firstAttribute="top" secondItem="mxz-oA-xjr" secondAttribute="bottom" constant="5" id="yr2-b5-w54"/>
             </constraints>
             <size key="customSize" width="100" height="100"/>
             <connections>
@@ -111,7 +111,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_avto" width="100" height="100"/>
         <image name="ic_elevation" width="24" height="24"/>
+        <image name="ic_flag" width="21" height="10"/>
     </resources>
 </document>
