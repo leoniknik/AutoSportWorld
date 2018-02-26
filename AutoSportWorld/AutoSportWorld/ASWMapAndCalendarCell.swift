@@ -10,6 +10,11 @@ import UIKit
 
 class ASWMapAndCalendarCell: UICollectionViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var categories: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

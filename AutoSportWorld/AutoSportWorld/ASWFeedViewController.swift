@@ -100,6 +100,12 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     func update(cursor: String?) {
         self.cursor = cursor
         refreshData()
+        guard let myTBC = tabBarController as? ASWTabBarController else { return }
+        myTBC.events = model.events
+    }
+    
+    func updateTabBarController() {
+        
     }
     
     func updateError() {

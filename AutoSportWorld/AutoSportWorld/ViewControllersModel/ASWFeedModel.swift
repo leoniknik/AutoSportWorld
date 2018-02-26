@@ -27,7 +27,6 @@ protocol ASWFeedsModelDelegate: class {
 
 class ASWFeedsModel: ASWFeedsModelProtocol {
     
-    
     weak var delegate: ASWFeedsModelDelegate?
     var events = [ASWRace]()
     private let imageService = ASWImageDownloader()
