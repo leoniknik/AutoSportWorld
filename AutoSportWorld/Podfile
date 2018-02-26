@@ -8,9 +8,9 @@ target 'AutoSportWorld' do
     pod 'RealmSwift'
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'Kingfisher'
 
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FSCalendar'
-
 end

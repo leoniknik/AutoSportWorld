@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
     
@@ -85,12 +86,13 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     }
     
     func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.tableFooterView = UIView()
-        self.tableView.separatorStyle = .none
-        self.tableView.register(UINib(nibName: "ASWEventCell", bundle: nil), forCellReuseIdentifier: "ASWEventCell")
-        self.tableView.register(UINib(nibName: "ASWSpacingCell", bundle: nil), forCellReuseIdentifier: "ASWSpacingCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.prefetchDataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "ASWEventCell", bundle: nil), forCellReuseIdentifier: "ASWEventCell")
+        tableView.register(UINib(nibName: "ASWSpacingCell", bundle: nil), forCellReuseIdentifier: "ASWSpacingCell")
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -109,7 +111,6 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     }
     
     func updateError() {
-        
         if (self.model.getEvents().count == 0) {
             DispatchQueue.main.async { [weak self] in
                 self?.errorLabel.isHidden = false
@@ -143,6 +144,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
             self.tableView.refreshControl?.endRefreshing()
             self.tableView.refreshControl?.beginRefreshing()
             self.tableView.contentOffset = offset
+            self.tableView.prefetchDataSource = self
         }
     }
     
@@ -176,19 +178,21 @@ extension ASWFeedViewController: UITableViewDataSource {
             
             //загрузка картинки в ячейку
             let race = model.getEvent(forIndex: indexPath.item / 2)
-            if let image = race.image {
-                cell.eventImage.image = image
-            }
-            else {
-                cell.eventImage.image = nil
-                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    self?.model.getImageFor(race: race, completion: { () in
-                        DispatchQueue.main.async { [weak self] in
-                            self?.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                        }
-                    })
-                }
-            }
+            cell.imageView?.kf.indicatorType = .activity
+//            if let image = race.image {
+//                cell.eventImage.image = image
+//            }
+//            else {
+//                cell.eventImage.image = nil
+//                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+//                    self?.model.getImageFor(race: race, completion: { () in
+//                        DispatchQueue.main.async { [weak self] in
+//                            self?.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+//                        }
+//                    })
+//                }
+//            }
+            
             
             //конфигурация ячейки
             configureEvent(cell: cell, race: race)
@@ -239,7 +243,7 @@ extension ASWFeedViewController: UITableViewDataSource {
         
         let likeImage = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
         cell.likeButton.setBackgroundImage(likeImage, for: .normal)
-        
+
     }
     
 }
@@ -275,13 +279,32 @@ extension ASWFeedViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: false)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let race = model.getEvent(forIndex: indexPath.item / 2)
+        guard let urlString = race.imageURL else {return}
+        guard let url = URL(string: urlString) else {return}
+        if let cell = cell as? ASWEventCell {
+            cell.eventImage.kf
+                .setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? ASWEventCell {
+            cell.eventImage.kf.cancelDownloadTask()
+        }
+    }
 }
 
+extension ASWFeedViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let indexes = indexPaths.map { $0.row / 2 }
+        let urls = indexes.flatMap {
+            URL(string: model.getEvent(forIndex: $0).imageURL ?? "")
+        }
 
-
-
-
-
-
-
-
+        ImagePrefetcher(urls: urls).start()
+    }
+}

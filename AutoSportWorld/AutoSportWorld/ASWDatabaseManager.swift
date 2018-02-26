@@ -183,13 +183,13 @@ class ASWDatabaseManager {
         }
         
         if auto {
-            for (index, item) in user.autoCategories.enumerated() {
+            for (index, _) in user.autoCategories.enumerated() {
                 try! realm.write {
                     user.regions.remove(at: index)
                 }
             }
         }else{
-            for (index, item) in user.motoCategories.enumerated() {
+            for (index, _) in user.motoCategories.enumerated() {
                 try! realm.write {
                     user.regions.remove(at: index)
                 }
