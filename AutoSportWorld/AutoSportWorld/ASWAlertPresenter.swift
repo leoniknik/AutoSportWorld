@@ -38,7 +38,7 @@ extension UIViewController {
     func presentAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: "Ошибка на сервере", message: "Повторите попытку или попробуйде позже", preferredStyle: .alert)
+            let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self?.present(alert, animated: true, completion: completion)
         }
@@ -46,6 +46,18 @@ extension UIViewController {
     
     func presentAlert(_ title: String, _ text: String){
         presentAlert(title, text,{})
+    }
+    
+    func presentAlert(error:NSError,completion: (()->Void)?){
+        if error.code == 10001 {
+            
+        } else if error.code == 10000 {
+            
+        } else {
+            presentServerAlert {
+                completion?()
+            }
+        }
     }
     
 }

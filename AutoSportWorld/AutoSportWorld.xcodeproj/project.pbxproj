@@ -100,6 +100,8 @@
 		DE6B03B6201B22A6002BFE85 /* ASWUserInfoSendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B5201B22A6002BFE85 /* ASWUserInfoSendRequest.swift */; };
 		DE6B03B8201B2627002BFE85 /* ASWUserInfoGetParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B7201B2627002BFE85 /* ASWUserInfoGetParser.swift */; };
 		DE6B03BA201B263B002BFE85 /* ASWUserInfoGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */; };
+		DE6D6078203DA984003D97B7 /* ASWCalendarRacesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D6077203DA984003D97B7 /* ASWCalendarRacesParser.swift */; };
+		DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */; };
 		DE7D180320089D7A00156FDA /* ASWViewControllersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */; };
 		DE7D18052008A26900156FDA /* ASWChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */; };
 		DEA11E5C203C5E39009EBA26 /* ASWErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */; };
@@ -222,6 +224,8 @@
 		DE6B03B5201B22A6002BFE85 /* ASWUserInfoSendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUserInfoSendRequest.swift; sourceTree = "<group>"; };
 		DE6B03B7201B2627002BFE85 /* ASWUserInfoGetParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUserInfoGetParser.swift; sourceTree = "<group>"; };
 		DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUserInfoGetRequest.swift; sourceTree = "<group>"; };
+		DE6D6077203DA984003D97B7 /* ASWCalendarRacesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCalendarRacesParser.swift; sourceTree = "<group>"; };
+		DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCalendarRacesRequest.swift; sourceTree = "<group>"; };
 		DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWViewControllersManager.swift; sourceTree = "<group>"; };
 		DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangePasswordViewController.swift; sourceTree = "<group>"; };
 		DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWErrorView.xib; sourceTree = "<group>"; };
@@ -482,6 +486,7 @@
 				CA0D21851FEDC08700CF42FF /* ASWListCategoryParser.swift */,
 				DE6B03B3201B2258002BFE85 /* ASWUserInfoSendParser.swift */,
 				DE6B03B7201B2627002BFE85 /* ASWUserInfoGetParser.swift */,
+				DE6D6077203DA984003D97B7 /* ASWCalendarRacesParser.swift */,
 			);
 			name = Parsers;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				DE6B03B1201AFBF3002BFE85 /* ASWValidateLoginRequest.swift */,
 				DE6B03B5201B22A6002BFE85 /* ASWUserInfoSendRequest.swift */,
 				DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */,
+				DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -757,6 +763,7 @@
 				CA25D8611F50954D00D65B26 /* ASWTabBarController.swift in Sources */,
 				CACB58541F3F3CF0007E8E0B /* ASWRegionCell.swift in Sources */,
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
+				DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA0D218A1FEDC26300CF42FF /* ASWCategoriesRequest.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
@@ -787,6 +794,7 @@
 				CA51D65F1FE6D86400018CE9 /* ASWListRacesRequest.swift in Sources */,
 				CA04AAF91FFAD4F900F1ACC3 /* ASWFilterCell.swift in Sources */,
 				CAD382FE1FFDB421000B4242 /* ASWWebViewController.swift in Sources */,
+				DE6D6078203DA984003D97B7 /* ASWCalendarRacesParser.swift in Sources */,
 				DE153DFB202190C0009E8CC1 /* UIViewController+HideKeyboard.swift in Sources */,
 				DE6B03B8201B2627002BFE85 /* ASWUserInfoGetParser.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,

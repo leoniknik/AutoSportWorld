@@ -29,6 +29,12 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     
     var isLoading: Bool = false
     
+    var queue = OperationQueue.init()
+    
+    override init() {
+        queue.qualityOfService = .userInitiated
+    }
+    
     func updateData(){
         isLoading = true
     }
