@@ -414,7 +414,6 @@ class ASWDatabaseManager {
         guard let user = getUser() else {
             return
         }
-        
         let predicate = NSPredicate(format: "id == \(id)")
         
         //если у пользователя есть уже в заметках эта гонка

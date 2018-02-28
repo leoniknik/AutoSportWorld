@@ -107,4 +107,12 @@ class ASWFavoriteModel: ASWFeedsModelProtocol {
         }
     }
     
+    func likeEvent(id: Int, sucsessFunc: @escaping () -> ()) {
+        
+    }
+    
+    func unlikeEvent(id: Int, sucsessFunc: @escaping () -> ()) {
+        
+    }
+    
 }

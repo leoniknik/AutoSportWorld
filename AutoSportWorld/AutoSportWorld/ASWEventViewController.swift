@@ -59,6 +59,7 @@ class ASWEventViewController: UIViewController {
     init(race: ASWRace) {
         self.race = race
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
     }
     
     required init?(coder aDecoder: NSCoder) {

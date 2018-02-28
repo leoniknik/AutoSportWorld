@@ -265,5 +265,18 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     @IBOutlet weak var ufvl: UIView!
     @IBOutlet weak var ufvr: UIView!
     
+    func setupNavbar() {
+        //убираем полоску между хедером и навигейшен баром
+        navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
+    }
+    
+    @objc func showFilters() {
+        let viewController = ASWFiltersViewController()
+        self.navigationController?.pushViewController(viewController, animated: false)
+    }
 }
 

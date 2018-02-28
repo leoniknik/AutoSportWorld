@@ -188,12 +188,34 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
     }
     
- 
+    static func likeEvent(id: String, successFunc: @escaping () -> ()) {
+        let request = ASWLiekRequest(id: id)
+        guard let token = ASWDatabaseManager().getUser()?.access_token else { return }
+        let headers = ["x-access-token":token,"Content-Type":"application/json"]
+        Alamofire.request(request.url, method: .post, parameters: request.parameters, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                successFunc()
+            case .failure(let error):
+                defaultOnError(error: error)
+            }
+        }
+    }
     
     //get Request
-    private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void) -> Void {
-        print("requesting URL \(URL)")
-        Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
+    private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, encoding: ParameterEncoding = URLEncoding.default) -> Void {
+        
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 5
+        configuration.timeoutIntervalForResource = 5
+        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
+        
+        var headers: HTTPHeaders?
+//        if let token = ASWDatabaseManager().getUser()?.access_token {
+//            headers = ["x-access-token":token,"Content-Type":"application/json"]
+//        }
+        
+        alamoFireManager.request(URL, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -202,6 +224,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
                 }
             case .failure(let error):
                 DispatchQueue.global(qos: .userInitiated).async {
+                    print(error)
                     onError(error)
                 }
             }

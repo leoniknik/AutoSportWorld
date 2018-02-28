@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
 
@@ -167,19 +168,7 @@ extension ASWFavoriteViewController: UITableViewDataSource {
             
             //загрузка картинки в ячейку
             let race = model.getEvent(forIndex: indexPath.item / 2)
-            if let image = race.image {
-                cell.eventImage.image = image
-            }
-            else {
-                cell.eventImage.image = nil
-                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    self?.model.getImageFor(race: race, completion: { () in
-                        DispatchQueue.main.async { [weak self] in
-                            self?.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-                        }
-                    })
-                }
-            }
+            cell.eventImage.kf.indicatorType = .activity
             
             //конфигурация ячейки
             configureEvent(cell: cell, race: race)
@@ -289,5 +278,21 @@ extension ASWFavoriteViewController: UITableViewDelegate {
         let viewController = ASWEventViewController(race: race)
         self.navigationController?.pushViewController(viewController, animated: false)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let race = model.getEvent(forIndex: indexPath.item / 2)
+        guard let urlString = race.imageURL else {return}
+        guard let url = URL(string: urlString) else {return}
+        if let cell = cell as? ASWEventCell {
+            cell.eventImage.kf
+                .setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? ASWEventCell {
+            cell.eventImage.kf.cancelDownloadTask()
+        }
     }
 }

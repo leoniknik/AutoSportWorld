@@ -10,6 +10,7 @@ import UIKit
 import VK_ios_sdk
 import GoogleMaps
 import RealmSwift
+import Alamofire
 
 fileprivate var SCOPE: [Any]? = nil
 
@@ -24,17 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initVK()
         initGoogleMap()
         printRealmConfig()
+        setupAlamofire()
         
-//        func test(){}
-//        
-//        func sucsessCheck(parser:ASWValidateLoginParser){
-//        }
-//        
-//        func errorCheck(){
-//        }
-//        
-//        ASWNetworkManager.validateLogin(email: "lol", password: "", sucsessFunc: sucsessCheck, errorFunc: errorCheck)
-//        
         return true
     }
 
@@ -96,6 +88,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         Realm.Configuration.defaultConfiguration = config
         
+    }
+    
+    func setupAlamofire() {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 5
+        configuration.timeoutIntervalForResource = 5
+        let _ = Alamofire.SessionManager(configuration: configuration)
     }
     
 }

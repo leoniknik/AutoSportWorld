@@ -16,6 +16,7 @@ class ASWFiltersViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
     }
     
     required init?(coder aDecoder: NSCoder) {

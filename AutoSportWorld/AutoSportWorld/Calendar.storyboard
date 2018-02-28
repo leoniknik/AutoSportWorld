@@ -13,8 +13,10 @@
         <!--Navigation Controller-->
         <scene sceneID="pze-qK-Nvn">
             <objects>
-                <navigationController id="3dX-a0-oGQ" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xfv-aZ-Lvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="calendar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dX-a0-oGQ" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -23,20 +25,19 @@
                         <segue destination="IsW-B3-udk" kind="relationship" relationship="rootViewController" id="2k1-zm-d6E"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xfv-aZ-Lvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2014" y="-144"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="9M6-t6-zSJ">
             <objects>
-                <viewController storyboardIdentifier="calendar" id="IsW-B3-udk" customClass="ASWCalendarViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IsW-B3-udk" customClass="ASWCalendarViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7RV-FI-yHe"/>
                         <viewControllerLayoutGuide type="bottom" id="X0g-Xw-LkD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c0B-MD-UzX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-Gh-VpS" customClass="FSCalendar">

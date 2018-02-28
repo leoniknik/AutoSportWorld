@@ -33,8 +33,7 @@ class ASWTabBarController: UITabBarController {
         let myTabBarItem2 = (self.tabbar.items?[1])! as UITabBarItem
         myTabBarItem2.image = UIImage(named: "ic_bookmark_tab_off")?.withRenderingMode(UIImageRenderingMode.automatic)
 
-        let myTabBarItem3 = (self.tabbar.items?[2])! as UITabBarItem
-        myTabBarItem3.image = UIImage(named: "ic_calendar")?.withRenderingMode(UIImageRenderingMode.automatic)
+//        setupCalendarTab()
 
         let myTabBarItem4 = (self.tabbar.items?[3])! as UITabBarItem
         myTabBarItem4.image = UIImage(named: "ic_map")?.withRenderingMode(UIImageRenderingMode.automatic)
@@ -56,6 +55,16 @@ class ASWTabBarController: UITabBarController {
         myTabBarItem5.image = UIImage(named: "ic_profil_off")?.withRenderingMode(UIImageRenderingMode.automatic)
 //        myTabBarItem5.image
 //        myTabBarItem5.selectedImage = UIImage(named: "ic_profil_on")?.withRenderingMode(UIImageRenderingMode.automatic)
+    }
+    
+    func setupCalendarTab() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Calendar", bundle: nil)
+        let secondVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "calendar")
+        var viewsTBC = self.viewControllers
+        viewsTBC?.append(secondVC)
+        self.viewControllers = viewsTBC
+        let myTabBarItem3 = (self.tabbar.items?[2])! as UITabBarItem
+        myTabBarItem3.image = UIImage(named: "ic_calendar")?.withRenderingMode(UIImageRenderingMode.automatic)
     }
     
 }

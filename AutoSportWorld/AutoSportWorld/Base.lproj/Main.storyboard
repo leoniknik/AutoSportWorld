@@ -11,27 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Календарь событий-->
-        <scene sceneID="Yso-iX-6oT">
-            <objects>
-                <viewController id="Ehe-5H-v8t" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PaY-Qc-aEb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="xJN-YP-n88"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Календарь событий" id="9Lg-RZ-4wA">
-                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="FIh-vp-pTj">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="thE-m8-acL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4039" y="430"/>
-        </scene>
         <!--События на карте-->
         <scene sceneID="vvv-aZ-HxK">
             <objects>
@@ -84,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyF-e6-aIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3748" y="1200"/>
+            <point key="canvasLocation" x="4038" y="561"/>
         </scene>
         <!--Лента новостей-->
         <scene sceneID="Ime-0G-SHu">
@@ -205,8 +184,8 @@
                         <outlet property="tabbar" destination="Cfm-58-Wei" id="C6q-51-Xk5"/>
                         <segue destination="fee-gk-cha" kind="relationship" relationship="viewControllers" id="Ku6-DG-fNc"/>
                         <segue destination="0Bs-CV-lWG" kind="relationship" relationship="viewControllers" id="RmP-4Z-MbH"/>
-                        <segue destination="btF-ff-dPo" kind="relationship" relationship="viewControllers" id="wid-kI-4ut"/>
                         <segue destination="w7L-8S-Yp8" kind="relationship" relationship="viewControllers" id="w6a-CX-4e3"/>
+                        <segue destination="S0n-18-CSf" kind="relationship" relationship="viewControllers" id="Ixn-ur-KZy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4Z-jW-y8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,6 +213,16 @@
             </objects>
             <point key="canvasLocation" x="3065.5999999999999" y="-1244.0779610194904"/>
         </scene>
+        <!--Calendar-->
+        <scene sceneID="6uo-b4-nY5">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="calendar" id="S0n-18-CSf" userLabel="Calendar" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Avo-yN-jbj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6IH-KV-L8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2026" y="724"/>
+        </scene>
         <!--Карта-->
         <scene sceneID="P7F-SE-1Jy">
             <objects>
@@ -252,28 +241,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZg-78-nEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2936" y="1200.8995502248877"/>
-        </scene>
-        <!--Календарь-->
-        <scene sceneID="3Hf-cX-yJK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btF-ff-dPo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Календарь" id="8Qy-pH-ImZ">
-                        <color key="badgeColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="STE-Kb-xeE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Ehe-5H-v8t" kind="relationship" relationship="rootViewController" id="sSE-g5-pyO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DyP-RD-1qX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3142" y="430"/>
+            <point key="canvasLocation" x="3140" y="561"/>
         </scene>
         <!--Избранное-->
         <scene sceneID="Ics-tl-ju7">

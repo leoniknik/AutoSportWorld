@@ -18,6 +18,8 @@ protocol ASWFeedsModelProtocol {
     func getImageFor(race: ASWRace, completion: @escaping () -> ())
     func bookmarkRace(withID id: Int)
     func checkBookmarkedRace(withID id: Int) -> Bool
+    func likeEvent(id: Int, sucsessFunc: @escaping ()->())
+    func unlikeEvent(id: Int, sucsessFunc: @escaping ()->())
 }
 
 protocol ASWFeedsModelDelegate: class {
@@ -115,6 +117,14 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
             return
         }
         databaseService.bookmarkRace(withID: id)
+    }
+    
+    func likeEvent(id: Int, sucsessFunc: @escaping ()->()) {
+        ASWNetworkManager.likeEvent(id: events[id].id ?? "", successFunc: sucsessFunc)
+    }
+    
+    func unlikeEvent(id: Int, sucsessFunc: @escaping ()->()) {
+        
     }
     
 }

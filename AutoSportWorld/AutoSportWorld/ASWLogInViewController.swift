@@ -72,5 +72,13 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
         //        self.present(alertVC, animated: true, completion: nil)
     }
     
+    @IBAction func skipRegistration(_ sender: UIButton) {
+        openMainStoryboard()
+    }
+    
+    deinit {
+        print("deinit")
+    }
+    
 }
 

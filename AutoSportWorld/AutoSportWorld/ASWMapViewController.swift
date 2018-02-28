@@ -45,8 +45,10 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         setupMapSize()
         mapView.clear()
         collectionView.reloadData()
-        let indexPath = IndexPath(item: 0, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
+        if let myTBC = tabBarController as? ASWTabBarController, myTBC.events.count > 0 {
+            let indexPath = IndexPath(item: 0, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,9 +64,14 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func zoomOnFirstMarker() {
+        guard let myTBC = tabBarController as? ASWTabBarController else { return }
         guard let _ = markers.first else { return }
-        updateColoredMarkers(0)
-        zoom(onItem: 0)
+        if myTBC.events.count > 1 {
+            updateColoredMarkers(0)
+            zoom(onItem: 0)
+        } else {
+            
+        }
     }
     
     func setupUI() {
@@ -100,7 +107,7 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
         }
         
-        return myTBC.events.count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -148,8 +155,12 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let myTBC = tabBarController as? ASWTabBarController else { return }
         let width: CGFloat = self.collectionView.frame.size.width
         let newItem = Int(self.collectionView.contentOffset.x / width)
+        guard myTBC.events.count > newItem else {
+            return
+        }
         updateColoredMarkers(newItem)
         zoom(onItem: newItem)
     }

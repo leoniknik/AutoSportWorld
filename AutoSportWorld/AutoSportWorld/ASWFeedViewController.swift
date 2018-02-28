@@ -150,6 +150,19 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     
     func likeEventTapped(id: Int) {
         
+        let race = model.getEvent(forIndex: id)
+        
+        func sucsessFunc(){
+            race.liked = !(race.liked ?? false)
+            tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
+        }
+        
+        if race.liked ?? false {
+            model.unlikeEvent(id: id, sucsessFunc: sucsessFunc)
+        } else {
+            model.likeEvent(id: id, sucsessFunc: sucsessFunc)
+        }
+        
     }
     
     func bookmarkEventTapped(id: Int) {
@@ -178,21 +191,7 @@ extension ASWFeedViewController: UITableViewDataSource {
             
             //загрузка картинки в ячейку
             let race = model.getEvent(forIndex: indexPath.item / 2)
-            cell.imageView?.kf.indicatorType = .activity
-//            if let image = race.image {
-//                cell.eventImage.image = image
-//            }
-//            else {
-//                cell.eventImage.image = nil
-//                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-//                    self?.model.getImageFor(race: race, completion: { () in
-//                        DispatchQueue.main.async { [weak self] in
-//                            self?.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-//                        }
-//                    })
-//                }
-//            }
-            
+            cell.eventImage.kf.indicatorType = .activity
             
             //конфигурация ячейки
             configureEvent(cell: cell, race: race)
@@ -275,7 +274,6 @@ extension ASWFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let race = model.getEvent(forIndex: indexPath.item / 2)
         let viewController = ASWEventViewController(race: race)
-        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: false)
         tableView.deselectRow(at: indexPath, animated: true)
     }

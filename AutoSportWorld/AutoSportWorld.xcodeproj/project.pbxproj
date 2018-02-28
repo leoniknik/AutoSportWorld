@@ -64,12 +64,16 @@
 		CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */; };
 		CA7150331FE5D8810058B522 /* ASWProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7150321FE5D8810058B522 /* ASWProfileViewController.swift */; };
 		CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */; };
+		CA8342462046A75A0089B34B /* ModalIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8342452046A75A0089B34B /* ModalIndicator.swift */; };
 		CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */; };
 		CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */; };
 		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
 		CA8D11B61FFD14710009C4FF /* ASWFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */; };
 		CA9CCA361F51626D006494EB /* ASWEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CCA351F51626D006494EB /* ASWEvent.swift */; };
 		CAB4EA4B1F50EE2700C35BE6 /* ASWLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */; };
+		CAC3DC5620447A8E00EE4F50 /* UIViewController+MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */; };
+		CAC3DC582044907000EE4F50 /* ASWLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC572044907000EE4F50 /* ASWLikeRequest.swift */; };
+		CAC3DC5A2044930200EE4F50 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC592044930200EE4F50 /* TokenService.swift */; };
 		CAC70E5F1F4656D50098470F /* ASWMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */; };
 		CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC70E601F4701E60098470F /* ASWMapAndCalendarCell.swift */; };
 		CAC70E631F4701E60098470F /* ASWMapAndCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */; };
@@ -188,12 +192,16 @@
 		CA584CE21F48ADB30011E653 /* ASWPasswordValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWPasswordValidator.swift; sourceTree = "<group>"; };
 		CA7150321FE5D8810058B522 /* ASWProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWProfileViewController.swift; sourceTree = "<group>"; };
 		CA76A6B01F49E7AA005EA4E7 /* ASWFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWFeedViewController.swift; sourceTree = "<group>"; };
+		CA8342452046A75A0089B34B /* ModalIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalIndicator.swift; sourceTree = "<group>"; };
 		CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionItem.swift; sourceTree = "<group>"; };
 		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFavoriteModel.swift; sourceTree = "<group>"; };
 		CA9CCA351F51626D006494EB /* ASWEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEvent.swift; sourceTree = "<group>"; };
 		CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLogInViewController.swift; sourceTree = "<group>"; };
+		CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+MainScreen.swift"; sourceTree = "<group>"; };
+		CAC3DC572044907000EE4F50 /* ASWLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWLikeRequest.swift; sourceTree = "<group>"; };
+		CAC3DC592044930200EE4F50 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		CAC70E5E1F4656D50098470F /* ASWMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWMapViewController.swift; sourceTree = "<group>"; };
 		CAC70E601F4701E60098470F /* ASWMapAndCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWMapAndCalendarCell.swift; sourceTree = "<group>"; };
 		CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWMapAndCalendarCell.xib; sourceTree = "<group>"; };
@@ -297,6 +305,7 @@
 				CA3ED3281FFBEBCA0026DBA6 /* ASWImageDownloader.swift */,
 				CA51D65A1FE6D42D00018CE9 /* Parsers */,
 				CA51D65B1FE6D43300018CE9 /* Requests */,
+				CAC3DC592044930200EE4F50 /* TokenService.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -408,6 +417,7 @@
 				DE41F3322039A59400E63497 /* IUViewController+NavBarSetup.swift */,
 				DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */,
 				DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */,
+				CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */,
 			);
 			name = "Extensions ";
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 				CA04AAFF1FFB74EA00F1ACC3 /* ASWDatabaseManager.swift */,
 				DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */,
 				DE4A2C77203ADBF700AE800C /* ASWAlertPresenter.swift */,
+				CA8342452046A75A0089B34B /* ModalIndicator.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -505,6 +516,7 @@
 				DE6B03B5201B22A6002BFE85 /* ASWUserInfoSendRequest.swift */,
 				DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */,
 				DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */,
+				CAC3DC572044907000EE4F50 /* ASWLikeRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -745,10 +757,12 @@
 				CA25D5F8202528CC00FF8B88 /* ASWEventModel.swift in Sources */,
 				CA3ED3291FFBEBCA0026DBA6 /* ASWImageDownloader.swift in Sources */,
 				DEDC45512007415400AE5B72 /* ASWSignupRequest.swift in Sources */,
+				CA8342462046A75A0089B34B /* ModalIndicator.swift in Sources */,
 				DEDC45472007405500AE5B72 /* ASWButtonManager.swift in Sources */,
 				CA04AAFE1FFAE8A600F1ACC3 /* ASWNavigationItem.swift in Sources */,
 				DE6B03B6201B22A6002BFE85 /* ASWUserInfoSendRequest.swift in Sources */,
 				CA0D21911FEEB92E00CF42FF /* ASWFiltersViewController.swift in Sources */,
+				CAC3DC582044907000EE4F50 /* ASWLikeRequest.swift in Sources */,
 				DE6B03B4201B2258002BFE85 /* ASWUserInfoSendParser.swift in Sources */,
 				CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */,
 				CA0D21801FEDB8E100CF42FF /* ASWRaceParser.swift in Sources */,
@@ -756,6 +770,7 @@
 				DEA11E60203C77B0009EBA26 /* UIView+ShowASWErrorView.swift in Sources */,
 				CA51D65D1FE6D77F00018CE9 /* ASWRequest.swift in Sources */,
 				DEDC45502007415400AE5B72 /* ASWLoginRequest.swift in Sources */,
+				CAC3DC5620447A8E00EE4F50 /* UIViewController+MainScreen.swift in Sources */,
 				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
 				CA0D21821FEDBCD100CF42FF /* ASWGetRaceParser.swift in Sources */,
@@ -838,6 +853,7 @@
 				CAC70E621F4701E60098470F /* ASWMapAndCalendarCell.swift in Sources */,
 				CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */,
 				CA04AAF41FFAC45500F1ACC3 /* ASWFilterService.swift in Sources */,
+				CAC3DC5A2044930200EE4F50 /* TokenService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
