@@ -23,25 +23,71 @@ class UIViewControllerWithActivityMonitor:UIViewController {
         activity.color = UIColor.green
         self.view.addSubview(activity)
         activity.translatesAutoresizingMaskIntoConstraints = false
-//        let widthConstraint = NSLayoutConstraint(item: activity, attribute: .width, relatedBy: .equal,
-//                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
-//
-//        let heightConstraint = NSLayoutConstraint(item: activity, attribute: .height, relatedBy: .equal,
-//                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
-//        activity.addConstraint(widthConstraint)
-//        activity.addConstraint(heightConstraint)
         activity.widthAnchor.constraint(equalToConstant: 200).isActive = true
         activity.heightAnchor.constraint(equalToConstant: 100).isActive = true
         activity.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activity.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        let xConstraint = NSLayoutConstraint(item: activity, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
-//
-//        let yConstraint = NSLayoutConstraint(item: activity, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
-//
-//        self.view.addConstraint(xConstraint)
-//        self.view.addConstraint(yConstraint)
-        
-//        NSLayoutConstraint.activate([widthConstraint, heightConstraint, xConstraint, yConstraint])
     }
     
+}
+
+class ASWViewController:UIViewController{
+    
+    var errorView: ASWResponseErrorView = ASWResponseErrorView.fromNib()
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var constraint:NSLayoutConstraint!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()   
+    }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//
+//            errorView.center.y -= (view.bounds.height)
+//
+//    }
+    
+    private func setupUI() {
+        setupActivity()
+        setupErrorView()
+    }
+    
+    private func setupActivity() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor.green
+        self.view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    private func setupErrorView() {
+        
+        view.addSubview(errorView)
+        errorView.center.x = view.center.x
+        errorView.center.y = view.center.y
+        
+        
+        
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        constraint = NSLayoutConstraint(item: errorView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: -300)
+        
+        self.view.addConstraint(constraint)
+        constraint.isActive = true
+        
+        
+        errorView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8).isActive = true
+        errorView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.4).isActive = true
+        errorView.isHidden = true
+        
+        errorView.clipsToBounds = true
+        errorView.layer.cornerRadius = 20
+        
+        errorView.enableScreen = {[weak self] in self?.view.isUserInteractionEnabled = true}
+        errorView.disableScreen = {[weak self] in self?.view.isUserInteractionEnabled = false}
+    }
 }

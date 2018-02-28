@@ -63,10 +63,8 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     static func getRegions() {
         var request = ASWRegionsRequest()
         func onSuccess(json: JSON) -> Void{
-            
             let response = ASWListRegionsParser(json: json)
             NotificationCenter.default.post(name: .regionsCallback, object: nil, userInfo: ["data": response])
-            
         }
         
         func onError(error: Any) -> Void {
@@ -92,7 +90,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func validateLogin(email:String,password:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping (Bool)->Void) {
+    static func validateLogin(email:String,password:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
         
         var request = ASWValidateLoginRequest(email:email,password:password)
         
@@ -101,7 +99,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
         
         func onError(json: JSON, error: Error) -> Void {
-            errorFunc((error as! NSError).code == -1009)
+            errorFunc(ASWErrorParser(error: error, json: json))
             
         }
 
@@ -109,7 +107,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     }
     
     
-    static func loginUser(email:String,password:String, sucsessFunc: @escaping (ASWLoginSucsessParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func loginUser(email:String,password:String, sucsessFunc: @escaping (ASWLoginSucsessParser)->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
         var request = ASWLoginRequest(email:email,password:password)
         
         func onSuccess(json: JSON) -> Void{
@@ -120,8 +118,8 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
         
         func onError(json: JSON, error: Error) -> Void {
-            let response = ASWLoginErrorParser(json: json)
-            errorFunc()
+            let response = ASWLoginErrorParser(error: error, json: json)
+            errorFunc(response)
         }
         
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
@@ -143,7 +141,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func sendUserInfo(regions:[String], categories: [String], watch: Bool, join: Bool, sucsessFunc: @escaping (ASWUserInfoSendParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func sendUserInfo(regions:[String], categories: [String], watch: Bool, join: Bool, sucsessFunc: @escaping (ASWUserInfoSendParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
         var request = ASWUserInfoSendRequest(regions: regions, categories: categories, watch: watch, join: join)
         
         func onSuccess(json: JSON) -> Void{
@@ -151,14 +149,14 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             sucsessFunc(response)
         }
         
-        func onError(json:JSON,error: NSError) -> Void {
-            errorFunc()
+        func onError(json:JSON,error: Error) -> Void {
+            errorFunc(ASWErrorParser(error: error, json: json))
         }
         
         ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
     }
     
-    static func getUserInfo(sucsessFunc: @escaping (ASWUserInfoGetParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func getUserInfo(sucsessFunc: @escaping (ASWUserInfoGetParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
         var request = ASWUserInfoGetRequest()
         
         func onSuccess(json: JSON) -> Void{
@@ -166,14 +164,14 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             sucsessFunc(response)
         }
         
-        func onError(json:JSON,error: NSError) -> Void {
-            errorFunc()
+        func onError(json:JSON,error: Error) -> Void {
+            errorFunc(ASWErrorParser(error: error, json: json))
         }
         
         ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
     }
     
-    static func getCalendarRaces(from: Date, to: Date, sucsessFunc: @escaping (ASWCalendarRacesParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func getCalendarRaces(from: Date, to: Date, sucsessFunc: @escaping (ASWCalendarRacesParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
         var request = ASWCalendarRacesRequest(from:from, to:to)
         
         func onSuccess(json: JSON) -> Void{
@@ -181,8 +179,8 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             sucsessFunc(response)
         }
         
-        func onError(json:JSON,error: NSError) -> Void {
-            errorFunc()
+        func onError(json:JSON,error: Error) -> Void {
+            errorFunc(ASWErrorParser(error:error,json:json))
         }
         
         ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
@@ -209,7 +207,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     }
     
 
-    private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,NSError) -> Void, acessToken:String) -> Void {
+    private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,Error) -> Void, acessToken:String) -> Void {
         print("requesting URL \(URL)")
         
         let headers = ["x-access-token":acessToken,"Content-Type":"application/json"]
@@ -217,8 +215,8 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         Alamofire.request(URL, method: method, parameters: parameters,encoding: JSONEncoding.default, headers: headers ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
-                let json = JSON(value)
                 DispatchQueue.global(qos: .userInitiated).async {
+                    let json = JSON(value)
                     onSuccess(json)
                 }
             case .failure(let error):
@@ -228,11 +226,11 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
                         do {
                             try json = JSON(data: data)
                             DispatchQueue.main.async {
-                                onError(json,error as NSError)
+                                onError(json,error)
                             }
                         }
                         catch{
-                            onError(json,error as NSError)
+                            onError(json,error)
                         }
                     }
                 }

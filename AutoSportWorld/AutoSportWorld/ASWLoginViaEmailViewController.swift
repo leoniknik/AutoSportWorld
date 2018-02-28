@@ -10,7 +10,7 @@ import UIKit
 
 import SkyFloatingLabelTextField
 
-class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UITextFieldDelegate {
+class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -81,14 +81,14 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
     }
     
     func enterWaitMode(){
-        activityIndicator?.startAnimating()
+        activityIndicator.startAnimating()
         loginButton.isEnabled = false
     }
     
     func leaveWaitMode(){
         DispatchQueue.main.async {
             [weak self] in
-            self?.activityIndicator?.stopAnimating()
+            self?.activityIndicator.stopAnimating()
             self?.updateFormValid()
         }
     }
@@ -114,8 +114,8 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
                 getUserInfo()
             }
             
-            func errorFunc(){
-                UIAlertController(title: "xui", message: "xui", preferredStyle: .alert)
+            func errorFunc(parser:ASWLoginErrorParser){
+                //presentAlert(errorParser: parser)
                 leaveWaitModeWithError()
             }
             
@@ -131,7 +131,8 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
             
         }
         
-        func errorFunc(){
+        func errorFunc(parser:ASWErrorParser){
+            //#error
             leaveWaitModeWithError()
         }
         
@@ -139,6 +140,7 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
     }
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {
+        presentOKAlert("Функция недоступна", "Данная функция находится в разработке")
     }
     
     

@@ -88,6 +88,7 @@
 		CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */; };
 		CAE4E84F1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */; };
 		CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */; };
+		DE04038C2045730F00CDA5B8 /* ASWErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04038B2045730F00CDA5B8 /* ASWErrorParser.swift */; };
 		DE153DFB202190C0009E8CC1 /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE153DFA202190C0009E8CC1 /* UIViewController+HideKeyboard.swift */; };
 		DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */; };
 		DE31D5251FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */; };
@@ -104,11 +105,16 @@
 		DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */; };
 		DE7D180320089D7A00156FDA /* ASWViewControllersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */; };
 		DE7D18052008A26900156FDA /* ASWChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */; };
+		DE97B60D20457C0D00E8F8CA /* ASWResponseErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97B60C20457C0D00E8F8CA /* ASWResponseErrorView.swift */; };
+		DE97B60F20457C4500E8F8CA /* ASWResponseErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */; };
+		DE97B6112045804200E8F8CA /* UIViewController+ShowASWResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97B6102045804200E8F8CA /* UIViewController+ShowASWResponseError.swift */; };
 		DEA11E5C203C5E39009EBA26 /* ASWErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */; };
 		DEA11E5E203C5F25009EBA26 /* ASWErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E5D203C5F25009EBA26 /* ASWErrorView.swift */; };
 		DEA11E60203C77B0009EBA26 /* UIView+ShowASWErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */; };
 		DEA11E68203D4C7E009EBA26 /* UIAplication+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */; };
 		DEA11E6D203D7870009EBA26 /* ASWChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */; };
+		DEDA9F22204676E10042DEA5 /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */; };
+		DEDA9F272046A7470042DEA5 /* RegistrationAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */; };
 		DEDC453A20073D2E00AE5B72 /* ASWActionTypeCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC453720073D2D00AE5B72 /* ASWActionTypeCollectionViewDataSource.swift */; };
 		DEDC453B20073D2E00AE5B72 /* ASWRaceCategoryCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC453820073D2D00AE5B72 /* ASWRaceCategoryCollectionViewDataSource.swift */; };
 		DEDC453C20073D2E00AE5B72 /* ASWSportTypeCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC453920073D2E00AE5B72 /* ASWSportTypeCollectionViewDataSource.swift */; };
@@ -212,6 +218,7 @@
 		CAE4E84C1F43AAFB0023CE25 /* ASWCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewController.swift; sourceTree = "<group>"; };
 		CAE4E84E1F43AC3C0023CE25 /* ASWCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CAF38FAD1FE6C90100535C43 /* ASWFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFeedModel.swift; sourceTree = "<group>"; };
+		DE04038B2045730F00CDA5B8 /* ASWErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWErrorParser.swift; sourceTree = "<group>"; };
 		DE153DFA202190C0009E8CC1 /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 		DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASWLoginPasswordTextField.xib; sourceTree = "<group>"; };
 		DE31D5241FF0EE010055AFF0 /* ASWLoginPasswordTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginPasswordTextField.swift; sourceTree = "<group>"; };
@@ -228,11 +235,16 @@
 		DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCalendarRacesRequest.swift; sourceTree = "<group>"; };
 		DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWViewControllersManager.swift; sourceTree = "<group>"; };
 		DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangePasswordViewController.swift; sourceTree = "<group>"; };
+		DE97B60C20457C0D00E8F8CA /* ASWResponseErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResponseErrorView.swift; sourceTree = "<group>"; };
+		DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWResponseErrorView.xib; sourceTree = "<group>"; };
+		DE97B6102045804200E8F8CA /* UIViewController+ShowASWResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowASWResponseError.swift"; sourceTree = "<group>"; };
 		DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWErrorView.xib; sourceTree = "<group>"; };
 		DEA11E5D203C5F25009EBA26 /* ASWErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWErrorView.swift; sourceTree = "<group>"; };
 		DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ShowASWErrorView.swift"; sourceTree = "<group>"; };
 		DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication+Version.swift"; sourceTree = "<group>"; };
 		DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangeUserInfoViewController.swift; sourceTree = "<group>"; };
+		DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
+		DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RegistrationAssets.xcassets; sourceTree = "<group>"; };
 		DEDC453720073D2D00AE5B72 /* ASWActionTypeCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWActionTypeCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		DEDC453820073D2D00AE5B72 /* ASWRaceCategoryCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRaceCategoryCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		DEDC453920073D2E00AE5B72 /* ASWSportTypeCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSportTypeCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -310,6 +322,7 @@
 				CA159CB31FFD98FB00A501F4 /* ASWFullImageViewController.xib */,
 				CAD382FD1FFDB421000B4242 /* ASWWebViewController.xib */,
 				DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */,
+				DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -408,6 +421,8 @@
 				DE41F3322039A59400E63497 /* IUViewController+NavBarSetup.swift */,
 				DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */,
 				DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */,
+				DE97B6102045804200E8F8CA /* UIViewController+ShowASWResponseError.swift */,
+				DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */,
 			);
 			name = "Extensions ";
 			sourceTree = "<group>";
@@ -435,6 +450,7 @@
 				CA323B261F379ADA007157D4 /* AppDelegate.swift */,
 				CA323B2D1F379ADA007157D4 /* Assets.xcassets */,
 				CA323B321F379ADA007157D4 /* Info.plist */,
+				DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -471,6 +487,7 @@
 				CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */,
 				CA04AAFD1FFAE8A600F1ACC3 /* ASWNavigationItem.swift */,
 				DEA11E5D203C5F25009EBA26 /* ASWErrorView.swift */,
+				DE97B60C20457C0D00E8F8CA /* ASWResponseErrorView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -487,6 +504,7 @@
 				DE6B03B3201B2258002BFE85 /* ASWUserInfoSendParser.swift */,
 				DE6B03B7201B2627002BFE85 /* ASWUserInfoGetParser.swift */,
 				DE6D6077203DA984003D97B7 /* ASWCalendarRacesParser.swift */,
+				DE04038B2045730F00CDA5B8 /* ASWErrorParser.swift */,
 			);
 			name = Parsers;
 			sourceTree = "<group>";
@@ -645,6 +663,8 @@
 				CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */,
 				DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
+				DEDA9F272046A7470042DEA5 /* RegistrationAssets.xcassets in Resources */,
+				DE97B60F20457C4500E8F8CA /* ASWResponseErrorView.xib in Resources */,
 				CA159CB51FFD98FB00A501F4 /* ASWFullImageViewController.xib in Resources */,
 				CA584CDA1F48440D0011E653 /* ASWRaceTypeCell.xib in Resources */,
 				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
@@ -679,13 +699,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -750,6 +769,7 @@
 				DE6B03B6201B22A6002BFE85 /* ASWUserInfoSendRequest.swift in Sources */,
 				CA0D21911FEEB92E00CF42FF /* ASWFiltersViewController.swift in Sources */,
 				DE6B03B4201B2258002BFE85 /* ASWUserInfoSendParser.swift in Sources */,
+				DE04038C2045730F00CDA5B8 /* ASWErrorParser.swift in Sources */,
 				CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */,
 				CA0D21801FEDB8E100CF42FF /* ASWRaceParser.swift in Sources */,
 				DE7D18052008A26900156FDA /* ASWChangePasswordViewController.swift in Sources */,
@@ -768,12 +788,14 @@
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
 				DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
+				DE97B60D20457C0D00E8F8CA /* ASWResponseErrorView.swift in Sources */,
 				CA0D218A1FEDC26300CF42FF /* ASWCategoriesRequest.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA7150331FE5D8810058B522 /* ASWProfileViewController.swift in Sources */,
 				DEDC45492007408400AE5B72 /* ASWAuthParsers.swift in Sources */,
 				CA51D6641FE6E9C000018CE9 /* ASWRaceRegion.swift in Sources */,
 				DEDC454C200740E800AE5B72 /* ASWRaceCategoryEntity.swift in Sources */,
+				DE97B6112045804200E8F8CA /* UIViewController+ShowASWResponseError.swift in Sources */,
 				CA3710B11F37B72A003578E5 /* UIColor+ASWColors.swift in Sources */,
 				CA584CDC1F4844220011E653 /* ASWCalendarViewController.swift in Sources */,
 				DEF487B91FF0E282008318BC /* ASWAboutAppViewController.swift in Sources */,
@@ -785,6 +807,7 @@
 				DEDC45432007404200AE5B72 /* UILabel+LineCounter.swift in Sources */,
 				CAE4E84D1F43AAFB0023CE25 /* ASWCollectionViewController.swift in Sources */,
 				CA25D85F1F5090E700D65B26 /* ASWAnimationManager.swift in Sources */,
+				DEDA9F22204676E10042DEA5 /* UIView+LoadFromNib.swift in Sources */,
 				DEDC453E20073D4000AE5B72 /* ASWRegisterAccountViewController.swift in Sources */,
 				DEA11E6D203D7870009EBA26 /* ASWChangeUserInfoViewController.swift in Sources */,
 				CA0D217D1FEDB73300CF42FF /* ASWRaceRequest.swift in Sources */,

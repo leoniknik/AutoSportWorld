@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_backward" translatesAutoresizingMaskIntoConstraints="NO" id="eBw-mN-M1Z">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auto" translatesAutoresizingMaskIntoConstraints="NO" id="eBw-mN-M1Z">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <color key="backgroundColor" red="0.037197310525103923" green="0.10170417746113991" blue="0.0265526391212665" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </imageView>
@@ -59,7 +59,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_backward" width="24" height="24"/>
+        <image name="auto" width="960" height="640"/>
         <image name="ic_elevation" width="24" height="24"/>
     </resources>
 </document>

@@ -8,13 +8,11 @@
 
 import UIKit
 
-extension UIViewController {
+extension ASWViewController {
     func presentServerAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: "Ошибка на сервере", message: "Повторите попытку или попробуйде позже", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: completion)
+            self?.presentAlert("Ошибка на сервере", "Повторите попытку или попробуйде позже", completion)
         }
     }
     
@@ -25,9 +23,7 @@ extension UIViewController {
     func presentNetworkAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: "Нет сети", message: "Проверьте подключение к интернету и повторите попытку", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: completion)
+                self?.presentAlert("Нет сети", "Проверьте подключение к интернету и повторите попытку", completion)
         }
     }
     
@@ -38,9 +34,27 @@ extension UIViewController {
     func presentAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: completion)
+            
+            self?.errorView.titleLabel.text = title
+            self?.errorView.textLabel.text = text
+            self?.errorView.retryAction = completion
+            self?.errorView.center.y = self?.view.center.y ?? 0
+            self?.errorView.center.y -= (self?.view.bounds.height ?? 0)
+            self?.view.layoutIfNeeded()
+            self?.errorView.isHidden = false
+            
+            self?.errorView.okButton.isHidden = true
+            self?.errorView.retryButton.isHidden = false
+            self?.errorView.cancelButton.isHidden = false
+            
+            UIView.animate(withDuration: 2) {
+                self?.errorView.center.y = self?.view.center.y ?? 0
+                self?.view.layoutIfNeeded()
+            }
+            
+//            let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//            self?.present(alert, animated: true, completion: completion)
         }
     }
     
@@ -48,16 +62,67 @@ extension UIViewController {
         presentAlert(title, text,{})
     }
     
-    func presentAlert(error:NSError,completion: (()->Void)?){
-        if error.code == 10001 {
+    func presentOKAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){
+        DispatchQueue.main.async {
+            [weak self] in
             
-        } else if error.code == 10000 {
+            self?.errorView.titleLabel.text = title
+            self?.errorView.textLabel.text = text
+            self?.errorView.retryAction = completion
             
+            
+            
+            
+
+//self?.errorView.center.y = -300
+           
+            //self?.errorView.centerYAnchor.constraint(equalTo: (self?.view.centerYAnchor)!, constant: -300).isActive = true
+           
+            self?.errorView.layoutIfNeeded()
+            self?.errorView.isHidden = false
+            
+            self?.errorView.okButton.isHidden = false
+            self?.errorView.retryButton.isHidden = true
+            self?.errorView.cancelButton.isHidden = true
+            self?.constraint.constant = -300
+            self?.view.layoutIfNeeded()
+            UIView.animate(withDuration: 2) {
+                //self?.errorView.center.y = self?.view.center.y ?? 300
+                self?.constraint.constant = 0
+                self?.view.layoutIfNeeded()
+            }
+            
+            //            let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+            //            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            //            self?.present(alert, animated: true, completion: completion)
+        }
+    }
+    
+    func presentOKAlert(_ title: String, _ text: String){
+        presentOKAlert(title, text,{})
+    }
+    
+    func presentAlert(errorParser: ASWErrorParser,_ completion: @escaping ()->Void){
+        if errorParser.hasInternetError {
+            presentNetworkAlert {
+                completion()
+            }
+        } else if errorParser.hasServerError {
+            presentServerAlert {
+                completion()
+            }
+        } else if errorParser.errors.count > 0 {
+            presentAlert("Ошибка", errorParser.errorString){
+                completion()
+            }
         } else {
             presentServerAlert {
-                completion?()
+                completion()
             }
         }
     }
     
+    func presentAlert(errorParser: ASWErrorParser){
+        presentAlert(errorParser:errorParser,{})
+    }
 }

@@ -194,13 +194,13 @@ class ASWDatabaseManager {
         setUserRegions(regionIDs: parser.regionsParser.regionsIDs)
     }
     
-    func sendUserInfoToServer(completion:@escaping ()->Void,error:@escaping ()->Void){
+    func sendUserInfoToServer(completion:@escaping ()->Void,error:@escaping (ASWErrorParser)->Void){
         func sucsess(parser:ASWUserInfoSendParser){
             completion()
         }
         
-        func error(){
-            error()
+        func error(parser:ASWErrorParser){
+            error(parser)
         }
         
         guard let user = getUser() else{
@@ -422,7 +422,7 @@ class ASWDatabaseManager {
             for (index, item) in user.favoriteRaces.enumerated() {
                 if item == race {
                     try! realm.write {
-                        user.favoriteRaces.remove(at: index)
+                        user.favoriteRaces.remove(objectAtIndex: index)
                     }
                     break
                 }

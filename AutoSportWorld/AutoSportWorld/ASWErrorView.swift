@@ -16,7 +16,7 @@ class ASWErrorView: UIView {
     
     @IBOutlet weak var button: UIButton!
     
-    var retryAction:(()->Bool)?
+    var retryAction:(()->Void)?
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -42,8 +42,9 @@ class ASWErrorView: UIView {
     }
 
     @IBAction func retryAction(_ sender: Any) {
-        if retryAction?() ?? true {
-            closeASWErrorView()
-        }
+        closeASWErrorView()
+        retryAction?()
+        
+
     }
 }
