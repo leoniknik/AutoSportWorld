@@ -105,7 +105,7 @@
 		DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */; };
 		DE7D180320089D7A00156FDA /* ASWViewControllersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */; };
 		DE7D18052008A26900156FDA /* ASWChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */; };
-		DE97B60D20457C0D00E8F8CA /* ASWResponseErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97B60C20457C0D00E8F8CA /* ASWResponseErrorView.swift */; };
+		DE97B60D20457C0D00E8F8CA /* ASWResponseErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97B60C20457C0D00E8F8CA /* ASWResponseErrorViewController.swift */; };
 		DE97B60F20457C4500E8F8CA /* ASWResponseErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */; };
 		DE97B6112045804200E8F8CA /* UIViewController+ShowASWResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97B6102045804200E8F8CA /* UIViewController+ShowASWResponseError.swift */; };
 		DEA11E5C203C5E39009EBA26 /* ASWErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */; };
@@ -235,7 +235,7 @@
 		DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCalendarRacesRequest.swift; sourceTree = "<group>"; };
 		DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWViewControllersManager.swift; sourceTree = "<group>"; };
 		DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangePasswordViewController.swift; sourceTree = "<group>"; };
-		DE97B60C20457C0D00E8F8CA /* ASWResponseErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResponseErrorView.swift; sourceTree = "<group>"; };
+		DE97B60C20457C0D00E8F8CA /* ASWResponseErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResponseErrorViewController.swift; sourceTree = "<group>"; };
 		DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWResponseErrorView.xib; sourceTree = "<group>"; };
 		DE97B6102045804200E8F8CA /* UIViewController+ShowASWResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowASWResponseError.swift"; sourceTree = "<group>"; };
 		DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWErrorView.xib; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 				CA25D8601F50954D00D65B26 /* ASWTabBarController.swift */,
 				CA04AAFD1FFAE8A600F1ACC3 /* ASWNavigationItem.swift */,
 				DEA11E5D203C5F25009EBA26 /* ASWErrorView.swift */,
-				DE97B60C20457C0D00E8F8CA /* ASWResponseErrorView.swift */,
+				DE97B60C20457C0D00E8F8CA /* ASWResponseErrorViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -788,7 +788,7 @@
 				CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */,
 				DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */,
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
-				DE97B60D20457C0D00E8F8CA /* ASWResponseErrorView.swift in Sources */,
+				DE97B60D20457C0D00E8F8CA /* ASWResponseErrorViewController.swift in Sources */,
 				CA0D218A1FEDC26300CF42FF /* ASWCategoriesRequest.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
 				CA7150331FE5D8810058B522 /* ASWProfileViewController.swift in Sources */,

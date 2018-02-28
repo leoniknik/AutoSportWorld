@@ -304,12 +304,12 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
                 
                 presentAlert("Регистрация", parser.totalErrorString)
             }
-            registerAccountViewController.activityIndicator?.stopAnimating()
+            registerAccountViewController.activityIndicator.stopAnimating()
         }
         
         func errorCheck(parser:ASWErrorParser){
             presentAlert(errorParser: parser)
-            registerAccountViewController.activityIndicator?.stopAnimating()
+            registerAccountViewController.activityIndicator.stopAnimating()
             confirmButton.isEnabled = true;
             //presentAlert(error:error){}
                 
@@ -327,7 +327,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         }
         
         confirmButton.isEnabled = false;
-        registerAccountViewController.activityIndicator?.startAnimating()
+        registerAccountViewController.activityIndicator.startAnimating()
         ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
