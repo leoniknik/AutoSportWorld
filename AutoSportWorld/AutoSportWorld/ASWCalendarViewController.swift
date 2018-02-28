@@ -81,7 +81,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         cell = setTodayCell(cell: cell!, date: date,selected: false, at: monthPosition)
     }
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     func setTodayCell(cell:FSCalendarCell,date:Date,selected:Bool, at monthPosition: FSCalendarMonthPosition)->FSCalendarCell{
         cell.contentView.layer.borderWidth = 0
@@ -138,6 +140,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavbar()
         
         calendar.delegate = self
         calendar.dataSource = self
@@ -185,9 +188,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         calendar.clipsToBounds = true
         //titleView.layer.cornerRadius = 10.0
         //titleView.clipsToBounds = true
-        
-        
-        self.title = "Календарь событий"
         
         //calendar.select(Date())
         self.calendar.setCurrentPage(Date(), animated: false)

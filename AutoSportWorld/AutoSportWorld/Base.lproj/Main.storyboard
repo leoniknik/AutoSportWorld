@@ -185,7 +185,6 @@
                         <segue destination="fee-gk-cha" kind="relationship" relationship="viewControllers" id="Ku6-DG-fNc"/>
                         <segue destination="0Bs-CV-lWG" kind="relationship" relationship="viewControllers" id="RmP-4Z-MbH"/>
                         <segue destination="w7L-8S-Yp8" kind="relationship" relationship="viewControllers" id="w6a-CX-4e3"/>
-                        <segue destination="S0n-18-CSf" kind="relationship" relationship="viewControllers" id="Ixn-ur-KZy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4Z-jW-y8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -212,16 +211,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KjY-em-77m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3065.5999999999999" y="-1244.0779610194904"/>
-        </scene>
-        <!--Calendar-->
-        <scene sceneID="6uo-b4-nY5">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="calendar" id="S0n-18-CSf" userLabel="Calendar" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Avo-yN-jbj"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6IH-KV-L8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2026" y="724"/>
         </scene>
         <!--Карта-->
         <scene sceneID="P7F-SE-1Jy">

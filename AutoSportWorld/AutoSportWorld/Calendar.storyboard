@@ -10,13 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Календарь-->
         <scene sceneID="pze-qK-Nvn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xfv-aZ-Lvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="calendar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dX-a0-oGQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Календарь" id="sI5-6a-EE0">
+                        <color key="badgeColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </tabBarItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -25,10 +26,11 @@
                         <segue destination="IsW-B3-udk" kind="relationship" relationship="rootViewController" id="2k1-zm-d6E"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xfv-aZ-Lvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2014" y="-144"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--Календарь-->
         <scene sceneID="9M6-t6-zSJ">
             <objects>
                 <viewController id="IsW-B3-udk" customClass="ASWCalendarViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
@@ -222,7 +224,8 @@
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" id="wK8-lM-sXX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lBP-EG-CON"/>
+                    <navigationItem key="navigationItem" title="Календарь" id="lBP-EG-CON"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
