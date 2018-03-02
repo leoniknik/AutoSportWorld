@@ -93,15 +93,15 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         }
     }
     
-    func leaveWaitModeWithError(){
-        leaveWaitMode()
-        DispatchQueue.main.async {
-            [weak self] in
-            let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: { [weak self] in print("fr")})
-        }
-    }
+//    func leaveWaitModeWithError(){
+//        leaveWaitMode()
+//        DispatchQueue.main.async {
+//            [weak self] in
+//            let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .actionSheet)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//            self?.present(alert, animated: true, completion: { [weak self] in print("fr")})
+//        }
+//    }
     
     @IBAction func loginPressed(_ sender: Any) {
         var login = loginField.textField.text ?? ""
@@ -115,8 +115,9 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
             }
             
             func errorFunc(parser:ASWLoginErrorParser){
-                //presentAlert(errorParser: parser)
-                leaveWaitModeWithError()
+                presentAlert(errorParser: parser)
+                leaveWaitMode()
+                //leaveWaitModeWithError()
             }
             
             ASWNetworkManager.loginUser(email: login, password: password, sucsessFunc: sucsessFunc, errorFunc: errorFunc)
@@ -128,12 +129,14 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         func sucsessFunc(parser:ASWUserInfoGetParser){
             ASWDatabaseManager().setUserInfo(parser:parser)
             leaveWaitMode()
-            
+            presentOKAlert("ok","ok")
         }
         
         func errorFunc(parser:ASWErrorParser){
+            presentAlert(errorParser: parser)
+            leaveWaitMode()
             //#error
-            leaveWaitModeWithError()
+            //leaveWaitModeWithError()
         }
         
         ASWNetworkManager.getUserInfo(sucsessFunc: sucsessFunc, errorFunc: errorFunc)

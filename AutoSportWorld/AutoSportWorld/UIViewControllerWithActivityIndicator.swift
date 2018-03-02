@@ -54,7 +54,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
     
     func showAlert(){
         let transition = CATransition()
-        transition.duration = 1
+        transition.duration = 0.3
         transition.type = kCATransitionFade
         transition.subtype = kCATransitionMoveIn
         self.visualEffectView.alpha = 1
@@ -65,7 +65,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
     }
     
     func hideAlert(){
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.errorViewController.dismiss(animated: true, completion: nil)
             self.visualEffectView.alpha = 0
         })

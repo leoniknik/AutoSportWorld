@@ -34,7 +34,9 @@ extension ASWViewController {
     func presentAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            self?.errorViewController.textLabel.text = text
+            self?.errorViewController.titleText = title
+            self?.errorViewController.bodyText = text
+            self?.errorViewController.okMode = false
             self?.showAlert()
         }
     }

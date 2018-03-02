@@ -25,7 +25,7 @@ class ASWErrorParser {
                 if code == 401{
                     
                 } else if code == 404 {
-                    
+                    hasServerError = true
                 } else {
                     hasUncnownError = true
                 }
@@ -36,6 +36,8 @@ class ASWErrorParser {
                     hasInternetError = true
                 }
             }
+        } else {
+            hasUncnownError = true
         }
     }
 }

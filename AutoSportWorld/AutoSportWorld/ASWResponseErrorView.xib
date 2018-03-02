@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASWResponseErrorViewController" customModule="AutoSportWorld" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="ABg-iW-koE" id="f3x-Kh-0lF"/>
+                <outlet property="contentView" destination="0QQ-0O-Oo7" id="zEj-jZ-U9M"/>
                 <outlet property="okButton" destination="lsd-tC-oWQ" id="nQp-Cc-REH"/>
                 <outlet property="retryButton" destination="Kwq-Tt-kxC" id="GwO-tX-usp"/>
                 <outlet property="textLabel" destination="41p-N0-VY6" id="1RA-Aj-sPY"/>
@@ -76,7 +77,7 @@
                             </constraints>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsd-tC-oWQ">
-                            <rect key="frame" x="20" y="180" width="260" height="30"/>
+                            <rect key="frame" x="20" y="150" width="260" height="30"/>
                             <color key="backgroundColor" red="0.3803921569" green="0.47450980390000003" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="DYs-VC-ciZ"/>
@@ -93,7 +94,7 @@
                     <constraints>
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="bottom" secondItem="jxO-1E-zcx" secondAttribute="bottom" constant="20" id="0cX-af-sbo"/>
                         <constraint firstItem="hIj-tu-9RL" firstAttribute="leading" secondItem="Zua-nb-kbR" secondAttribute="leading" constant="30" id="B72-26-TLA"/>
-                        <constraint firstAttribute="bottom" secondItem="lsd-tC-oWQ" secondAttribute="bottom" constant="-10" id="L3i-tU-h3f"/>
+                        <constraint firstAttribute="bottom" secondItem="lsd-tC-oWQ" secondAttribute="bottom" constant="20" id="L3i-tU-h3f"/>
                         <constraint firstItem="41p-N0-VY6" firstAttribute="top" secondItem="hIj-tu-9RL" secondAttribute="bottom" constant="30" id="NCY-ae-Cqh"/>
                         <constraint firstItem="jxO-1E-zcx" firstAttribute="leading" secondItem="Zua-nb-kbR" secondAttribute="leading" constant="20" id="UrD-s6-azl"/>
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="trailing" secondItem="lsd-tC-oWQ" secondAttribute="trailing" constant="20" id="WXA-dT-U6B"/>

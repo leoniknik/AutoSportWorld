@@ -15,7 +15,8 @@ protocol ASWResponseErrorViewControllerDelegate{
 
 class ASWResponseErrorViewController: UIViewController {
         
-
+    @IBOutlet weak var contentView: UIView!
+    
         @IBOutlet weak var titleLabel: UILabel!
         
         @IBOutlet weak var textLabel: UILabel!
@@ -41,19 +42,31 @@ class ASWResponseErrorViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            setupUI()
             
-            textLabel.textColor = UIColor.ASWColor.grey
-            titleLabel.text = titleText
-            textLabel.text = bodyText
-            if okMode {
-                okButton.isHidden = false
-            } else {
-                okButton.isHidden = true
-            }
-            ASWButtonManager.setupButton(button: okButton)
-            ASWButtonManager.setupButton(button: cancelButton)
-            ASWButtonManager.setupButton(button: retryButton)
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUI()
+    }
+    
+    func setupUI(){
+        textLabel.textColor = UIColor.ASWColor.grey
+        titleLabel.text = titleText
+        textLabel.text = bodyText
+        if okMode {
+            okButton.isHidden = false
+        } else {
+            okButton.isHidden = true
+        }
+        ASWButtonManager.setupButton(button: okButton)
+        ASWButtonManager.setupButton(button: cancelButton)
+        ASWButtonManager.setupButton(button: retryButton)
+        
+        contentView.layer.cornerRadius = 20
+        contentView.clipsToBounds = true
+    }
                 
         @IBAction func cancelAction(_ sender: Any) {
             delegate?.cancelAction()

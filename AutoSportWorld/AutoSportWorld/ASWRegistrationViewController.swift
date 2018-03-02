@@ -544,7 +544,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         }
         
         func errorSend(parser:ASWErrorParser){
-            //#error
+            presentAlert(errorParser: parser)
         }
     
         var user = ASWDatabaseManager().updateUserFrom(login: rawUser.login,
@@ -567,7 +567,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
             goToMainStoryboard()
         }
         func errorSend(parser:ASWErrorParser){
-            //#error
+            presentAlert(errorParser: parser)
         }
         
         ASWDatabaseManager().sendUserInfoToServer(completion: sucsessSend,error:errorSend)
