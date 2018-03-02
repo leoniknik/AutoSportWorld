@@ -107,7 +107,7 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
         }
         
-        return 0
+        return myTBC.events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

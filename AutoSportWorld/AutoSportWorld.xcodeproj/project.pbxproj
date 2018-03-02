@@ -71,6 +71,7 @@
 		CA8D11B61FFD14710009C4FF /* ASWFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */; };
 		CA9CCA361F51626D006494EB /* ASWEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CCA351F51626D006494EB /* ASWEvent.swift */; };
 		CAB4EA4B1F50EE2700C35BE6 /* ASWLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */; };
+		CAB980542046EA43001ADF68 /* ASWMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB980522046EA43001ADF68 /* ASWMenuCell.swift */; };
 		CAC3DC5620447A8E00EE4F50 /* UIViewController+MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */; };
 		CAC3DC582044907000EE4F50 /* ASWLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC572044907000EE4F50 /* ASWLikeRequest.swift */; };
 		CAC3DC5A2044930200EE4F50 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC592044930200EE4F50 /* TokenService.swift */; };
@@ -199,6 +200,7 @@
 		CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFavoriteModel.swift; sourceTree = "<group>"; };
 		CA9CCA351F51626D006494EB /* ASWEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEvent.swift; sourceTree = "<group>"; };
 		CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLogInViewController.swift; sourceTree = "<group>"; };
+		CAB980522046EA43001ADF68 /* ASWMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWMenuCell.swift; sourceTree = "<group>"; };
 		CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+MainScreen.swift"; sourceTree = "<group>"; };
 		CAC3DC572044907000EE4F50 /* ASWLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWLikeRequest.swift; sourceTree = "<group>"; };
 		CAC3DC592044930200EE4F50 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				CAC70E611F4701E60098470F /* ASWMapAndCalendarCell.xib */,
 				CA04AAF71FFAD4F900F1ACC3 /* ASWFilterCell.swift */,
 				CA04AAF81FFAD4F900F1ACC3 /* ASWFilterCell.xib */,
+				CAB980522046EA43001ADF68 /* ASWMenuCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				CA3710B71F37C357003578E5 /* UIImage+ASWImages.swift in Sources */,
 				CA0D218A1FEDC26300CF42FF /* ASWCategoriesRequest.swift in Sources */,
 				CA3710BB1F37D262003578E5 /* ASWSettingsUserDataCell.swift in Sources */,
+				CAB980542046EA43001ADF68 /* ASWMenuCell.swift in Sources */,
 				CA7150331FE5D8810058B522 /* ASWProfileViewController.swift in Sources */,
 				DEDC45492007408400AE5B72 /* ASWAuthParsers.swift in Sources */,
 				CA51D6641FE6E9C000018CE9 /* ASWRaceRegion.swift in Sources */,

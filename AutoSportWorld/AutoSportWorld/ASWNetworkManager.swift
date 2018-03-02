@@ -205,17 +205,17 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, encoding: ParameterEncoding = URLEncoding.default) -> Void {
         
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 5
-        configuration.timeoutIntervalForResource = 5
-        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
+//        let configuration = URLSessionConfiguration.default
+//        configuration.timeoutIntervalForRequest = 5
+//        configuration.timeoutIntervalForResource = 5
+//        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
         
         var headers: HTTPHeaders?
 //        if let token = ASWDatabaseManager().getUser()?.access_token {
 //            headers = ["x-access-token":token,"Content-Type":"application/json"]
 //        }
         
-        alamoFireManager.request(URL, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseJSON { response in
+        Alamofire.request(URL, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
