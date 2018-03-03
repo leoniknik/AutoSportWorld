@@ -550,7 +550,15 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         }
         
         func errorSend(parser:ASWErrorParser){
-            presentAlert(errorParser: parser)
+            presentAlert(errorParser: parser){
+                func sucsessFunc(parser:ASWUserInfoGetParser){
+                    ASWDatabaseManager().setUserInfo(parser:parser)
+                }
+                func errorFunc(parser:ASWErrorParser){
+                }
+                ASWNetworkManager.getUserInfo(sucsessFunc: sucsessFunc, errorFunc: errorFunc)
+            }
+            
         }
     
         var user = ASWDatabaseManager().updateUserFrom(login: rawUser.login,

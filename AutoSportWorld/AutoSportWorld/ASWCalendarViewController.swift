@@ -124,7 +124,18 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     //текущий месяц
                     cell.contentView.backgroundColor = UIColor.white
                     cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
-                    cell.titleLabel.textColor = UIColor.black
+                    let dateString = self.dateFormatter2.string(from: date)
+                    let count = eventsDictionary[date]?.count ?? 0
+                    if count > 0 {
+                        cell.contentView.layer.borderWidth = borderWidth
+                        cell.contentView.backgroundColor = UIColor.ASWColor.greyBackground
+                        cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
+                        cell.backgroundColor = UIColor.white
+                        cell.titleLabel.textColor = UIColor.black
+                    }else{
+                        cell.titleLabel.textColor = UIColor.black
+                    }
+                    
                     cell.eventIndicator.color = UIColor.black
                 }else{
                     //прошлый месяц
