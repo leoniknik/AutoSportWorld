@@ -115,7 +115,7 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
             }
             
             func errorFunc(){
-                UIAlertController(title: "xui", message: "xui", preferredStyle: .alert)
+//                UIAlertController(title: "xui", message: "xui", preferredStyle: .alert)
                 leaveWaitModeWithError()
             }
             

@@ -23,16 +23,22 @@ class ASWChangeUserInfoViewController: UIViewController {
         
         setupUI()
         let user = ASWDatabaseManager().getUser() ?? ASWUserEntity()
-        self.title = "Изменить личных данных"
+        self.title = "Изменение личных данных"
         nameField.textField.text = user.login
         emailField.textField.text = user.email
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func setupUI(){
         setupNameField()
         setupEmailField()
         setupPhoneField()
+        setupBlackOpaqueNavBar()
+        addBackButton(animated: true)
         ASWButtonManager.setupButton(button: button)
     }
     

@@ -134,9 +134,9 @@ class ASWEventViewController: UIViewController {
     func setupRace() {
         guard let urlString = race.imageURL else {return}
         guard let url = URL(string: urlString) else {return}
-            
+        
         raceImage.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
-            
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showFullImage))
         raceImage.isUserInteractionEnabled = true
         raceImage.addGestureRecognizer(tapGestureRecognizer)

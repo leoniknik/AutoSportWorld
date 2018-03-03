@@ -198,9 +198,13 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         viewController.removeFromParentViewController()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        setupBlackOpaqueNavBar()
         setupUI()
         if(changeSettings){
             add(asChildViewController: registerCollectionViewController)
@@ -439,7 +443,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             if dataSource.isEmptyDatasource(){
                 registerCollectionViewController.getUpdate()
             }
-            confirmButton.isEnabled = selectedRegions.count>0
+            confirmButton.isEnabled = selectedRegions.count > 0
 
         }
         

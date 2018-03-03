@@ -38,6 +38,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     //настройка UI
     func setupUI() {
+        view.backgroundColor = UIColor.ASWColor.greyBackground
         setupSettingsTable()
         setupBlackOpaqueNavBar()
         addBackButton(animated: true)
@@ -69,20 +70,36 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         customView.addSubview(button)
         customView.backgroundColor = UIColor.ASWColor.greyBackground
         settingsTable.tableFooterView = customView
+        settingsTable.backgroundColor = UIColor.ASWColor.greyBackground
     }
     
     //настройка красной кнопки внизу экрана
+//    func setupBottomRedButton() -> UIButton {
+//
+//        //создание самой кнопки
+//        let button: UIButton = UIButton(type: .system)
+//        button.backgroundColor = UIColor.red
+//        //Настройка текста внутри кнопки
+//
+//        button.setTitle("Выйти из аккаунта", for: UIControlState.normal)
+//        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+//
+//        button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
+//
+//        return button
+//    }
+    
     func setupBottomRedButton() -> UIButton {
         
         //создание самой кнопки
         let button: UIButton = UIButton(type: .system)
-        button.backgroundColor = UIColor.red
+        button.backgroundColor = UIColor.white
         //Настройка текста внутри кнопки
         
-        button.setTitle("Выйти из аккаунта", for: UIControlState.normal)
-        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        let title = NSAttributedString(string: "Выйти из аккаунта", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.red])
+        button.setAttributedTitle(title, for: UIControlState.normal)
         
-        button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
+        //button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
         
         return button
     }
@@ -160,9 +177,20 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     //выбор ячейки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 2 && indexPath.item == 0 {
-            performSegue(withIdentifier: ASWSegueRouter.changeRegions, sender: nil)
+        if indexPath.section == 0 && indexPath.item == 0 {
+            let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeUserInfo
+            vc.view.backgroundColor = .white
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 0 && indexPath.item == 1 {
+//            let vc = ASWViewControllersManager.
+        } else if indexPath.section == 2 && indexPath.item == 0 {
+            let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController
+            navigationController?.pushViewController(vc, animated: true)
         }
+        
+//        if indexPath.section == 2 && indexPath.item == 0 {
+//            performSegue(withIdentifier: ASWSegueRouter.changeRegions, sender: nil)
+//        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

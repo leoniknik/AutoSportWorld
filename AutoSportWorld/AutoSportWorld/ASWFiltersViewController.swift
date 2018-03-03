@@ -25,6 +25,8 @@ class ASWFiltersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.ASWColor.greyBackground
+        tableView.backgroundColor = UIColor.ASWColor.greyBackground
     }
     
     override func viewDidLayoutSubviews() {

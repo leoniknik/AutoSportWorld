@@ -66,7 +66,7 @@ class ASWDatabaseManager {
         }
     }
     
-    func createUserFrom(login:String,password:String)->ASWUserEntity{
+    func createUserFrom(login: String, password:String) -> ASWUserEntity {
         unloginAllUsers()
         
         var user = ASWUserEntity()
@@ -74,6 +74,7 @@ class ASWDatabaseManager {
         user.email = login
         //user.password = password
         user.isLogedIn = true
+//        user.login = name
         save(object: user)
         return user
     }
