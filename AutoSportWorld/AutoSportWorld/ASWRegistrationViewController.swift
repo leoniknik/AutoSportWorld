@@ -6,23 +6,9 @@
 //  Copyright © 2018 Кирилл Володин. All rights reserved.
 //
 
-//
-//  ASWCollectionViewController.swift
-//  AutoSportWorld
-//
-//  Created by Кирилл Володин on 16.08.17.
-//  Copyright © 2017 Кирилл Володин. All rights reserved.
-//
-
-
-// remake backstep
-// make forwardstep
-
-
-
 import UIKit
 
-class ASWRegistrationViewController: UIViewController, ASWCollectionViewControllerDelegate, ASWRegisterAccountViewControllerDelegate {
+class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControllerDelegate, ASWRegisterAccountViewControllerDelegate {
     public struct RawUserParams{
         var login:String = ""
         var email:String = ""
@@ -313,38 +299,39 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
     func checkEmail(){
         
         func sucsessCheck(parser:ASWValidateLoginParser){
+            
             if(parser.valid){
                 currentStep+=1
                 setStep()
                 setConfirmButtonText(false)
             }else{
-                let alert = UIAlertController(title: "Регистрация", message: parser.totalErrorString, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                
+                presentAlert("Регистрация", parser.totalErrorString)
             }
-            confirmButton.isEnabled = true;
-            registerAccountViewController.activityIndicator?.stopAnimating()
-            
+            registerAccountViewController.activityIndicator.stopAnimating()
         }
         
-        func errorCheck(connectionError:Bool){
-            
-            registerAccountViewController.activityIndicator?.stopAnimating()
+        func errorCheck(parser:ASWErrorParser){
+            presentAlert(errorParser: parser)
+            registerAccountViewController.activityIndicator.stopAnimating()
             confirmButton.isEnabled = true;
-            if(connectionError){
-                let alert = UIAlertController(title: "Нет сети", message: "Проверьте подключение к интернету и повторите попытку", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }else{
-                let alert = UIAlertController(title: "Ошибка на сервере", message: "Повторите попытку или попробуйде позже", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+            //presentAlert(error:error){}
+                
+            
+//            if(connectionError){
+//                let alert = UIAlertController(title: "Нет сети", message: "Проверьте подключение к интернету и повторите попытку", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//            }else{
+//                let alert = UIAlertController(title: "Ошибка на сервере", message: "Повторите попытку или попробуйде позже", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//            }
             
         }
         
         confirmButton.isEnabled = false;
-        registerAccountViewController.activityIndicator?.startAnimating()
+        registerAccountViewController.activityIndicator.startAnimating()
         ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
@@ -428,6 +415,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerAccountViewController.delegate = self
             confirmButton.isEnabled = registerAccountViewController.isFormValid()
             setupRightBarItem(avalible: false, title: "")
+            setConfirmButtonText(false)
         }
         
         if(currentStep == 1){
@@ -445,6 +433,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             }
             confirmButton.isEnabled = selectedRegions.count > 0
 
+            setConfirmButtonText(false)
         }
         
         if (currentStep == 2){
@@ -452,7 +441,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             registerCollectionViewController.delegate = self
             registerCollectionViewController.setupSportTypeDatasource(auto: rawUser.auto, moto: rawUser.moto)
             confirmButton.isEnabled = rawUser.auto || rawUser.moto
-
+            setConfirmButtonText(false)
         }
         
         if (currentStep == 3){
@@ -466,7 +455,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 registerCollectionViewController.getUpdate()
             }
             confirmButton.isEnabled = selectedRaceTypes.count>0
-
+            setConfirmButtonText(false)
         }
         
         if (currentStep == 4){
@@ -479,7 +468,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 if dataSource.isEmptyDatasource(){
                     registerCollectionViewController.getUpdate()
                 }
-
+                setConfirmButtonText(false)
                 confirmButton.isEnabled = selectedRaceTypes.count>0
             }else {
                 //registerCollectionViewController.setupActionTypeDatasource(auto: rawUser.auto, watch: rawUser.auto ? rawUser.autoWatch : rawUser.motoWatch, join: rawUser.auto ? rawUser.autoJoin : rawUser.motoJoin)
@@ -491,7 +480,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
 //                }
                 
                 confirmButton.isEnabled = rawUser.join||rawUser.watch
-                
+                setConfirmButtonText(true)
             }
         }
         if (currentStep == 5){
@@ -503,6 +492,7 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
                 registerCollectionViewController.setupActionTypeDatasource(auto: true, watch: rawUser.watch, join: rawUser.join)
                 //confirmButton.isEnabled = rawUser.autoJoin||rawUser.autoWatch
                 confirmButton.isEnabled = rawUser.join||rawUser.watch
+                setConfirmButtonText(true)
             }
         }
 
@@ -558,8 +548,8 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
             self.present(alert, animated: true, completion: nil)
         }
         
-        func errorSend(){
-            
+        func errorSend(parser:ASWErrorParser){
+            presentAlert(errorParser: parser)
         }
     
         var user = ASWDatabaseManager().updateUserFrom(login: rawUser.login,
@@ -581,9 +571,10 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         func sucsessSend(){
             goToMainStoryboard()
         }
-        func errorSend(){
-            
+        func errorSend(parser:ASWErrorParser){
+            presentAlert(errorParser: parser)
         }
+        
         ASWDatabaseManager().sendUserInfoToServer(completion: sucsessSend,error:errorSend)
     }
     
@@ -650,10 +641,6 @@ class ASWRegistrationViewController: UIViewController, ASWCollectionViewControll
         self.changeSettingsSuccessMessage = "Изменения успешно сохранены"
     }
 }
-
-
-
-
 //old logic
 // 0-email
 // 1-sportType

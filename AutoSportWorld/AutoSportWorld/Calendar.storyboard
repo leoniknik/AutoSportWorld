@@ -207,19 +207,34 @@
                                     <constraint firstItem="9hc-Kn-Uje" firstAttribute="leading" secondItem="7S0-m0-QeG" secondAttribute="leading" id="x81-ha-fwZ"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xHx-hd-Z50">
+                                <rect key="frame" x="0.0" y="453" width="375" height="101"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KH0-Bc-Nvl">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="width" secondItem="e8a-Gh-VpS" secondAttribute="width" id="016-Fy-SRp"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="bottom" id="0wp-ib-hhW"/>
+                            <constraint firstAttribute="trailing" secondItem="xHx-hd-Z50" secondAttribute="trailing" id="9RW-H9-HJo"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="height" secondItem="e8a-Gh-VpS" secondAttribute="height" multiplier="0.1" id="EP2-zI-YOi"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" constant="5" id="F7Y-vz-6B3"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" constant="5" id="KwY-at-QfO"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" constant="5" id="LQS-Xq-X1x"/>
+                            <constraint firstItem="X0g-Xw-LkD" firstAttribute="top" secondItem="xHx-hd-Z50" secondAttribute="bottom" id="Q35-vL-gUm"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="leading" secondItem="e8a-Gh-VpS" secondAttribute="leading" id="Qul-z4-t3R"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="U8p-77-wTK"/>
+                            <constraint firstItem="xHx-hd-Z50" firstAttribute="top" secondItem="e8a-Gh-VpS" secondAttribute="bottom" constant="8" id="ZSI-BA-pTv"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="bottom" secondItem="7S0-m0-QeG" secondAttribute="bottom" id="atP-sk-Fut"/>
                             <constraint firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" constant="5" id="mIt-u2-eig"/>
+                            <constraint firstItem="xHx-hd-Z50" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="mtj-wK-dql"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="vVQ-f4-KEW"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" id="wK8-lM-sXX"/>
                         </constraints>
@@ -228,6 +243,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
+                        <outlet property="collectionView" destination="xHx-hd-Z50" id="Gqu-m9-h52"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
                         <outlet property="nextMonthButton" destination="dHS-cU-BnA" id="Tae-do-LvO"/>
                         <outlet property="prevMonthButton" destination="9r8-oq-tUg" id="FwI-ON-GQZ"/>

@@ -10,7 +10,7 @@ import UIKit
 
 import SkyFloatingLabelTextField
 
-class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UITextFieldDelegate {
+class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -41,7 +41,7 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
         passwordField.setupUI()
 
         
-        loginField.textField.text = "testUser@gmail.com"
+        loginField.textField.text = "evtAlex@gmail.com"
         passwordField.textField.text = "123123"
     }
 
@@ -81,27 +81,27 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
     }
     
     func enterWaitMode(){
-        activityIndicator?.startAnimating()
+        activityIndicator.startAnimating()
         loginButton.isEnabled = false
     }
     
     func leaveWaitMode(){
         DispatchQueue.main.async {
             [weak self] in
-            self?.activityIndicator?.stopAnimating()
+            self?.activityIndicator.stopAnimating()
             self?.updateFormValid()
         }
     }
     
-    func leaveWaitModeWithError(){
-        leaveWaitMode()
-        DispatchQueue.main.async {
-            [weak self] in
-            let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: { [weak self] in print("fr")})
-        }
-    }
+//    func leaveWaitModeWithError(){
+//        leaveWaitMode()
+//        DispatchQueue.main.async {
+//            [weak self] in
+//            let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .actionSheet)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//            self?.present(alert, animated: true, completion: { [weak self] in print("fr")})
+//        }
+//    }
     
     @IBAction func loginPressed(_ sender: Any) {
         var login = loginField.textField.text ?? ""
@@ -114,9 +114,11 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
                 getUserInfo()
             }
             
-            func errorFunc(){
-//                UIAlertController(title: "xui", message: "xui", preferredStyle: .alert)
-                leaveWaitModeWithError()
+
+            func errorFunc(parser:ASWLoginErrorParser){
+                presentAlert(errorParser: parser)
+                leaveWaitMode()
+                //leaveWaitModeWithError()
             }
             
             ASWNetworkManager.loginUser(email: login, password: password, sucsessFunc: sucsessFunc, errorFunc: errorFunc)
@@ -128,19 +130,26 @@ class ASWLoginViaEmailViewController:UIViewControllerWithActivityMonitor, UIText
         func sucsessFunc(parser:ASWUserInfoGetParser){
             ASWDatabaseManager().setUserInfo(parser:parser)
             leaveWaitMode()
-            DispatchQueue.main.async {
-                self.openMainStoryboard()
-            }
+//<<<<<<< HEAD
+//            DispatchQueue.main.async {
+//                self.openMainStoryboard()
+//            }
+//=======
+            presentOKAlert("ok","ok")
         }
         
-        func errorFunc(){
-            leaveWaitModeWithError()
+        func errorFunc(parser:ASWErrorParser){
+            presentAlert(errorParser: parser)
+            leaveWaitMode()
+            //#error
+            //leaveWaitModeWithError()
         }
         
         ASWNetworkManager.getUserInfo(sucsessFunc: sucsessFunc, errorFunc: errorFunc)
     }
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {
+        presentOKAlert("Функция недоступна", "Данная функция находится в разработке")
     }
     
     

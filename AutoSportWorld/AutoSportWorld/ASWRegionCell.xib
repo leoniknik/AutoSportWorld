@@ -26,7 +26,7 @@
                         <attributedString key="attributedText">
                             <fragment content="Санкт-Петербург и область">
                                 <attributes>
-                                    <color key="NSColor" red="0.43109533629441621" green="0.43109533629441621" blue="0.43109533629441621" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="NSColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <font key="NSFont" size="10" name=".AppleSystemUIFont"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>

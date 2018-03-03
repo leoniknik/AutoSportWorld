@@ -16,6 +16,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ASWRaceCategoryCollectionViewDataSourceDelegate:ASWCollectionViewDataSourceDelegate{
     func updateSelectedRaceTypes(auto:Bool,raceTypeIDs:[Int])
@@ -130,40 +131,72 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
             cell.label.text = curItem.name
             
             if let image = curItem.image {
-                cell.image.image = image
+               cell.image.image = image
             }
             else {
-                cell.image.image = nil // default picture
-                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    
-                    self?.imageService.send(url: curItem.imageUrl!, completionHandler: { (image) in
-                        curItem.image = image
-                        DispatchQueue.main.async { [weak self] in
-                            
-//                            if indexPath.section <= 1 {
-//                                if(indexPath.section == 0){
-//                                    if(self?.availableItems.count ?? 0 <= indexPath.row){
-//                                        self?.collectionView.reloadItems(at: [indexPath])
-//                                    }
-//                                }else{
-//                                    if(self?.selectedItems.count ?? 0 <= indexPath.row){
-//                                        self?.collectionView.reloadItems(at: [indexPath])
-//                                    }
-//                                }
+                let ciImage = CIImage(image: #imageLiteral(resourceName: "auto"))
+                let grayscale = ciImage?.applyingFilter("CIColorControls",
+                                                        parameters: [ kCIInputSaturationKey: 0.0 ])
+          
+                cell.image.image = UIImage(ciImage: grayscale!)
+                
+                //UIImage( grayscale!)
+                
+                cell.image.kf.setImage(with: URL(string:curItem.imageUrl ?? "")!, completionHandler: {
+                    (image, error, cacheType, imageUrl) in
+                    if let img = image{
+                        //DispatchQueue.main.async {
+                            //[weak self] in
+                            curItem.image = img
+                        //}
+                    }
+                })
+                
+//                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+//                    ImageDownloader.default.downloadImage(with: URL(string:curItem.imageUrl ?? "")!, options: [], progressBlock: nil) {
+//                        (image, error, url, data) in
+//                        if let img = image{
+//                            curItem.image = img
+//
+//                            DispatchQueue.main.async { [weak self] in
+//                                //self?.collectionView.reloadData()
+//                                //cell.image.image = img
 //                            }
-                            self?.collectionView.reloadData()
-                            
-                           
-//                            if cell != nil{
-//                                //self?.collectionView.reloadItems(at: [indexPath])
-//                                self?.collectionView.reloadData()
-//                            }
-                            
-                        }
-                    })
+//                        }
+//                    }
+                
                     
-                }
-            }
+                    
+                    
+                    
+                    //                    self?.imageService.send(url: curItem.imageUrl!, completionHandler: { (image) in
+                    //                        curItem.image = image
+                    //                        DispatchQueue.main.async { [weak self] in
+                    //
+                    ////                            if indexPath.section <= 1 {
+                    ////                                if(indexPath.section == 0){
+                    ////                                    if(self?.availableItems.count ?? 0 <= indexPath.row){
+                    ////                                        self?.collectionView.reloadItems(at: [indexPath])
+                    ////                                    }
+                    ////                                }else{
+                    ////                                    if(self?.selectedItems.count ?? 0 <= indexPath.row){
+                    ////                                        self?.collectionView.reloadItems(at: [indexPath])
+                    ////                                    }
+                    ////                                }
+                    ////                            }
+                    //                            self?.collectionView.reloadData()
+                    //
+                    //
+                    ////                            if cell != nil{
+                    ////                                //self?.collectionView.reloadItems(at: [indexPath])
+                    ////                                self?.collectionView.reloadData()
+                    ////                            }
+                    //
+                    //                        }
+                    //                    })
+                    
+//                }
+         }
         }else{
             cell.label.text = ""
         }
@@ -195,7 +228,8 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         }
         delegate?.updateSelectedRaceTypes(auto:auto, raceTypeIDs: selectedIDs)
     }
-    
 }
+
+
 
 

@@ -54,6 +54,11 @@ class ASWRace {
 
     var geo: String? // координаты. если null, то не указано
     
+    init(){
+        
+    }
+    
+    
     init(id: String?, title: String?, shortTitle: String?, textRace: String?, whereRace: String?, raspisanie: String?, canWatch: Bool?, canJoin: Bool?, jpriceFrom: Int?, jpriceTo: Int?, wpriceFrom: Int?, wpriceTo: Int?, times: [ASWRaceTime]?, regions: [ASWRaceRegion]?, categories: [ASWRaceCategory]?, level: String?, image: String?, link: String?, likes: Int?, liked: Bool?, geo: String?) {
         
         self.id = id

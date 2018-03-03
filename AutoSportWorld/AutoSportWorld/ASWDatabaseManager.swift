@@ -195,13 +195,13 @@ class ASWDatabaseManager {
         setUserRegions(regionIDs: parser.regionsParser.regionsIDs)
     }
     
-    func sendUserInfoToServer(completion:@escaping ()->Void,error:@escaping ()->Void){
+    func sendUserInfoToServer(completion:@escaping ()->Void,error:@escaping (ASWErrorParser)->Void){
         func sucsess(parser:ASWUserInfoSendParser){
             completion()
         }
         
-        func error(){
-            error()
+        func error(parser:ASWErrorParser){
+            error(parser)
         }
         
         guard let user = getUser() else{

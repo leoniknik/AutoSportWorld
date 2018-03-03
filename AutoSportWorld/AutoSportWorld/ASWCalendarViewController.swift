@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 
 
-class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
+class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     
@@ -22,6 +22,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     @IBOutlet weak var prevMonthButton: UIButton!
     
     @IBOutlet weak var nextMonthButton: UIButton!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     fileprivate let borderWidth = CGFloat(1)
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
@@ -142,6 +145,10 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         
         setupNavbar()
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
+        
         calendar.delegate = self
         calendar.dataSource = self
         calendar.allowsMultipleSelection = false
@@ -213,6 +220,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     }
     
     
+    var currentDate:Date = Date()
     
     func todayItemClicked(sender: AnyObject) {
         self.calendar.setCurrentPage(Date(), animated: false)
@@ -220,12 +228,14 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     //date selected
     func calendar(_ calendar: FSCalendar, didSelect date: Date) {
+        currentDate = date
         NSLog(self.dateFormatter2.string(from: date))
     }
     
     //month change
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         updateMonthLabel()
+        getEvents(forDate: calendar.currentPage)
         self.calendar.reloadData()
     }
     
@@ -277,6 +287,99 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     @objc func showFilters() {
         let viewController = ASWFiltersViewController()
         self.navigationController?.pushViewController(viewController, animated: false)
+    }
+    
+    
+    var eventsDictionary: Dictionary<Date,[ASWRace]> = Dictionary<Date,[ASWRace]>()
+    var currentMonthRacesCountChange = true
+    
+    func getEvents(forDate date:Date){
+        let currentMonth = date.firstDayOfMonth()
+        let from = currentMonth.minusMonth(1)
+        let to = currentMonth.addMonth(2)
+        
+        func success(parser:ASWCalendarRacesParser){
+            let races = parser.racesParser.races
+            for race: ASWRace in races{
+                if let fromEpic = race.times?.first?.start{
+                    let raceDate  = Date(timeIntervalSince1970:Double(fromEpic)).removeTimeStamp()
+                    if eventsDictionary[raceDate] == nil {
+                        eventsDictionary[raceDate] = [ASWRace]()
+                    }
+                    
+                    var dateRaces = eventsDictionary[raceDate]
+                    
+                    let contains = eventsDictionary[raceDate]?.contains(where: {element in return race.id == element.id}) ?? false
+                    
+                    if(!contains){
+                        dateRaces?.append(race)
+                        currentMonthRacesCountChange = true
+                    }
+                }
+            }
+            
+            if currentMonthRacesCountChange {
+                currentMonthRacesCountChange = false
+                collectionView.reloadData()
+                calendar.reloadData()
+            }
+        }
+        
+        func error(parser:ASWErrorParser){
+            
+        }
+        ASWNetworkManager.getCalendarRaces(from: from, to: to, sucsessFunc: success, errorFunc: error)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0//choosenEvents.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let race = choosenEvents[indexPath.item]
+//        let viewController = ASWEventViewController(race: race)
+//        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWMapAndCalendarCell", for: indexPath) as? ASWMapAndCalendarCell
+            else { return UICollectionViewCell() }
+        let event = ASWRace()//choosenEvents[indexPath.row]
+        cell.titleLabel.text = event.title
+        cell.categories.text = event.getRaceCategories()
+        var canWatch: String = ""
+        var canJoin: String = ""
+        var place: String = ""
+        if event.canJoin ?? false {
+            canJoin = "Покататься; "
+        }
+        if event.canWatch ?? false {
+            canWatch = "Посмотреть; "
+        }
+        if let placeTemp = event.whereRace {
+            place = placeTemp + "; "
+        }
+        cell.descriptionLabel.text = place + canWatch + canJoin
+        
+        
+        if cell.categories.text?.isEmpty ?? false {
+            cell.categories.text = "Категории не указаны"
+        }
+        if cell.descriptionLabel.text?.isEmpty ?? false {
+            cell.descriptionLabel.text = "Описание не указано"
+        }
+        if cell.titleLabel.text?.isEmpty ?? false {
+            cell.titleLabel.text = "Заголовок не указан"
+        }
+        return cell
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.size.width, height: 74)
     }
 }
 

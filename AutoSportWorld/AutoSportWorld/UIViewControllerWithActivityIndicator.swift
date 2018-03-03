@@ -8,40 +8,78 @@
 
 import UIKit
 
-import UIKit
+class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate{
 
-class UIViewControllerWithActivityMonitor:UIViewController {
-    var activityIndicator:UIActivityIndicatorView?
-    
+    var errorViewController: ASWResponseErrorViewController!
+    var visualEffectView: UIVisualEffectView!
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator = UIActivityIndicatorView()
-        guard let activity = activityIndicator else{
-            return
-        }
-        activity.hidesWhenStopped = true
-        activity.color = UIColor.green
-        self.view.addSubview(activity)
-        activity.translatesAutoresizingMaskIntoConstraints = false
-//        let widthConstraint = NSLayoutConstraint(item: activity, attribute: .width, relatedBy: .equal,
-//                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
-//
-//        let heightConstraint = NSLayoutConstraint(item: activity, attribute: .height, relatedBy: .equal,
-//                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
-//        activity.addConstraint(widthConstraint)
-//        activity.addConstraint(heightConstraint)
-        activity.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        activity.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        let xConstraint = NSLayoutConstraint(item: activity, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
-//
-//        let yConstraint = NSLayoutConstraint(item: activity, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
-//
-//        self.view.addConstraint(xConstraint)
-//        self.view.addConstraint(yConstraint)
-        
-//        NSLayoutConstraint.activate([widthConstraint, heightConstraint, xConstraint, yConstraint])
+        setupUI()   
     }
     
+    
+    private func setupUI() {
+        setupActivity()
+        setupErrorView()
+    }
+    
+    private func setupActivity() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor.green
+        self.view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    private func setupErrorView() {
+        errorViewController = ASWResponseErrorViewController()
+        errorViewController.delegate = self
+        
+        var blurEffect = UIBlurEffect.init(style: .extraLight)
+        
+        visualEffectView =  UIVisualEffectView.init(effect: blurEffect)
+        
+        visualEffectView.frame = errorViewController.view.bounds;
+        visualEffectView.alpha = 0
+        //self.view.insertSubview(visualEffectView, at: 0)
+        self.view.addSubview(visualEffectView)
+        
+        errorViewController.modalPresentationStyle = .overCurrentContext
+    }
+    
+    func showAlert(){
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = kCATransitionFade
+        transition.subtype = kCATransitionMoveIn
+        self.visualEffectView.alpha = 1
+        
+        view.window?.layer.add(transition, forKey: kCATransition)
+        self.present(self.errorViewController, animated: false, completion: {})
+        self.visualEffectView.alpha = 1
+    }
+    
+    func hideAlert(){
+        UIView.animate(withDuration: 0.2, animations: {
+            self.errorViewController.dismiss(animated: true, completion: nil)
+            self.visualEffectView.alpha = 0
+        })
+    }
+    
+    func okAction() {
+        hideAlert()
+    }
+    
+    func cancelAction() {
+        hideAlert()
+    }
+    
+    func retryAction() {
+        hideAlert()
+    }
 }

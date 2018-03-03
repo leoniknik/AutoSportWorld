@@ -14,9 +14,9 @@ extension UIImage {
     static let likedOff = UIImage(named: "ic_like_off")
     static let likedOn = UIImage(named: "ic_like_on")
     
-    static let passwordSecureOnPicture = UIImage(named: "ic_password_on")
-    static let passwordSecureOffPictureWhiteBack = UIImage(named: "ic_password_off")
-    static let passwordSecureOffPictureBlackBack = UIImage(named: "ic_password_off")
+    static let passwordSecureOnPicture = #imageLiteral(resourceName: "eye_on")//UIImage(named: "ic_password_on")
+    static let passwordSecureOffPictureWhiteBack = #imageLiteral(resourceName: "eye_off_whiteBack")//UIImage(named: "ic_password_off")
+    static let passwordSecureOffPictureBlackBack = #imageLiteral(resourceName: "eye_off_blackBack")//UIImage(named: "ic_password_off")
     
     static let share = UIImage(named: "ic_share")
 
@@ -28,19 +28,14 @@ extension UIImage {
     
     static let cardLikedOff = #imageLiteral(resourceName: "ic_like_black_32")
     static let cardLikedOn = #imageLiteral(resourceName: "ic_like_blue")
-/////
-//    static let bookmarkOff = #imageLiteral(resourceName: "ic_bookmark_tape_off")
-//    static let bookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tape_on")
-//    static let cardBookmarkOff = #imageLiteral(resourceName: "ic_bookmark_card_off")
-//    static let cardBookmarkOn = #imageLiteral(resourceName: "ic_bookmark_tab_off")
     
-    static let autoWatch = #imageLiteral(resourceName: "ic_bookmark_tape_on")
-    static let auto = #imageLiteral(resourceName: "ic_bookmark_tape_on")
-    static let autoJoin = #imageLiteral(resourceName: "ic_bookmark_tape_off")
+    static let autoWatch = #imageLiteral(resourceName: "watch")
+    static let auto = #imageLiteral(resourceName: "auto")
+    static let autoJoin = #imageLiteral(resourceName: "join")
     
-    static let moto = #imageLiteral(resourceName: "ic_bookmark_tab_off")
-    static let motoJoin = #imageLiteral(resourceName: "ic_bookmark_tab_off")
-    static let motoWatch = #imageLiteral(resourceName: "ic_bookmark_card_off")
+    static let moto = #imageLiteral(resourceName: "moto")
+    static let motoJoin = #imageLiteral(resourceName: "join")
+    static let motoWatch = #imageLiteral(resourceName: "watch")
     
     static func from(_ r:Int, _ g:Int, _ b:Int) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
