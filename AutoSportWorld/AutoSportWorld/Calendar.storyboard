@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3dX-a0-oGQ">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3dX-a0-oGQ">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +20,7 @@
                     </tabBarItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -34,12 +35,8 @@
         <scene sceneID="9M6-t6-zSJ">
             <objects>
                 <viewController id="IsW-B3-udk" customClass="ASWCalendarViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7RV-FI-yHe"/>
-                        <viewControllerLayoutGuide type="bottom" id="X0g-Xw-LkD"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c0B-MD-UzX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-Gh-VpS" customClass="FSCalendar">
@@ -87,7 +84,7 @@
                                 <rect key="frame" x="5" y="5" width="365" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPf-Dr-e9z">
-                                        <rect key="frame" x="107.5" y="15" width="150" height="21"/>
+                                        <rect key="frame" x="107.66666666666669" y="15" width="150" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JUh-Np-YrT"/>
                                             <constraint firstAttribute="width" constant="150" id="d9s-bl-z4a"/>
@@ -97,7 +94,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHS-cU-BnA">
-                                        <rect key="frame" x="257.5" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="257.66666666666669" y="10" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kf9-3i-dXL"/>
                                         </constraints>
@@ -108,7 +105,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-oq-tUg">
-                                        <rect key="frame" x="57.5" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="57.666666666666657" y="10" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="x5U-ag-8od"/>
                                         </constraints>
@@ -208,8 +205,11 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xHx-hd-Z50">
-                                <rect key="frame" x="0.0" y="453" width="375" height="101"/>
+                                <rect key="frame" x="0.0" y="567" width="375" height="74"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="wSf-5C-GoB"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KH0-Bc-Nvl">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -223,21 +223,22 @@
                         <constraints>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="width" secondItem="e8a-Gh-VpS" secondAttribute="width" id="016-Fy-SRp"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="bottom" id="0wp-ib-hhW"/>
-                            <constraint firstAttribute="trailing" secondItem="xHx-hd-Z50" secondAttribute="trailing" id="9RW-H9-HJo"/>
+                            <constraint firstItem="wNk-2l-gHp" firstAttribute="trailing" secondItem="xHx-hd-Z50" secondAttribute="trailing" id="9RW-H9-HJo"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="height" secondItem="e8a-Gh-VpS" secondAttribute="height" multiplier="0.1" id="EP2-zI-YOi"/>
-                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" constant="5" id="F7Y-vz-6B3"/>
-                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" constant="5" id="KwY-at-QfO"/>
-                            <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="7RV-FI-yHe" secondAttribute="bottom" constant="5" id="LQS-Xq-X1x"/>
-                            <constraint firstItem="X0g-Xw-LkD" firstAttribute="top" secondItem="xHx-hd-Z50" secondAttribute="bottom" id="Q35-vL-gUm"/>
+                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="wNk-2l-gHp" secondAttribute="top" constant="5" id="F7Y-vz-6B3"/>
+                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="leading" secondItem="wNk-2l-gHp" secondAttribute="leading" constant="5" id="KwY-at-QfO"/>
+                            <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="wNk-2l-gHp" secondAttribute="top" constant="5" id="LQS-Xq-X1x"/>
+                            <constraint firstItem="wNk-2l-gHp" firstAttribute="bottom" secondItem="xHx-hd-Z50" secondAttribute="bottom" id="Q35-vL-gUm"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="leading" secondItem="e8a-Gh-VpS" secondAttribute="leading" id="Qul-z4-t3R"/>
-                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="U8p-77-wTK"/>
-                            <constraint firstItem="xHx-hd-Z50" firstAttribute="top" secondItem="e8a-Gh-VpS" secondAttribute="bottom" constant="8" id="ZSI-BA-pTv"/>
+                            <constraint firstItem="e8a-Gh-VpS" firstAttribute="centerX" secondItem="wNk-2l-gHp" secondAttribute="centerX" id="U8p-77-wTK"/>
+                            <constraint firstItem="xHx-hd-Z50" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e8a-Gh-VpS" secondAttribute="bottom" constant="8" id="ZSI-BA-pTv"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="bottom" secondItem="7S0-m0-QeG" secondAttribute="bottom" id="atP-sk-Fut"/>
-                            <constraint firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" constant="5" id="mIt-u2-eig"/>
-                            <constraint firstItem="xHx-hd-Z50" firstAttribute="leading" secondItem="c0B-MD-UzX" secondAttribute="leading" id="mtj-wK-dql"/>
-                            <constraint firstItem="FOX-ia-6S5" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="vVQ-f4-KEW"/>
+                            <constraint firstItem="wNk-2l-gHp" firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" constant="5" id="mIt-u2-eig"/>
+                            <constraint firstItem="xHx-hd-Z50" firstAttribute="leading" secondItem="wNk-2l-gHp" secondAttribute="leading" id="mtj-wK-dql"/>
+                            <constraint firstItem="FOX-ia-6S5" firstAttribute="centerX" secondItem="wNk-2l-gHp" secondAttribute="centerX" id="vVQ-f4-KEW"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" id="wK8-lM-sXX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="wNk-2l-gHp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Календарь" id="lBP-EG-CON"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
