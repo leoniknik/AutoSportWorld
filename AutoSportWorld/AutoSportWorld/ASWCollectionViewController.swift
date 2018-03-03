@@ -29,10 +29,11 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl.endRefreshing()
             if(self?.datasource.isEmptyDatasource()) ?? false{
-                self?.errorLabel.text = "Нет данных"
-                self?.errorLabel.isHidden = false
+                self?.view.showASWErrorView(retryAction: self?.getUpdate ?? {})
+                //self?.errorLabel.text = "Нет данных"
+                //self?.errorLabel.isHidden = false
             }else{
-                self?.errorLabel.isHidden = true
+                //self?.errorLabel.isHidden = true
             }
             self?.setupRightBarItem()
             self?.collectionView.reloadData()
@@ -42,8 +43,9 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     func networkErrorOccured() {
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl.endRefreshing()
-            self?.errorLabel.text = "Ошибка сетевого подключения"
-            self?.errorLabel.isHidden = false
+            //self?.errorLabel.text = "Ошибка сетевого подключения"
+            //self?.errorLabel.isHidden = false
+            self?.view.showASWErrorView(retryAction: self?.getUpdate ?? {})
         }
     }
     

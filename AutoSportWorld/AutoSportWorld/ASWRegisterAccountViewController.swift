@@ -21,7 +21,7 @@ protocol ASWRegisterAccountViewControllerDelegate{
     func updateUserLoginInfo(valid:Bool,login:String,email:String,password:String)
 }
 
-class ASWBasePasswordViewController: UIViewControllerWithActivityMonitor, UITextFieldDelegate {
+class ASWBasePasswordViewController: ASWViewController, UITextFieldDelegate {
 
     let passwordValidator = ASWPasswordValidator()
     var password = ""

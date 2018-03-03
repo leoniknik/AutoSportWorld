@@ -13,5 +13,6 @@ class ASWRequest {
     var baseURL = "http://34.214.102.142:4000/api"
     var parameters: Parameters = [:]
     var url: String = ""
+    var encoding: ParameterEncoding = URLEncoding.default
 }
 

@@ -18,29 +18,23 @@ class ASWLoginSucsessParser {
     var expires_at = 0
     
     init(json: JSON) {
-        
-        
         refresh_token = json["refresh_token"].stringValue
         access_token = json["access_token"].stringValue
         expires_at = json["expires_at"].intValue
-        
     }
 }
 
-class ASWLoginErrorParser {
-    
-    var wrongEmail:Bool = false
-    var wrongPassword:Bool = false
+class ASWLoginErrorParser:ASWErrorParser {
 
-    init(json: JSON) {
-       
+    override init(error: Error,json: JSON) {
+        super.init(error: error, json: json)
         print(json["message"].stringValue)
-
         switch json["message"].stringValue {
         case "wrong email":
-            wrongEmail = true
+            errors.append("Неверный email")
+            errorString += "Неверный email"
             break
-        case "1":
+        case "":
             break
         default:
             break

@@ -8,13 +8,11 @@
 
 import UIKit
 
-extension UIViewController {
+extension ASWViewController {
     func presentServerAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: "Ошибка на сервере", message: "Повторите попытку или попробуйде позже", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: completion)
+            self?.presentAlert("Ошибка на сервере", "Повторите попытку или попробуйде позже", completion)
         }
     }
     
@@ -25,9 +23,7 @@ extension UIViewController {
     func presentNetworkAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: "Нет сети", message: "Проверьте подключение к интернету и повторите попытку", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: completion)
+                self?.presentAlert("Нет сети", "Проверьте подключение к интернету и повторите попытку", completion)
         }
     }
     
@@ -38,9 +34,10 @@ extension UIViewController {
     func presentAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self?.present(alert, animated: true, completion: completion)
+            self?.errorViewController.titleText = title
+            self?.errorViewController.bodyText = text
+            self?.errorViewController.okMode = false
+            self?.showAlert()
         }
     }
     
@@ -48,16 +45,41 @@ extension UIViewController {
         presentAlert(title, text,{})
     }
     
-    func presentAlert(error:NSError,completion: (()->Void)?){
-        if error.code == 10001 {
-            
-        } else if error.code == 10000 {
-            
+    func presentOKAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.errorViewController.titleText = title
+            self?.errorViewController.bodyText = text
+            self?.errorViewController.okMode = true
+            self?.showAlert()
+        }
+    }
+    
+    func presentOKAlert(_ title: String, _ text: String){
+        presentOKAlert(title, text,{})
+    }
+    
+    func presentAlert(errorParser: ASWErrorParser,_ completion: @escaping ()->Void){
+        if errorParser.hasInternetError {
+            presentNetworkAlert {
+                completion()
+            }
+        } else if errorParser.hasServerError {
+            presentServerAlert {
+                completion()
+            }
+        } else if errorParser.errors.count > 0 {
+            presentAlert("Ошибка", errorParser.errorString){
+                completion()
+            }
         } else {
             presentServerAlert {
-                completion?()
+                completion()
             }
         }
     }
     
+    func presentAlert(errorParser: ASWErrorParser){
+        presentAlert(errorParser:errorParser,{})
+    }
 }

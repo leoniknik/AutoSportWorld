@@ -14,12 +14,22 @@ extension UIView{
         view.retryAction = {return true}
         self.addSubview(view)
     }
-    func showASWErrorView(retryAction:@escaping ()->Bool) {
+    func showASWErrorView(retryAction:@escaping ()->Void) {
         let view = ASWErrorView(frame: self.frame)
         view.retryAction = retryAction
         self.addSubview(view)
     }
     func closeASWErrorView() {
-        self.removeFromSuperview()
+        if self is ASWErrorView{
+            self.removeFromSuperview()
+        }else{
+            for view in self.subviews {
+                if view is ASWErrorView{
+                    view.removeFromSuperview()
+                }
+            }
+        }
+        
+        
     }
 }

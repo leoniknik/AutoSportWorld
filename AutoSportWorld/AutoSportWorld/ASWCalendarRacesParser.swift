@@ -15,13 +15,10 @@ class ASWCalendarRacesParser {
 //    
 //    var categoriesParser: ASWListCategoryParser
 //    var regionsParser: ASWListRegionsParser
-//
-    init(json: JSON) {}
-//    init(json: JSON) {
-//        canWatch = json["can_watch"].boolValue
-//        canJoin = json["can_join"].boolValue
-//        categoriesParser = ASWListCategoryParser(json:json)
-//        regionsParser = ASWListRegionsParser(json:json)
-//    }
-//    
+    var racesParser: ASWListRacesParser
+
+    init(json: JSON) {
+        racesParser = ASWListRacesParser(json:json)
+    }
+    
 }
