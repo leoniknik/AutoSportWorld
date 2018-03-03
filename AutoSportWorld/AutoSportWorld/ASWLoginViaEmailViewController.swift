@@ -20,6 +20,11 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
+        setupTransparentNavBar()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func setupUI(){
@@ -130,12 +135,10 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         func sucsessFunc(parser:ASWUserInfoGetParser){
             ASWDatabaseManager().setUserInfo(parser:parser)
             leaveWaitMode()
-//<<<<<<< HEAD
-//            DispatchQueue.main.async {
-//                self.openMainStoryboard()
-//            }
-//=======
-            presentOKAlert("ok","ok")
+            DispatchQueue.main.async {
+                self.openMainStoryboard()
+            }
+//            presentOKAlert("ok","ok")
         }
         
         func errorFunc(parser:ASWErrorParser){
@@ -158,4 +161,13 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     }
     
     
+}
+
+extension UIViewController {
+    func setupTransparentNavBar() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
 }

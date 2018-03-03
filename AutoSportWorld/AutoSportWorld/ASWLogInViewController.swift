@@ -38,6 +38,15 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupTransparentNavBar()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func setupUI(){
         ASWButtonManager.setupLoginButton(button: loginButton)
         ASWButtonManager.setupLoginButton(button: registrationButton)

@@ -125,6 +125,7 @@ class ASWRegisterAccountViewController:ASWBasePasswordViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupBlackOpaqueNavBar()
         setupForm()
     }
     

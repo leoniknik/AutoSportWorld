@@ -61,7 +61,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Необходимо определение геолокации</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>LauchScreenStoryboard</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Registration</string>
 	<key>UIRequiredDeviceCapabilities</key>

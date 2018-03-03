@@ -190,7 +190,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBlackOpaqueNavBar()
+        setupTransparentNavBar()
         setupUI()
         if(changeSettings){
             add(asChildViewController: registerCollectionViewController)

@@ -25,6 +25,12 @@ protocol ASWCollectionViewControllerDelegate{
 
 class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ASWSportTypeCollectionViewDataSourceDelegate,ASWActionTypeCollectionViewDataSourceDelegate,ASWRegionsCollectionViewDataSourceDelegate, ASWRaceCategoryCollectionViewDataSourceDelegate {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+
+    
     func dataReceived() {
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl.endRefreshing()
@@ -51,7 +57,11 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupBlackOpaqueNavBar()
         errorLabel.isHidden = true
+        navigationController?.navigationBar.shadowImage = UIImage()
+        searchBar.backgroundColor = UIColor.ASWColor.black
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
     
     func updateSelectedRaceTypes(auto: Bool, raceTypeIDs: [Int]) {
@@ -74,10 +84,6 @@ class ASWCollectionViewController: UIViewController, UICollectionViewDelegate, U
         setupRightBarItem()
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    @IBOutlet weak var errorLabel: UILabel!
     
     
     fileprivate let cellSize: CGFloat = 100

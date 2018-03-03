@@ -182,7 +182,8 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
             vc.view.backgroundColor = .white
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 0 && indexPath.item == 1 {
-//            let vc = ASWViewControllersManager.
+            let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changePassword
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 2 && indexPath.item == 0 {
             let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController
             navigationController?.pushViewController(vc, animated: true)

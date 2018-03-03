@@ -57,13 +57,6 @@ class ASWProfileViewController: UIViewController, UITableViewDataSource {
         regButton.layer.cornerRadius = 10
         regButton.clipsToBounds = true
     }
-
-    func setupTransparentNavBar() {
-        UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
