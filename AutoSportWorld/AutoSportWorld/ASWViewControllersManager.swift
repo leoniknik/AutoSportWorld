@@ -115,6 +115,14 @@ class ASWViewControllersManager{
                 return vc
             }
         }
+        
+        static var changePassword: ASWChangePasswordViewController {
+            get{
+                let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
+                let vc = storyboard.instantiateViewController(withIdentifier: "changePassword") as! ASWChangePasswordViewController
+                return vc
+            }
+        }
 
     }
     

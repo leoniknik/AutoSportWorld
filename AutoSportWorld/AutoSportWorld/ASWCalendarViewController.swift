@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 
 
-class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     
     
@@ -73,10 +73,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         var cell = calendar.cell(for: date, at: monthPosition)
-        
         cell = setTodayCell(cell: cell!, date: date,selected: true, at: monthPosition)
-        
-        
+        currentDate = date
+        collectionView.reloadData()
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         var cell = calendar.cell(for: date, at: monthPosition)
@@ -217,6 +216,13 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         
         ufvl.backgroundColor = UIColor.white
         ufvr.backgroundColor = UIColor.white
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendar.select(Date(timeIntervalSince1970:1546250981))
     }
     
     
@@ -229,6 +235,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     //date selected
     func calendar(_ calendar: FSCalendar, didSelect date: Date) {
         currentDate = date
+        collectionView.reloadData()
         NSLog(self.dateFormatter2.string(from: date))
     }
     
@@ -241,14 +248,15 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateString = self.dateFormatter2.string(from: date)
-        if self.datesWithEvent.contains(dateString) {
-            return 1
-            
-        }
-        if self.datesWithMultipleEvents.contains(dateString) {
+        let count = eventsDictionary[date]?.count ?? 0
+        if count > 1{
             return 3
+        }else if count == 1{
+            return 1
+        }else{
+            return 0
         }
-        return 0
+        
     }
     
     func updateMonthLabel(){
@@ -315,13 +323,20 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                         dateRaces?.append(race)
                         currentMonthRacesCountChange = true
                     }
+                    
+                    eventsDictionary[raceDate] = dateRaces
                 }
             }
             
             if currentMonthRacesCountChange {
                 currentMonthRacesCountChange = false
-                collectionView.reloadData()
-                calendar.reloadData()
+                DispatchQueue.main.async {
+                    [weak self] in
+                    self?.collectionView.reloadData()
+                    self?.calendar.reloadData()
+                }
+                
+                
             }
         }
         
@@ -333,20 +348,34 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0//choosenEvents.count
+        return eventsDictionary[currentDate.removeTimeStamp()]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let race = choosenEvents[indexPath.item]
-//        let viewController = ASWEventViewController(race: race)
-//        navigationController?.pushViewController(viewController, animated: true)
+        if let race = eventsDictionary[currentDate.removeTimeStamp()]?[indexPath.item]{
+            let viewController = ASWEventViewController(race: race)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWMapAndCalendarCell", for: indexPath) as? ASWMapAndCalendarCell
-            else { return UICollectionViewCell() }
-        let event = ASWRace()//choosenEvents[indexPath.row]
+            else {
+                return UICollectionViewCell()
+                
+        }
+        
+        let eventShort = eventsDictionary[currentDate.removeTimeStamp()]?[indexPath.item] ?? ASWRace()
+        var event = eventShort
+        if let eventID = eventShort.id{
+            if let fullEvent = fullEvents[eventID] {
+                event = fullEvent
+            }else{
+                ASWNetworkManager.getEvent(request: ASWRaceRequest(raceID: Int(eventID) ?? 0))
+            }
+        }
+        
         cell.titleLabel.text = event.title
         cell.categories.text = event.getRaceCategories()
         var canWatch: String = ""
@@ -374,12 +403,23 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
             cell.titleLabel.text = "Заголовок не указан"
         }
         return cell
-        
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.size.width, height: 74)
+    }
+    
+    var fullEvents:Dictionary<String,ASWRace> = Dictionary<String,ASWRace>()
+    
+    @objc func eventCallback(_ notification: Notification) {
+        if let response = (notification.userInfo?["data"] as? ASWRaceParser) {
+            fullEvents[response.item.id ?? "nil"] = response.item
+            DispatchQueue.main.async {
+                [weak self] in self?.collectionView.reloadData()
+            }
+        }
     }
 }
 
