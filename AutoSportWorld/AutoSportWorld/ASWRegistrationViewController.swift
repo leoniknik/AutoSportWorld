@@ -521,14 +521,17 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
                 ASWDatabaseManager().setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
                 sendUserInfoToServer()
             }else{
-                let alert = UIAlertController(title: "Регистрация", message: parser.email, preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Error", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                presentOKAlert("Ошибка", parser.errorString)
+               
+//                let alert = UIAlertController(title: "Регистрация", message: parser.email, preferredStyle: .actionSheet)
+//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
             }
         }
         
-        func errorSignup(){
+        func errorSignup(parser:ASWSignupErrorParser){
             confirmButton.isEnabled = registerCollectionViewController.datasource.rawSelectedItems.count>0
+            presentAlert(errorParser: parser)
         }
         
         confirmButton.isEnabled = false
