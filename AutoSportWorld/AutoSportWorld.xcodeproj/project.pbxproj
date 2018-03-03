@@ -130,6 +130,7 @@
 		DEF487B91FF0E282008318BC /* ASWAboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */; };
 		DEF487BA1FF0E282008318BC /* ASWDevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */; };
 		DEF487BC1FF0E290008318BC /* AboutApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */; };
+		DEF6F1EA204B2A4C000F4C0A /* Date+ASWFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF6F1E9204B2A4C000F4C0A /* Date+ASWFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -260,6 +261,7 @@
 		DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAboutAppViewController.swift; sourceTree = "<group>"; };
 		DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWDevelopersViewController.swift; sourceTree = "<group>"; };
 		DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutApp.storyboard; sourceTree = "<group>"; };
+		DEF6F1E9204B2A4C000F4C0A /* Date+ASWFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ASWFunctions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 				DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */,
 				DE97B6102045804200E8F8CA /* UIViewController+ShowASWResponseError.swift */,
 				DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */,
+				DEF6F1E9204B2A4C000F4C0A /* Date+ASWFunctions.swift */,
 			);
 			name = "Extensions ";
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				DEA11E5E203C5F25009EBA26 /* ASWErrorView.swift in Sources */,
 				CA584CDF1F4886990011E653 /* ASWEmailValidator.swift in Sources */,
 				CA9CCA361F51626D006494EB /* ASWEvent.swift in Sources */,
+				DEF6F1EA204B2A4C000F4C0A /* Date+ASWFunctions.swift in Sources */,
 				CA0D21841FEDBDC900CF42FF /* ASWListRegionsParser.swift in Sources */,
 				CA159CB41FFD98FB00A501F4 /* ASWFullImageViewController.swift in Sources */,
 				DEDC45462007405500AE5B72 /* ASWAtributedString.swift in Sources */,

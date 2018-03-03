@@ -153,7 +153,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             errorFunc(ASWErrorParser(error: error, json: json))
         }
         
-        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
+        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, encoding: request.encoding, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
     }
     
     static func getUserInfo(sucsessFunc: @escaping (ASWUserInfoGetParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
@@ -168,7 +168,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             errorFunc(ASWErrorParser(error: error, json: json))
         }
         
-        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
+        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, encoding: request.encoding, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
     }
     
     static func getCalendarRaces(from: Date, to: Date, sucsessFunc: @escaping (ASWCalendarRacesParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
@@ -183,7 +183,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
             errorFunc(ASWErrorParser(error:error,json:json))
         }
         
-        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
+        ASWNetworkManager.secretRequest(URL: request.url, method: .get, parameters: request.parameters, encoding: request.encoding, onSuccess: onSuccess, onError: onError,acessToken:ASWDatabaseManager().getUser()?.access_token ?? "" )
     }
     
  
@@ -207,12 +207,12 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     }
     
 
-    private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,Error) -> Void, acessToken:String) -> Void {
+    private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, encoding: ParameterEncoding, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,Error) -> Void, acessToken:String) -> Void {
         print("requesting URL \(URL)")
         
         let headers = ["x-access-token":acessToken,"Content-Type":"application/json"]
         
-        Alamofire.request(URL, method: method, parameters: parameters,encoding: JSONEncoding.default, headers: headers ).validate().responseJSON { response in
+        Alamofire.request(URL, method: method, parameters: parameters,encoding: encoding, headers: headers ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 DispatchQueue.global(qos: .userInitiated).async {
