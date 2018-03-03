@@ -123,6 +123,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                 }else if (gregorian.component(.month, from: calendar.currentPage) == gregorian.component(.month, from: date)){
                     //текущий месяц
                     cell.contentView.backgroundColor = UIColor.white
+                    cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
                     cell.titleLabel.textColor = UIColor.black
                     cell.eventIndicator.color = UIColor.black
                 }else{
@@ -222,7 +223,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        calendar.select(Date(timeIntervalSince1970:1546250981))
+        //calendar.select(Date(timeIntervalSince1970:1546250981))
     }
     
     
@@ -262,6 +263,11 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     func updateMonthLabel(){
         let date = calendar.currentPage
         monthLabel.text = monthLabeldateFormatter.string(from: date)
+        
+        var mf = DateFormatter()
+        var months = mf.standaloneMonthSymbols;
+        months = ["Январь", "Февраль", "Март", "Апрель", "Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
+        monthLabel.text = months![date.month()]+" \(date.year())"
     }
     
     @IBAction func previousMonth(_ sender: Any) {

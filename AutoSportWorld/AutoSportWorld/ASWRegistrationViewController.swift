@@ -541,9 +541,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     func confirmChangeSettings(){
         
         func sucsessSend(){
-            let alert = UIAlertController(title: "Успех", message: self.changeSettingsSuccessMessage, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: goBack))
-            self.present(alert, animated: true, completion: nil)
+            presentOKAlert("Успех", self.changeSettingsSuccessMessage)
         }
         
         func errorSend(parser:ASWErrorParser){
