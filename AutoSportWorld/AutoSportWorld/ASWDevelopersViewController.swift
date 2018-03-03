@@ -11,18 +11,29 @@ import UIKit
 class ASWDevelopersViewController: UIViewController {
 
     @IBOutlet weak var mailLabel: UILabel!
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.hidesBottomBarWhenPushed = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
-    func setupUI(){
-        //mailLabel.textColor = UIColor.ASWColor.pink
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-
-    @IBAction func goBack(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
+    
+    func setupUI(){
+        addBackButton(animated: true)
+        setupBlackOpaqueNavBar()
+        navigationController?.navigationBar.tintColor = .white
     }
     
 }

@@ -25,19 +25,23 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var settingsTable: UITableView!
     
-    let sections = ["Данные пользователя", "Социальные сети", "Настройка фильтров"]
+    let sections = ["Информация о пользователе", "Социальные сети", "Фильтры"]
     
-    let items = [["Имя", "Эл.адрес", "Телефон", "Сменить пароль"], ["Вконтакте", "Одноклассники", "Facebook"], ["Регионы", "Категории гонок"]]
+    let items = [["Личные данные", "Пароль"], ["Вконтакте"], ["Регионы", "Категории гонок","Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
+    let botomItems = [["Имя, E-mail, телефон", "Сменить"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+
     }
     
     //настройка UI
     func setupUI() {
         setupSettingsTable()
-        setupNavbar()
+        setupBlackOpaqueNavBar()
+        addBackButton(animated: true)
+        navigationController?.navigationBar.tintColor = .white
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -111,7 +115,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsUserDataCell", for: indexPath) as! ASWSettingsUserDataCell
             cell.infoLabel.text = items[indexPath.section][indexPath.item]
-//            cell.dataLabel =
+            cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
             return cell
         }
         else if indexPath.section == 1 {
@@ -120,14 +124,14 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
             return cell
         }
         else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsFilterCell", for: indexPath) as! ASWSettingsFilterCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsUserDataCell", for: indexPath) as! ASWSettingsUserDataCell
             cell.infoLabel.text = items[indexPath.section][indexPath.item]
+//            cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
             return cell
         }
         else {
             return UITableViewCell()
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -150,22 +154,16 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     //высота ячеек
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        return 56
     }
     
     //выбор ячейки
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 2 && indexPath.item == 0 {
             performSegue(withIdentifier: ASWSegueRouter.changeRegions, sender: nil)
         }
-    }
-    
-    //MARK: - IBAction
-    
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: - functions

@@ -11,8 +11,8 @@ import UIKit
 class ASWSettingsUserDataCell: UITableViewCell {
     
     @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var dataLabel: UILabel!
-
+    @IBOutlet weak var bottomLine: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -36,8 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //настройка цвета выделенного tab item
         UITabBar.appearance().tintColor = UIColor.white
     
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.ASWColor.grey], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedStringKey.foregroundColor: UIColor.ASWColor.grey],
+            for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedStringKey.foregroundColor: UIColor.white],
+            for: .selected)
     }
     
     

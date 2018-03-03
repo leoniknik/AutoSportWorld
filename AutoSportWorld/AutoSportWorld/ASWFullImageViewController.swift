@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ASWFullImageViewController: UIViewController {
 
@@ -25,7 +26,9 @@ class ASWFullImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.eventImage.image = race.image
+        guard let urlString = race.imageURL else {return}
+        guard let url = URL(string: urlString) else {return}
+        eventImage.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
     }
 
     @IBAction func goBack(_ sender: UIButton) {

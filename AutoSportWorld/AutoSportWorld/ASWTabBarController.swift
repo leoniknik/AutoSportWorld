@@ -11,7 +11,32 @@ import UIKit
 class ASWTabBarController: UITabBarController {
     
     @IBOutlet weak var tabbar: UITabBar!
-    var events = [ASWRace]()
+    
+    var mapEvents = [ASWMapRace]()
+    
+    var events = [ASWRace]() {
+        didSet {
+            mapEvents.removeAll()
+            for event in events {
+                var isAdded = false
+                guard let latitude = event.latitude, let longitude = event.longitude else {
+                        continue
+                }
+                for mapEvent in mapEvents {
+                    if latitude == mapEvent.latitude, longitude == mapEvent.longitude {
+                        mapEvent.events.append(event)
+                        isAdded = true
+                        break
+                    }
+                }
+                if !isAdded {
+                    mapEvents.append(ASWMapRace(latitude: latitude,
+                                                longitude: longitude,
+                                                events: [event]))
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,4 +97,16 @@ class ASWTabBarController: UITabBarController {
         myTabBarItem3.image = UIImage(named: "ic_calendar")?.withRenderingMode(UIImageRenderingMode.automatic)
     }
     
+}
+
+class ASWMapRace {
+    var latitude: Double
+    var longitude: Double
+    var events: [ASWRace]
+    
+    init(latitude: Double, longitude: Double, events: [ASWRace]) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.events = events
+    }
 }

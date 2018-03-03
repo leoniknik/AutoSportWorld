@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ASWEventViewController: UIViewController {
 
@@ -131,12 +132,14 @@ class ASWEventViewController: UIViewController {
     }
     
     func setupRace() {
-        if let image = race.image {
-            raceImage.image = image
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showFullImage))
-            raceImage.isUserInteractionEnabled = true
-            raceImage.addGestureRecognizer(tapGestureRecognizer)
-        }
+        guard let urlString = race.imageURL else {return}
+        guard let url = URL(string: urlString) else {return}
+            
+        raceImage.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(1))], progressBlock: nil, completionHandler: nil)
+            
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showFullImage))
+        raceImage.isUserInteractionEnabled = true
+        raceImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func setupShedule() {
@@ -240,6 +243,9 @@ class ASWEventViewController: UIViewController {
     }
     
     @objc func goBack() {
+        if let viewController = navigationController?.previousViewController() as? ASWMapViewController {
+            viewController.shouldClear = false
+        }
         self.navigationController?.popViewController(animated: false)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class ASWAboutAppViewController: UIViewController {
 
@@ -18,12 +19,26 @@ class ASWAboutAppViewController: UIViewController {
     
     @IBOutlet weak var termsOfUseButton: UIButton!
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.hidesBottomBarWhenPushed = true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.title = "О приложении"
         setupUI()
-        versionLabel.text = "Версия: \( UIApplication.versionBuild())"
+        addBackButton(animated: true)
+        setupBlackOpaqueNavBar()
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func setupUI(){
@@ -33,7 +48,7 @@ class ASWAboutAppViewController: UIViewController {
     
     
     @IBAction func rate(_ sender: Any) {
-        //UIApplication.shared.openURL(NSURL(string : "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=<iTUNES CONNECT APP ID>")! as URL)
+        SKStoreReviewController.requestReview()
     }
 
     @IBAction func termsOfUseAction(_ sender: Any) {

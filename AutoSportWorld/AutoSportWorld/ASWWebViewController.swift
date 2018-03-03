@@ -59,14 +59,23 @@ extension UIViewController {
         navigationController?.navigationBar.barStyle = .blackOpaque
     }
 
-    func addBackButton() {
-        let backButton = UIBarButtonItem(image: UIImage.backward, style: .done, target: self, action: #selector(goBackDefault))
+    func addBackButton(animated: Bool = false) {
+        let backButton: UIBarButtonItem
+        if !animated {
+            backButton = UIBarButtonItem(image: UIImage.backward, style: .done, target: self, action: #selector(goBackDefault))
+        } else {
+            backButton = UIBarButtonItem(image: UIImage.backward, style: .done, target: self, action: #selector(goBackAnimated))
+        }
         self.navigationItem.setLeftBarButton(backButton, animated: false)
 
     }
     
     @objc func goBackDefault() {
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    @objc func goBackAnimated() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func hideTabBarView() {
