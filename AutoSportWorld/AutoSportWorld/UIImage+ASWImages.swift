@@ -14,9 +14,9 @@ extension UIImage {
     static let likedOff = UIImage(named: "ic_like_off")
     static let likedOn = UIImage(named: "ic_like_on")
     
-    static let passwordSecureOnPicture = UIImage(named: "ic_password_on")
-    static let passwordSecureOffPictureWhiteBack = UIImage(named: "ic_password_off")
-    static let passwordSecureOffPictureBlackBack = UIImage(named: "ic_password_off")
+    static let passwordSecureOnPicture = #imageLiteral(resourceName: "eye_on")//UIImage(named: "ic_password_on")
+    static let passwordSecureOffPictureWhiteBack = #imageLiteral(resourceName: "eye_off_whiteBack")//UIImage(named: "ic_password_off")
+    static let passwordSecureOffPictureBlackBack = #imageLiteral(resourceName: "eye_off_blackBack")//UIImage(named: "ic_password_off")
     
     static let share = UIImage(named: "ic_share")
 
