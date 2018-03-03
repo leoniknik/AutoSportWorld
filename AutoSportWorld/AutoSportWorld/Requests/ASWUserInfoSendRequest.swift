@@ -18,6 +18,7 @@ class ASWUserInfoSendRequest: ASWRequest {
         parameters["category_ids"] = categories
         parameters["can_watch"] = watch
         parameters["can_join"] = join
+        encoding = JSONEncoding.default
     }
     
 }

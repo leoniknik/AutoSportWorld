@@ -42,13 +42,13 @@ class ASWLoginErrorParser:ASWErrorParser {
     }
 }
 
-class ASWSignupErrorParser {
+class ASWSignupErrorParser:ASWErrorParser {
     
     var emailHasAlreadyBeenTaken:Bool = false
     var wrongPassword:Bool = false
     
-    init(json: JSON) {
-        
+    override init(error: Error,json: JSON) {
+        super.init(error: error, json: json)
         print(json["message"].stringValue)
         
         switch json["message"].stringValue {
@@ -64,7 +64,7 @@ class ASWSignupErrorParser {
 }
 
 class ASWSignupParser {
-    var email = ""
+    var errorString = ""
     var valid = false
     
     var refresh_token = ""
@@ -83,7 +83,10 @@ class ASWSignupParser {
             expires_at = sessionInfo["expires_at"].intValue
         }else{
             let errors = json["errors"]
-            email = errors[email].array?.first?.stringValue ?? "emailError"
+            errorString = errors["email"].array?.first?.stringValue ?? "Неизвестная ошибка"
+            if let pasErr = errors["password"].array?.first?.stringValue{
+                errorString += "\n" + pasErr
+            }
         }
     }
 }

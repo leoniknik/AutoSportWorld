@@ -135,10 +135,12 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         func sucsessFunc(parser:ASWUserInfoGetParser){
             ASWDatabaseManager().setUserInfo(parser:parser)
             leaveWaitMode()
+
+
             DispatchQueue.main.async {
                 self.openMainStoryboard()
             }
-//            presentOKAlert("ok","ok")
+
         }
         
         func errorFunc(parser:ASWErrorParser){
@@ -152,6 +154,7 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     }
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {
+        present(ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController, animated: true, completion: nil)
         presentOKAlert("Функция недоступна", "Данная функция находится в разработке")
     }
     

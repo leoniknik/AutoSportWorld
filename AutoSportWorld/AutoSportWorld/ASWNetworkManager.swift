@@ -125,7 +125,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func signupUser(email:String,password:String, sucsessFunc: @escaping (ASWSignupParser)->Void,  errorFunc: @escaping ()->Void) {
+    static func signupUser(email:String,password:String, sucsessFunc: @escaping (ASWSignupParser)->Void,  errorFunc: @escaping (ASWSignupErrorParser)->Void) {
         var request = ASWSignupRequest(email:email,password:password)
         
         func onSuccess(json: JSON) -> Void{
@@ -134,8 +134,8 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
         
         func onError(json: JSON, error: Error) -> Void {
-            let response = ASWSignupErrorParser(json: json)
-            errorFunc()
+            let response = ASWSignupErrorParser(error: error,json: json)
+            errorFunc(response)
         }
         
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
