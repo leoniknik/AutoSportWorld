@@ -151,7 +151,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                         //}
                     }
                 })
-                
+                cell.image.image = UIImage(ciImage: grayscale!)
 //                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 //                    ImageDownloader.default.downloadImage(with: URL(string:curItem.imageUrl ?? "")!, options: [], progressBlock: nil) {
 //                        (image, error, url, data) in
