@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3dX-a0-oGQ">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,7 +20,7 @@
                     </tabBarItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="5Gt-5n-0sT">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -36,7 +36,7 @@
             <objects>
                 <viewController id="IsW-B3-udk" customClass="ASWCalendarViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c0B-MD-UzX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-Gh-VpS" customClass="FSCalendar">
@@ -84,7 +84,7 @@
                                 <rect key="frame" x="5" y="5" width="365" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPf-Dr-e9z">
-                                        <rect key="frame" x="107.66666666666669" y="15" width="150" height="21"/>
+                                        <rect key="frame" x="107.5" y="15" width="150" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JUh-Np-YrT"/>
                                             <constraint firstAttribute="width" constant="150" id="d9s-bl-z4a"/>
@@ -94,7 +94,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHS-cU-BnA">
-                                        <rect key="frame" x="257.66666666666669" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="257.5" y="10" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kf9-3i-dXL"/>
                                         </constraints>
@@ -105,7 +105,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-oq-tUg">
-                                        <rect key="frame" x="57.666666666666657" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="57.5" y="10" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="x5U-ag-8od"/>
                                         </constraints>
@@ -205,7 +205,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xHx-hd-Z50">
-                                <rect key="frame" x="0.0" y="567" width="375" height="74"/>
+                                <rect key="frame" x="0.0" y="529" width="375" height="74"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="74" id="wSf-5C-GoB"/>
@@ -241,9 +241,10 @@
                         <viewLayoutGuide key="safeArea" id="wNk-2l-gHp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Календарь" id="lBP-EG-CON"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
+                        <outlet property="collectioViewHeightConstraint" destination="wSf-5C-GoB" id="T4g-FI-uvK"/>
                         <outlet property="collectionView" destination="xHx-hd-Z50" id="Gqu-m9-h52"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
                         <outlet property="nextMonthButton" destination="dHS-cU-BnA" id="Tae-do-LvO"/>
