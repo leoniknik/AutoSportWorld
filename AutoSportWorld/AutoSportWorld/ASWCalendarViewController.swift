@@ -25,6 +25,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var textSize = 26
     
     fileprivate let borderWidth = CGFloat(1)
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
@@ -78,9 +79,11 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         collectionView.reloadData()
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        var cell = calendar.cell(for: date, at: monthPosition)
+        if let cell = calendar.cell(for: date, at: monthPosition){
         
-        cell = setTodayCell(cell: cell!, date: date,selected: false, at: monthPosition)
+            _ = setTodayCell(cell: cell, date: date,selected: false, at: monthPosition)
+            
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -100,7 +103,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
             cell.contentView.layer.borderWidth = borderWidth
             cell.contentView.backgroundColor = UIColor.white
             cell.titleLabel.textColor = UIColor.black
-            cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
+            cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
             //cell.imageView.isHidden = true
         }
         else{
@@ -108,6 +111,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                 //выделена ячейка
                 cell.contentView.layer.borderWidth = borderWidth
                 cell.contentView.backgroundColor = UIColor.gray
+                cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
                 cell.titleLabel.textColor = UIColor.white
                 cell.eventIndicator.color = UIColor.white
             }
@@ -116,20 +120,20 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                 if(dateFormatter1.string(from: date) == dateFormatter1.string(from: Date())){
                     //сегодняшняя ячейка
                     cell.contentView.layer.borderWidth = borderWidth
-                    cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
+                    cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
                     cell.backgroundColor = UIColor.white
                     cell.titleLabel.textColor = UIColor.black
                     cell.eventIndicator.color = UIColor.black
                 }else if (gregorian.component(.month, from: calendar.currentPage) == gregorian.component(.month, from: date)){
                     //текущий месяц
                     cell.contentView.backgroundColor = UIColor.white
-                    cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
+                    cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
                     let dateString = self.dateFormatter2.string(from: date)
                     let count = eventsDictionary[date]?.count ?? 0
                     if count > 0 {
                         cell.contentView.layer.borderWidth = borderWidth
                         cell.contentView.backgroundColor = UIColor.ASWColor.greyBackground
-                        cell.titleLabel.font = UIFont.boldSystemFont(ofSize: 26)
+                        cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
                         cell.backgroundColor = UIColor.white
                         cell.titleLabel.textColor = UIColor.black
                     }else{
@@ -142,6 +146,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     cell.contentView.backgroundColor = UIColor.white
                     cell.titleLabel.textColor = UIColor.ASWColor.grey
                     cell.eventIndicator.color = UIColor.ASWColor.grey
+                    cell.titleLabel.font = UIFont.systemFont(ofSize: CGFloat(textSize))
                 }
             }
         }
@@ -153,7 +158,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        textSize = 17//ASWConstants.isIPhone5 ? 17 : 26
         setupNavbar()
         
         collectionView.dataSource = self
@@ -179,7 +184,8 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         //calendar.appearance.titleFont.withSize(26)
         
         //дни недели
-        calendar.appearance.weekdayFont.withSize(26)
+        calendar.appearance.weekdayFont.withSize(CGFloat(textSize))
+        calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: CGFloat(textSize))
         calendar.appearance.weekdayTextColor = UIColor.ASWColor.grey;
         
         calendar.appearance.borderRadius = 0// квадрат

@@ -127,8 +127,8 @@ public extension UIDevice {
     }
 }
 
-struct ASWConstants{
-    var isIPhone5: Bool {
+class ASWConstants{
+    static var isIPhone5: Bool {
         get{
            return UIDevice().type == .iPhone5S
         }

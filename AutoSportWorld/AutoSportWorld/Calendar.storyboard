@@ -85,7 +85,7 @@
                                 <rect key="frame" x="18" y="5" width="284" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----------------------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPf-Dr-e9z">
-                                        <rect key="frame" x="67" y="15" width="150" height="21"/>
+                                        <rect key="frame" x="67" y="7" width="150" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JUh-Np-YrT"/>
                                             <constraint firstAttribute="width" constant="150" id="d9s-bl-z4a"/>
@@ -95,7 +95,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHS-cU-BnA">
-                                        <rect key="frame" x="217" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="217" y="2.5" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="kf9-3i-dXL"/>
                                         </constraints>
@@ -106,7 +106,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9r8-oq-tUg">
-                                        <rect key="frame" x="17" y="10" width="50" height="30"/>
+                                        <rect key="frame" x="17" y="2.5" width="50" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="x5U-ag-8od"/>
                                         </constraints>
@@ -121,9 +121,9 @@
                                 <constraints>
                                     <constraint firstItem="pPf-Dr-e9z" firstAttribute="centerX" secondItem="FOX-ia-6S5" secondAttribute="centerX" id="EkV-L4-ZUF"/>
                                     <constraint firstItem="pPf-Dr-e9z" firstAttribute="leading" secondItem="9r8-oq-tUg" secondAttribute="trailing" id="H7q-gA-mWk"/>
-                                    <constraint firstItem="9r8-oq-tUg" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="top" constant="10" id="QSN-aG-iDJ"/>
-                                    <constraint firstItem="pPf-Dr-e9z" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="top" constant="15" id="ayN-S0-nny"/>
-                                    <constraint firstItem="dHS-cU-BnA" firstAttribute="top" secondItem="FOX-ia-6S5" secondAttribute="top" constant="10" id="n9z-mR-a7J"/>
+                                    <constraint firstItem="dHS-cU-BnA" firstAttribute="centerY" secondItem="pPf-Dr-e9z" secondAttribute="centerY" id="OTY-2A-3Ey"/>
+                                    <constraint firstItem="9r8-oq-tUg" firstAttribute="centerY" secondItem="pPf-Dr-e9z" secondAttribute="centerY" id="SYI-0R-ajk"/>
+                                    <constraint firstItem="pPf-Dr-e9z" firstAttribute="centerY" secondItem="FOX-ia-6S5" secondAttribute="centerY" id="aiF-UZ-CfQ"/>
                                     <constraint firstItem="dHS-cU-BnA" firstAttribute="leading" secondItem="pPf-Dr-e9z" secondAttribute="trailing" id="ty7-Px-Z56"/>
                                 </constraints>
                             </view>
