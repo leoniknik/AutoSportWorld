@@ -118,6 +118,7 @@
 		DEA11E60203C77B0009EBA26 /* UIView+ShowASWErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */; };
 		DEA11E68203D4C7E009EBA26 /* UIAplication+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */; };
 		DEA11E6D203D7870009EBA26 /* ASWChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */; };
+		DED63422204D705400880347 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED63421204D705400880347 /* Constants.swift */; };
 		DEDA9F22204676E10042DEA5 /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */; };
 		DEDA9F272046A7470042DEA5 /* RegistrationAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */; };
 		DEDC453A20073D2E00AE5B72 /* ASWActionTypeCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC453720073D2D00AE5B72 /* ASWActionTypeCollectionViewDataSource.swift */; };
@@ -254,6 +255,7 @@
 		DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ShowASWErrorView.swift"; sourceTree = "<group>"; };
 		DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication+Version.swift"; sourceTree = "<group>"; };
 		DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangeUserInfoViewController.swift; sourceTree = "<group>"; };
+		DED63421204D705400880347 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
 		DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RegistrationAssets.xcassets; sourceTree = "<group>"; };
 		DEDC453720073D2D00AE5B72 /* ASWActionTypeCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWActionTypeCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 				CA323B2D1F379ADA007157D4 /* Assets.xcassets */,
 				CA323B321F379ADA007157D4 /* Info.plist */,
 				DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */,
+				DED63421204D705400880347 /* Constants.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				CA3710B31F37BC86003578E5 /* ASWBackBarButtonItem.swift in Sources */,
 				CA04AAF41FFAC45500F1ACC3 /* ASWFilterService.swift in Sources */,
 				CAC3DC5A2044930200EE4F50 /* TokenService.swift in Sources */,
+				DED63422204D705400880347 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
