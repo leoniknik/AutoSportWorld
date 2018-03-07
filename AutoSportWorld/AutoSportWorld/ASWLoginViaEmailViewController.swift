@@ -81,7 +81,6 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     }
     
     func updateFormValid(){
-        var bool = !passwordField.incorrectMod && !loginField.incorrectMod
         loginButton.isEnabled = !passwordField.incorrectMod && !loginField.incorrectMod
     }
     

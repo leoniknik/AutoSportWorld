@@ -10,15 +10,9 @@ import UIKit
 import SwiftyJSON
 
 class ASWCalendarRacesParser {
-//    var canWatch = false
-//    var canJoin = false
-//    
-//    var categoriesParser: ASWListCategoryParser
-//    var regionsParser: ASWListRegionsParser
     var racesParser: ASWListRacesParser
 
     init(json: JSON) {
         racesParser = ASWListRacesParser(json:json)
     }
-    
 }

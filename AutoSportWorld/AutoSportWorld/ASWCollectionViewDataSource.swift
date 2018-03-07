@@ -102,13 +102,6 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
     }
     
     func syncItems() {
-        
-//        guard isSearching else {
-//            rawAvailableItems = availableItems
-//            rawSelectedItems = selectedItems
-//            return
-//        }
-        
         for availableItem in availableItems {
             if let index = rawSelectedItems.index(where: { $0.id == availableItem.id }){
                 rawSelectedItems.remove(at: index)

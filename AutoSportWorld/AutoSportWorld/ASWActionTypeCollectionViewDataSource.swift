@@ -6,16 +6,6 @@
 //  Copyright © 2018 Кирилл Володин. All rights reserved.
 //
 
-//
-//  ASWCollectionViewDataSource.swift
-//  AutoSportWorld
-//
-//  Created by Кирилл Володин on 16.08.17.
-//  Copyright © 2017 Кирилл Володин. All rights reserved.
-//
-
-
-
 import UIKit
 
 protocol ASWActionTypeCollectionViewDataSourceDelegate{
@@ -38,16 +28,7 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         self.collectionView = collectionView
         self.watch = watch
         self.join = join
-//        if(auto){
-//
-//            titleForSelectedItems = ["Выбранные действия для ","автогонок",""]
-//            titleForAvailableItems = ["Выберите интересующее действие для ","автогонок",""]
-//        }else{
-//
-//            titleForSelectedItems = ["Выбранные действия для ","мотогонок",""]
-//            titleForAvailableItems = ["Выберите интересующее действие для ","мотогонок",""]
-//        }
-        
+
         if(auto){
             
             titleForSelectedItems = ["Выбранные действия ","",""]
@@ -57,13 +38,7 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
             titleForSelectedItems = ["Выбранные действия","",""]
             titleForAvailableItems = ["Выберите интересующее действие","",""]
         }
-        
-        
-        //        0 - watch
-        //        1 - join
-        
-        
-            
+
             if watch {
                 rawSelectedItems.append(ASWCollectionItem(0))
             }else{
@@ -75,13 +50,8 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
             }else{
                 rawAvailableItems.append(ASWCollectionItem(1))
             }
-            
-        
-
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
-        
-        
     }
 
     

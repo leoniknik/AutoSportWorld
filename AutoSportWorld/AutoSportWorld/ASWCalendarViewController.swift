@@ -25,8 +25,17 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var textSize = 26
+    @IBOutlet weak var v: UIView!
     
+    @IBOutlet weak var ubvl: UIView!
+    @IBOutlet weak var ubvr: UIView!
+    @IBOutlet weak var ufvl: UIView!
+    @IBOutlet weak var ufvr: UIView!
+    
+    var textSize = 26
+    var currentDate:Date = Date()
+    var eventsDictionary: Dictionary<Date,[ASWRace]> = Dictionary<Date,[ASWRace]>()
+    var currentMonthRacesCountChange = true
     fileprivate let borderWidth = CGFloat(1)
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     
@@ -35,7 +44,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
-    
     
     fileprivate lazy var dateFormatter2: DateFormatter = {
         let formatter = DateFormatter()
@@ -48,24 +56,82 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         formatter.dateFormat = "MMMM yyyy"
         return formatter
     }()
-    
-    var datesWithEvent = ["2017-10-29","2017-11-01","2017-11-03"]
-    var datesWithMultipleEvents = ["2017-11-04","2017-11-05","2017-11-06"]
 
-    //    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-    //        calendar.allowsMultipleSelection = false
-    //        var cell = calendar.cell(for: date, at: monthPosition)
-    //        cell?.backgroundColor = UIColor.gray
-    //        return true
-    //    }
-    //
-    //    func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-    //
-    //        var cell = calendar.cell(for: date, at: monthPosition)
-    //        cell?.backgroundColor = UIColor.white
-    //        return true
-    //    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textSize = 17//ASWConstants.isIPhone5 ? 17 : 26
+        setupNavbar()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
+        
+        calendar.delegate = self
+        calendar.dataSource = self
+        calendar.allowsMultipleSelection = false
+        calendar.swipeToChooseGesture.isEnabled = false
+        
+        //бекграунд
+        calendar.backgroundColor = UIColor.white
+        
+        //first day = monday
+        calendar.firstWeekday = 0
+        calendar.appearance.headerMinimumDissolvedAlpha = 0;
+        
+        // kill native title
+        calendar.appearance.headerTitleFont = calendar.appearance.headerTitleFont.withSize(0)
+        
+        //дни недели
+        calendar.appearance.weekdayFont.withSize(CGFloat(textSize))
+        calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: CGFloat(textSize))
+        calendar.appearance.weekdayTextColor = UIColor.ASWColor.grey;
+        
+        calendar.appearance.borderRadius = 0// квадрат
+        
+        //today cell color
+        calendar.appearance.todayColor = UIColor.white
+        
+        //setup next prev month buttons
+        prevMonthButton.setTitleColor(UIColor.ASWColor.grey, for: [])
+        nextMonthButton.setTitleColor(UIColor.ASWColor.grey, for: [])
+        
+        calendar.appearance.borderSelectionColor = UIColor.gray.withAlphaComponent(0)
+        calendar.appearance.selectionColor = UIColor.gray.withAlphaComponent(0)
+        calendar.appearance.todaySelectionColor = UIColor.gray.withAlphaComponent(0)
+        
+        // events
+        calendar.appearance.eventDefaultColor = UIColor.ASWColor.black
+        calendar.appearance.eventSelectionColor = UIColor.white
+        
+        calendar.layer.cornerRadius = 10.0
+        calendar.clipsToBounds = true
+        //titleView.layer.cornerRadius = 10.0
+        //titleView.clipsToBounds = true
+        
+        //calendar.select(Date())
+        self.calendar.setCurrentPage(Date(), animated: false)
+        updateMonthLabel()
+
+        v.layer.cornerRadius = 10.0
+        v.clipsToBounds = true
+        self.view.backgroundColor = UIColor.ASWColor.greyBackground
+        v.backgroundColor = UIColor.clear
+        
+        ubvl.backgroundColor = UIColor.ASWColor.greyBackground
+        ubvr.backgroundColor = UIColor.ASWColor.greyBackground
+        
+        ufvl.backgroundColor = UIColor.white
+        ufvr.backgroundColor = UIColor.white
+
+        NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
+        self.getEvents(forDate: Date())
+        self.setupCollectionView()
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getEvents(forDate: currentDate)
+    }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
         
@@ -81,13 +147,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         collectionView.reloadData()
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-
         if let cell = calendar.cell(for: date, at: monthPosition){
-        
             _ = setTodayCell(cell: cell, date: date,selected: false, at: monthPosition)
-            
         }
-
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -132,7 +194,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     //текущий месяц
                     cell.contentView.backgroundColor = UIColor.white
                     cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
-                    let dateString = self.dateFormatter2.string(from: date)
                     let count = eventsDictionary[date]?.count ?? 0
                     if count > 0 {
                         cell.contentView.layer.borderWidth = borderWidth
@@ -154,109 +215,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                 }
             }
         }
-        
         return cell
     }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        textSize = 17//ASWConstants.isIPhone5 ? 17 : 26
-        setupNavbar()
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
-        
-        calendar.delegate = self
-        calendar.dataSource = self
-        calendar.allowsMultipleSelection = false
-        calendar.swipeToChooseGesture.isEnabled = false
-        
-        //бекграунд
-        calendar.backgroundColor = UIColor.white
-        
-        //first day = monday
-        calendar.firstWeekday = 0
-        calendar.appearance.headerMinimumDissolvedAlpha = 0;
-        
-        // kill native title
-        calendar.appearance.headerTitleFont = calendar.appearance.headerTitleFont.withSize(0)
-        
-        //font for cells
-        //calendar.appearance.titleFont.withSize(26)
-        
-        //дни недели
-        calendar.appearance.weekdayFont.withSize(CGFloat(textSize))
-        calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: CGFloat(textSize))
-        calendar.appearance.weekdayTextColor = UIColor.ASWColor.grey;
-        
-        calendar.appearance.borderRadius = 0// квадрат
-        
-        //today cell color
-        calendar.appearance.todayColor = UIColor.white
-        
-        //setup next prev month buttons
-        prevMonthButton.setTitleColor(UIColor.ASWColor.grey, for: [])
-        nextMonthButton.setTitleColor(UIColor.ASWColor.grey, for: [])
-        
-        
-        
-        calendar.appearance.borderSelectionColor = UIColor.gray.withAlphaComponent(0)
-        calendar.appearance.selectionColor = UIColor.gray.withAlphaComponent(0)
-        calendar.appearance.todaySelectionColor = UIColor.gray.withAlphaComponent(0)
-        
-        
-        // events
-        calendar.appearance.eventDefaultColor = UIColor.ASWColor.black
-        calendar.appearance.eventSelectionColor = UIColor.white
-        
-        calendar.layer.cornerRadius = 10.0
-        calendar.clipsToBounds = true
-        //titleView.layer.cornerRadius = 10.0
-        //titleView.clipsToBounds = true
-        
-        //calendar.select(Date())
-        self.calendar.setCurrentPage(Date(), animated: false)
-        updateMonthLabel()
-        
-        
-        //test code
-//        v.backgroundColor=UIColor.clear
-        v.layer.cornerRadius = 10.0
-        v.clipsToBounds = true
-//        v.layer.borderColor = UIColor.red.cgColor
-//        v.layer.borderWidth = 1
-//        calendar.layer.borderColor = UIColor.red.cgColor
-        
-        self.view.backgroundColor = UIColor.ASWColor.greyBackground
-        v.backgroundColor = UIColor.clear
-        
-        ubvl.backgroundColor = UIColor.ASWColor.greyBackground
-        ubvr.backgroundColor = UIColor.ASWColor.greyBackground
-        
-        ufvl.backgroundColor = UIColor.white
-        ufvr.backgroundColor = UIColor.white
-        
-        collectioViewHeightConstraint.constant = 0
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
-        self.getEvents(forDate: Date())
-        self.setupCollectionView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getEvents(forDate: currentDate)
-        //calendar.select(Date())
-        //calendar.select(Date(timeIntervalSince1970:1546250981))
-    }
-    
-    
-    var currentDate:Date = Date()
-    
+
     func todayItemClicked(sender: AnyObject) {
         self.calendar.setCurrentPage(Date(), animated: false)
     }
@@ -276,7 +237,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateString = self.dateFormatter2.string(from: date)
         let count = eventsDictionary[date]?.count ?? 0
         if count > 1{
             return 3
@@ -285,14 +245,12 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         }else{
             return 0
         }
-        
     }
     
     func updateMonthLabel(){
         let date = calendar.currentPage
         monthLabel.text = monthLabeldateFormatter.string(from: date)
-        
-        var mf = DateFormatter()
+        let mf = DateFormatter()
         var months = mf.standaloneMonthSymbols;
         months = ["Январь", "Февраль", "Март", "Апрель", "Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
         monthLabel.text = months![date.month()]+" \(date.year())"
@@ -310,13 +268,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         calendar.setCurrentPage(date, animated: true)
     }
 
-    @IBOutlet weak var v: UIView!
-    
-    @IBOutlet weak var ubvl: UIView!
-    @IBOutlet weak var ubvr: UIView!
-    @IBOutlet weak var ufvl: UIView!
-    @IBOutlet weak var ufvr: UIView!
-    
     func setupNavbar() {
         //убираем полоску между хедером и навигейшен баром
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -330,10 +281,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         let viewController = ASWFiltersViewController()
         self.navigationController?.pushViewController(viewController, animated: false)
     }
-    
-    
-    var eventsDictionary: Dictionary<Date,[ASWRace]> = Dictionary<Date,[ASWRace]>()
-    var currentMonthRacesCountChange = true
     
     func getEvents(forDate date:Date){
         let currentMonth = date.firstDayOfMonth()
@@ -350,14 +297,11 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     }
                     
                     var dateRaces = eventsDictionary[raceDate]
-                    
                     let contains = eventsDictionary[raceDate]?.contains(where: {element in return race.id == element.id}) ?? false
-                    
                     if(!contains){
                         dateRaces?.append(race)
                         currentMonthRacesCountChange = true
                     }
-                    
                     eventsDictionary[raceDate] = dateRaces
                 }
             }
@@ -369,8 +313,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     self?.collectionView.reloadData()
                     self?.calendar.reloadData()
                 }
-                
-                
             }
         }
         
