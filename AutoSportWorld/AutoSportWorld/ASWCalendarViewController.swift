@@ -407,8 +407,8 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                 event = fullEvent
             }else{
                 ASWNetworkManager.getEvent(request: ASWRaceRequest(raceID: Int(eventID) ?? 0))
+                event = eventShort
             }
-            //event = eventShort
         }
         
         cell.titleLabel.text = event.title
