@@ -76,14 +76,18 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         var cell = calendar.cell(for: date, at: monthPosition)
         cell = setTodayCell(cell: cell!, date: date,selected: true, at: monthPosition)
         currentDate = date
+        
+        setupCollectionView()
         collectionView.reloadData()
     }
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+
         if let cell = calendar.cell(for: date, at: monthPosition){
         
             _ = setTodayCell(cell: cell, date: date,selected: false, at: monthPosition)
             
         }
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -235,11 +239,18 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         ufvl.backgroundColor = UIColor.white
         ufvr.backgroundColor = UIColor.white
         
+        collectioViewHeightConstraint.constant = 0
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
+        self.getEvents(forDate: Date())
+        self.setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getEvents(forDate: currentDate)
+        //calendar.select(Date())
         //calendar.select(Date(timeIntervalSince1970:1546250981))
     }
     
@@ -436,11 +447,24 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     var fullEvents:Dictionary<String,ASWRace> = Dictionary<String,ASWRace>()
     
+    @IBOutlet weak var collectioViewHeightConstraint: NSLayoutConstraint!
+    
+    func setupCollectionView(){
+        let count = eventsDictionary[currentDate]?.count ?? 0
+        UIView.animate(withDuration: 0.5, animations: {
+//            self.collectionView.heightAnchor.constraint(equalToConstant: count>0 ? 74 : 0).isActive = true
+            //self.collectioViewHeightConstraint.constant = count>0 ? 100 : 0
+            self.collectionView.alpha = count>0 ? 1 : 0
+            self.collectionView.setNeedsLayout()
+        })
+    }
+    
     @objc func eventCallback(_ notification: Notification) {
         if let response = (notification.userInfo?["data"] as? ASWRaceParser) {
             fullEvents[response.item.id ?? "nil"] = response.item
             DispatchQueue.main.async {
                 [weak self] in self?.collectionView.reloadData()
+                self?.setupCollectionView()
             }
         }
     }

@@ -205,13 +205,13 @@
                                     <constraint firstItem="9hc-Kn-Uje" firstAttribute="leading" secondItem="7S0-m0-QeG" secondAttribute="leading" id="x81-ha-fwZ"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xHx-hd-Z50">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xHx-hd-Z50">
                                 <rect key="frame" x="0.0" y="355" width="320" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="wSf-5C-GoB"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KH0-Bc-Nvl">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KH0-Bc-Nvl">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -245,6 +245,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="calendar" destination="e8a-Gh-VpS" id="HGZ-SG-jka"/>
+                        <outlet property="collectioViewHeightConstraint" destination="wSf-5C-GoB" id="W7l-NG-hDi"/>
                         <outlet property="collectionView" destination="xHx-hd-Z50" id="Gqu-m9-h52"/>
                         <outlet property="monthLabel" destination="pPf-Dr-e9z" id="a9S-11-Kbo"/>
                         <outlet property="nextMonthButton" destination="dHS-cU-BnA" id="Tae-do-LvO"/>
