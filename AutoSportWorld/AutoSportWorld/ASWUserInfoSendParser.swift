@@ -10,9 +10,7 @@ import Foundation
 import SwiftyJSON
 
 class ASWUserInfoSendParser {
-    
     init(json: JSON) {
         
     }
-    
 }
