@@ -132,7 +132,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     //текущий месяц
                     cell.contentView.backgroundColor = UIColor.white
                     cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
-                    let dateString = self.dateFormatter2.string(from: date)
                     let count = eventsDictionary[date]?.count ?? 0
                     if count > 0 {
                         cell.contentView.layer.borderWidth = borderWidth
@@ -276,7 +275,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateString = self.dateFormatter2.string(from: date)
         let count = eventsDictionary[date]?.count ?? 0
         if count > 1{
             return 3
@@ -285,14 +283,12 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         }else{
             return 0
         }
-        
     }
     
     func updateMonthLabel(){
         let date = calendar.currentPage
         monthLabel.text = monthLabeldateFormatter.string(from: date)
-        
-        var mf = DateFormatter()
+        let mf = DateFormatter()
         var months = mf.standaloneMonthSymbols;
         months = ["Январь", "Февраль", "Март", "Апрель", "Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
         monthLabel.text = months![date.month()]+" \(date.year())"
