@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ASWFeedsModelProtocol {
     weak var delegate: ASWFeedsModelDelegate? {get set}
@@ -31,7 +32,6 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     
     weak var delegate: ASWFeedsModelDelegate?
     var events = [ASWRace]()
-    private let imageService = ASWImageDownloader()
     private let databaseService = ASWDatabaseManager()
     
     let defaultlimit = 10
@@ -93,12 +93,14 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     }
 
     func getImageFor(race: ASWRace, completion: @escaping () -> ()) {
-        if let url = race.imageURL {
-            imageService.send(url: url, completionHandler: { (image) in
-                race.image = image
-                completion()
-            })
-        }
+//        if let url = race.imageURL {
+//            ImageDownloader.default.downloadImage(with: URL(string:url)!, options: [], progressBlock: nil) {
+//                (image, error, url, data) in
+//                race.image = image
+//                completion()
+//                print("Downloaded Image: \(image)")
+//            }
+//        }
     }
     
     func getRaceID(race: ASWRace) -> Int? {

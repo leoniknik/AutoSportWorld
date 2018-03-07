@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class ASWNetworkManager: ASWNetworkManagerProtocol {
+class ASWNetworkManager{
     
     static func getEvents(request: ASWListRacesRequest, cursor: String?) {
         

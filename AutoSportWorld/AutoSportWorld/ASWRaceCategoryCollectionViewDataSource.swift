@@ -20,8 +20,6 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
     var raceCategories = [ASWRaceCategory]()
     var auto:Bool = false
     
-    private let imageService = ASWImageDownloader()
-    
     init(collectionView: UICollectionView, selectedRaceCategory:[Int], auto:Bool) {
         super.init()
         self.selectedRaceCategory = selectedRaceCategory
@@ -124,16 +122,20 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                cell.image.image = image
             }
             else {
-                let ciImage = CIImage(image: #imageLiteral(resourceName: "auto"))
-                let grayscale = ciImage?.applyingFilter("CIColorControls",
-                cell.image.image = UIImage(ciImage: grayscale!)
+      
                 cell.image.kf.setImage(with: URL(string:curItem.imageUrl ?? "")!, completionHandler: {
                     (image, error, cacheType, imageUrl) in
                     if let img = image{
                         curItem.image = img
                     }
                 })
-                cell.image.image = UIImage(ciImage: grayscale!)
+                let ciImage = CIImage(image: #imageLiteral(resourceName: "auto"))
+                if #available(iOS 11.0, *) {
+                    let grayscale = ciImage?.applyingFilter("CIColorControls")
+                    cell.image.image = UIImage(ciImage: grayscale!)
+                } else {
+                    cell.image.image = #imageLiteral(resourceName: "auto")
+                }
             }
         }else{
             cell.label.text = ""

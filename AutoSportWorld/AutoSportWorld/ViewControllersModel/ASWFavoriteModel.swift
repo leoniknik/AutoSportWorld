@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ASWFavoriteModel: ASWFeedsModelProtocol {
     
     var events = [ASWRace]()
     var results = [Int]()
     var countOfEvents = 0
-    private let imageService = ASWImageDownloader()
     private let databaseService = ASWDatabaseManager()
     
     weak var delegate: ASWFeedsModelDelegate?
@@ -56,12 +56,14 @@ class ASWFavoriteModel: ASWFeedsModelProtocol {
     }
     
     func getImageFor(race: ASWRace, completion: @escaping () -> ()) {
-        if let url = race.imageURL {
-            imageService.send(url: url, completionHandler: { (image) in
-                race.image = image
-                completion()
-            })
-        }
+//        if let url = race.imageURL {
+//            ImageDownloader.default.downloadImage(with: URL(string:url)!, options: [], progressBlock: nil) {
+//                (image, error, url, data) in
+//                race.image = image
+//                completion()
+//                print("Downloaded Image: \(image)")
+//            }
+//        }
     }
     
     func bookmarkRace(withID id: Int) {
