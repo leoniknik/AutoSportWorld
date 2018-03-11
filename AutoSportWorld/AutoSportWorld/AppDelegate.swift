@@ -11,6 +11,7 @@ import VK_ios_sdk
 import GoogleMaps
 import RealmSwift
 import Alamofire
+import IQKeyboardManager
 
 fileprivate var SCOPE: [Any]? = nil
 
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initGoogleMap()
         printRealmConfig()
         setupAlamofire()
+        
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
         
         return true
     }
