@@ -26,7 +26,7 @@ class ASWChangeUserInfoViewController: UIViewController {
         self.title = "Изменение личных данных"
         nameField.textField.text = user.login
         emailField.textField.text = user.email
-        
+        phoneField.textField.text = user.phone
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -58,6 +58,7 @@ class ASWChangeUserInfoViewController: UIViewController {
         emailField.isPasswordField = false
         emailField.placeHolder = "Почта:"
         emailField.upperPlaceHolder = "Почта:"
+        emailField.textField.isEnabled = false
         //        nameField.textField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
         emailField.setupUI()
     }
@@ -73,6 +74,7 @@ class ASWChangeUserInfoViewController: UIViewController {
     }
     
     @IBAction func confirmChange(_ sender: Any) {
+        ASWDatabaseManager().setUserPrivateInfo(name: nameField.textField.text ?? "", phone: phoneField.textField.text ?? "")
     }
     
     

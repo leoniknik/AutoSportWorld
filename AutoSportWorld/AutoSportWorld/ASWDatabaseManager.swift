@@ -147,6 +147,15 @@ class ASWDatabaseManager {
         }
     }
     
+    func setUserPrivateInfo(name:String,phone:String){
+        let realm = try! Realm()
+        let user = getUser()!
+        try! realm.write {
+            user.phone = phone
+            user.login = name
+        }
+    }
+    
     func setUserInfo(parser:ASWUserInfoGetParser){
         let realm = try! Realm()
         let user = getUser()!
