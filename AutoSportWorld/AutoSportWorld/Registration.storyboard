@@ -323,6 +323,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="forgetPassword" destination="q2c-yh-FBE" id="Mf8-EP-pmu"/>
+                        <outlet property="forgetPasswordAction" destination="q2c-yh-FBE" id="s29-4e-XMH"/>
                         <outlet property="loginButton" destination="jVl-gK-rmz" id="PTh-BO-blz"/>
                         <outlet property="loginField" destination="Ehh-wt-xn6" id="t7U-ZE-6a6"/>
                         <outlet property="passwordField" destination="2Zd-WP-QbD" id="wxf-8d-adF"/>
@@ -977,7 +979,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Далее"/>
+                                <state key="normal" title="Сохранить изменения"/>
                                 <connections>
                                     <action selector="confirmChange:" destination="rKj-QS-4fE" eventType="touchUpInside" id="A8b-96-Ox8"/>
                                     <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="3BD-PX-qyg"/>
@@ -1065,7 +1067,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Далее"/>
+                                <state key="normal" title="Сохранить изменения"/>
                                 <connections>
                                     <action selector="confirmChange:" destination="3SA-VV-XyE" eventType="touchUpInside" id="zAt-Ja-zTj"/>
                                     <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="nyK-Qv-63M"/>
