@@ -56,11 +56,16 @@ class ASWDatabaseManager {
                 user.isLogedIn = true
             }
             save(object: user)
-            setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            let sessionInfoParser = parser.sessionInfoParser
+                setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)
+            
+            
             return user
         }else{
             let user = createUserFrom(login:parser.email,password:parser.password)
-            setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            let sessionInfoParser = parser.sessionInfoParser
+            setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)
+            
             return user
         }
     }

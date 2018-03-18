@@ -194,6 +194,37 @@ class ASWNetworkManager{
         }
     }
     
+    static func resetPassword(email:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
+        var request = ASWResetPasswordRequest(email: email)
+        
+        func onSuccess(json: JSON) -> Void{
+            sucsessFunc()
+        }
+        
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWLoginErrorParser(error: error, json: json)
+            errorFunc(response)
+        }
+        
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
+    static func changePassword(oldPass: String, newPass: String, sucsessFunc: @escaping (ASWChangePasswordParser)->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
+        var request = ASWChangePasswordRequest(oldPass: oldPass, newPass: newPass)
+        
+        func onSuccess(json: JSON) -> Void{
+            let response = ASWChangePasswordParser(json: json)
+            sucsessFunc(response)
+        }
+        
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWLoginErrorParser(error: error, json: json)
+            errorFunc(response)
+        }
+        
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, encoding: ParameterEncoding = URLEncoding.default) -> Void {
         

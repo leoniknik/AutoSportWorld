@@ -411,7 +411,9 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
                                                                regions: rawUser.regions,
                                                                autoCategories: rawUser.autoCategories,
                                                                motoCategories: rawUser.motoCategories)
-                ASWDatabaseManager().setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+                if let sessionInfoParser = parser.sessionInfoParser{
+                    ASWDatabaseManager().setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)}
+                
                 sendUserInfoToServer()
             }else{
                 presentOKAlert("Ошибка", parser.errorString)
