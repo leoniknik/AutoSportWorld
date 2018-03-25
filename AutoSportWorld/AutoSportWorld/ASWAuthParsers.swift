@@ -10,17 +10,13 @@ import Foundation
 import SwiftyJSON
 
 class ASWLoginSucsessParser {
+    var email:String = ""
+    var password:String = ""
     
-    var email = ""
-    var password = ""
-    var refresh_token = ""
-    var access_token = ""
-    var expires_at = 0
+    var sessionInfoParser:ASWSessionInfoParser
     
     init(json: JSON) {
-        refresh_token = json["refresh_token"].stringValue
-        access_token = json["access_token"].stringValue
-        expires_at = json["expires_at"].intValue
+        sessionInfoParser = ASWSessionInfoParser(json: json)
     }
 }
 
@@ -67,9 +63,7 @@ class ASWSignupParser {
     var errorString = ""
     var valid = false
     
-    var refresh_token = ""
-    var access_token = ""
-    var expires_at = 0
+    var sessionInfoParser:ASWSessionInfoParser?
     
     init(json: JSON) {
         
@@ -78,9 +72,7 @@ class ASWSignupParser {
         valid = code == "ok"
         if valid {
             let sessionInfo = json["session"]
-            refresh_token = sessionInfo["refresh_token"].stringValue
-            access_token = sessionInfo["access_token"].stringValue
-            expires_at = sessionInfo["expires_at"].intValue
+            sessionInfoParser = ASWSessionInfoParser(json: sessionInfo)
         }else{
             let errors = json["errors"]
             errorString = errors["email"].array?.first?.stringValue ?? "Неизвестная ошибка"
@@ -98,6 +90,7 @@ class ASWValidateLoginParser {
     var email:String = ""
     var password:String = ""
     var totalErrorString:String = ""
+    
     
     init(json: JSON) {
         
@@ -125,6 +118,40 @@ class ASWValidateLoginParser {
             
             totalErrorString = email + "\n" + password
         }
+    }
+}
+
+class ASWChangePasswordParser{
+    var isOK = false
+    var errorMessage = "Неизвестная ошибка"
+    
+    var sessionInfoParser:ASWSessionInfoParser?
+    
+    init(json: JSON) {
+        var code = json["code"].stringValue
+        if code == "ok"{
+            isOK = true
+            let sessionInfo = json["session"]
+            sessionInfoParser = ASWSessionInfoParser(json: sessionInfo)
+        } else if code == "validation"{
+            errorMessage = json["message"].stringValue
+        } else if code == "wrong_password"{
+            errorMessage = json["message"].stringValue
+        } else{
+            errorMessage = "Неизвестная ошибка"
+        }
+    }
+    
+}
+
+class ASWSessionInfoParser{
+    var refresh_token = ""
+    var access_token = ""
+    var expires_at = 0
+    init(json: JSON) {
+        refresh_token = json["refresh_token"].stringValue
+        access_token = json["access_token"].stringValue
+        expires_at = json["expires_at"].intValue
     }
 }
 

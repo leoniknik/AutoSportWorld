@@ -977,7 +977,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Далее"/>
+                                <state key="normal" title="Сохранить изменения"/>
                                 <connections>
                                     <action selector="confirmChange:" destination="rKj-QS-4fE" eventType="touchUpInside" id="A8b-96-Ox8"/>
                                     <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="3BD-PX-qyg"/>
@@ -1065,13 +1065,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Далее"/>
+                                <state key="normal" title="Сохранить изменения"/>
                                 <connections>
                                     <action selector="confirmChange:" destination="3SA-VV-XyE" eventType="touchUpInside" id="zAt-Ja-zTj"/>
                                     <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="nyK-Qv-63M"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Sas-uO-7ty" firstAttribute="centerX" secondItem="Lz2-kz-0mb" secondAttribute="centerX" id="3Il-uq-LXb"/>
                             <constraint firstItem="eIl-Er-nwP" firstAttribute="top" secondItem="JP8-KN-r8e" secondAttribute="bottom" constant="20" id="FNQ-cT-Toe"/>
@@ -1092,13 +1093,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="button" destination="SLU-tj-xjx" id="aid-BX-lUg"/>
-                        <outlet property="emailField" destination="JP8-KN-r8e" id="U8O-wh-4OP"/>
                         <outlet property="oldPassField" destination="Sas-uO-7ty" id="xpB-Hv-Oew"/>
-                        <outlet property="passField" destination="JP8-KN-r8e" id="mOm-uz-zXZ"/>
-                        <outlet property="passwordField" destination="JP8-KN-r8e" id="Xv8-Pn-BN8"/>
-                        <outlet property="phoneField" destination="eIl-Er-nwP" id="KYG-9X-meP"/>
-                        <outlet property="repPassField" destination="eIl-Er-nwP" id="6tg-GU-q41"/>
-                        <outlet property="repeatPasswordField" destination="eIl-Er-nwP" id="Zqs-zt-ChA"/>
+                        <outlet property="passwordField" destination="JP8-KN-r8e" id="LIG-m4-mjc"/>
+                        <outlet property="repeatPasswordField" destination="eIl-Er-nwP" id="Iap-95-ZV4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q82-Th-EPE" userLabel="First Responder" sceneMemberID="firstResponder"/>

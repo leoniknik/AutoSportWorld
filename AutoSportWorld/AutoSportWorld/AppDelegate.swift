@@ -11,6 +11,7 @@ import VK_ios_sdk
 import GoogleMaps
 import RealmSwift
 import Alamofire
+import IQKeyboardManager
 
 fileprivate var SCOPE: [Any]? = nil
 
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initGoogleMap()
         printRealmConfig()
         setupAlamofire()
+        
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
         
         return true
     }
@@ -82,11 +86,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let config = Realm.Configuration(
             
-            schemaVersion: 10,
+            schemaVersion: 11,
             
             migrationBlock: { migration, oldSchemaVersion in
                 
-                if (oldSchemaVersion < 5) {
+                if (oldSchemaVersion < 11) {
                     
                 }
         })

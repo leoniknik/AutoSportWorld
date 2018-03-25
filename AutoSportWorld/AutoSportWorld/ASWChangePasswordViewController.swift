@@ -63,6 +63,41 @@ class ASWChangePasswordViewController:ASWBasePasswordViewController {
     }
     
     @IBAction func confirmChange(_ sender: Any) {
+        guard let newPass = passwordField.textField.text else {
+            return
+        }
+        
+        guard let oldPass = oldPassField.textField.text else {
+            return
+        }
+        
+        
+        
+        func success(parser:ASWChangePasswordParser){
+            self.button.isEnabled = true
+            if parser.isOK{
+                if let si = parser.sessionInfoParser{
+                    ASWDatabaseManager().setSessionInfo(refresh_token: si.refresh_token, access_token: si.access_token, expires_at: si.expires_at)
+                    presentOKAlert("Изменения сохранены","Изменения сохранены"){
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else{
+                    presentOKAlert("Ошибка","Ошибка")
+                }
+            }else{
+                presentOKAlert("Ошибка", parser.errorMessage)
+            }
+        }
+        
+        func error(parser:ASWErrorParser){
+            presentAlert(errorParser: parser){
+                [weak self] in self?.button.isEnabled = true
+            }
+        }
+        
+        self.button.isEnabled = false
+        
+        ASWNetworkManager.changePassword(oldPass: oldPass, newPass: newPass, sucsessFunc: success, errorFunc: error)
     }
     
 }

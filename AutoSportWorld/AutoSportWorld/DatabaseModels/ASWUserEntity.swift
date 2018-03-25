@@ -15,6 +15,7 @@ class ASWUserEntity: Object {
     @objc dynamic var isLogedIn: Bool = false
     @objc dynamic var email: String = ""
     @objc dynamic var login: String = ""
+    @objc dynamic var phone: String = ""
     @objc dynamic var auto: Bool = false
     @objc dynamic var moto: Bool = false
     @objc dynamic var watch: Bool = false

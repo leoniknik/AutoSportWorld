@@ -56,11 +56,16 @@ class ASWDatabaseManager {
                 user.isLogedIn = true
             }
             save(object: user)
-            setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            let sessionInfoParser = parser.sessionInfoParser
+                setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)
+            
+            
             return user
         }else{
             let user = createUserFrom(login:parser.email,password:parser.password)
-            setSessionInfo(refresh_token: parser.refresh_token, access_token: parser.access_token, expires_at: parser.expires_at)
+            let sessionInfoParser = parser.sessionInfoParser
+            setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)
+            
             return user
         }
     }
@@ -144,6 +149,15 @@ class ASWDatabaseManager {
             user.refresh_token = refresh_token
             user.access_token = access_token
             user.expires_at = expires_at
+        }
+    }
+    
+    func setUserPrivateInfo(name:String,phone:String){
+        let realm = try! Realm()
+        let user = getUser()!
+        try! realm.write {
+            user.phone = phone
+            user.login = name
         }
     }
     

@@ -105,6 +105,8 @@
 		DE6B03BA201B263B002BFE85 /* ASWUserInfoGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */; };
 		DE6D6078203DA984003D97B7 /* ASWCalendarRacesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D6077203DA984003D97B7 /* ASWCalendarRacesParser.swift */; };
 		DE6D607A203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */; };
+		DE72A991205BDA7F009447BB /* ASWResetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE72A990205BDA7F009447BB /* ASWResetPasswordRequest.swift */; };
+		DE72A993205BE279009447BB /* ASWChangePasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE72A992205BE279009447BB /* ASWChangePasswordRequest.swift */; };
 		DE7D180320089D7A00156FDA /* ASWViewControllersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */; };
 		DE7D18052008A26900156FDA /* ASWChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */; };
 		DE97B60D20457C0D00E8F8CA /* ASWResponseErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97B60C20457C0D00E8F8CA /* ASWResponseErrorViewController.swift */; };
@@ -238,6 +240,8 @@
 		DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWUserInfoGetRequest.swift; sourceTree = "<group>"; };
 		DE6D6077203DA984003D97B7 /* ASWCalendarRacesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCalendarRacesParser.swift; sourceTree = "<group>"; };
 		DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCalendarRacesRequest.swift; sourceTree = "<group>"; };
+		DE72A990205BDA7F009447BB /* ASWResetPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResetPasswordRequest.swift; sourceTree = "<group>"; };
+		DE72A992205BE279009447BB /* ASWChangePasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangePasswordRequest.swift; sourceTree = "<group>"; };
 		DE7D180220089D7A00156FDA /* ASWViewControllersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWViewControllersManager.swift; sourceTree = "<group>"; };
 		DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangePasswordViewController.swift; sourceTree = "<group>"; };
 		DE97B60C20457C0D00E8F8CA /* ASWResponseErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResponseErrorViewController.swift; sourceTree = "<group>"; };
@@ -532,6 +536,8 @@
 				DE6B03B9201B263B002BFE85 /* ASWUserInfoGetRequest.swift */,
 				DE6D6079203DA9F9003D97B7 /* ASWCalendarRacesRequest.swift */,
 				CAC3DC572044907000EE4F50 /* ASWLikeRequest.swift */,
+				DE72A990205BDA7F009447BB /* ASWResetPasswordRequest.swift */,
+				DE72A992205BE279009447BB /* ASWChangePasswordRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -734,6 +740,7 @@
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -750,6 +757,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -785,6 +793,7 @@
 				DEA11E60203C77B0009EBA26 /* UIView+ShowASWErrorView.swift in Sources */,
 				CA51D65D1FE6D77F00018CE9 /* ASWRequest.swift in Sources */,
 				DEDC45502007415400AE5B72 /* ASWLoginRequest.swift in Sources */,
+				DE72A993205BE279009447BB /* ASWChangePasswordRequest.swift in Sources */,
 				CAC3DC5620447A8E00EE4F50 /* UIViewController+MainScreen.swift in Sources */,
 				CACB58411F3DE03E007E8E0B /* ASWSegueRouter.swift in Sources */,
 				CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */,
@@ -853,6 +862,7 @@
 				CA584CD91F48440D0011E653 /* ASWRaceTypeCell.swift in Sources */,
 				DEDC454D200740E800AE5B72 /* ASWRegionEntity.swift in Sources */,
 				CA584CE11F48AD5D0011E653 /* ASWNameValidator.swift in Sources */,
+				DE72A991205BDA7F009447BB /* ASWResetPasswordRequest.swift in Sources */,
 				CA3ED32B1FFC21830026DBA6 /* ASWRaceEntity.swift in Sources */,
 				CA27FFDB1F47404F00E0BD78 /* ASWRegistrationViewController.swift in Sources */,
 				CACB58501F3E8068007E8E0B /* ASWSpacingCell.swift in Sources */,
