@@ -144,6 +144,26 @@ class ASWChangePasswordParser{
     
 }
 
+class ASWResetPasswordParser{
+    var isOK = false
+    var errorMessage = "Неизвестная ошибка"
+    init(json: JSON) {
+        var code = json["code"].stringValue
+        if code == "ok"{
+            isOK = true
+        } else if code == "validation"{
+            errorMessage = json["message"].stringValue
+        } else if code == "wrong_password"{
+            errorMessage = json["message"].stringValue
+        } else if code == "email_not_found"{
+            errorMessage = json["message"].stringValue
+        } else{
+            errorMessage = json["message"].stringValue == "" ? json["code"].stringValue : json["message"].stringValue
+        }
+    }
+    
+}
+
 class ASWSessionInfoParser{
     var refresh_token = ""
     var access_token = ""

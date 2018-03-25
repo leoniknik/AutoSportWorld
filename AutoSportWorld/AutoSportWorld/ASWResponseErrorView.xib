@@ -31,13 +31,16 @@
                     <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIj-tu-9RL">
-                            <rect key="frame" x="30" y="30" width="240" height="20.5"/>
+                            <rect key="frame" x="30" y="10" width="240" height="20.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20.5" id="jbD-Vq-dgY"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41p-N0-VY6">
-                            <rect key="frame" x="30" y="81" width="240" height="20.5"/>
+                            <rect key="frame" x="30" y="46" width="240" height="92"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -95,12 +98,13 @@
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="bottom" secondItem="jxO-1E-zcx" secondAttribute="bottom" constant="20" id="0cX-af-sbo"/>
                         <constraint firstItem="hIj-tu-9RL" firstAttribute="leading" secondItem="Zua-nb-kbR" secondAttribute="leading" constant="30" id="B72-26-TLA"/>
                         <constraint firstAttribute="bottom" secondItem="lsd-tC-oWQ" secondAttribute="bottom" constant="20" id="L3i-tU-h3f"/>
-                        <constraint firstItem="41p-N0-VY6" firstAttribute="top" secondItem="hIj-tu-9RL" secondAttribute="bottom" constant="30" id="NCY-ae-Cqh"/>
+                        <constraint firstItem="41p-N0-VY6" firstAttribute="top" secondItem="hIj-tu-9RL" secondAttribute="bottom" constant="15" id="NCY-ae-Cqh"/>
+                        <constraint firstItem="lsd-tC-oWQ" firstAttribute="top" secondItem="41p-N0-VY6" secondAttribute="bottom" constant="12" id="QgL-z6-8Xm"/>
                         <constraint firstItem="jxO-1E-zcx" firstAttribute="leading" secondItem="Zua-nb-kbR" secondAttribute="leading" constant="20" id="UrD-s6-azl"/>
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="trailing" secondItem="lsd-tC-oWQ" secondAttribute="trailing" constant="20" id="WXA-dT-U6B"/>
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="trailing" secondItem="jxO-1E-zcx" secondAttribute="trailing" constant="20" id="dr9-nE-vG4"/>
                         <constraint firstItem="lsd-tC-oWQ" firstAttribute="leading" secondItem="Zua-nb-kbR" secondAttribute="leading" constant="20" id="g1C-6W-eBv"/>
-                        <constraint firstItem="hIj-tu-9RL" firstAttribute="top" secondItem="Zua-nb-kbR" secondAttribute="top" constant="30" id="iMa-PT-ByT"/>
+                        <constraint firstItem="hIj-tu-9RL" firstAttribute="top" secondItem="Zua-nb-kbR" secondAttribute="top" constant="10" id="iMa-PT-ByT"/>
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="trailing" secondItem="hIj-tu-9RL" secondAttribute="trailing" constant="30" id="inm-v3-2Bx"/>
                         <constraint firstItem="Zua-nb-kbR" firstAttribute="trailing" secondItem="41p-N0-VY6" secondAttribute="trailing" constant="30" id="vru-KM-hZc"/>
                         <constraint firstItem="41p-N0-VY6" firstAttribute="leading" secondItem="Zua-nb-kbR" secondAttribute="leading" constant="30" id="wfr-0H-SU2"/>
@@ -116,7 +120,7 @@
                 <constraint firstItem="0QQ-0O-Oo7" firstAttribute="centerY" secondItem="yed-Oc-NKl" secondAttribute="centerY" id="mVp-zx-NqS"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="o9K-sE-bHG"/>
-            <point key="canvasLocation" x="-214" y="-242"/>
+            <point key="canvasLocation" x="-214.5" y="-242.5"/>
         </view>
     </objects>
 </document>

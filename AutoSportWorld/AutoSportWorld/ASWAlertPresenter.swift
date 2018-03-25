@@ -37,6 +37,7 @@ extension ASWViewController {
             self?.errorViewController.titleText = title
             self?.errorViewController.bodyText = text
             self?.errorViewController.okMode = false
+            self?.errorViewController.okMode = true
             self?.showAlert()
         }
     }
@@ -51,6 +52,7 @@ extension ASWViewController {
             self?.errorViewController.titleText = title
             self?.errorViewController.bodyText = text
             self?.errorViewController.okMode = true
+            self?.completion = completion
             self?.showAlert()
         }
     }

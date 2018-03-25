@@ -152,8 +152,7 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     }
     
     @IBAction func forgotPasswordPressed(_ sender: Any) {
-        present(ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController, animated: true, completion: nil)
-        presentOKAlert("Функция недоступна", "Данная функция находится в разработке")
+        self.navigationController?.pushViewController(ASWViewControllersManager.ChangeUserDataViewControllers.resetPassword, animated: true)
     }
     
     

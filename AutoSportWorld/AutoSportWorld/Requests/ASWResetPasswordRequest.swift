@@ -15,7 +15,7 @@ class ASWResetPasswordRequest: ASWRequest {
         super.init()
         parameters["email"] = email
         parameters["send"] = ASWConstants.isDebug ? false : true
-        url = "/auth/password/reset"
+        url = baseURL +  "/auth/password/reset"
         encoding = JSONEncoding.default
     }
     
