@@ -282,6 +282,7 @@ class ASWNetworkManager{
     }
     
     private static func authRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,NSError) -> Void) -> Void {
+        
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):

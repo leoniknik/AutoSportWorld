@@ -162,9 +162,8 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBOutlet weak var forgetPassword: UIButton!
+
     
-    @IBOutlet weak var forgetPasswordAction: UIButton!
     
     
 }

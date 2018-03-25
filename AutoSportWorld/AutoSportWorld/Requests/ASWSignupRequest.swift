@@ -17,6 +17,7 @@ class ASWSignupRequest: ASWRequest {
         parameters["email"] = email
         parameters["password"] = password
         parameters["send"] = false
+        encoding = JSONEncoding.default
     }
     
 }

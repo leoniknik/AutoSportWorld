@@ -13,7 +13,7 @@ class ASWChangePasswordRequest: ASWRequest {
     
     init(oldPass:String, newPass:String) {
         super.init()
-        url = self.baseURL + "/auth/signup"
+        url = self.baseURL + "/auth/password/change"
         parameters["old"] = oldPass
         parameters["new"] = newPass
         encoding = JSONEncoding.default

@@ -78,10 +78,14 @@ class ASWChangePasswordViewController:ASWBasePasswordViewController {
             if parser.isOK{
                 if let si = parser.sessionInfoParser{
                     ASWDatabaseManager().setSessionInfo(refresh_token: si.refresh_token, access_token: si.access_token, expires_at: si.expires_at)
+                    presentOKAlert("Изменения сохранены","Изменения сохранены"){
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else{
+                    presentOKAlert("Ошибка","Ошибка")
                 }
-                presentOKAlert("ntcn", "ne")
             }else{
-                
+                presentOKAlert("Ошибка", parser.errorMessage)
             }
         }
         
