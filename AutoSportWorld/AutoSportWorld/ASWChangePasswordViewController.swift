@@ -18,11 +18,19 @@ class ASWChangePasswordViewController:ASWBasePasswordViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        addBackButton()
+        self.title = "Сменить пароль"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupForm()
+        setupBlackOpaqueNavBar()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLayoutSubviews() {
@@ -66,70 +74,3 @@ class ASWChangePasswordViewController:ASWBasePasswordViewController {
     }
     
 }
-
-
-//class ASWChangePasswordViewController2: UIViewController{
-//
-//    @IBOutlet weak var oldPassField: ASWLoginPasswordTextField!
-//
-//    @IBOutlet weak var passField: ASWLoginPasswordTextField!
-//
-//    @IBOutlet weak var repPassField: ASWLoginPasswordTextField!
-//
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        setupUI()
-//        self.title = "Изменить личных данных"
-//
-//    }
-//
-//    func setupUI(){
-//        setupNameField()
-//        setupEmailField()
-//        setupPhoneField()
-//    }
-//
-//    func setupOldPassField() {
-//        oldPassField.upperPlaceholderMode = true
-//        oldPassField.blackBackgroundStyle = false
-//        oldPassField.isPasswordField = true
-//        oldPassField.placeHolder = "Старый пароль:"
-//        oldPassField.upperPlaceHolder = "Старый пароль:"
-//        //        nameField.textField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
-//        oldPassField.setupUI()
-//    }
-//
-//    func setupEmailField() {
-//        passField.upperPlaceholderMode = true
-//        passField.blackBackgroundStyle = false
-//        passField.isPasswordField = true
-//        passField.placeHolder = "Новый пароль:"
-//        passField.upperPlaceHolder = "Новый пароль:"
-//        //        nameField.textField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
-//        passField.setupUI()
-//    }
-//
-//    func setupPhoneField() {
-//        repPassField.upperPlaceholderMode = true
-//        repPassField.blackBackgroundStyle = false
-//        repPassField.isPasswordField = false
-//        repPassField.placeHolder = "Повторите новый пароль:"
-//        repPassField.upperPlaceHolder = "Повторите новый пароль:"
-//        //        nameField.textField.addTarget(self, action: #selector(nameDidChange(_:)), for: .editingChanged)
-//        repPassField.setupUI()
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-

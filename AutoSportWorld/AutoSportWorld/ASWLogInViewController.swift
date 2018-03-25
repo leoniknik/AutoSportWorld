@@ -66,7 +66,6 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
         if (result.token != nil) {
             print("авторизован")
             print(result.token.email)
-            
         } else if (result.error != nil) {
             //            let alertVC = UIAlertController(title: "", message: "Access denied\n\(result.error)", preferredStyle: UIAlertControllerStyle.alert)
             //            alertVC.addAction(okButton)

@@ -49,7 +49,7 @@ class ASWBasePasswordViewController: ASWViewController, UITextFieldDelegate {
     func setupPasswordField() {
         passwordField.upperPlaceholderMode = true
         passwordField.blackBackgroundStyle = false
-        passwordField.placeHolder = "Придумайте пароль"
+        passwordField.placeHolder = "Придумайте пароль:"
         passwordField.upperPlaceHolder = "Придумайте пароль (мин. 6 знаков):"
         passwordField.textField.addTarget(self, action: #selector(passwordDidChange(_:)), for: .editingChanged)
         passwordField.isPasswordField = true

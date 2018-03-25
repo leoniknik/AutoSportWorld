@@ -27,13 +27,13 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     let sections = ["Информация о пользователе", "Социальные сети", "Фильтры"]
     
-    let items = [["Личные данные", "Пароль"], ["Вконтакте"], ["Регионы", "Категории гонок","Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
+    let items = [["Личные данные", "Пароль"], ["Вконтакте"], ["Регионы", "Вид спорта", "Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
     let botomItems = [["Имя, E-mail, телефон", "Сменить"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-
+        
     }
     
     //настройка UI
@@ -74,20 +74,20 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //настройка красной кнопки внизу экрана
-//    func setupBottomRedButton() -> UIButton {
-//
-//        //создание самой кнопки
-//        let button: UIButton = UIButton(type: .system)
-//        button.backgroundColor = UIColor.red
-//        //Настройка текста внутри кнопки
-//
-//        button.setTitle("Выйти из аккаунта", for: UIControlState.normal)
-//        button.setTitleColor(UIColor.white, for: UIControlState.normal)
-//
-//        button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
-//
-//        return button
-//    }
+    //    func setupBottomRedButton() -> UIButton {
+    //
+    //        //создание самой кнопки
+    //        let button: UIButton = UIButton(type: .system)
+    //        button.backgroundColor = UIColor.red
+    //        //Настройка текста внутри кнопки
+    //
+    //        button.setTitle("Выйти из аккаунта", for: UIControlState.normal)
+    //        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+    //
+    //        button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
+    //
+    //        return button
+    //    }
     
     func setupBottomRedButton() -> UIButton {
         
@@ -99,13 +99,13 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         let title = NSAttributedString(string: "Выйти из аккаунта", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.red])
         button.setAttributedTitle(title, for: UIControlState.normal)
         
-        //button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
+        button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
         
         return button
     }
-
+    
     // MARK: - Table view data source
-
+    
     //количество секций
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -115,7 +115,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].count
     }
@@ -126,7 +126,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.ASWColor.grey
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
@@ -143,7 +143,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsUserDataCell", for: indexPath) as! ASWSettingsUserDataCell
             cell.infoLabel.text = items[indexPath.section][indexPath.item]
-//            cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
+            //            cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
             return cell
         }
         else {
@@ -184,21 +184,43 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         } else if indexPath.section == 0 && indexPath.item == 1 {
             let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changePassword
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 2 && indexPath.item == 0 {
-            let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController
-            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 2 {
+            if indexPath.item == 0 {
+                let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController
+                vc.title = "Регионы"
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.item == 1 {
+                let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeSportType
+                vc.title = "Вид спорта"
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.item == 2 {
+                let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeAutoCategories
+                vc.title = "Гонки автоспорта"
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.item == 3 {
+                let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeMotoCategories
+                vc.title = "Гонки мотоспорта"
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.item == 4 {
+                let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeActionTypeViewController
+                vc.title = "Действия"
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
         
-//        if indexPath.section == 2 && indexPath.item == 0 {
-//            performSegue(withIdentifier: ASWSegueRouter.changeRegions, sender: nil)
-//        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: - functions
     
     @objc func exitFromAccount() {
-        
+        let storyboard = UIStoryboard(name: "Registration", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "registr")
+        vc.hideTabBarView()
+        ASWDatabaseManager().unloginAllUsers()
+        let nc = UINavigationController(rootViewController: vc)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window!.rootViewController = nc
     }
     
 }

@@ -21,7 +21,6 @@ class ASWProfileViewController: UIViewController, UITableViewDataSource {
     let menuLable = ["Мои настройки", "Написать разработчикам", "О приложении"]
     let menuImages = [#imageLiteral(resourceName: "ic_profil_setting"),#imageLiteral(resourceName: "ic_profil_communications"),#imageLiteral(resourceName: "ic_profil_menu")]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -86,7 +85,13 @@ class ASWProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func logIn(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "Registration", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "registr")
+        vc.hideTabBarView()
+        ASWDatabaseManager().unloginAllUsers()
+        let nc = UINavigationController(rootViewController: vc)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window!.rootViewController = nc
     }
     
     func openSettings() {

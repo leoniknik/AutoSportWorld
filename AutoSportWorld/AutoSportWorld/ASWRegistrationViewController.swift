@@ -190,7 +190,9 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTransparentNavBar()
+        view.backgroundColor = .white
+        setupBlackOpaqueNavBar()
+        addBackButton()
         setupUI()
         if(changeSettings){
             add(asChildViewController: registerCollectionViewController)
@@ -578,7 +580,9 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     
     func sendUserInfoToServer(){
         func sucsessSend(){
-            goToMainStoryboard()
+            DispatchQueue.main.async { [weak self] in
+                self?.openMainStoryboard()
+            }
         }
         func errorSend(parser:ASWErrorParser){
             presentAlert(errorParser: parser)

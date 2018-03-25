@@ -32,10 +32,18 @@ extension UIImage {
     static let autoWatch = #imageLiteral(resourceName: "watch")
     static let auto = #imageLiteral(resourceName: "auto")
     static let autoJoin = #imageLiteral(resourceName: "join")
-    
+
     static let moto = #imageLiteral(resourceName: "moto")
     static let motoJoin = #imageLiteral(resourceName: "join")
     static let motoWatch = #imageLiteral(resourceName: "watch")
+//
+//    static let autoWatch = #imageLiteral(resourceName: "ic_like_blue")
+//    static let auto = #imageLiteral(resourceName: "ic_like_blue")
+//    static let autoJoin = #imageLiteral(resourceName: "ic_like_blue")
+//
+//    static let moto = #imageLiteral(resourceName: "ic_like_blue")
+//    static let motoJoin = #imageLiteral(resourceName: "ic_like_blue")
+//    static let motoWatch = #imageLiteral(resourceName: "ic_like_blue")
     
     static func from(_ r:Int, _ g:Int, _ b:Int) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)

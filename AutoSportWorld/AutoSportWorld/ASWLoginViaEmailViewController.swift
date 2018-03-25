@@ -58,7 +58,6 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passwordField: ASWLoginPasswordTextField!
     
-    
     @IBOutlet weak var loginButton: UIButton!
     
     @objc func loginDidChange(_ sender: UITextField) {
