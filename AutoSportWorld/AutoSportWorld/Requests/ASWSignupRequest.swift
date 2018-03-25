@@ -17,6 +17,7 @@ class ASWSignupRequest: ASWRequest {
         parameters["email"] = email
         parameters["password"] = password
         parameters["send"] = ASWConstants.isDebug ? false : true
+        parameters["plzdonthack"] = ASWCryptoManager.getHMAC(str: email)
         encoding = JSONEncoding.default
 
     }
