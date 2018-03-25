@@ -11,7 +11,10 @@ import Foundation
 class ASWFiltersService {
     
     func isUserLogedIn() -> Bool {
-        return true
+        if ASWDatabaseManager().getUser() != nil {
+            return true
+        }
+        return false
     }
     
 }

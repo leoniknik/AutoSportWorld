@@ -54,7 +54,7 @@ class ASWFiltersViewController: UIViewController {
     
     func setupTableView() {
         tableView.register(UINib(nibName: "ASWFilterCell", bundle: nil), forCellReuseIdentifier: "ASWFilterCell")
-        tableView.bounces = false
+//        tableView.bounces = false
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -99,6 +99,9 @@ extension ASWFiltersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ASWFilterCell", for: indexPath) as! ASWFilterCell
+        cell.switchView.isOn = model.values[indexPath.section][indexPath.item]
+        cell.indexPath = indexPath
+        cell.delegate = self
         cell.titleView.text = model.items[indexPath.section][indexPath.item]
         return cell
     }
@@ -143,4 +146,10 @@ extension UINavigationController {
         return previousViewController
     }
     
+}
+
+extension ASWFiltersViewController: ASWFilterCellDelegate {
+    func valueChanged(indexPath: IndexPath) {
+        model.valueChangedFor(indexPath)
+    }
 }

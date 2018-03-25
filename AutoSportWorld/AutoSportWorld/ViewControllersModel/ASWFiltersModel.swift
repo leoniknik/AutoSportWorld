@@ -12,9 +12,16 @@ class ASWFiltersModel {
     
     let service = ASWFiltersService()
     
-    let headers = ["Дата", "Стоимость", "Действие", "Квалификация", "Спорт"]
+//    let headers = ["Дата", "Стоимость", "Действие", "Квалификация", "Спорт"]
+//
+//    let items = [["Сначала ближайшие"], ["Бесплатные", "Сначала подешевле", "Сначала подороже"], ["Покататься", "Посмотреть"], ["Любительские", "Профессиональные"], ["Мотоспорт", "Автоспорт"]]
+//
     
-    let items = [["Сначала новые", "Сначала старые"], ["Бесплатные", "Сначала подешевле", "Сначала подороже"], ["Покататься", "Посмотреть"], ["Любительские", "Профессиональные"], ["Мотоспорт", "Автоспорт"]]
+    let headers = ["Дата", "Стоимость"]
+    
+    let items = [["Сначала ближайшие"], ["Бесплатные", "Сначала подешевле", "Сначала подороже"]]
+    
+    var values = [[true], [false, true, false]]
     
     func getTitleForHeaderIn(section: Int) -> String {
         return headers[section]
@@ -25,14 +32,19 @@ class ASWFiltersModel {
     }
     
     func getNumberOfSections() -> Int {
-        return service.isUserLogedIn() ? 5 : 3
+//        return service.isUserLogedIn() ? 5 : 3
+        return 2
     }
     
     func getHeightForFooterIn(section: Int) -> Int {
-        if (service.isUserLogedIn()) {
-            return section == 4 ? 0 : 15
-        }
-        return section == 2 ? 0 : 15
+//        if (service.isUserLogedIn()) {
+//            return section == 4 ? 0 : 15
+//        }
+        return section == 1 ? 0 : 15
+    }
+    
+    func valueChangedFor(_ indexPath: IndexPath) {
+        
     }
     
 }

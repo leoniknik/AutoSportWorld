@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol ASWFilterCellDelegate: class {
+    func valueChanged(indexPath: IndexPath)
+}
+
 class ASWFilterCell: UITableViewCell {
 
     @IBOutlet weak var switchView: UISwitch!
     @IBOutlet weak var titleView: UILabel!
     
+    weak var delegate: ASWFilterCellDelegate?
+    
+    var indexPath: IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +28,11 @@ class ASWFilterCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    @IBAction func valueChanged(_ sender: UISwitch) {
+        delegate?.valueChanged(indexPath: indexPath)
+    }
+    
     
 }

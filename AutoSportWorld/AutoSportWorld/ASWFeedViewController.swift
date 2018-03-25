@@ -50,7 +50,9 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = "Лента новостей"
         self.navigationController?.navigationBar.tintColor = .white
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
+        if ASWDatabaseManager().getUser() != nil {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
+        }
     }
     
     @objc func showFilters() {

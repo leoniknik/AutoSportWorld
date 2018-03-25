@@ -49,11 +49,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQe-Jd-fSn"/>
                     </view>
-                    <navigationItem key="navigationItem" title="События на карте" id="ms1-Nu-8FR">
-                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="v14-fY-kxG">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="События на карте" id="ms1-Nu-8FR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
@@ -104,11 +100,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bZA-iy-D0p"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Лента новостей" id="zqY-Tg-Bvm">
-                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="VtT-Ca-TIe">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Лента новостей" id="zqY-Tg-Bvm"/>
                     <connections>
                         <outlet property="errorLabel" destination="eTR-u4-vhS" id="cwf-oJ-LWc"/>
                         <outlet property="searchBar" destination="OHa-FB-fjR" id="EqE-x5-N9O"/>
@@ -154,11 +146,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IxW-sJ-yhk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Избранное" id="XuX-9d-9cd">
-                        <barButtonItem key="rightBarButtonItem" image="ic_tune" id="ZoD-tJ-buO">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Избранное" id="XuX-9d-9cd"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="errorLabel" destination="sLD-kc-SaV" id="n6r-Sl-tQs"/>
@@ -253,7 +241,4 @@
             <point key="canvasLocation" x="3140.8000000000002" y="-341.82908545727139"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ic_tune" width="18" height="18"/>
-    </resources>
 </document>

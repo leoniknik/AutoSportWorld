@@ -208,7 +208,7 @@ class ASWEventViewController: UIViewController {
         }
         
         if race.liked ?? false {
-//            model.unlikeEvent(id: race.id, sucsessFunc: sucsessFunc)
+            model.unlikeEvent(id: race.id ?? "", sucsessFunc: sucsessFunc)
         } else {
             model.likeEvent(id: race.id ?? "", sucsessFunc: sucsessFunc)
         }
