@@ -16,8 +16,9 @@ class ASWSignupRequest: ASWRequest {
         url = self.baseURL + "/auth/signup"
         parameters["email"] = email
         parameters["password"] = password
-        parameters["send"] = false
+        parameters["send"] = ASWConstants.isDebug ? false : true
         encoding = JSONEncoding.default
+
     }
     
 }
