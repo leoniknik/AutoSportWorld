@@ -10,13 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-protocol ASWNetworkManagerProtocol {
-    
-    static func getEvents(request: ASWListRacesRequest, cursor: String?)
-    
-}
-
-class ASWNetworkManager: ASWNetworkManagerProtocol {
+class ASWNetworkManager{
     
     static func getEvents(request: ASWListRacesRequest, cursor: String?) {
         
@@ -200,6 +194,37 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
     }
     
+    static func resetPassword(email:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
+        var request = ASWResetPasswordRequest(email: email)
+        
+        func onSuccess(json: JSON) -> Void{
+            sucsessFunc()
+        }
+        
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWLoginErrorParser(error: error, json: json)
+            errorFunc(response)
+        }
+        
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
+    static func changePassword(oldPass: String, newPass: String, sucsessFunc: @escaping (ASWChangePasswordParser)->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
+        var request = ASWChangePasswordRequest(oldPass: oldPass, newPass: newPass)
+        
+        func onSuccess(json: JSON) -> Void{
+            let response = ASWChangePasswordParser(json: json)
+            sucsessFunc(response)
+        }
+        
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWLoginErrorParser(error: error, json: json)
+            errorFunc(response)
+        }
+        
+        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
+    
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, encoding: ParameterEncoding = URLEncoding.default) -> Void {
         
@@ -208,7 +233,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
 //        configuration.timeoutIntervalForResource = 5
 //        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
         
-        var headers: HTTPHeaders?
+        let headers: HTTPHeaders? = [:]
 //        if let token = ASWDatabaseManager().getUser()?.access_token {
 //            headers = ["x-access-token":token,"Content-Type":"application/json"]
 //        }
@@ -246,15 +271,10 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
                 DispatchQueue.global(qos: .userInitiated).async {
                     var json = JSON()
                     if let data = response.data {
-                        do {
-                            try json = JSON(data: data)
-                            DispatchQueue.main.async {
-                                onError(json,error)
-                            }
-                        }
-                        catch{
-                            onError(json,error)
-                        }
+                           json = JSON(data: data)
+                    }
+                    DispatchQueue.main.async {
+                        onError(json,error)
                     }
                 }
             }
@@ -262,6 +282,7 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
     }
     
     private static func authRequest(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,NSError) -> Void) -> Void {
+        
         Alamofire.request(URL, method: method, parameters: parameters ).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -270,16 +291,13 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
                     onSuccess(json)
                 }
             case .failure(let error):
-                print(error)
-                var json = JSON()
-                if let data = response.data {
-                    do {
-                        try json = JSON(data: data)
-                        DispatchQueue.main.async {
-                            onError(json,error as NSError)
-                        }
+                DispatchQueue.global(qos: .userInitiated).async {
+                    print(error)
+                    var json = JSON()
+                    if let data = response.data {
+                        json = JSON(data: data)
                     }
-                    catch{
+                    DispatchQueue.main.async {
                         onError(json,error as NSError)
                     }
                 }
@@ -287,7 +305,6 @@ class ASWNetworkManager: ASWNetworkManagerProtocol {
         }
     }
 
-    
     class func defaultOnSuccess(json: JSON) -> Void{
         print(json)
     }

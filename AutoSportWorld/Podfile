@@ -13,4 +13,5 @@ target 'AutoSportWorld' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FSCalendar'
+    pod 'IQKeyboardManager'
 end

@@ -52,34 +52,12 @@ class ASWSportTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         }else{
             rawAvailableItems.append(ASWCollectionItem(1))
         }
-        
-        
-//        for i in 0...1 {
-//            var found = false
-//            for item in userModel.sportTypes{
-//                if item.id == i{
-//                    found = true
-//                }
-//            }
-//            if found {
-//                rawSelectedItems.append(ASWCollectionItem(i))
-//            }else{
-//                rawAvailableItems.append(ASWCollectionItem(i))
-//            }
-//        }
-        
-        
         availableItems = rawAvailableItems
         selectedItems = rawSelectedItems
         
         
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        super .collectionView(collectionView, didSelectItemAt: indexPath)
-//        
-//    }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ASWRaceTypeCell", for: indexPath) as! ASWRaceTypeCell

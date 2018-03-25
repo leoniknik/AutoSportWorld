@@ -1,23 +1,22 @@
 //
-//  ASWSignupRequest.swift
+//  ASWResetPasswordRequest.swift
 //  AutoSportWorld
 //
-//  Created by Aleksander Evtuhov on 07.01.2018.
+//  Created by Aleksander Evtuhov on 16.03.2018.
 //  Copyright © 2018 Кирилл Володин. All rights reserved.
-////
+//
 
 import Foundation
 import Alamofire
 
-class ASWSignupRequest: ASWRequest {
+class ASWResetPasswordRequest: ASWRequest {
     
-    init(email:String, password:String) {
+    init(email:String) {
         super.init()
-        url = self.baseURL + "/auth/signup"
         parameters["email"] = email
-        parameters["password"] = password
         parameters["send"] = ASWConstants.isDebug ? false : true
+        url = "/auth/password/reset"
         encoding = JSONEncoding.default
-
     }
+    
 }

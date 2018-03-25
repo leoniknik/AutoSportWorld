@@ -45,8 +45,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="abe-ca-fjb"/>
                                 </constraints>
+
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Пропустить &gt;">
+                                <state key="normal" title="Пропустить">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -114,11 +115,20 @@
                                     <action selector="vkLogin:" destination="Pqr-xr-kCH" eventType="touchUpInside" id="RIL-ga-S7O"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_like_blue" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-M9-Kfc">
+                                <rect key="frame" x="232.5" y="615" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CKH-M9-Kfc" secondAttribute="height" multiplier="1:1" id="Let-RP-IJH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="7kQ-Cz-tFM" firstAttribute="bottom" secondItem="OFB-1E-Plf" secondAttribute="bottom" constant="20" id="2aM-ex-qLk"/>
                             <constraint firstItem="zgP-cr-egp" firstAttribute="height" secondItem="4PE-6Z-NYu" secondAttribute="height" id="6eb-ld-Y7I"/>
-                            <constraint firstItem="8Qw-JO-lnz" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="6yU-X8-tx8"/>
+
+                            <constraint firstItem="8Qw-JO-lnz" firstAttribute="centerX" secondItem="jc8-5Y-U2w" secondAttribute="centerX" id="6yU-X8-tx8"/>
+                            <constraint firstItem="CKH-M9-Kfc" firstAttribute="leading" secondItem="OFB-1E-Plf" secondAttribute="trailing" id="7d6-s3-21h"/>
+                            <constraint firstItem="CKH-M9-Kfc" firstAttribute="top" secondItem="OFB-1E-Plf" secondAttribute="top" id="CzM-6U-HyY"/>
                             <constraint firstAttribute="bottom" secondItem="deG-Zs-VYv" secondAttribute="bottom" id="D5e-oO-h45"/>
                             <constraint firstItem="OFB-1E-Plf" firstAttribute="top" secondItem="zgP-cr-egp" secondAttribute="bottom" constant="20" id="FLp-7S-q1a"/>
                             <constraint firstItem="Lej-cZ-AEu" firstAttribute="top" secondItem="e40-E6-XtU" secondAttribute="bottom" constant="15.5" id="H4J-KD-4dc"/>
@@ -135,8 +145,10 @@
                             <constraint firstItem="4PE-6Z-NYu" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="baa-81-XcT"/>
                             <constraint firstItem="e40-E6-XtU" firstAttribute="top" secondItem="3oc-dD-vNq" secondAttribute="bottom" constant="42" id="beC-tU-Kb2"/>
                             <constraint firstItem="e40-E6-XtU" firstAttribute="centerX" secondItem="deG-Zs-VYv" secondAttribute="centerX" id="e0w-re-6IO"/>
-                            <constraint firstItem="3oc-dD-vNq" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="iNt-r0-1tZ"/>
-                            <constraint firstItem="deG-Zs-VYv" firstAttribute="leading" secondItem="7kQ-Cz-tFM" secondAttribute="leading" id="lLx-h9-T75"/>
+
+                            <constraint firstItem="3oc-dD-vNq" firstAttribute="centerX" secondItem="jc8-5Y-U2w" secondAttribute="centerX" id="iNt-r0-1tZ"/>
+                            <constraint firstItem="deG-Zs-VYv" firstAttribute="leading" secondItem="jc8-5Y-U2w" secondAttribute="leading" id="lLx-h9-T75"/>
+                            <constraint firstItem="CKH-M9-Kfc" firstAttribute="height" secondItem="OFB-1E-Plf" secondAttribute="height" id="mgA-5m-ddY"/>
                             <constraint firstItem="deG-Zs-VYv" firstAttribute="top" secondItem="jc8-5Y-U2w" secondAttribute="top" id="toZ-Vn-Ybh"/>
                             <constraint firstItem="3oc-dD-vNq" firstAttribute="top" secondItem="jc8-5Y-U2w" secondAttribute="top" constant="40" id="zLG-RB-ePe"/>
                             <constraint firstItem="4PE-6Z-NYu" firstAttribute="height" secondItem="8Qw-JO-lnz" secondAttribute="height" id="zv2-mg-jHr"/>
@@ -949,7 +961,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Сохранить"/>
+                                <state key="normal" title="Сохранить изменения"/>
                                 <connections>
                                     <action selector="confirmChange:" destination="rKj-QS-4fE" eventType="touchUpInside" id="A8b-96-Ox8"/>
                                     <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="3BD-PX-qyg"/>
@@ -1034,13 +1046,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Сохранить"/>
+                                <state key="normal" title="Сохранить изменения"/>
                                 <connections>
                                     <action selector="confirmChange:" destination="3SA-VV-XyE" eventType="touchUpInside" id="zAt-Ja-zTj"/>
                                     <action selector="performNextStep:" destination="vQx-1r-mzr" eventType="touchUpInside" id="nyK-Qv-63M"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Sas-uO-7ty" firstAttribute="centerX" secondItem="VZK-U9-7i1" secondAttribute="centerX" id="3Il-uq-LXb"/>
                             <constraint firstItem="eIl-Er-nwP" firstAttribute="top" secondItem="JP8-KN-r8e" secondAttribute="bottom" constant="20" id="FNQ-cT-Toe"/>
@@ -1062,9 +1075,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="button" destination="SLU-tj-xjx" id="aid-BX-lUg"/>
-                        <outlet property="oldPassField" destination="Sas-uO-7ty" id="FRh-dV-Rza"/>
-                        <outlet property="passwordField" destination="JP8-KN-r8e" id="UI6-pb-57t"/>
-                        <outlet property="repeatPasswordField" destination="eIl-Er-nwP" id="yPX-TQ-PUV"/>
+
+                        <outlet property="oldPassField" destination="Sas-uO-7ty" id="xpB-Hv-Oew"/>
+                        <outlet property="passwordField" destination="JP8-KN-r8e" id="LIG-m4-mjc"/>
+                        <outlet property="repeatPasswordField" destination="eIl-Er-nwP" id="Iap-95-ZV4"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q82-Th-EPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1076,9 +1091,11 @@
         <image name="ic_avto" width="119" height="106"/>
         <image name="ic_background_one" width="750" height="1334"/>
         <image name="ic_backward" width="24" height="24"/>
-        <image name="ic_fb_first" width="112" height="112"/>
-        <image name="ic_ok_first" width="112" height="112"/>
-        <image name="ic_password" width="48" height="48"/>
-        <image name="ic_vk_first" width="112" height="112"/>
+
+        <image name="ic_fb_first" width="56" height="56"/>
+        <image name="ic_like_blue" width="15" height="14"/>
+        <image name="ic_ok_first" width="56" height="56"/>
+        <image name="ic_password" width="24" height="24"/>
+        <image name="ic_vk_first" width="56" height="56"/>
     </resources>
 </document>
