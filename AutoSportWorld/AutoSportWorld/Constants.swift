@@ -133,4 +133,14 @@ class ASWConstants{
            return UIDevice().type == .iPhone5S
         }
     }
+    
+    static var isDebug: Bool{
+        get{
+            #if DEBUG
+                return true
+            #else
+                return false
+            #endif
+        }
+    }
 }
