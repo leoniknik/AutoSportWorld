@@ -74,10 +74,17 @@ class ASWEventViewController: UIViewController {
         setupRace()
         setupActionsForInfoLabels()
         setupBlueCircle()
+        setupLikeActionForLikesLabel()
     }
-
+    
+    func setupLikeActionForLikesLabel() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(like))
+        likedCountLabel.addGestureRecognizer(tapGesture)
+    }
     
     func setupActionsForInfoLabels() {
+        let gestureRecognizerMap = UITapGestureRecognizer(target: self, action: #selector(openMap))
+        placeLabel.addGestureRecognizer(gestureRecognizerMap)
         let gestureRecognizerSite = UITapGestureRecognizer(target: self, action: #selector(showWebView))
         siteLabel.addGestureRecognizer(gestureRecognizerSite)
         let gestureRecognizerInfo = UITapGestureRecognizer(target: self, action: #selector(updateAddInfo))
@@ -198,8 +205,11 @@ class ASWEventViewController: UIViewController {
         }
     }
     
-    @IBAction func likeEvent(_ sender: UIButton) {
-        
+    @IBAction @objc func likeEvent(_ sender: UIButton) {
+        like()
+    }
+    
+    @objc func like() {
         guard model.canLike() == true else { return }
         
         func sucsessFunc(){
@@ -212,7 +222,6 @@ class ASWEventViewController: UIViewController {
         } else {
             model.likeEvent(id: race.id ?? "", sucsessFunc: sucsessFunc)
         }
-        
     }
     
     func setupLiked() {
@@ -250,6 +259,10 @@ class ASWEventViewController: UIViewController {
     }
     
     @IBAction func showMap(_ sender: UIButton) {
+        openMap()
+    }
+    
+    @objc func openMap() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "map") as? ASWMapViewController else { return }
         vc.isFromEvent = true

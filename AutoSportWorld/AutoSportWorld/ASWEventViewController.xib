@@ -64,7 +64,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-aw-D5W">
                                             <rect key="frame" x="0.0" y="170" width="375" height="24"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нравится: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="229-2q-6K6">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нравится: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="229-2q-6K6">
                                                     <rect key="frame" x="42" y="1" width="78.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="YGO-KV-IxJ"/>
@@ -100,7 +100,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="34" id="5B2-7V-a0B"/>
                                                     </constraints>
-                                                    <state key="normal" image="ic_like_black_32"/>
+                                                    <state key="normal" image="ic_like_black_32">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="likeEvent:" destination="-1" eventType="touchUpInside" id="sp0-iu-W8v"/>
                                                     </connections>

@@ -44,6 +44,8 @@
 		CA3710BF1F37D70A003578E5 /* ASWSettingsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */; };
 		CA3ED32B1FFC21830026DBA6 /* ASWRaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ED32A1FFC21830026DBA6 /* ASWRaceEntity.swift */; };
 		CA3ED32F1FFD11840026DBA6 /* ASWFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ED32E1FFD11840026DBA6 /* ASWFavoriteViewController.swift */; };
+		CA4F8C6920680206005529E7 /* ASWRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F8C6720680206005529E7 /* ASWRulesViewController.swift */; };
+		CA4F8C6A20680206005529E7 /* ASWRulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA4F8C6820680206005529E7 /* ASWRulesViewController.xib */; };
 		CA51D6561FE6D0AC00018CE9 /* ASWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D6551FE6D0AC00018CE9 /* ASWNetworkManager.swift */; };
 		CA51D65D1FE6D77F00018CE9 /* ASWRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D65C1FE6D77F00018CE9 /* ASWRequest.swift */; };
 		CA51D65F1FE6D86400018CE9 /* ASWListRacesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51D65E1FE6D86400018CE9 /* ASWListRacesRequest.swift */; };
@@ -179,6 +181,8 @@
 		CA3710BE1F37D70A003578E5 /* ASWSettingsFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSettingsFilterCell.swift; sourceTree = "<group>"; };
 		CA3ED32A1FFC21830026DBA6 /* ASWRaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRaceEntity.swift; sourceTree = "<group>"; };
 		CA3ED32E1FFD11840026DBA6 /* ASWFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFavoriteViewController.swift; sourceTree = "<group>"; };
+		CA4F8C6720680206005529E7 /* ASWRulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRulesViewController.swift; sourceTree = "<group>"; };
+		CA4F8C6820680206005529E7 /* ASWRulesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWRulesViewController.xib; sourceTree = "<group>"; };
 		CA51D6551FE6D0AC00018CE9 /* ASWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWNetworkManager.swift; sourceTree = "<group>"; };
 		CA51D65C1FE6D77F00018CE9 /* ASWRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWRequest.swift; sourceTree = "<group>"; };
 		CA51D65E1FE6D86400018CE9 /* ASWListRacesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWListRacesRequest.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 				CAD382FD1FFDB421000B4242 /* ASWWebViewController.xib */,
 				DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */,
 				DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */,
+				CA4F8C6820680206005529E7 /* ASWRulesViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 		CA3710A61F37AD9F003578E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA4F8C6720680206005529E7 /* ASWRulesViewController.swift */,
 				DE41F3302039A33D00E63497 /* UIViewControllerWithActivityIndicator.swift */,
 				DEDC453D20073D3F00AE5B72 /* ASWRegisterAccountViewController.swift */,
 				DE31D5261FF0EE130055AFF0 /* ASWLoginViaEmailViewController.swift */,
@@ -682,6 +688,7 @@
 				DE97B60F20457C4500E8F8CA /* ASWResponseErrorView.xib in Resources */,
 				CA159CB51FFD98FB00A501F4 /* ASWFullImageViewController.xib in Resources */,
 				CA584CDA1F48440D0011E653 /* ASWRaceTypeCell.xib in Resources */,
+				CA4F8C6A20680206005529E7 /* ASWRulesViewController.xib in Resources */,
 				CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,6 +860,7 @@
 				CA584CE31F48ADB30011E653 /* ASWPasswordValidator.swift in Sources */,
 				CA51D6561FE6D0AC00018CE9 /* ASWNetworkManager.swift in Sources */,
 				CA0D21881FEDC1DB00CF42FF /* ASWRegionsRequest.swift in Sources */,
+				CA4F8C6920680206005529E7 /* ASWRulesViewController.swift in Sources */,
 				CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */,
 				CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */,
 				CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */,

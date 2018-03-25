@@ -19,6 +19,9 @@ class ASWAboutAppViewController: UIViewController {
     
     @IBOutlet weak var termsOfUseButton: UIButton!
     
+    @IBOutlet weak var rulesView: UIView!
+    
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -39,6 +42,7 @@ class ASWAboutAppViewController: UIViewController {
         addBackButton(animated: true)
         setupBlackOpaqueNavBar()
         navigationController?.navigationBar.tintColor = .white
+        setupRulesTransition()
     }
     
     func setupUI(){
@@ -50,13 +54,19 @@ class ASWAboutAppViewController: UIViewController {
     @IBAction func rate(_ sender: Any) {
         SKStoreReviewController.requestReview()
     }
-
-    @IBAction func termsOfUseAction(_ sender: Any) {
-    }
     
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-
+    func setupRulesTransition() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openRules))
+        rulesView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc func openRules() {
+        let vc = ASWRulesViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
