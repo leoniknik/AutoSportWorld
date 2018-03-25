@@ -23,12 +23,12 @@ class ASWNetworkManager{
             else {
                 NotificationCenter.default.post(name: .eventsInitCallback, object: nil, userInfo: ["data": response])
             }
-
+            
         }
         
         func onError(error: Any) -> Void {
             if (cursor != nil) {
-
+                
             }
             else {
                 NotificationCenter.default.post(name: .eventsCallbackError, object: nil)
@@ -41,7 +41,7 @@ class ASWNetworkManager{
     static func getEvent(request: ASWRaceRequest) {
         
         func onSuccess(json: JSON) -> Void{
-
+            
             let response = ASWRaceParser(race: json)
             NotificationCenter.default.post(name: .eventCallback, object: nil, userInfo: ["data": response])
             
@@ -96,7 +96,7 @@ class ASWNetworkManager{
             errorFunc(ASWErrorParser(error: error, json: json))
             
         }
-
+        
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
@@ -181,7 +181,21 @@ class ASWNetworkManager{
     }
     
     static func likeEvent(id: String, successFunc: @escaping () -> ()) {
-        let request = ASWLiekRequest(id: id)
+        let request = ASWLikeRequest(id: id)
+        guard let token = ASWDatabaseManager().getUser()?.access_token else { return }
+        let headers = ["x-access-token":token,"Content-Type":"application/json"]
+        Alamofire.request(request.url, method: .post, parameters: request.parameters, headers: headers).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                successFunc()
+            case .failure(let error):
+                defaultOnError(error: error)
+            }
+        }
+    }
+    
+    static func unlikeEvent(id: String, successFunc: @escaping () -> ()) {
+        let request = ASWUnlikeRequest(id: id)
         guard let token = ASWDatabaseManager().getUser()?.access_token else { return }
         let headers = ["x-access-token":token,"Content-Type":"application/json"]
         Alamofire.request(request.url, method: .post, parameters: request.parameters, headers: headers).validate().responseJSON { response in
@@ -228,15 +242,15 @@ class ASWNetworkManager{
     //get Request
     private static func request(URL: String, method: HTTPMethod, parameters: Parameters, onSuccess: @escaping (JSON) -> Void , onError: @escaping (Any) -> Void, encoding: ParameterEncoding = URLEncoding.default) -> Void {
         
-//        let configuration = URLSessionConfiguration.default
-//        configuration.timeoutIntervalForRequest = 5
-//        configuration.timeoutIntervalForResource = 5
-//        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
+        //        let configuration = URLSessionConfiguration.default
+        //        configuration.timeoutIntervalForRequest = 5
+        //        configuration.timeoutIntervalForResource = 5
+        //        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
         
         let headers: HTTPHeaders? = [:]
-//        if let token = ASWDatabaseManager().getUser()?.access_token {
-//            headers = ["x-access-token":token,"Content-Type":"application/json"]
-//        }
+        //        if let token = ASWDatabaseManager().getUser()?.access_token {
+        //            headers = ["x-access-token":token,"Content-Type":"application/json"]
+        //        }
         
         Alamofire.request(URL, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseJSON { response in
             switch response.result {
@@ -254,11 +268,11 @@ class ASWNetworkManager{
         }
     }
     
-
+    
     private static func secretRequest(URL: String, method: HTTPMethod, parameters: Parameters, encoding: ParameterEncoding, onSuccess: @escaping (JSON) -> Void , onError: @escaping (JSON,Error) -> Void, acessToken:String) -> Void {
         print("requesting URL \(URL)")
         
-        let headers = ["x-access-token":acessToken,"Content-Type":"application/json"]
+        let headers = ["x-access-token":acessToken, "Content-Type":"application/json"]
         
         Alamofire.request(URL, method: method, parameters: parameters,encoding: encoding, headers: headers ).validate().responseJSON { response in
             switch response.result {
@@ -271,7 +285,12 @@ class ASWNetworkManager{
                 DispatchQueue.global(qos: .userInitiated).async {
                     var json = JSON()
                     if let data = response.data {
-                           json = JSON(data: data)
+                        do {
+                            json = try JSON(data: data)
+                        }
+                        catch {
+                            return
+                        }
                     }
                     DispatchQueue.main.async {
                         onError(json,error)
@@ -295,16 +314,21 @@ class ASWNetworkManager{
                     print(error)
                     var json = JSON()
                     if let data = response.data {
-                        json = JSON(data: data)
+                        do {
+                            json = try JSON(data: data)
+                        }
+                        catch {
+                            return
+                        }
                     }
                     DispatchQueue.main.async {
-                        onError(json,error as NSError)
+                        onError(json, error as NSError)
                     }
                 }
             }
         }
     }
-
+    
     class func defaultOnSuccess(json: JSON) -> Void{
         print(json)
     }

@@ -9,7 +9,6 @@
 import UIKit
 
 protocol ASWEventCellDelegate: class {
-    func likeEventTapped(id: Int)
     func bookmarkEventTapped(id: Int)
 }
 
@@ -31,7 +30,8 @@ class ASWEventCell: UITableViewCell {
     @IBOutlet weak var watchImage: UIImageView!
     @IBOutlet weak var momeyImage: UIImageView!
     
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeImage: UIImageView!
+    
     @IBOutlet weak var bookmarkButton: UIButton!
     
     var id: Int!
@@ -44,10 +44,6 @@ class ASWEventCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-    }
-    
-    @IBAction func likeEvent(_ sender: UIButton) {
-        delegate?.likeEventTapped(id: self.id)
     }
     
     @IBAction func bookmarkEvent(_ sender: UIButton) {

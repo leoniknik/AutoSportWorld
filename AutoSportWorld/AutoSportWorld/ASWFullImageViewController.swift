@@ -24,6 +24,10 @@ class ASWFullImageViewController: UIViewController {
         fatalError()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let urlString = race.imageURL else {return}

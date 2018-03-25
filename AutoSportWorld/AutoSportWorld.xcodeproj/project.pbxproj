@@ -69,7 +69,6 @@
 		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
 		CA8D11B61FFD14710009C4FF /* ASWFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */; };
 		CA9CCA361F51626D006494EB /* ASWEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CCA351F51626D006494EB /* ASWEvent.swift */; };
-		CAAA7FAF204BDCD800173925 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAAA7FAE204BDCD700173925 /* Default-568h@2x.png */; };
 		CAB4EA4B1F50EE2700C35BE6 /* ASWLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */; };
 		CAB980542046EA43001ADF68 /* ASWMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB980522046EA43001ADF68 /* ASWMenuCell.swift */; };
 		CAC3DC5620447A8E00EE4F50 /* UIViewController+MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */; };
@@ -205,7 +204,6 @@
 		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFavoriteModel.swift; sourceTree = "<group>"; };
 		CA9CCA351F51626D006494EB /* ASWEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEvent.swift; sourceTree = "<group>"; };
-		CAAA7FAE204BDCD700173925 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CAB4EA4A1F50EE2700C35BE6 /* ASWLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLogInViewController.swift; sourceTree = "<group>"; };
 		CAB980522046EA43001ADF68 /* ASWMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWMenuCell.swift; sourceTree = "<group>"; };
 		CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+MainScreen.swift"; sourceTree = "<group>"; };
@@ -341,7 +339,6 @@
 		CA323B1A1F379ADA007157D4 = {
 			isa = PBXGroup;
 			children = (
-				CAAA7FAE204BDCD700173925 /* Default-568h@2x.png */,
 				CA323B251F379ADA007157D4 /* AutoSportWorld */,
 				CA323B241F379ADA007157D4 /* Products */,
 				75BCFFB2038325B7E428B6E9 /* Pods */,
@@ -666,7 +663,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA584CD41F4843A30011E653 /* Calendar.storyboard in Resources */,
-				CAAA7FAF204BDCD800173925 /* Default-568h@2x.png in Resources */,
 				DEF487BC1FF0E290008318BC /* AboutApp.storyboard in Resources */,
 				CAC70E631F4701E60098470F /* ASWMapAndCalendarCell.xib in Resources */,
 				CA584CD61F4843A30011E653 /* Registration.storyboard in Resources */,

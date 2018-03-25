@@ -148,23 +148,6 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         }
     }
     
-    func likeEventTapped(id: Int) {
-        
-        let race = model.getEvent(forIndex: id)
-        
-        func sucsessFunc(){
-            race.liked = !(race.liked ?? false)
-            tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
-        }
-        
-        if race.liked ?? false {
-            model.unlikeEvent(id: id, sucsessFunc: sucsessFunc)
-        } else {
-            model.likeEvent(id: id, sucsessFunc: sucsessFunc)
-        }
-        
-    }
-    
     func bookmarkEventTapped(id: Int) {
         model.bookmarkRace(withID: id)
         tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
@@ -240,9 +223,8 @@ extension ASWFeedViewController: UITableViewDataSource {
         
         cell.likesLabel.text = "Нравится: \(race.likes ?? 0)"
         
-        let likeImage = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
-        cell.likeButton.setBackgroundImage(likeImage, for: .normal)
-
+        //let likeImage = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
+        cell.likeImage.image = UIImage.likedOff
     }
     
 }

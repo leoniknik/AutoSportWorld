@@ -17,7 +17,8 @@ class ASWEventViewController: UIViewController {
     
     //лайки и цена
     @IBOutlet weak var likedCountLabel: UILabel!
-    @IBOutlet weak var likedImage: UIImageView!
+
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var blueCircle: UIView!
     @IBOutlet weak var bookmarkButton: UIButton!
     
@@ -88,7 +89,7 @@ class ASWEventViewController: UIViewController {
         setupNavItem()
         setupShedule()
         updateCircleView()
-        updateLiked()
+        setupLiked()
         updateTitle()
         setupInfo()
     }
@@ -197,13 +198,50 @@ class ASWEventViewController: UIViewController {
         }
     }
     
-    func updateLiked() {
+    @IBAction func likeEvent(_ sender: UIButton) {
+        
+        guard model.canLike() == true else { return }
+        
+        func sucsessFunc(){
+            race.liked = !(race.liked ?? false)
+            updateLiked()
+        }
+        
+        if race.liked ?? false {
+//            model.unlikeEvent(id: race.id, sucsessFunc: sucsessFunc)
+        } else {
+            model.likeEvent(id: race.id ?? "", sucsessFunc: sucsessFunc)
+        }
+        
+    }
+    
+    func setupLiked() {
         likedCountLabel.text = "Нравится: \(race.likes ?? 0)"
         if race.liked ?? false {
-            likedImage.image = UIImage.cardLikedOn
+            likeButton.setImage(UIImage.cardLikedOn, for: .normal)
         } else {
-            likedImage.image = UIImage.cardLikedOff
+            likeButton.setImage(UIImage.cardLikedOff, for: .normal)
         }
+    }
+    
+    func updateLiked() {
+        if let liked = race.liked {
+            race.liked = !liked
+            if race.likes != nil {
+                race.likes = race.likes ?? 0 - 1
+            } else {
+                race.likes = 0
+            }
+        } else {
+            race.liked = true
+            race.likes = (race.likes ?? 0) + 1
+        }
+        
+        if race.likes ?? 0 < 0 {
+            race.likes = 0
+        }
+        
+        setupLiked()
     }
     
     func updateTitle() {
@@ -212,7 +250,11 @@ class ASWEventViewController: UIViewController {
     }
     
     @IBAction func showMap(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "map") as? ASWMapViewController else { return }
+        vc.isFromEvent = true
+        vc.choosenEvents.append(race)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func showSite(_ sender: UIButton) {

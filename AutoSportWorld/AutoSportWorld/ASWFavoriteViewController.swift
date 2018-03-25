@@ -243,7 +243,7 @@ extension ASWFavoriteViewController: UITableViewDataSource {
         cell.likesLabel.text = "Нравится: \(race.likes ?? 0)"
         
         let likeImage = (race.liked ?? false) ? UIImage.likedOn : UIImage.likedOff
-        cell.likeButton.setBackgroundImage(likeImage, for: .normal)
+        cell.likeImage.image = likeImage
         
     }
     

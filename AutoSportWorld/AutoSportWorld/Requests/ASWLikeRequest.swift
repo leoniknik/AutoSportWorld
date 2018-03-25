@@ -8,11 +8,20 @@
 
 import Foundation
 
-class ASWLiekRequest: ASWRequest {
+class ASWLikeRequest: ASWRequest {
     
     init(id: String) {
         super.init()
         url = self.baseURL + "/races/\(id)/like"
+    }
+    
+}
+
+class ASWUnlikeRequest: ASWRequest {
+    
+    init(id: String) {
+        super.init()
+        url = self.baseURL + "/races/\(id)/unlike"
     }
     
 }

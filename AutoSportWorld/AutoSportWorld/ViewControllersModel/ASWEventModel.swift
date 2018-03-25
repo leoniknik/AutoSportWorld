@@ -36,4 +36,20 @@ class ASWEventModel {
         return databaseService.checkBookmarkedRace(withID: id)
     }
     
+    func likeEvent(id: String, sucsessFunc: @escaping ()->()) {
+        ASWNetworkManager.likeEvent(id: id, successFunc: sucsessFunc)
+    }
+    
+    func unlikeEvent(id: String, sucsessFunc: @escaping ()->()) {
+        ASWNetworkManager.unlikeEvent(id: id, successFunc: sucsessFunc)
+    }
+    
+    func canLike() -> Bool {
+        if ASWDatabaseManager().getUser() == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
 }

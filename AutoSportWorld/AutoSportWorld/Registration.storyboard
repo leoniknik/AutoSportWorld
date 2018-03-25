@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cFW-UU-ztQ">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,7 +18,7 @@
             <objects>
                 <navigationController id="cFW-UU-ztQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="t5e-yv-eVM">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -34,18 +34,17 @@
             <objects>
                 <viewController storyboardIdentifier="registr" id="Pqr-xr-kCH" customClass="ASWLogInViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jc8-5Y-U2w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background_one" translatesAutoresizingMaskIntoConstraints="NO" id="deG-Zs-VYv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFB-1E-Plf">
-                                <rect key="frame" x="127.66666666666669" y="726" width="120" height="32"/>
+                                <rect key="frame" x="127.5" y="615" width="120" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="abe-ca-fjb"/>
                                 </constraints>
-
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Пропустить">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,7 +54,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PE-6Z-NYu">
-                                <rect key="frame" x="37" y="612" width="300" height="37"/>
+                                <rect key="frame" x="37.5" y="501" width="300" height="37"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Вход">
@@ -66,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgP-cr-egp">
-                                <rect key="frame" x="37" y="669" width="300" height="37"/>
+                                <rect key="frame" x="37.5" y="558" width="300" height="37"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Регистрация">
@@ -77,13 +76,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avto" translatesAutoresizingMaskIntoConstraints="NO" id="3oc-dD-vNq">
-                                <rect key="frame" x="112.66666666666669" y="40" width="150" height="150.66666666666666"/>
+                                <rect key="frame" x="112.5" y="40" width="150" height="150.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3oc-dD-vNq" secondAttribute="height" multiplier="1:1" id="EGd-rN-Ld4"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сервис мониторинга авто и мотогонок" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lej-cZ-AEu">
-                                <rect key="frame" x="74" y="279.66666666666669" width="226" height="51"/>
+                                <rect key="frame" x="74" y="279.5" width="226" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="UF7-g0-PT2"/>
                                     <constraint firstAttribute="width" constant="226" id="iaR-EX-hTf"/>
@@ -93,7 +92,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МИР АВТОСПОРТА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e40-E6-XtU">
-                                <rect key="frame" x="61" y="232.66666666666666" width="253" height="31.999999999999972"/>
+                                <rect key="frame" x="61" y="232.5" width="253" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="253" id="CHu-Ls-vK9"/>
                                 </constraints>
@@ -102,7 +101,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qw-JO-lnz">
-                                <rect key="frame" x="37" y="555" width="300" height="37"/>
+                                <rect key="frame" x="37.5" y="444" width="300" height="37"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.46666666666666667" blue="0.64313725490196072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8Qw-JO-lnz" secondAttribute="height" multiplier="300:37" id="BP1-G7-kRk"/>
@@ -116,7 +115,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_like_blue" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-M9-Kfc">
-                                <rect key="frame" x="232.5" y="615" width="32" height="32"/>
+                                <rect key="frame" x="247.5" y="615" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CKH-M9-Kfc" secondAttribute="height" multiplier="1:1" id="Let-RP-IJH"/>
                                 </constraints>
@@ -125,7 +124,6 @@
                         <constraints>
                             <constraint firstItem="7kQ-Cz-tFM" firstAttribute="bottom" secondItem="OFB-1E-Plf" secondAttribute="bottom" constant="20" id="2aM-ex-qLk"/>
                             <constraint firstItem="zgP-cr-egp" firstAttribute="height" secondItem="4PE-6Z-NYu" secondAttribute="height" id="6eb-ld-Y7I"/>
-
                             <constraint firstItem="8Qw-JO-lnz" firstAttribute="centerX" secondItem="jc8-5Y-U2w" secondAttribute="centerX" id="6yU-X8-tx8"/>
                             <constraint firstItem="CKH-M9-Kfc" firstAttribute="leading" secondItem="OFB-1E-Plf" secondAttribute="trailing" id="7d6-s3-21h"/>
                             <constraint firstItem="CKH-M9-Kfc" firstAttribute="top" secondItem="OFB-1E-Plf" secondAttribute="top" id="CzM-6U-HyY"/>
@@ -145,7 +143,6 @@
                             <constraint firstItem="4PE-6Z-NYu" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="baa-81-XcT"/>
                             <constraint firstItem="e40-E6-XtU" firstAttribute="top" secondItem="3oc-dD-vNq" secondAttribute="bottom" constant="42" id="beC-tU-Kb2"/>
                             <constraint firstItem="e40-E6-XtU" firstAttribute="centerX" secondItem="deG-Zs-VYv" secondAttribute="centerX" id="e0w-re-6IO"/>
-
                             <constraint firstItem="3oc-dD-vNq" firstAttribute="centerX" secondItem="jc8-5Y-U2w" secondAttribute="centerX" id="iNt-r0-1tZ"/>
                             <constraint firstItem="deG-Zs-VYv" firstAttribute="leading" secondItem="jc8-5Y-U2w" secondAttribute="leading" id="lLx-h9-T75"/>
                             <constraint firstItem="CKH-M9-Kfc" firstAttribute="height" secondItem="OFB-1E-Plf" secondAttribute="height" id="mgA-5m-ddY"/>
@@ -157,6 +154,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="paf-F3-y18"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="4PE-6Z-NYu" id="lM1-Iv-V3T"/>
                         <outlet property="registrationButton" destination="zgP-cr-egp" id="0tB-G1-yTY"/>
@@ -172,29 +170,29 @@
             <objects>
                 <viewController storyboardIdentifier="registerAccountView" id="QvA-rV-szs" customClass="ASWRegisterAccountViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pOI-Ui-Cae">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4z-7f-oFL" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.666666666666657" y="134" width="262.33333333333337" height="43"/>
+                                <rect key="frame" x="56.5" y="110" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="atc-ca-ItM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNk-qa-7Ro" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="197" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="173" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Obj-Hr-fKL"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0Z-Gl-em8" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="260" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="236" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubo-sE-Hz0" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="323" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="299" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RegisterAccount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXj-W8-Fv4">
@@ -242,14 +240,14 @@
             <objects>
                 <viewController id="tqw-5e-UON" customClass="ASWLoginViaEmailViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sKD-0m-SYr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background_one" translatesAutoresizingMaskIntoConstraints="NO" id="iWd-dF-bql">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВХОД В                     МИР АВТОСПОРТА" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-B2-HPe">
-                                <rect key="frame" x="0.66666666666665719" y="87" width="375" height="79"/>
+                                <rect key="frame" x="0.5" y="63" width="375" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="g4K-Nu-QsW"/>
                                 </constraints>
@@ -258,18 +256,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehh-wt-xn6" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.666666666666657" y="261" width="262.33333333333337" height="43"/>
+                                <rect key="frame" x="56.5" y="237" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="QQa-S8-NhU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Zd-WP-QbD" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="324" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="300" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2c-yh-FBE">
-                                <rect key="frame" x="56" y="382" width="116" height="30"/>
+                                <rect key="frame" x="56.5" y="358" width="116" height="30"/>
                                 <color key="tintColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Забыли пароль?"/>
                                 <connections>
@@ -277,7 +275,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVl-gK-rmz">
-                                <rect key="frame" x="56.666666666666657" y="431" width="262.33333333333337" height="43"/>
+                                <rect key="frame" x="56.5" y="407" width="262.5" height="43"/>
                                 <state key="normal" title="Войти">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -334,11 +332,11 @@
             <objects>
                 <viewController id="Rvc-0x-FDa" customClass="ASWChangeRegionsViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8eu-9s-avW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t5r-7Z-YVD">
-                                <rect key="frame" x="0.0" y="100" width="375" height="590"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="llg-uW-ZVK">
                                     <size key="itemSize" width="50" height="50"/>
@@ -352,7 +350,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-15-igv">
-                                            <rect key="frame" x="146" y="12.666666666666664" width="83" height="21"/>
+                                            <rect key="frame" x="146" y="12.5" width="83" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -368,7 +366,7 @@
                                 </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GjT-8p-Xzh">
-                                <rect key="frame" x="0.0" y="728" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FPB-mK-nCq"/>
@@ -387,7 +385,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" placeholder="Поиск" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uoo-If-4iT">
-                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -395,7 +393,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqu-1H-gR9">
-                                <rect key="frame" x="0.0" y="690" width="375" height="38"/>
+                                <rect key="frame" x="0.0" y="579" width="375" height="38"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xrQ-4o-tGv">
                                         <rect key="frame" x="20" y="28" width="335" height="2"/>
@@ -474,15 +472,15 @@
             <objects>
                 <viewController storyboardIdentifier="registerView" id="vQx-1r-mzr" customClass="ASWRegistrationViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hc1-X7-RiS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moj-gg-1Kf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="594"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="507"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </containerView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pAQ-l5-dDd">
-                                <rect key="frame" x="56.666666666666657" y="632" width="262.33333333333337" height="50"/>
+                                <rect key="frame" x="56.5" y="545" width="262.5" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.28235294117647058" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Zsq-pE-5Cx"/>
@@ -494,7 +492,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-Ee-YDF">
-                                <rect key="frame" x="0.0" y="594" width="375" height="38"/>
+                                <rect key="frame" x="0.0" y="507" width="375" height="38"/>
                                 <subviews>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="caY-uP-K3e">
                                         <rect key="frame" x="20" y="28" width="335" height="2"/>
@@ -571,11 +569,11 @@
             <objects>
                 <viewController storyboardIdentifier="collectionView" id="ZO8-wS-FT5" customClass="ASWCollectionViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xzU-wo-lrC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Sjc-3v-aEY">
-                                <rect key="frame" x="0.0" y="100" width="375" height="678"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AQD-Aq-agu">
                                     <size key="itemSize" width="50" height="50"/>
@@ -589,7 +587,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYH-hb-3fZ">
-                                            <rect key="frame" x="0.0" y="0.66666666666666785" width="375" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.5" width="375" height="40"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -608,7 +606,7 @@
                                 </collectionReusableView>
                             </collectionView>
                             <searchBar contentMode="redraw" placeholder="Поиск" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txd-hq-3ez">
-                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="bjC-oS-E90"/>
@@ -621,7 +619,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет данных" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVB-7B-1M6">
-                                <rect key="frame" x="141" y="429" width="93" height="20.666666666666686"/>
+                                <rect key="frame" x="141" y="361.5" width="93" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -664,14 +662,14 @@
             <objects>
                 <viewController id="kzy-Ky-Wgg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IhX-s7-ka5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background_one" translatesAutoresizingMaskIntoConstraints="NO" id="agD-JI-Eb1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naz-h6-KTw">
-                                <rect key="frame" x="127.66666666666669" y="638" width="120" height="32"/>
+                                <rect key="frame" x="127.5" y="551" width="120" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="c5o-Hw-dwj"/>
                                 </constraints>
@@ -681,7 +679,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOo-Ur-Cai">
-                                <rect key="frame" x="16" y="605" width="150" height="30"/>
+                                <rect key="frame" x="16" y="518" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.37343376900000003" green="1" blue="0.2576099282" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UPD-Xn-dH3"/>
@@ -692,7 +690,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYw-P8-jPx">
-                                <rect key="frame" x="209" y="605" width="150" height="30"/>
+                                <rect key="frame" x="209" y="518" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.37343376900000003" green="1" blue="0.2576099282" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="avT-ou-wKd"/>
@@ -703,31 +701,31 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukn-cz-fK5">
-                                <rect key="frame" x="240" y="465" width="119" height="112"/>
+                                <rect key="frame" x="265" y="402" width="94" height="88"/>
                                 <state key="normal" image="ic_fb_first"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCY-1l-vCq">
-                                <rect key="frame" x="128" y="465" width="119" height="112"/>
+                                <rect key="frame" x="140.5" y="402" width="94" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QCY-1l-vCq" secondAttribute="height" multiplier="18:17" id="Gs2-Vb-9Oc"/>
                                 </constraints>
                                 <state key="normal" image="ic_ok_first"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-sM-qIR">
-                                <rect key="frame" x="16" y="465" width="119" height="112"/>
+                                <rect key="frame" x="16" y="402" width="94.5" height="88"/>
                                 <state key="normal" image="ic_vk_first"/>
                                 <connections>
                                     <action selector="vkLogin:" destination="kzy-Ky-Wgg" eventType="touchUpInside" id="63X-ws-gfm"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avto" translatesAutoresizingMaskIntoConstraints="NO" id="puX-c9-ZF7">
-                                <rect key="frame" x="112.66666666666669" y="0.0" width="150" height="150.66666666666666"/>
+                                <rect key="frame" x="112.5" y="0.0" width="150" height="150.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="puX-c9-ZF7" secondAttribute="height" multiplier="1:1" id="hXe-Vt-X8m"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СЕРВИС МОНИТОРИНГА АВТОГОНОК" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="682-Xz-J9B">
-                                <rect key="frame" x="74" y="239.66666666666669" width="226" height="51"/>
+                                <rect key="frame" x="74" y="239.5" width="226" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="226" id="CAr-DA-7Ys"/>
                                     <constraint firstAttribute="height" constant="51" id="Xfj-CE-x8P"/>
@@ -737,7 +735,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МИР АВТОСПОРТА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otv-gW-KKd">
-                                <rect key="frame" x="61" y="192.66666666666669" width="253" height="32"/>
+                                <rect key="frame" x="61" y="192.5" width="253" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="253" id="tBa-0N-6zK"/>
                                 </constraints>
@@ -796,28 +794,28 @@
             <objects>
                 <viewController id="FIK-OV-g7K" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c8b-wN-Eom">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background_one" translatesAutoresizingMaskIntoConstraints="NO" id="Ih7-9x-H4h">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ob-IU-2ms">
-                                <rect key="frame" x="20" y="217" width="335" height="50"/>
+                                <rect key="frame" x="20" y="193" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Z9v-fX-gSH"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QMz-aQ-LXH">
-                                <rect key="frame" x="20" y="275" width="335" height="50"/>
+                                <rect key="frame" x="20" y="251" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JaK-io-UPu"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВХОД В МИР АВТОСПОРТА" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10g-nh-5e8">
-                                <rect key="frame" x="0.0" y="87" width="375" height="79"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="yxU-EJ-RsL"/>
                                 </constraints>
@@ -826,7 +824,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tU9-sK-Dac">
-                                <rect key="frame" x="28" y="355" width="319" height="30"/>
+                                <rect key="frame" x="28" y="331" width="319" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Jef-Zc-OWs"/>
@@ -836,26 +834,26 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVS-kF-rCh" customClass="PasswordTextField">
-                                <rect key="frame" x="28" y="386" width="319" height="30"/>
+                                <rect key="frame" x="28" y="362" width="319" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес эл. почты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdH-lr-Z7O">
-                                <rect key="frame" x="36" y="360" width="131" height="21"/>
+                                <rect key="frame" x="36" y="336" width="131" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj7-os-Oz6">
-                                <rect key="frame" x="36" y="391" width="59.666666666666657" height="21"/>
+                                <rect key="frame" x="36" y="367" width="59.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePJ-7g-SaR">
-                                <rect key="frame" x="323" y="386" width="24" height="30"/>
+                                <rect key="frame" x="323" y="362" width="24" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="YCP-b2-Nyg"/>
                                 </constraints>
@@ -917,7 +915,7 @@
             <objects>
                 <viewController storyboardIdentifier="changePasswordView" id="EIg-nM-83B" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="clP-R3-J0j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="GHU-kz-HIC"/>
@@ -932,29 +930,29 @@
             <objects>
                 <viewController storyboardIdentifier="changeUserInfo" id="rKj-QS-4fE" customClass="ASWChangeUserInfoViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3pf-Kz-Fiy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1a-RV-bpT" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.666666666666657" y="134" width="262.33333333333337" height="43"/>
+                                <rect key="frame" x="56.5" y="110" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="AWj-fZ-SU7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-ca-nK0" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="197" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="173" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="hcn-G7-2v4"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVU-nU-bnt" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="260" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="236" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lXs-9L-y8i">
-                                <rect key="frame" x="56.666666666666657" y="720" width="262.33333333333337" height="50"/>
+                                <rect key="frame" x="56.5" y="609" width="262.5" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.28235294119999998" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Hjr-ki-IOb"/>
@@ -1010,25 +1008,25 @@
             <objects>
                 <viewController storyboardIdentifier="changePassword" id="3SA-VV-XyE" customClass="ASWChangePasswordViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lz2-kz-0mb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sas-uO-7ty" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.666666666666657" y="134" width="262.33333333333337" height="43"/>
+                                <rect key="frame" x="56.5" y="110" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Q7v-Yz-clT"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP8-KN-r8e" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="197" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="173" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="L3r-mL-afO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIl-Er-nwP" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56" y="260" width="262.66666666666669" height="43"/>
+                                <rect key="frame" x="56.5" y="236" width="262.5" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzu-ul-yP1">
@@ -1039,7 +1037,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-tj-xjx">
-                                <rect key="frame" x="56.666666666666657" y="720" width="262.33333333333337" height="50"/>
+                                <rect key="frame" x="56.5" y="609" width="262.5" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.28235294119999998" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="M7Q-Gt-dvQ"/>
@@ -1075,11 +1073,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="button" destination="SLU-tj-xjx" id="aid-BX-lUg"/>
-
                         <outlet property="oldPassField" destination="Sas-uO-7ty" id="xpB-Hv-Oew"/>
                         <outlet property="passwordField" destination="JP8-KN-r8e" id="LIG-m4-mjc"/>
                         <outlet property="repeatPasswordField" destination="eIl-Er-nwP" id="Iap-95-ZV4"/>
-
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q82-Th-EPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1089,9 +1085,8 @@
     </scenes>
     <resources>
         <image name="ic_avto" width="119" height="106"/>
-        <image name="ic_background_one" width="750" height="1334"/>
+        <image name="ic_background_one" width="375" height="667"/>
         <image name="ic_backward" width="24" height="24"/>
-
         <image name="ic_fb_first" width="56" height="56"/>
         <image name="ic_like_blue" width="15" height="14"/>
         <image name="ic_ok_first" width="56" height="56"/>

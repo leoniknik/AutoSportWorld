@@ -26,6 +26,8 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     var choosenEvents = [ASWRace]()
     
+    var isFromEvent = false
+    
     enum LocationMarker: String {
         case off = "ic_location_one"
         case on = "ic_location_one_on"
@@ -45,10 +47,27 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if shouldClear {
+        if shouldClear && !isFromEvent {
             choosenEvents = []
             setupMapSize()
             addAllMarker()
+        }
+        if isFromEvent {
+            let event = choosenEvents[0]
+            if let marker = addMarker(forEvent: event) {
+                add(imageName: .on, forMarker: marker)
+                markers.append(marker)
+                guard let latitude = event.latitude, let longitude = event.longitude else { return }
+                let camera = GMSCameraPosition.camera(withLatitude: latitude,
+                                                      longitude: longitude,
+                                                      zoom: zoomLevelMax)
+                if mapView.isHidden {
+                    mapView.isHidden = false
+                    mapView.camera = camera
+                } else {
+                    mapView.animate(to: camera)
+                }
+            }
         }
         shouldClear = true
 //        collectionView.reloadData()
@@ -107,6 +126,10 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
+        
+        if isFromEvent {
+            addBackButton()
+        }
     }
     
     @objc func showFilters() {
@@ -120,9 +143,11 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let race = choosenEvents[indexPath.item]
-        let viewController = ASWEventViewController(race: race)
-        navigationController?.pushViewController(viewController, animated: true)
+        if !isFromEvent {
+            let race = choosenEvents[indexPath.item]
+            let viewController = ASWEventViewController(race: race)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -194,7 +219,12 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     func setupMap() {
-        let camera = GMSCameraPosition.camera(withLatitude:  55.7558, longitude: 37.6173, zoom: zoomLevel)
+        var camera: GMSCameraPosition
+        if isFromEvent {
+            camera = GMSCameraPosition.camera(withLatitude: choosenEvents[0].latitude ?? 55.7558, longitude: choosenEvents[0].longitude ?? 37.6173, zoom: zoomLevel)
+        } else {
+            camera = GMSCameraPosition.camera(withLatitude:  55.7558, longitude: 37.6173, zoom: zoomLevel)
+        }
         mapView = GMSMapView.map(withFrame: viewForMap.frame, camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -251,7 +281,9 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         guard let myTBC = tabBarController as? ASWTabBarController else { return }
         for event in myTBC.mapEvents {
             if event.latitude == marker.position.latitude, event.longitude == marker.position.longitude {
-                choosenEvents = event.events
+                if !isFromEvent {
+                    choosenEvents = event.events
+                }
                 collectionView.reloadData()
                 setupMapSize()
                 return

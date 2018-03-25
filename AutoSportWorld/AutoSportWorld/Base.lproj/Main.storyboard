@@ -14,7 +14,7 @@
         <!--События на карте-->
         <scene sceneID="vvv-aZ-HxK">
             <objects>
-                <viewController id="Pul-1K-c8N" customClass="ASWMapViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="map" id="Pul-1K-c8N" customClass="ASWMapViewController" customModule="AutoSportWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ong-IN-PUv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
