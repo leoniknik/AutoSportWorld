@@ -60,6 +60,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     override func viewDidLoad() {
         super.viewDidLoad()
         textSize = 17//ASWConstants.isIPhone5 ? 17 : 26
+        collectioViewHeightConstraint.constant = 90//ASWConstants.isIPhone5 ? 90 : 100
         setupNavbar()
         
         collectionView.dataSource = self
@@ -131,6 +132,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getEvents(forDate: currentDate)
+        titleView.backgroundColor = view.backgroundColor
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -397,8 +399,6 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     func setupCollectionView(){
         let count = eventsDictionary[currentDate]?.count ?? 0
         UIView.animate(withDuration: 0.5, animations: {
-//            self.collectionView.heightAnchor.constraint(equalToConstant: count>0 ? 74 : 0).isActive = true
-            //self.collectioViewHeightConstraint.constant = count>0 ? 100 : 0
             self.collectionView.alpha = count>0 ? 1 : 0
             self.collectionView.setNeedsLayout()
         })
