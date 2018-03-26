@@ -84,14 +84,14 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     }
     
     func enterWaitMode(){
-        activityIndicator.startAnimating()
+        ModalLoadingIndicator.show()
         loginButton.isEnabled = false
     }
     
     func leaveWaitMode(){
         DispatchQueue.main.async {
             [weak self] in
-            self?.activityIndicator.stopAnimating()
+            ModalLoadingIndicator.hide()
             self?.updateFormValid()
         }
     }

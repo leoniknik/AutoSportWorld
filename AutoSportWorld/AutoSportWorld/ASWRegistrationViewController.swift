@@ -249,17 +249,17 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
                 
                 presentAlert("Регистрация", parser.totalErrorString)
             }
-            registerAccountViewController.activityIndicator.stopAnimating()
+            ModalLoadingIndicator.hide()
         }
         
         func errorCheck(parser:ASWErrorParser){
             presentAlert(errorParser: parser)
-            registerAccountViewController.activityIndicator.stopAnimating()
+            ModalLoadingIndicator.hide()
             confirmButton.isEnabled = true;
         }
         
         confirmButton.isEnabled = false;
-        registerAccountViewController.activityIndicator.startAnimating()
+        ModalLoadingIndicator.show()
         ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
@@ -434,15 +434,22 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     func confirmChangeSettings(){
         
         func sucsessSend(){
-            presentOKAlert("Успех", self.changeSettingsSuccessMessage)
+            ModalLoadingIndicator.hide()
+            presentOKAlert("Успех", self.changeSettingsSuccessMessage){
+                self.navigationController?.popViewController(animated: true)
+            }
         }
         
         func errorSend(parser:ASWErrorParser){
+            ModalLoadingIndicator.hide()
             presentAlert(errorParser: parser){
                 func sucsessFunc(parser:ASWUserInfoGetParser){
                     ASWDatabaseManager().setUserInfo(parser:parser)
+                    ModalLoadingIndicator.hide()
                 }
+                
                 func errorFunc(parser:ASWErrorParser){
+                   ModalLoadingIndicator.hide()
                 }
                 ASWNetworkManager.getUserInfo(sucsessFunc: sucsessFunc, errorFunc: errorFunc)
             }
@@ -461,6 +468,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
                                                        motoCategories: rawUser.motoCategories)
 
         confirmButton.isEnabled = false
+        ModalLoadingIndicator.show()
         ASWDatabaseManager().sendUserInfoToServer(completion: sucsessSend,error:errorSend)
     }
     
