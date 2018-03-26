@@ -45,7 +45,29 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     
     
     func updateEvents(cursor: String?) {
-        let request = ASWListRacesRequest(limit: defaultlimit, preferences: nil, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil)
+        var request: ASWListRacesRequest
+        
+        if let user = ASWDatabaseManager().getUser() {
+            
+//            //регионы
+//            var regions = [String]()
+//            for item in user.regions {
+//                regions.append(String(item.id))
+//            }
+//            let regionParameter = regions.joined(separator: ",")
+//
+//            //покататься
+//            let joinParameter = user.join
+//
+//            //посмотреть
+//            let watchParameter = user.watch
+            
+            let preferences =  "regions,categories,can_join,can_watch"
+            
+            request = ASWListRacesRequest(limit: defaultlimit, preferences: preferences, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil)
+        } else {
+            request = ASWListRacesRequest(limit: defaultlimit, preferences: nil, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil)
+        }
         ASWNetworkManager.getEvents(request: request, cursor: cursor)
     }
     

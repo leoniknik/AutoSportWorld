@@ -330,9 +330,21 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let race = eventsDictionary[currentDate.removeTimeStamp()]?[indexPath.item]{
-            let viewController = ASWEventViewController(race: race)
-            navigationController?.pushViewController(viewController, animated: true)
+        guard let stringID = eventsDictionary[currentDate.removeTimeStamp()]?[indexPath.item].id else {return}
+        if let id = Int(stringID) {
+            ModalLoadingIndicator.show()
+            ASWNetworkManager.getEventWithCompletion(request: ASWRaceRequest(raceID: id), completion: { [unowned self] (result) in
+                switch result {
+                case .success(let value):
+                    ModalLoadingIndicator.hide()
+                    let viewController = ASWEventViewController(race: value.item)
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .error(let error):
+                    ModalLoadingIndicator.hide()
+                    print(error)
+                    //показываем алерт с ошибкой
+                }
+            })
         }
     }
     

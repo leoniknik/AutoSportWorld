@@ -253,6 +253,7 @@ class ASWNetworkManager{
         //        }
         
         Alamofire.request(URL, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseJSON { response in
+            print(response.request)
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -337,4 +338,31 @@ class ASWNetworkManager{
         print(error)
     }
     
+}
+
+enum Result<T> {
+    case success(T)
+    case error(String)
+}
+
+extension ASWNetworkManager {
+    
+    typealias GetEventCompletion = ((Result<ASWRaceParser>) -> Void)?
+    static func getEventWithCompletion(request: ASWRaceRequest, completion: GetEventCompletion) {
+        
+        func onSuccess(json: JSON) -> Void{
+            let response = ASWRaceParser(race: json)
+            DispatchQueue.main.async {
+                completion?(Result.success(response))
+            }
+        }
+        
+        func onError(error: Any) -> Void {
+            DispatchQueue.main.async {
+                completion?(Result.error("Ошибка"))
+            }
+        }
+        
+        ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+    }
 }

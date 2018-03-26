@@ -48,8 +48,8 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.barTintColor = UIColor.ASWColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        self.navigationItem.title = "Лента новостей"
         self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.title = "Лента новостей"
         if ASWDatabaseManager().getUser() != nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
         }

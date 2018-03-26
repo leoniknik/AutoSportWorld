@@ -23,7 +23,6 @@ class ASWDatabaseManager {
             try! realm.write {
                 user.isLogedIn = false
             }
-            
         }
     }
     
@@ -224,6 +223,56 @@ class ASWDatabaseManager {
                 }
             }
         }
+    }
+    
+    func setUserFilters(_ values: [[Bool]]) {
+        let realm = try! Realm()
+        
+        guard let user = getUser() else{
+            return
+        }
+        
+        try! realm.write {
+            if values[0][0] == true {
+                user.dataFilter = 1
+            } else {
+                user.dataFilter = 0
+            }
+            
+            if values[1][0] == true {
+                user.costFilter = 0
+            }
+            if values[1][1] == true {
+                user.costFilter = 1
+            }
+            if values[1][2] == true {
+                user.costFilter = 2
+            }
+        }
+    }
+    
+    func getUserFilters() -> [[Bool]]? {
+        guard let user = getUser() else{
+            return nil
+        }
+        
+        var values = [[true], [false, true, false]]
+        if user.dataFilter == 1 {
+            values[0][0] = true
+        } else {
+            values[0][0] = false
+        }
+        
+        if user.costFilter == 0 {
+            values[1] = [true, false, false]
+        }
+        if user.costFilter == 1 {
+            values[1] = [false, true, false]
+        }
+        if user.costFilter == 2 {
+            values[1] = [false, false, true]
+        }
+        return values
     }
     
     func setUserRaceCategories(categoriesIDs:[Int], auto:Bool){

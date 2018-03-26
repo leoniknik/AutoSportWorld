@@ -10,6 +10,14 @@ import Foundation
 
 class ASWFiltersModel {
     
+    static let defaultValues = [[true], [false, true, false]]
+    
+    var values: [[Bool]]
+    
+    init() {
+        values = ASWDatabaseManager().getUserFilters() ?? ASWFiltersModel.defaultValues
+    }
+    
     let service = ASWFiltersService()
     
 //    let headers = ["Дата", "Стоимость", "Действие", "Квалификация", "Спорт"]
@@ -20,8 +28,6 @@ class ASWFiltersModel {
     let headers = ["Дата", "Стоимость"]
     
     let items = [["Сначала ближайшие"], ["Бесплатные", "Сначала подешевле", "Сначала подороже"]]
-    
-    var values = [[true], [false, true, false]]
     
     func getTitleForHeaderIn(section: Int) -> String {
         return headers[section]
@@ -44,7 +50,38 @@ class ASWFiltersModel {
     }
     
     func valueChangedFor(_ indexPath: IndexPath) {
-        
+        var params = values[indexPath.section]
+        if indexPath.section == 0 {
+            params[indexPath.item] = !params[indexPath.item]
+        } else {
+            let newValue = !params[indexPath.item]
+            for (index, _) in params.enumerated() {
+                params[index] = false
+            }
+            params[indexPath.item] = newValue
+            
+            if indexPath.item == 1 {
+                params[2] = !newValue
+            }
+            if indexPath.item == 2 {
+                params[1] = !newValue
+            }
+            
+            if indexPath.item == 0 && newValue == false {
+                params[1] = !newValue
+            }
+        }
+        values[indexPath.section] = params
+        saveFilters()
+    }
+    
+    func saveFilters() {
+        ASWDatabaseManager().setUserFilters(values)
+    }
+    
+    func setDefaultFilter() {
+        values = ASWFiltersModel.defaultValues
+        saveFilters()
     }
     
 }

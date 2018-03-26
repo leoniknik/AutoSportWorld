@@ -19,10 +19,12 @@ class ASWUserEntity: Object {
     @objc dynamic var auto: Bool = false
     @objc dynamic var moto: Bool = false
     @objc dynamic var watch: Bool = false
-    @objc dynamic var  join: Bool = false
+    @objc dynamic var join: Bool = false
     @objc dynamic var refresh_token: String?
     @objc dynamic var access_token: String?
     @objc dynamic var expires_at: Int = 0
+    @objc dynamic var dataFilter: Int = 1
+    @objc dynamic var costFilter: Int = 1
 
     let favoriteRaces = List<ASWRaceEntity>()
     let regions = List<ASWRegionEntity>()

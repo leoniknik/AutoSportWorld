@@ -79,9 +79,15 @@ class ASWFiltersViewController: UIViewController {
         let title = NSAttributedString(string: "Значения по умолчанию", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.red])
         button.setAttributedTitle(title, for: UIControlState.normal)
         
-        //button.addTarget(self, action:#selector(exitFromAccount), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setDefaultFilter), for: .touchUpInside)
         
         return button
+    }
+    
+    
+    @objc func setDefaultFilter() {
+        model.setDefaultFilter()
+        tableView.reloadData()
     }
 }
 
@@ -151,5 +157,6 @@ extension UINavigationController {
 extension ASWFiltersViewController: ASWFilterCellDelegate {
     func valueChanged(indexPath: IndexPath) {
         model.valueChangedFor(indexPath)
+        tableView.reloadData()
     }
 }
