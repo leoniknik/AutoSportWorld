@@ -12,7 +12,7 @@ extension ASWViewController {
     func presentServerAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            self?.presentAlert("Ошибка на сервере", "Повторите попытку или попробуйде позже", completion)
+            self?.presentOKAlert("Ошибка на сервере", "Повторите попытку или попробуйде позже", completion)
         }
     }
     
@@ -23,7 +23,7 @@ extension ASWViewController {
     func presentNetworkAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-                self?.presentAlert("Нет сети", "Проверьте подключение к интернету и повторите попытку", completion)
+                self?.presentOKAlert("Нет сети", "Проверьте подключение к интернету и повторите попытку", completion)
         }
     }
     
