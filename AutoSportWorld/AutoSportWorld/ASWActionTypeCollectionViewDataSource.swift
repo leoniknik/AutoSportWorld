@@ -82,6 +82,8 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     }
     
     override func itemSelected(){
+        watch = false
+        join = false
         for item in selectedItems{
             if item.id == 0 {
                 watch = true
