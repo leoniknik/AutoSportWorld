@@ -114,8 +114,9 @@
                                     <action selector="vkLogin:" destination="Pqr-xr-kCH" eventType="touchUpInside" id="RIL-ga-S7O"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_like_blue" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-M9-Kfc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="if_ic_navigate_next" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-M9-Kfc">
                                 <rect key="frame" x="247.5" y="615" width="32" height="32"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CKH-M9-Kfc" secondAttribute="height" multiplier="1:1" id="Let-RP-IJH"/>
                                 </constraints>
@@ -1088,9 +1089,9 @@
         <image name="ic_background_one" width="375" height="667"/>
         <image name="ic_backward" width="24" height="24"/>
         <image name="ic_fb_first" width="56" height="56"/>
-        <image name="ic_like_blue" width="15" height="14"/>
         <image name="ic_ok_first" width="56" height="56"/>
         <image name="ic_password" width="24" height="24"/>
         <image name="ic_vk_first" width="56" height="56"/>
+        <image name="if_ic_navigate_next" width="11" height="16"/>
     </resources>
 </document>

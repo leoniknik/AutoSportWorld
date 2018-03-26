@@ -13,7 +13,7 @@ let okButton = UIAlertAction(title: "OK", style: .destructive, handler: nil)
 fileprivate var SCOPE: [Any]? = nil
 
 
-class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
+class ASWLogInViewController: ASWViewController, VKSdkDelegate, VKSdkUIDelegate {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton!
@@ -21,6 +21,7 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     @IBOutlet weak var vkButton: UIButton!
     
     @IBAction func vkLogin(_ sender: UIButton) {
+        presentOKAlert("В разработке", "Данная функция находится в разработке")
 //        print("вк_логин")
 //        SCOPE = [VK_PER_FRIENDS, VK_PER_WALL, VK_PER_PHOTOS, VK_PER_EMAIL, VK_PER_MESSAGES, VK_PER_OFFLINE]
 //        VKSdk.instance().register(self)
@@ -30,7 +31,7 @@ class ASWLogInViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
         
 //        let vc = ASWViewControllerManager.Registration.registerViewController
 //        vc.configChangeRegions()
-        self.navigationController?.pushViewController(ASWViewControllersManager.calendarViewController, animated: true)
+//        self.navigationController?.pushViewController(ASWViewControllersManager.calendarViewController, animated: true)
     }
     
     override func viewDidLoad() {
