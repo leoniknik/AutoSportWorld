@@ -208,11 +208,12 @@ class ASWNetworkManager{
         }
     }
     
-    static func resetPassword(email:String, sucsessFunc: @escaping ()->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
+    static func resetPassword(email:String, sucsessFunc: @escaping (ASWResetPasswordParser)->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
         var request = ASWResetPasswordRequest(email: email)
         
         func onSuccess(json: JSON) -> Void{
-            sucsessFunc()
+            let response = ASWResetPasswordParser(json: json)
+            sucsessFunc(response)
         }
         
         func onError(json: JSON, error: Error) -> Void {

@@ -123,6 +123,13 @@ class ASWViewControllersManager{
                 return vc
             }
         }
+        
+        static var resetPassword: ASWResetPasswordViewController {
+            get{
+                let vc = ASWResetPasswordViewController.init(nibName: "ASWResetPasswordViewController", bundle: nil)
+                return vc
+            }
+        }
 
     }
     

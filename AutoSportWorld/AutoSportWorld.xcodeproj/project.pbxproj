@@ -134,6 +134,9 @@
 		DEDC45502007415400AE5B72 /* ASWLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC454E2007415400AE5B72 /* ASWLoginRequest.swift */; };
 		DEDC45512007415400AE5B72 /* ASWSignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC454F2007415400AE5B72 /* ASWSignupRequest.swift */; };
 		DEDC519E2067C5E100310BC1 /* ASWCryptoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC519D2067C5E100310BC1 /* ASWCryptoManager.swift */; };
+		DEDC51A12067FE9200310BC1 /* ASWResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC519F2067FE9200310BC1 /* ASWResetPasswordViewController.swift */; };
+		DEDC51A22067FE9200310BC1 /* ASWResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDC51A02067FE9200310BC1 /* ASWResetPasswordViewController.xib */; };
+
 		DEF487B91FF0E282008318BC /* ASWAboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */; };
 		DEF487BA1FF0E282008318BC /* ASWDevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */; };
 		DEF487BC1FF0E290008318BC /* AboutApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */; };
@@ -271,7 +274,12 @@
 		DEDC454B200740E800AE5B72 /* ASWRegionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionEntity.swift; sourceTree = "<group>"; };
 		DEDC454E2007415400AE5B72 /* ASWLoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginRequest.swift; sourceTree = "<group>"; };
 		DEDC454F2007415400AE5B72 /* ASWSignupRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSignupRequest.swift; sourceTree = "<group>"; };
+
 		DEDC519D2067C5E100310BC1 /* ASWCryptoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCryptoManager.swift; sourceTree = "<group>"; };
+
+		DEDC519F2067FE9200310BC1 /* ASWResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResetPasswordViewController.swift; sourceTree = "<group>"; };
+		DEDC51A02067FE9200310BC1 /* ASWResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWResetPasswordViewController.xib; sourceTree = "<group>"; };
+
 		DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAboutAppViewController.swift; sourceTree = "<group>"; };
 		DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWDevelopersViewController.swift; sourceTree = "<group>"; };
 		DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutApp.storyboard; sourceTree = "<group>"; };
@@ -331,6 +339,7 @@
 		CA0D21931FEEBEA300CF42FF /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				DEDC51A02067FE9200310BC1 /* ASWResetPasswordViewController.xib */,
 				DE31D5221FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib */,
 				CA0D21901FEEB92E00CF42FF /* ASWFiltersViewController.xib */,
 				CA2BB60E1FFB905B000C746A /* ASWEventViewController.xib */,
@@ -509,6 +518,7 @@
 				CA04AAFD1FFAE8A600F1ACC3 /* ASWNavigationItem.swift */,
 				DEA11E5D203C5F25009EBA26 /* ASWErrorView.swift */,
 				DE97B60C20457C0D00E8F8CA /* ASWResponseErrorViewController.swift */,
+				DEDC519F2067FE9200310BC1 /* ASWResetPasswordViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -686,6 +696,7 @@
 				DEA11E5C203C5E39009EBA26 /* ASWErrorView.xib in Resources */,
 				CA0D21921FEEB92E00CF42FF /* ASWFiltersViewController.xib in Resources */,
 				DE31D5231FF0EDF60055AFF0 /* ASWLoginPasswordTextField.xib in Resources */,
+				DEDC51A22067FE9200310BC1 /* ASWResetPasswordViewController.xib in Resources */,
 				CACB58451F3DFC12007E8E0B /* ASWEventCell.xib in Resources */,
 				DEDA9F272046A7470042DEA5 /* RegistrationAssets.xcassets in Resources */,
 				DE97B60F20457C4500E8F8CA /* ASWResponseErrorView.xib in Resources */,
@@ -868,6 +879,7 @@
 				CA0D21881FEDC1DB00CF42FF /* ASWRegionsRequest.swift in Sources */,
 				CA4F8C6920680206005529E7 /* ASWRulesViewController.swift in Sources */,
 				CACB58591F3F9680007E8E0B /* ASWCollectionReusableView.swift in Sources */,
+				DEDC51A12067FE9200310BC1 /* ASWResetPasswordViewController.swift in Sources */,
 				CA3710BD1F37D6F2003578E5 /* ASWSettingsSocialNetworkCell.swift in Sources */,
 				CACB58471F3E06FA007E8E0B /* ASWMyEventsViewController.swift in Sources */,
 				CA8D11B61FFD14710009C4FF /* ASWFavoriteModel.swift in Sources */,

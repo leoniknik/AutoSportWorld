@@ -43,7 +43,7 @@ class ASWResponseErrorViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             setupUI()
-            
+            addBackButton()
         }
     
     override func viewWillAppear(_ animated: Bool) {

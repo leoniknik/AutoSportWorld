@@ -11,6 +11,7 @@ import UIKit
 class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate{
 
     var errorViewController: ASWResponseErrorViewController!
+    var completion:(()->Void)?
     var visualEffectView: UIVisualEffectView!
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
@@ -64,10 +65,16 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
         self.visualEffectView.alpha = 1
     }
     
+    
+    
+    
     func hideAlert(){
         UIView.animate(withDuration: 0.2, animations: {
             self.errorViewController.dismiss(animated: true, completion: nil)
             self.visualEffectView.alpha = 0
+        },completion:{ result in
+            self.completion?()
+            self.completion = nil
         })
     }
     
