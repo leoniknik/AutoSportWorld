@@ -93,7 +93,7 @@ class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UIColle
             return headerView
         default:
             assert(false, "Unexpected element kind")
-            
+            return UICollectionReusableView()
         }
     }
     
