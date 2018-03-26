@@ -35,7 +35,7 @@ class ASWListRacesRequest: ASWRequest {
     var canWatch: Bool? // если указан, то can_watch гонок в списке должен иметь такое значение
     */
     
-    init(limit: Int?, preferences: String?, level: Int?, cursor: String?, categories: String?, regions: String?, sort: String?, canJoin: Bool?, canWatch: Bool?) {
+    init(limit: Int?, preferences: String?, level: Int?, cursor: String?, categories: String?, regions: String?, sort: String?, canJoin: Bool?, canWatch: Bool?, search: String?) {
         super.init()
         url = self.baseURL + "/races"
         parameters["limit"] = limit
@@ -47,6 +47,7 @@ class ASWListRacesRequest: ASWRequest {
         parameters["sort"] = sort
         parameters["canJoin"] = canJoin
         parameters["canWatch"] = canWatch
+        parameters["search"] = search
         
     }
     

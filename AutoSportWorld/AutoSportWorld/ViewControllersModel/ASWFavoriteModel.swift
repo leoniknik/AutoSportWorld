@@ -11,6 +11,10 @@ import Kingfisher
 
 class ASWFavoriteModel: ASWFeedsModelProtocol {
     
+    func updateEvents(cursor: String?, _ search: String?) {
+        
+    }
+    
     var events = [ASWRace]()
     var results = [Int]()
     var countOfEvents = 0

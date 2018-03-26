@@ -12,7 +12,7 @@ import Kingfisher
 protocol ASWFeedsModelProtocol {
     weak var delegate: ASWFeedsModelDelegate? {get set}
     var events: [ASWRace] {get set}
-    func updateEvents(cursor: String?)
+    func updateEvents(cursor: String?, _ search: String?)
     func getEvents() -> [ASWRace]
     func getNumberOfEvents() -> Int
     func getEvent(forIndex index: Int) -> ASWRace
@@ -44,7 +44,7 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     
     
     
-    func updateEvents(cursor: String?) {
+    func updateEvents(cursor: String?, _ search: String? = nil) {
         var request: ASWListRacesRequest
         
         if let user = ASWDatabaseManager().getUser() {
@@ -64,9 +64,9 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
             
             let preferences =  "regions,categories,can_join,can_watch"
             
-            request = ASWListRacesRequest(limit: defaultlimit, preferences: preferences, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil)
+            request = ASWListRacesRequest(limit: defaultlimit, preferences: preferences, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil, search: search)
         } else {
-            request = ASWListRacesRequest(limit: defaultlimit, preferences: nil, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil)
+            request = ASWListRacesRequest(limit: defaultlimit, preferences: nil, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil, search: search)
         }
         ASWNetworkManager.getEvents(request: request, cursor: cursor)
     }

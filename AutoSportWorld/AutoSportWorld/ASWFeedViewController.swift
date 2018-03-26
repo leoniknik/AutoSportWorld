@@ -29,6 +29,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         self.refreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentOffset.y-self.refreshControl.frame.size.height), animated: false)
         getUpdate()
+        searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,9 +74,11 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     }
     
     @objc func getUpdate() {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
         self.errorLabel.isHidden = true
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.model.updateEvents(cursor: nil)
+            self?.model.updateEvents(cursor: nil, nil)
         }
     }
     
@@ -155,6 +158,8 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
     }
     
+    
+    
 }
 
 extension ASWFeedViewController: UITableViewDataSource {
@@ -192,7 +197,11 @@ extension ASWFeedViewController: UITableViewDataSource {
             //пагинация
             if ((model.getEvents().count - 3 - indexPath.item / 2 == 0) && self.cursor != nil) {
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    self?.model.updateEvents(cursor: self?.cursor)
+                    if self?.searchBar.text == "" || self?.searchBar.text == nil {
+                        self?.model.updateEvents(cursor: self?.cursor, self?.searchBar.text ?? nil)
+                    } else {
+                        self?.model.updateEvents(cursor: self?.cursor, self?.searchBar.text)
+                    }
                 }
             }
             return cell
@@ -288,5 +297,27 @@ extension ASWFeedViewController: UITableViewDataSourcePrefetching {
         }
 
         ImagePrefetcher(urls: urls).start()
+    }
+}
+
+
+extension ASWFeedViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let text = searchBar.text
+        guard !(text?.isEmpty ?? true) else { return }
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.model.updateEvents(cursor: nil, text)
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.tintColor = .white
+        searchBar.showsCancelButton = true
     }
 }
