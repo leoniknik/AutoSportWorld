@@ -13,7 +13,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
     var errorViewController: ASWResponseErrorViewController!
     var completion:(()->Void)?
     var visualEffectView: UIVisualEffectView!
-    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +22,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
     
     
     private func setupUI() {
-        setupActivity()
         setupErrorView()
-    }
-    
-    private func setupActivity() {
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = UIColor.green
-        self.view.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        activityIndicator.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     private func setupErrorView() {
