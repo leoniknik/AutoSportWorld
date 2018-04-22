@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 public enum Model : String {
     case simulator   = "simulator/sandbox",
     iPod1            = "iPod 1",
@@ -127,7 +128,19 @@ public extension UIDevice {
     }
 }
 
-class ASWConstants{
+public class ASWConstants{
+    
+    init() {
+    }
+    
+    func config(){
+        NotificationCenter.default.addObserver(self, selector: #selector(regionsCallback(_:)), name: .regionsCallback, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(raceCategoryCallback(_:)), name: .raceCategoryCallback, object: nil)
+        ASWNetworkManager.getRegions()
+        ASWNetworkManager.getRaceTypes(type: "auto")
+        ASWNetworkManager.getRaceTypes(type: "moto")
+    }
+    
     static var isIPhone5: Bool {
         get{
            return UIDevice().type == .iPhone5S
@@ -143,4 +156,23 @@ class ASWConstants{
             #endif
         }
     }
+    
+    @objc func regionsCallback(_ notification: Notification) {
+        if let response = (notification.userInfo?["data"] as? ASWListRegionsParser) {
+            for region in response.regions{
+                regions[Int(region.id ?? "0") ?? 0] = region.name ?? ""
+            }
+        }
+    }
+    
+    @objc func raceCategoryCallback(_ notification: Notification) {
+        if let response = (notification.userInfo?["data"] as? ASWListCategoryParser) {
+            for category in response.categories{
+                regions[Int(category.id ?? "0") ?? 0] = category.name ?? ""
+            }
+        }
+    }
+    
+    var raceCategories:Dictionary<Int,String> = Dictionary<Int,String>()
+    var regions:Dictionary<Int,String> = Dictionary<Int,String>()
 }

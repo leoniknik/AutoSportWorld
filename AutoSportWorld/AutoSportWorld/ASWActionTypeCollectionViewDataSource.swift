@@ -21,7 +21,7 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
     var watch:Bool = false
     var join:Bool = false
 
-    var titles = ["Посмотреть","Покаткаться"]
+    var titles = ["Посмотреть","Покататься"]
     init(collectionView: UICollectionView, auto:Bool, join:Bool, watch:Bool) {
         super.init()
         self.auto = auto

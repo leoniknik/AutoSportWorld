@@ -14,6 +14,7 @@ import Alamofire
 import IQKeyboardManager
 
 fileprivate var SCOPE: [Any]? = nil
+public var ASWConstantsEntity:ASWConstants = ASWConstants()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = false
+        ASWConstantsEntity.config()
         
         return true
     }

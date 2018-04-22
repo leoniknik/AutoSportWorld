@@ -38,6 +38,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     var databaseManager = ASWDatabaseManager()
     var rawUser = RawUserParams()
     var changeSettings:Bool = false
+    var configAllFIlters:Bool = false
     var changeSettingsSuccessMessage:String = ""
     
     private lazy var registerAccountViewController: ASWRegisterAccountViewController = {
@@ -155,14 +156,20 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         super.viewDidLoad()
         view.backgroundColor = .white
         setupBlackOpaqueNavBar()
-        addBackButton()
+        setupLeftBarItem()
         setupUI()
-        if(changeSettings){
+        if changeSettings {
             add(asChildViewController: registerCollectionViewController)
             registerCollectionViewController.delegate = self
             setStep()
             hideStepAndProgressView()
-        }else{
+        }else if configAllFIlters {
+            self.currentStep = 1
+            add(asChildViewController: registerCollectionViewController)
+            registerCollectionViewController.delegate = self
+            setStep()
+            setStepLabel()
+        }else {
             add(asChildViewController: registerAccountViewController)
             
             
@@ -180,6 +187,13 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
             setupRightBarItem(avalible: false, title: "")
             setStepLabel()
         }
+        
+        if (rawUser.auto && rawUser.moto){
+            stepAmaunt = 6
+        }else if (rawUser.auto || rawUser.moto){
+            stepAmaunt = 5
+        }
+        
         ASWButtonManager.setupButton(button: confirmButton)
         setConfirmButtonText(false)
     }
@@ -188,13 +202,22 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
 
     }
     
+    func setupLeftBarItem() {
+        let backButton: UIBarButtonItem
+        
+        backButton = UIBarButtonItem(image: UIImage.backward, style: .done, target: self, action: #selector(goBack))
+        backButton.tintColor = UIColor.white
+       
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
+    }
+    
     func setupRightBarItem(avalible: Bool, title: String) {
         rightBarItem.title = title
         self.navigationItem.rightBarButtonItem?.customView?.isHidden = !avalible
     }
 
     @IBAction func goBack(_ sender: Any) {
-        if(currentStep==0 || changeSettings){
+        if(currentStep==0 || changeSettings || configAllFIlters){
             navigationController?.popViewController(animated: true)
         }else{
             currentStep-=1
@@ -218,7 +241,15 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         if(changeSettings){
             confirmButton.setTitle("Сохранить", for: .normal)
             confirmButton.setTitle("Сохранить", for: .disabled)
-        }else{
+        }else if configAllFIlters {
+            if final{
+                confirmButton.setTitle("Сохранить", for: .normal)
+                confirmButton.setTitle("Сохранить", for: .disabled)
+            }else{
+                confirmButton.setTitle("Далее", for: .normal)
+                confirmButton.setTitle("Далее", for: .disabled)
+            }
+        }else {
             if final{
                 confirmButton.setTitle("Завершить регистрацию", for: .normal)
                 confirmButton.setTitle("Завершить регистрацию", for: .disabled)
@@ -394,12 +425,21 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     }
     
     func setStepLabel(){
-        stepLabel.text = "шаг \(currentStep+1) из \(stepAmaunt)"
+        if(configAllFIlters){
+            stepLabel.text = "шаг \(currentStep) из \(stepAmaunt-1)"
+        }else{
+            stepLabel.text = "шаг \(currentStep+1) из \(stepAmaunt)"
+        }
+        
         progressView.setProgress((Float(currentStep+1)/(Float(stepAmaunt))), animated: true)
     }
     
     
     func completeRegistration(){
+        if configAllFIlters{
+            confirmChangeSettings()
+            return
+        }
         
         func sucsessSignup(parser:ASWSignupParser){
             if(parser.valid){
@@ -436,7 +476,14 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         func sucsessSend(){
             ModalLoadingIndicator.hide()
             presentOKAlert("Успех", self.changeSettingsSuccessMessage){
-                self.navigationController?.popViewController(animated: true)
+                if self.configAllFIlters {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.openMainStoryboard()
+                    }
+                }else{
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
             }
         }
         
@@ -545,6 +592,29 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         }else{
             self.currentStep = 4
         }
+        self.changeSettingsSuccessMessage = "Изменения успешно сохранены"
+    }
+    
+    func configForAllFilters(){
+        self.configAllFIlters = true
+        
+        guard let user = ASWDatabaseManager().getUser() else {
+            return
+        }
+        
+        rawUser.auto = user.auto
+        rawUser.moto = user.moto
+        
+        rawUser.watch = user.watch
+        rawUser.join = user.join
+        
+        rawUser.autoCategories = ASWDatabaseManager().getCategoriesIds(auto: true) ?? []
+        rawUser.motoCategories = ASWDatabaseManager().getCategoriesIds(auto: false) ?? []
+        
+        rawUser.regions = ASWDatabaseManager().getRegionsIds() ?? []
+        
+        self.currentStep = 1;
+        
         self.changeSettingsSuccessMessage = "Изменения успешно сохранены"
     }
 }

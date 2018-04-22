@@ -123,7 +123,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         
         ufvl.backgroundColor = UIColor.white
         ufvr.backgroundColor = UIColor.white
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
         self.getEvents(forDate: Date())
         self.setupCollectionView()
@@ -172,7 +172,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
             cell.contentView.backgroundColor = UIColor.white
             cell.titleLabel.textColor = UIColor.black
             cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
-            //cell.imageView.isHidden = true
+            cell.eventIndicator.color = UIColor.black
         }
         else{
             if(selected){
@@ -432,4 +432,20 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         }
     }
 }
+
+
+
+
+//FSCalendarWeekdayView.m
+//- (void)configureAppearance
+//    {
+//        NSArray *weekdaySymbols = [[NSArray alloc] initWithObjects:@"ПН",@"ВТ",@"СР",@"ЧТ",@"ПТ",@"СБ",@"ВС", nil];
+//        for (NSInteger i = 0; i < self.weekdayPointers.count; i++) {
+//
+//            UILabel *label = [self.weekdayPointers pointerAtIndex:i];
+//            label.font = self.calendar.appearance.weekdayFont;
+//            label.textColor = self.calendar.appearance.weekdayTextColor;
+//            label.text =  [weekdaySymbols[i] uppercaseString];
+//        }
+//}
 

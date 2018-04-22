@@ -12,11 +12,13 @@ import SwiftyJSON
 class ASWLoginSucsessParser {
     var email:String = ""
     var password:String = ""
+    var hasEmptyFilters = false
     
     var sessionInfoParser:ASWSessionInfoParser
     
     init(json: JSON) {
-        sessionInfoParser = ASWSessionInfoParser(json: json)
+        sessionInfoParser = ASWSessionInfoParser(json: json["session"])
+        hasEmptyFilters = json["filters_empty"].boolValue
     }
 }
 

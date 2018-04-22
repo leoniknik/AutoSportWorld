@@ -28,12 +28,69 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     let sections = ["Информация о пользователе", "Социальные сети", "Фильтры"]
     
     let items = [["Личные данные", "Пароль"], ["Вконтакте"], ["Регионы", "Вид спорта", "Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
-    let botomItems = [["Имя, E-mail, телефон", "Сменить"]]
+    
+    var botomItems = [["Имя, E-mail, телефон", "Сменить"],[],[]]
+    let filterItems = [[],[],[],[],[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         
+        let user = ASWDatabaseManager().getUser() ?? ASWUserEntity()
+        
+        var labelsArray = [String]()
+        
+        var regions = ASWDatabaseManager().getRegionsIds() ?? []
+        labelsArray.append(getLabel(array: regions))
+        
+        var label = ""
+        if user.auto && user.moto{
+            label = "Автоспорт, Мотоспорт"
+        }else{
+            if user.moto{
+                label = "Мотоспорт"
+            }
+            if user.auto{
+                label = "Автоспорт"
+            }
+        }
+        labelsArray.append(label)
+        
+        var categories = ASWDatabaseManager().getCategoriesIds(auto: true) ?? []
+        labelsArray.append(getLabel(array: categories))
+        
+        categories = ASWDatabaseManager().getCategoriesIds(auto: false) ?? []
+        labelsArray.append(getLabel(array: categories))
+        
+        label = ""
+        if user.watch && user.join{
+            label = "Посмотреть, Покататься"
+        }else{
+            if user.watch{
+                label = "Посмотреть"
+            }
+            if user.join{
+                label = "Покататься"
+            }
+        }
+        labelsArray.append(label)
+        
+        botomItems[2] = labelsArray
+    }
+    
+    func getLabel(array:[Int])->String{
+        var label = ""
+        if array.count>0 {
+            label = ASWConstantsEntity.regions[array[0]] ?? ""
+        }
+        if array.count>1{
+            for i in 1...array.count-1{
+                if let name = ASWConstantsEntity.regions[i]{
+                    label += ", "+name
+                }
+            }
+        }
+        return label
     }
     
     //настройка UI
@@ -143,7 +200,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsUserDataCell", for: indexPath) as! ASWSettingsUserDataCell
             cell.infoLabel.text = items[indexPath.section][indexPath.item]
-            //            cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
+            cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
             return cell
         }
         else {

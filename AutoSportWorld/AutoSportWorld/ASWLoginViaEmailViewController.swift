@@ -96,16 +96,6 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         }
     }
     
-//    func leaveWaitModeWithError(){
-//        leaveWaitMode()
-//        DispatchQueue.main.async {
-//            [weak self] in
-//            let alert = UIAlertController(title: "Ошибка", message: "Что-то пошло не так", preferredStyle: .actionSheet)
-//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-//            self?.present(alert, animated: true, completion: { [weak self] in print("fr")})
-//        }
-//    }
-    
     @IBAction func loginPressed(_ sender: Any) {
         var login = loginField.textField.text ?? ""
         var password = passwordField.textField.text ?? ""
@@ -113,7 +103,14 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         if(emailValidator.isValid(login)&&passwordValidator.isValid(password)){
             
             func sucsessFunc(parser:ASWLoginSucsessParser){
+                leaveWaitMode()
                 ASWDatabaseManager().loginUser(parser:parser)
+                if parser.hasEmptyFilters {
+                    var vc = ASWViewControllersManager.ChangeUserDataViewControllers.configAllFilters;
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    return
+                }
+                
                 getUserInfo()
             }
             

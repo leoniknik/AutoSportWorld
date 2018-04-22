@@ -32,13 +32,6 @@ class ASWViewControllersManager{
                 return storyboard.instantiateViewController(withIdentifier: "registerView") as! ASWRegistrationViewController
             }
         }
-        
-//        static var changePasswordViewController:ASWChangeRegionsViewController{
-//            get{
-//                let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
-//                return storyboard.instantiateViewController(withIdentifier: "changePasswordView") as! ASWChangeRegionsViewController
-//            }
-//        }
     }
     
     
@@ -104,6 +97,15 @@ class ASWViewControllersManager{
                 let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
                 let vc = storyboard.instantiateViewController(withIdentifier: "registerView") as! ASWRegistrationViewController
                 vc.configChangeSportType()
+                return vc
+            }
+        }
+        
+        static var configAllFilters: ASWRegistrationViewController {
+            get{
+                let storyboard = UIStoryboard(name: self.storyboard, bundle: Bundle.main)
+                let vc = storyboard.instantiateViewController(withIdentifier: "registerView") as! ASWRegistrationViewController
+                vc.configForAllFilters()
                 return vc
             }
         }
