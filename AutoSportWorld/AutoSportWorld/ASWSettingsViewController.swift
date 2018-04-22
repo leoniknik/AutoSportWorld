@@ -35,7 +35,16 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        getData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+        settingsTable.reloadData()
+    }
+    
+    func getData(){
         let user = ASWDatabaseManager().getUser() ?? ASWUserEntity()
         
         var labelsArray = [String]()
@@ -82,6 +91,8 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         var label = ""
         if array.count>0 {
             label = dict[array[0]] ?? ""
+        }else{
+            label = "Не выбрано"
         }
         if array.count>1{
             for i in 1...array.count-1{

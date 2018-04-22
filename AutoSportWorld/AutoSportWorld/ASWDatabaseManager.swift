@@ -105,8 +105,19 @@ class ASWDatabaseManager {
         save(object: user)
         
         setUserRegions(regionIDs: regions)
-        setUserRaceCategories(categoriesIDs: autoCategories, auto: true)
-        setUserRaceCategories(categoriesIDs: motoCategories, auto: false)
+        if user.auto{
+            setUserRaceCategories(categoriesIDs: autoCategories, auto: true)
+        }else{
+            setUserRaceCategories(categoriesIDs: [], auto: true)
+        }
+        
+        if user.moto{
+            setUserRaceCategories(categoriesIDs: motoCategories, auto: false)
+        }else{
+            setUserRaceCategories(categoriesIDs: [], auto: false)
+        }
+        
+        
         return user
     }
     func createUserFrom(login:String,
@@ -188,8 +199,16 @@ class ASWDatabaseManager {
             return
         }
         
-        var categories = getStringCategoriesIds(auto: true) ?? [String]()
-        categories.append(contentsOf: getStringCategoriesIds(auto: false) ?? [String]())
+        var categories = [String]()
+        if(user.auto){
+            categories.append(contentsOf: getStringCategoriesIds(auto: true) ?? [String]())
+        }
+        if user.moto{
+            categories.append(contentsOf: getStringCategoriesIds(auto: false) ?? [String]())
+        }
+        
+//        var categories = getStringCategoriesIds(auto: true) ?? [String]()
+//        categories.append(contentsOf: getStringCategoriesIds(auto: false) ?? [String]())
         ASWNetworkManager.sendUserInfo(regions: getStringRegionsIds() ?? [String](), categories: categories, watch: user.watch, join: user.join, sucsessFunc: sucsess, errorFunc: error)
     }
     
