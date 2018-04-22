@@ -136,7 +136,6 @@
 		DEDC519E2067C5E100310BC1 /* ASWCryptoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC519D2067C5E100310BC1 /* ASWCryptoManager.swift */; };
 		DEDC51A12067FE9200310BC1 /* ASWResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDC519F2067FE9200310BC1 /* ASWResetPasswordViewController.swift */; };
 		DEDC51A22067FE9200310BC1 /* ASWResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDC51A02067FE9200310BC1 /* ASWResetPasswordViewController.xib */; };
-
 		DEF487B91FF0E282008318BC /* ASWAboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */; };
 		DEF487BA1FF0E282008318BC /* ASWDevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */; };
 		DEF487BC1FF0E290008318BC /* AboutApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */; };
@@ -274,12 +273,9 @@
 		DEDC454B200740E800AE5B72 /* ASWRegionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionEntity.swift; sourceTree = "<group>"; };
 		DEDC454E2007415400AE5B72 /* ASWLoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWLoginRequest.swift; sourceTree = "<group>"; };
 		DEDC454F2007415400AE5B72 /* ASWSignupRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWSignupRequest.swift; sourceTree = "<group>"; };
-
 		DEDC519D2067C5E100310BC1 /* ASWCryptoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWCryptoManager.swift; sourceTree = "<group>"; };
-
 		DEDC519F2067FE9200310BC1 /* ASWResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWResetPasswordViewController.swift; sourceTree = "<group>"; };
 		DEDC51A02067FE9200310BC1 /* ASWResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWResetPasswordViewController.xib; sourceTree = "<group>"; };
-
 		DEF487B71FF0E282008318BC /* ASWAboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWAboutAppViewController.swift; sourceTree = "<group>"; };
 		DEF487B81FF0E282008318BC /* ASWDevelopersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWDevelopersViewController.swift; sourceTree = "<group>"; };
 		DEF487BB1FF0E28F008318BC /* AboutApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutApp.storyboard; sourceTree = "<group>"; };
@@ -630,6 +626,7 @@
 				CA323B211F379ADA007157D4 /* Resources */,
 				ACDDBB448B58AD1F3544854A /* [CP] Embed Pods Frameworks */,
 				932F1E32FCFAF1A97BD0016A /* [CP] Copy Pods Resources */,
+				CA6A08142080B83400B745FF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -652,9 +649,9 @@
 				TargetAttributes = {
 					CA323B221F379ADA007157D4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = BZ5C8942NC;
+						DevelopmentTeam = DB6ZQH525Y;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -735,8 +732,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -793,6 +790,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CA6A08142080B83400B745FF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b63c42853db7209fbce8b67948eeacdc5d3ed6bc 232321423aad3a9e9482ccaf21ecdf3874d0c458b7363898054b5c4f57764a9d";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -955,7 +965,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1011,7 +1023,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1037,14 +1051,17 @@
 			baseConfigurationReference = 0B6411D19C7BC90CE2D8272C /* Pods-AutoSportWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = BZ5C8942NC;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DB6ZQH525Y;
 				INFOPLIST_FILE = AutoSportWorld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RXProject.AutoSportWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RxProject.AutoSportWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "5d589e70-66e2-47a0-9f0f-ac84e280e8d3";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1055,14 +1072,18 @@
 			baseConfigurationReference = 6101D1ECC7B854873C0FFD98 /* Pods-AutoSportWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = BZ5C8942NC;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DB6ZQH525Y;
 				INFOPLIST_FILE = AutoSportWorld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RXProject.AutoSportWorld;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RxProject.AutoSportWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "f2e26bd8-0b4f-4acc-955d-b554f853c864";
+				PROVISIONING_PROFILE_SPECIFIER = Distribution;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};

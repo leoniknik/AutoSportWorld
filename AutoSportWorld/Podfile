@@ -1,12 +1,12 @@
 target 'AutoSportWorld' do
+  inhibit_all_warnings!
   use_frameworks!
-
     pod 'SkyFloatingLabelTextField', '~> 3.0.0'
     pod 'VK-ios-sdk'
-    pod 'GoogleMaps'
-    pod 'GooglePlaces'
-    pod 'RealmSwift'
-    pod 'Alamofire'
+    pod 'GoogleMaps', '~> 2.3.1'
+    pod 'GooglePlaces', '~> 2.3.1'
+    pod 'RealmSwift', '~> 2.9.0'
+    pod 'Alamofire' 
     pod 'SwiftyJSON'
     pod 'Kingfisher'
 
@@ -15,4 +15,7 @@ target 'AutoSportWorld' do
     pod 'FSCalendar'
     pod 'IQKeyboardManager'
     pod 'CryptoSwift'
+    
+    pod 'Fabric'
+    pod 'Crashlytics'
 end

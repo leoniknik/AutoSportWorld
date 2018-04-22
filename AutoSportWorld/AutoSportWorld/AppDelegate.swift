@@ -12,6 +12,8 @@ import GoogleMaps
 import RealmSwift
 import Alamofire
 import IQKeyboardManager
+import Fabric
+import Crashlytics
 
 fileprivate var SCOPE: [Any]? = nil
 public var ASWConstantsEntity:ASWConstants = ASWConstants()
@@ -22,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        Fabric.with([Crashlytics.self])
         setupUI()
         initVK()
         initGoogleMap()
