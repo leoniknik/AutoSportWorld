@@ -168,7 +168,7 @@ public class ASWConstants{
     @objc func raceCategoryCallback(_ notification: Notification) {
         if let response = (notification.userInfo?["data"] as? ASWListCategoryParser) {
             for category in response.categories{
-                regions[Int(category.id ?? "0") ?? 0] = category.name ?? ""
+                raceCategories[Int(category.id ?? "0") ?? 0] = category.name ?? ""
             }
         }
     }

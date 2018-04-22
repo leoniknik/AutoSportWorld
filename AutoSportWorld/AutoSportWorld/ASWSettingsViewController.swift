@@ -41,7 +41,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         var labelsArray = [String]()
         
         var regions = ASWDatabaseManager().getRegionsIds() ?? []
-        labelsArray.append(getLabel(array: regions))
+        labelsArray.append(getLabel(dict:ASWConstantsEntity.regions,array: regions))
         
         var label = ""
         if user.auto && user.moto{
@@ -57,10 +57,10 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         labelsArray.append(label)
         
         var categories = ASWDatabaseManager().getCategoriesIds(auto: true) ?? []
-        labelsArray.append(getLabel(array: categories))
+        labelsArray.append(getLabel(dict:ASWConstantsEntity.raceCategories,array: categories))
         
         categories = ASWDatabaseManager().getCategoriesIds(auto: false) ?? []
-        labelsArray.append(getLabel(array: categories))
+        labelsArray.append(getLabel(dict:ASWConstantsEntity.raceCategories,array: categories))
         
         label = ""
         if user.watch && user.join{
@@ -78,14 +78,14 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         botomItems[2] = labelsArray
     }
     
-    func getLabel(array:[Int])->String{
+    func getLabel(dict:Dictionary<Int,String>,array:[Int])->String{
         var label = ""
         if array.count>0 {
-            label = ASWConstantsEntity.regions[array[0]] ?? ""
+            label = dict[array[0]] ?? ""
         }
         if array.count>1{
             for i in 1...array.count-1{
-                if let name = ASWConstantsEntity.regions[i]{
+                if let name = dict[i]{
                     label += ", "+name
                 }
             }

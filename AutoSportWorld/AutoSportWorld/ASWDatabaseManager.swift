@@ -166,6 +166,8 @@ class ASWDatabaseManager {
         try! realm.write {
             user.join = parser.canJoin
             user.watch = parser.canWatch
+            user.auto = parser.categoriesParser.autoCategoryIDs.count > 0
+            user.moto = parser.categoriesParser.motoCategoryIDs.count > 0
         }
         
         setUserRaceCategories(categoriesIDs: parser.categoriesParser.autoCategoryIDs, auto: true)
