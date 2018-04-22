@@ -13,7 +13,7 @@ protocol ASWCollectionViewDataSourceDelegate{
     func networkErrorOccured()
 }
 
-class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
+class ASWCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     var collectionView: UICollectionView!
     var isSearching: Bool = false
