@@ -23,7 +23,7 @@ class ASWChangeUserInfoViewController: UIViewController {
         
         setupUI()
         let user = ASWDatabaseManager().getUser() ?? ASWUserEntity()
-        self.title = "Изменение личных данных"
+        self.title = "Просмотр личных данных"
         nameField.textField.text = user.login
         emailField.textField.text = user.email
         phoneField.textField.text = user.phone

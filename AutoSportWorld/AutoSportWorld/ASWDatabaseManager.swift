@@ -136,7 +136,7 @@ class ASWDatabaseManager {
         let user = loginUser(login:login,password:password)
         let realm = try! Realm()
         try! realm.write {
-            user.email = login
+            user.email = email
             user.isLogedIn = true
             user.login = login
             user.auto=auto
