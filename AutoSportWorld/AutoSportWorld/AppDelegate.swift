@@ -35,6 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnableAutoToolbar = false
         ASWConstantsEntity.config()
         
+        
+        var user = ASWDatabaseManager().getUser()
+        if user == nil {
+            
+        }else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let viewController = storyboard.instantiateInitialViewController() else { return true}
+            self.window?.rootViewController = viewController;
+            self.window?.makeKeyAndVisible();
+            return true
+        }
+        
+        
         return true
     }
 

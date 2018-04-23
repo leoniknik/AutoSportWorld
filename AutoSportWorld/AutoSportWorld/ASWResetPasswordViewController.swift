@@ -15,8 +15,10 @@ class ASWResetPasswordViewController: ASWViewController {
     @IBOutlet weak var resetButton: UIButton!
     
     override func viewDidLoad() {
+        addBackButton()
+        setupBlackOpaqueNavBar()
         super.viewDidLoad()
-       setupTransparentNavBar()
+       
     ASWButtonManager.setupLoginButton(button: resetButton)
         resetButton.isEnabled = false
         

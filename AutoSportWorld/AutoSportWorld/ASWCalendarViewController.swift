@@ -25,6 +25,9 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var pageController: UIPageControl!
+    
+    
     @IBOutlet weak var v: UIView!
     
     @IBOutlet weak var ubvl: UIView!
@@ -317,6 +320,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                 DispatchQueue.main.async {
                     [weak self] in
                     self?.collectionView.reloadData()
+                    self?.pageController.numberOfPages = self?.eventsDictionary[(self?.currentDate.removeTimeStamp())!]?.count ?? 0
                     self?.calendar.reloadData()
                 }
             }
@@ -331,6 +335,10 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return eventsDictionary[currentDate.removeTimeStamp()]?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        pageController.currentPage = indexPath.row
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -149,6 +149,7 @@ public class ASWConstants{
     
     static var isDebug: Bool{
         get{
+            return true
             #if DEBUG
                 return true
             #else
