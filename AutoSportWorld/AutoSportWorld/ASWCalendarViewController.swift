@@ -169,10 +169,10 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
             //выделена сегодняшняя ячейка
             //ширина ячейки
             cell.contentView.layer.borderWidth = borderWidth
-            cell.contentView.backgroundColor = UIColor.white
-            cell.titleLabel.textColor = UIColor.black
+            cell.contentView.backgroundColor = UIColor.black
+            cell.titleLabel.textColor = UIColor.white
             cell.titleLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(textSize))
-            cell.eventIndicator.color = UIColor.black
+            cell.eventIndicator.color = UIColor.white
         }
         else{
             if(selected){
@@ -192,6 +192,8 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     cell.backgroundColor = UIColor.white
                     cell.titleLabel.textColor = UIColor.black
                     cell.eventIndicator.color = UIColor.black
+                    cell.backgroundColor = UIColor.white
+                    cell.contentView.backgroundColor = UIColor.white
                 }else if (gregorian.component(.month, from: calendar.currentPage) == gregorian.component(.month, from: date)){
                     //текущий месяц
                     cell.contentView.backgroundColor = UIColor.white
