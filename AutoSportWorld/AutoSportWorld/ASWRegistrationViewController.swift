@@ -202,6 +202,11 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setStep()
+    }
+    
     func setupLeftBarItem() {
         let backButton: UIBarButtonItem
         
