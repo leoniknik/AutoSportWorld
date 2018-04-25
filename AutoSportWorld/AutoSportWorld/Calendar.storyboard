@@ -219,10 +219,11 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aBQ-yL-9BL">
-                                <rect key="frame" x="168" y="524" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.042092806230000002" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aBQ-yL-9BL">
+                                <rect key="frame" x="168" y="544" width="39" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="3wf-R8-Sh4"/>
+                                </constraints>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -234,11 +235,13 @@
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="height" secondItem="e8a-Gh-VpS" secondAttribute="height" multiplier="0.1" id="EP2-zI-YOi"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="top" secondItem="wNk-2l-gHp" secondAttribute="top" constant="5" id="F7Y-vz-6B3"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="top" secondItem="wNk-2l-gHp" secondAttribute="top" constant="5" id="LQS-Xq-X1x"/>
+                            <constraint firstAttribute="bottom" secondItem="aBQ-yL-9BL" secondAttribute="bottom" id="NZd-og-gra"/>
                             <constraint firstItem="wNk-2l-gHp" firstAttribute="bottom" secondItem="xHx-hd-Z50" secondAttribute="bottom" id="Q35-vL-gUm"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="leading" secondItem="e8a-Gh-VpS" secondAttribute="leading" id="Qul-z4-t3R"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="centerX" secondItem="wNk-2l-gHp" secondAttribute="centerX" id="U8p-77-wTK"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="Y6Q-Pw-RaP"/>
                             <constraint firstItem="e8a-Gh-VpS" firstAttribute="bottom" secondItem="7S0-m0-QeG" secondAttribute="bottom" id="atP-sk-Fut"/>
+                            <constraint firstItem="aBQ-yL-9BL" firstAttribute="centerX" secondItem="c0B-MD-UzX" secondAttribute="centerX" id="eYj-jW-6Sb"/>
                             <constraint firstItem="xHx-hd-Z50" firstAttribute="leading" secondItem="wNk-2l-gHp" secondAttribute="leading" id="mtj-wK-dql"/>
                             <constraint firstItem="FOX-ia-6S5" firstAttribute="centerX" secondItem="wNk-2l-gHp" secondAttribute="centerX" id="vVQ-f4-KEW"/>
                             <constraint firstItem="7S0-m0-QeG" firstAttribute="trailing" secondItem="e8a-Gh-VpS" secondAttribute="trailing" id="wK8-lM-sXX"/>

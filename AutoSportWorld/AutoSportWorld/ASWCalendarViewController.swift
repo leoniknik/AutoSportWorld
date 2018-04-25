@@ -129,6 +129,11 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         
         NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
         self.getEvents(forDate: Date())
+        
+        pageController.numberOfPages = 0;
+        pageController.pageIndicatorTintColor = UIColor.ASWColor.grey
+        pageController.currentPageIndicatorTintColor = UIColor.ASWColor.darkBlue
+        
         self.setupCollectionView()
     }
     
@@ -314,7 +319,11 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
                     eventsDictionary[raceDate] = dateRaces
                 }
             }
-            
+            DispatchQueue.main.async {
+                [weak self] in
+                self?.pageController.numberOfPages = self?.eventsDictionary[(self?.currentDate.removeTimeStamp())!]?.count ?? 0
+                
+            }
             if currentMonthRacesCountChange {
                 currentMonthRacesCountChange = false
                 DispatchQueue.main.async {
@@ -426,6 +435,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     
     func setupCollectionView(){
         let count = eventsDictionary[currentDate]?.count ?? 0
+        pageController.numberOfPages = eventsDictionary[currentDate]?.count ?? 0
         UIView.animate(withDuration: 0.5, animations: {
             self.collectionView.alpha = count>0 ? 1 : 0
             self.collectionView.setNeedsLayout()
