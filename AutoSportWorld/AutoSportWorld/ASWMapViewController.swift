@@ -11,7 +11,7 @@ import GoogleMaps
 
 class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-//    @IBOutlet weak var pageControl: UIPageControl!
+    //    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var viewForMap: UIView!
     @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
@@ -24,7 +24,7 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     var markers = [GMSMarker]()
     var lastItem: Int = 0
     
-    var choosenEvents = [ASWRace]()
+    var choosenEvents = [ASWRace]() 
     
     var isFromEvent = false
     
@@ -70,25 +70,44 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
         }
         shouldClear = true
-//        collectionView.reloadData()
-//        if let myTBC = tabBarController as? ASWTabBarController, myTBC.events.count > 0 {
-//            let indexPath = IndexPath(item: 0, section: 0)
-//            collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
-//        }
     }
     
     func addAllMarker() {
         mapView.clear()
         markers.removeAll()
-        guard let myTBC = tabBarController as? ASWTabBarController else { return }
-        for event in myTBC.events {
-            if let marker = addMarker(forEvent: event) {
-                markers.append(marker)
+        
+        let request: ASWListRacesRequest
+        
+        if ASWDatabaseManager().getUser() != nil {
+            let preferences =  "regions,categories,can_join,can_watch"
+            request = ASWListRacesRequest(limit: nil, preferences: preferences, level: nil, cursor: nil, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil, search: nil)
+        } else {
+            request = ASWListRacesRequest(limit: nil, preferences: nil, level: nil, cursor: nil, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil, search: nil)
+        }
+        ModalLoadingIndicator.show()
+        ASWNetworkManager.getEventsWithCompletion(request: request) { [weak self] (result) in
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                switch result {
+                case .success(let data):
+                    guard let tbc = self.tabBarController as? ASWTabBarController else { return }
+                    tbc.events = data.races
+                    for event in tbc.events {
+                        if let marker = self.addMarker(forEvent: event) {
+                            self.markers.append(marker)
+                        }
+                    }
+                    ModalLoadingIndicator.hide()
+                case .error(let error):
+                    print(error)
+                    ModalLoadingIndicator.hide()
+                }
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     func setupMapSize() {
@@ -99,19 +118,19 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-//    func zoomOnFirstMarker() {
-//        guard let myTBC = tabBarController as? ASWTabBarController else { return }
-//        guard let _ = markers.first else { return }
-//        if myTBC.events.count > 1 {
-//            updateColoredMarkers(0)
-//            zoom(onItem: 0)
-//        } else {
-//
-//        }
-//    }
+    //    func zoomOnFirstMarker() {
+    //        guard let myTBC = tabBarController as? ASWTabBarController else { return }
+    //        guard let _ = markers.first else { return }
+    //        if myTBC.events.count > 1 {
+    //            updateColoredMarkers(0)
+    //            zoom(onItem: 0)
+    //        } else {
+    //
+    //        }
+    //    }
     
     func setupUI() {
-//        pageControl.hidesForSinrglePage = true
+        //        pageControl.hidesForSinrglePage = true
         setupNavbar()
     }
     
@@ -126,9 +145,6 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
         
-        if ASWDatabaseManager().getUser() != nil {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
-        }
         if isFromEvent {
             addBackButton()
         }
@@ -183,8 +199,10 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         if cell.titleLabel.text?.isEmpty ?? false {
             cell.titleLabel.text = "Заголовок не указан"
         }
+        if isFromEvent {
+            cell.arrowView.isHidden = true
+        }
         return cell
-        
     }
     
     
@@ -194,12 +212,12 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard let myTBC = tabBarController as? ASWTabBarController else { return }
+//        guard let myTBC = tabBarController as? ASWTabBarController else { return }
         let width: CGFloat = self.collectionView.frame.size.width
         let newItem = Int(self.collectionView.contentOffset.x / width)
-        guard myTBC.events.count > newItem else {
-            return
-        }
+//        guard myTBC.events.count > newItem else {
+//            return
+//        }
         zoom(onItem: newItem)
     }
     
@@ -270,13 +288,13 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        let width: CGFloat = self.collectionView.frame.size.width
-//        let newItem = Int(self.collectionView.contentOffset.x / width)
-//        if indexPath.item == 0 && newItem == 0 {
-//            updateColoredMarkers(0)
-//            zoom(onItem: 0)
-//        }
-//    }
+        //        let width: CGFloat = self.collectionView.frame.size.width
+        //        let newItem = Int(self.collectionView.contentOffset.x / width)
+        //        if indexPath.item == 0 && newItem == 0 {
+        //            updateColoredMarkers(0)
+        //            zoom(onItem: 0)
+        //        }
+        //    }
     }
     
     func showEvents(marker: GMSMarker) {
@@ -323,7 +341,7 @@ extension ASWMapViewController: CLLocationManagerDelegate {
             print("Location access was restricted.")
         case .denied:
             print("User denied access to location.")
-//            mapView.isHidden = false
+        //            mapView.isHidden = false
         case .notDetermined:
             print("Location status not determined.")
         case .authorizedAlways: fallthrough

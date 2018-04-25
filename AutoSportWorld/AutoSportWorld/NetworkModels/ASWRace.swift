@@ -203,12 +203,12 @@ class ASWRace {
     }
     
     var latitude: Double? {
-        guard let array = geo?.components(separatedBy: " "), array.count == 2 else { return nil }
+        guard let array = geo?.components(separatedBy: ", "), array.count == 2 else { return nil }
         return Double(array[0])
     }
     
     var longitude: Double? {
-        guard let array = geo?.components(separatedBy: " "), array.count == 2 else { return nil }
+        guard let array = geo?.components(separatedBy: ", "), array.count == 2 else { return nil }
         return Double(array[1])
     }
     

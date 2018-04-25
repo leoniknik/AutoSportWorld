@@ -19,7 +19,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
     var model: ASWFeedsModelProtocol = ASWFeedsModel()
     
     var cursor: String? = "0"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefreshView()
@@ -196,11 +196,13 @@ extension ASWFeedViewController: UITableViewDataSource {
             
             //пагинация
             if ((model.getEvents().count - 3 - indexPath.item / 2 == 0) && self.cursor != nil) {
-                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    if self?.searchBar.text == "" || self?.searchBar.text == nil {
-                        self?.model.updateEvents(cursor: self?.cursor, self?.searchBar.text ?? nil)
-                    } else {
-                        self?.model.updateEvents(cursor: self?.cursor, self?.searchBar.text)
+                if let text = self.searchBar.text, text != "" {
+                    DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                        self?.model.updateEvents(cursor: self?.cursor, text)
+                    }
+                } else {
+                    DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                        self?.model.updateEvents(cursor: self?.cursor, nil)
                     }
                 }
             }
@@ -295,7 +297,7 @@ extension ASWFeedViewController: UITableViewDataSourcePrefetching {
         let urls = indexes.flatMap {
             URL(string: model.getEvent(forIndex: $0).imageURL ?? "")
         }
-
+        
         ImagePrefetcher(urls: urls).start()
     }
 }

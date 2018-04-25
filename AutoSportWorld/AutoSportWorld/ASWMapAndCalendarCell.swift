@@ -14,6 +14,7 @@ class ASWMapAndCalendarCell: UICollectionViewCell {
     @IBOutlet weak var categories: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var arrowView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
