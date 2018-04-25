@@ -11,6 +11,8 @@ import Kingfisher
 
 class ASWEventViewController: UIViewController {
 
+    @IBOutlet weak var commonLikeView: UIView!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var raceImage: UIImageView!
@@ -79,7 +81,8 @@ class ASWEventViewController: UIViewController {
     
     func setupLikeActionForLikesLabel() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(like))
-        likedCountLabel.addGestureRecognizer(tapGesture)
+//        likedCountLabel.addGestureRecognizer(tapGesture)
+        commonLikeView.addGestureRecognizer(tapGesture)
     }
     
     func setupActionsForInfoLabels() {
@@ -199,9 +202,9 @@ class ASWEventViewController: UIViewController {
     
     func updateCircleView() {
         if model.checkBookmarkedRace(race: race) {
-            bookmarkButton.setBackgroundImage(UIImage.cardBookmarkOn, for: .normal)
+            bookmarkButton.setImage(UIImage.cardBookmarkOn, for: .normal)
         } else {
-            bookmarkButton.setBackgroundImage(UIImage.cardBookmarkOff, for: .normal)
+            bookmarkButton.setImage(UIImage.cardBookmarkOff, for: .normal)
         }
     }
     
@@ -286,6 +289,7 @@ class ASWEventViewController: UIViewController {
     
     @objc func updateAddInfo() {
         guard let text = race.textRace else { return }
+        
         if !isShowedAdditionalInfo {
             infoLabel.text = text
             infoLabel.isHidden = false
@@ -294,6 +298,14 @@ class ASWEventViewController: UIViewController {
             infoLabel.text = ""
             infoLabel.isHidden = true
             isShowedAdditionalInfo = false
+        }
+        
+        UIView.animate(withDuration: 0.25) {
+            if !self.isShowedAdditionalInfo {
+                self.additionalInfoButton.transform = CGAffineTransform.identity
+            } else {
+                self.additionalInfoButton.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
+            }
         }
     }
     
