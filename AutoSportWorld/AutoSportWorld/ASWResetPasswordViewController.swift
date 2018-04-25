@@ -15,15 +15,17 @@ class ASWResetPasswordViewController: ASWViewController {
     @IBOutlet weak var resetButton: UIButton!
     
     override func viewDidLoad() {
-        addBackButton()
-        setupBlackOpaqueNavBar()
         super.viewDidLoad()
+        addBackButton()
        
     ASWButtonManager.setupLoginButton(button: resetButton)
         resetButton.isEnabled = false
         
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     @IBAction func resetPassword(_ sender: Any) {
         func success(parser: ASWResetPasswordParser){
@@ -50,10 +52,12 @@ class ASWResetPasswordViewController: ASWViewController {
     
     let emailValidator = ASWEmailValidator()
     var email = ""
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupBlackOpaqueNavBar()
         setupForm()
+        setupTransparentNavBar()
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func setupForm() {

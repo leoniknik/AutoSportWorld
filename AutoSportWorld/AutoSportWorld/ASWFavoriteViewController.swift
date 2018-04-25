@@ -54,9 +54,6 @@ class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeed
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationItem.title = "Избранное"
         self.navigationController?.navigationBar.tintColor = .white
-        if ASWDatabaseManager().getUser() != nil {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_tune"), style: .plain, target: self, action: #selector(showFilters))
-        }
     }
     
     @objc func showFilters() {
