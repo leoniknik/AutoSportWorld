@@ -28,6 +28,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
     private func setupErrorView() {
         errorViewController = ASWResponseErrorViewController()
         errorViewController.delegate = self
+        errorViewController.view.frame = view.frame
         
         var blurEffect = UIBlurEffect.init(style: .dark)
         
