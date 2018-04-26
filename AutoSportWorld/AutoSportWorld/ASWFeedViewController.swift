@@ -9,8 +9,9 @@
 import UIKit
 import Kingfisher
 
-class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
+class ASWFeedViewController: ASWViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
     
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var errorLabel: UILabel!
@@ -77,6 +78,7 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         searchBar.text = ""
         searchBar.resignFirstResponder()
         self.errorLabel.isHidden = true
+        self.view.closeASWErrorView()
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.model.updateEvents(cursor: nil, nil)
         }
@@ -119,11 +121,13 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         if (self.model.getEvents().count == 0) {
             DispatchQueue.main.async { [weak self] in
                 self?.errorLabel.isHidden = false
+                self?.view.showASWErrorView()
                 self?.tableView.refreshControl?.endRefreshing()
             }
         }
         else {
             DispatchQueue.main.async { [weak self] in
+                self?.view.showASWErrorView()
                 self?.createAlert()
             }
         }
@@ -158,7 +162,9 @@ class ASWFeedViewController: UIViewController, ASWEventCellDelegate, ASWFeedsMod
         tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
     }
     
-    
+    func presentAlert(title: String, text: String) {
+        self.presentPermissionAlert()
+    }
     
 }
 

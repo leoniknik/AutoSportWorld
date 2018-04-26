@@ -26,6 +26,7 @@ protocol ASWFeedsModelProtocol {
 protocol ASWFeedsModelDelegate: class {
     func update(cursor: String?)
     func updateError()
+    func presentAlert(title:String, text:String)
 }
 
 class ASWFeedsModel: ASWFeedsModelProtocol {
@@ -136,11 +137,15 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
     }
     
     func bookmarkRace(withID id: Int) {
-        let race = getEvent(forIndex: id)
-        guard let id = getRaceID(race: race) else {
-            return
+        if(databaseService.checkPermission()){
+            let race = getEvent(forIndex: id)
+            guard let id = getRaceID(race: race) else {
+                return
+            }
+            databaseService.bookmarkRace(withID: id)
+        }else{
+            delegate?.presentAlert(title: "У вас нет прав", text: "У вас нет прав")
         }
-        databaseService.bookmarkRace(withID: id)
     }
     
     func likeEvent(id: Int, sucsessFunc: @escaping ()->()) {

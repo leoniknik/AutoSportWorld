@@ -60,6 +60,21 @@ extension ASWViewController {
         presentOKAlert(title, text,{})
     }
     
+    func presentPermissionAlert(_ completion: @escaping ()->Void){
+        DispatchQueue.main.async {
+            [weak self] in
+            self?.errorViewController.titleText = "Permission"
+            self?.errorViewController.bodyText = "Permission"
+            self?.errorViewController.okMode = true
+            self?.completion = completion
+            self?.showAlert()
+        }
+    }
+    
+    func presentPermissionAlert(){
+        presentPermissionAlert({})
+    }
+    
     func presentAlert(errorParser: ASWErrorParser,_ completion: @escaping ()->Void){
         if errorParser.hasInternetError {
             presentNetworkAlert {

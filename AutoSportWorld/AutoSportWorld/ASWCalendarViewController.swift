@@ -135,6 +135,10 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         pageController.currentPageIndicatorTintColor = UIColor.ASWColor.darkBlue
         
         self.setupCollectionView()
+        
+        if !ASWDatabaseManager().checkPermission() {
+            self.view.showASWPermissionErrorView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

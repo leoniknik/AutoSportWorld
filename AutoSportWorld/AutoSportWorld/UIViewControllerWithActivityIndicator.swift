@@ -29,7 +29,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
         errorViewController = ASWResponseErrorViewController()
         errorViewController.delegate = self
         
-        var blurEffect = UIBlurEffect.init(style: .extraLight)
+        var blurEffect = UIBlurEffect.init(style: .dark)
         
         visualEffectView =  UIVisualEffectView.init(effect: blurEffect)
         
@@ -46,11 +46,11 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
         transition.duration = 0.3
         transition.type = kCATransitionFade
         transition.subtype = kCATransitionMoveIn
-        self.visualEffectView.alpha = 1
+        self.visualEffectView.alpha = 0.8
         
         view.window?.layer.add(transition, forKey: kCATransition)
         self.present(self.errorViewController, animated: false, completion: {})
-        self.visualEffectView.alpha = 1
+        self.visualEffectView.alpha = 0.8
     }
     
     
@@ -60,6 +60,7 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
         UIView.animate(withDuration: 0.2, animations: {
             self.errorViewController.dismiss(animated: true, completion: nil)
             self.visualEffectView.alpha = 0
+            
         },completion:{ result in
             self.completion?()
             self.completion = nil

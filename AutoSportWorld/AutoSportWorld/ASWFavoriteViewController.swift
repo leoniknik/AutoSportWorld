@@ -9,7 +9,8 @@
 import UIKit
 import Kingfisher
 
-class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
+class ASWFavoriteViewController: ASWViewController, ASWEventCellDelegate, ASWFeedsModelDelegate {
+    
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorLabel: UILabel!
@@ -35,6 +36,7 @@ class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeed
             getUpdate()
         }
         shoudUpdate = true
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,6 +76,7 @@ class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeed
     @objc func getUpdate() {
         self.refreshControl.beginRefreshing()
         self.errorLabel.isHidden = true
+        self.view.closeASWErrorView()
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.model.updateEvents(cursor: nil)
         }
@@ -109,6 +112,12 @@ class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeed
     func updateError() {
         DispatchQueue.main.async { [weak self] in
             self?.errorLabel.isHidden = false
+            if(ASWDatabaseManager().checkPermission()){
+                self?.view.showASWErrorView()
+            }else{
+                self?.view.showASWPermissionErrorView()
+            }
+            
             self?.tableView.refreshControl?.endRefreshing()
             self?.tableView.refreshControl = nil
         }
@@ -145,6 +154,12 @@ class ASWFavoriteViewController: UIViewController, ASWEventCellDelegate, ASWFeed
         model.bookmarkRace(withID: id)
         tableView.reloadRows(at: [IndexPath(item: id * 2 + 1, section: 0)], with: UITableViewRowAnimation.automatic)
     }
+    
+    func presentAlert(title: String, text: String) {
+        self.presentPermissionAlert()
+    }
+    
+
     
 }
 

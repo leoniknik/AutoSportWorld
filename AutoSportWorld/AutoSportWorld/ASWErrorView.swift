@@ -14,6 +14,8 @@ class ASWErrorView: UIView {
     
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var button: UIButton!
     
     var retryAction:(()->Void)?
@@ -39,6 +41,10 @@ class ASWErrorView: UIView {
         addSubview(view)
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.leftAnchor.constraint(equalTo: layoutMarginsGuide.leftAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: layoutMarginsGuide.rightAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor).isActive = true
     }
 
     @IBAction func retryAction(_ sender: Any) {

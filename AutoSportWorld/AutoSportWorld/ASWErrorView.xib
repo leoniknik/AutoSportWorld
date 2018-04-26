@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="button" destination="jcp-F1-pWO" id="YkT-PW-9VR"/>
                 <outlet property="label" destination="klJ-iA-nT5" id="Alm-iu-Azd"/>
+                <outlet property="titleLabel" destination="IqW-B2-d5g" id="2qp-HT-SpA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="7Jc-Kj-hqu"/>
             </connections>
         </placeholder>
@@ -24,28 +25,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_fb_on" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2WG-oI-GAZ">
-                    <rect key="frame" x="112.5" y="80" width="150" height="129.5"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_error" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2WG-oI-GAZ">
+                    <rect key="frame" x="112.5" y="80" width="150" height="150"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="2WG-oI-GAZ" secondAttribute="height" multiplier="110:95" id="2tI-Qf-8Oj"/>
+                        <constraint firstAttribute="width" secondItem="2WG-oI-GAZ" secondAttribute="height" multiplier="1:1" id="2tI-Qf-8Oj"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось загрузить данные" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-B2-d5g">
-                    <rect key="frame" x="59" y="242.5" width="256" height="21"/>
+                    <rect key="frame" x="59" y="263" width="256" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klJ-iA-nT5">
-                    <rect key="frame" x="33" y="271.5" width="309" height="41"/>
+                    <rect key="frame" x="33" y="292" width="309" height="41"/>
                     <string key="text">Проверьте подключение к Интернету
 и повторите попытку</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-F1-pWO">
-                    <rect key="frame" x="80" y="328.5" width="215" height="30"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-F1-pWO">
+                    <rect key="frame" x="80" y="349" width="215" height="30"/>
                     <color key="backgroundColor" red="0.3803921569" green="0.47450980390000003" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="BVI-FN-0MU"/>
@@ -77,6 +78,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_fb_on" width="29" height="29"/>
+        <image name="ic_error" width="224" height="193"/>
     </resources>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ASWEventViewController: UIViewController {
+class ASWEventViewController: ASWViewController {
 
     @IBOutlet weak var commonLikeView: UIView!
     
@@ -196,8 +196,13 @@ class ASWEventViewController: UIViewController {
     }
     
     @objc func setFavorite() {
-        model.bookmarkRace(race: race)
-        updateCircleView()
+        if ASWDatabaseManager().checkPermission(){
+            model.bookmarkRace(race: race)
+            updateCircleView()
+        }else{
+            presentPermissionAlert()
+        }
+        
     }
     
     func updateCircleView() {
@@ -209,7 +214,11 @@ class ASWEventViewController: UIViewController {
     }
     
     @IBAction @objc func likeEvent(_ sender: UIButton) {
-        like()
+        if ASWDatabaseManager().checkPermission(){
+            like()
+        }else{
+            presentPermissionAlert()
+        }
     }
     
     @objc func like() {

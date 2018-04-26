@@ -11,6 +11,10 @@ import RealmSwift
 
 class ASWDatabaseManager {
     
+    func checkPermission()->Bool{
+        return getUser() != nil
+    }
+    
     func getUser() -> ASWUserEntity? {
         let realm = try! Realm()
         let predicate = NSPredicate(format: "isLogedIn == true")
