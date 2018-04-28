@@ -29,14 +29,13 @@ class ASWRaceTypeCell: UICollectionViewCell {
         self.label.clipsToBounds = true
         
         self.indexLabel.isHidden = true
-        self.indexLabel.backgroundColor = UIColor.ASWColor.yellowSelection
+        self.indexLabel.backgroundColor = UIColor.white
         
         darkShadow.backgroundColor = UIColor.black.cgColor
         darkShadow.opacity = 0.3
         
         self.indexLabel.layer.cornerRadius = 11
         self.indexLabel.clipsToBounds = true
-        self.indexLabel.textColor = UIColor.white
     }
     
     var darkShadow = CALayer()
