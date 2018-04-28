@@ -105,7 +105,7 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
         var item:ASWRaceCategory? = nil
         
         if indexPath.section == 0 {
-            cell.selectCell()
+            cell.selectCell(indexPath: indexPath)
             var id = String(self.selectedItems[indexPath.item].id)
             item = raceCategories.first(where: { $0.id == id })
         }

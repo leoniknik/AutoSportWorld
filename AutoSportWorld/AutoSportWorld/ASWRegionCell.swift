@@ -10,7 +10,8 @@ import UIKit
 
 class ASWRegionCell: UICollectionViewCell {
     
-    @IBOutlet weak var checkmark: UIImageView!
+    @IBOutlet weak var indexLabel: UILabel!
+    
     @IBOutlet weak var regionNumber: UILabel!
     
     @IBOutlet weak var name: UILabel!
@@ -23,25 +24,27 @@ class ASWRegionCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.ASWColor.grey.cgColor
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
-        self.checkmark.isHidden = true
+        self.indexLabel.isHidden = true
+        self.indexLabel.backgroundColor = UIColor.ASWColor.yellowSelection;
         
         darkShadow.backgroundColor = UIColor.black.cgColor
         darkShadow.opacity = 0.3
         
-        self.checkmark.backgroundColor = UIColor.clear
-        self.checkmark.layer.opacity = 1.0
-
+        self.indexLabel.layer.cornerRadius = 11
+        self.indexLabel.clipsToBounds = true
+        self.indexLabel.textColor = UIColor.white
     }
     
-    func selectCell() {
+    func selectCell(indexPath:IndexPath) {
         darkShadow.frame = self.contentView.frame
-        self.contentView.layer.insertSublayer(darkShadow, below: self.checkmark.layer)
-        self.checkmark.isHidden = false
+        self.contentView.layer.insertSublayer(darkShadow, below: self.indexLabel.layer)
+        self.indexLabel.text = "\(indexPath.item+1)"
+        self.indexLabel.isHidden = false
     }
     
     func deselectCell() {
         darkShadow.removeFromSuperlayer()
-        self.checkmark.isHidden = true
+        self.indexLabel.isHidden = true
     }
 
 }

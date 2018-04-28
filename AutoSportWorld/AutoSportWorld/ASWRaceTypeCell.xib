@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,20 +30,24 @@
                         <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_elevation" translatesAutoresizingMaskIntoConstraints="NO" id="nYI-W4-qpx">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq3-gH-fu6">
                         <rect key="frame" x="74" y="4" width="22" height="22"/>
+                        <color key="backgroundColor" red="0.65039773720000005" green="0.47450980390000003" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="22" id="0Mz-cX-kA8"/>
-                            <constraint firstAttribute="height" constant="22" id="oIq-xw-bZ0"/>
+                            <constraint firstAttribute="height" constant="22" id="7E3-P9-E1o"/>
+                            <constraint firstAttribute="width" constant="22" id="EFj-If-D5A"/>
                         </constraints>
-                    </imageView>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="eBw-mN-M1Z" firstAttribute="bottom" secondItem="rhD-Ex-bxc" secondAttribute="top" constant="10" id="3rb-Aa-fxD"/>
-                <constraint firstAttribute="trailing" secondItem="nYI-W4-qpx" secondAttribute="trailing" constant="4" id="5bj-qQ-uCt"/>
-                <constraint firstItem="nYI-W4-qpx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="94H-Cv-Ztg"/>
+                <constraint firstItem="cq3-gH-fu6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="4Qv-Vq-uTN"/>
                 <constraint firstAttribute="bottom" secondItem="rhD-Ex-bxc" secondAttribute="bottom" id="Bv7-p7-CWW"/>
+                <constraint firstAttribute="trailing" secondItem="cq3-gH-fu6" secondAttribute="trailing" constant="4" id="Do9-gn-O3M"/>
                 <constraint firstAttribute="trailing" secondItem="eBw-mN-M1Z" secondAttribute="trailing" id="WME-p0-bOg"/>
                 <constraint firstItem="rhD-Ex-bxc" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.25" id="Xde-g9-Dig"/>
                 <constraint firstItem="eBw-mN-M1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ci6-uI-WPm"/>
@@ -52,14 +56,13 @@
                 <constraint firstItem="rhD-Ex-bxc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wcd-Ih-Qkz"/>
             </constraints>
             <connections>
-                <outlet property="checkmark" destination="nYI-W4-qpx" id="TgT-Ax-EH5"/>
                 <outlet property="image" destination="eBw-mN-M1Z" id="96H-HO-YTG"/>
+                <outlet property="indexLabel" destination="cq3-gH-fu6" id="Lg8-sZ-bSq"/>
                 <outlet property="label" destination="rhD-Ex-bxc" id="HFv-OQ-OxI"/>
             </connections>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="auto" width="960" height="640"/>
-        <image name="ic_elevation" width="24" height="24"/>
     </resources>
 </document>

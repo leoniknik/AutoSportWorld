@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -77,33 +77,37 @@
                             </imageView>
                         </subviews>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_elevation" translatesAutoresizingMaskIntoConstraints="NO" id="H8L-CL-3He">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbN-NP-9yd">
                         <rect key="frame" x="74" y="4" width="22" height="22"/>
+                        <color key="backgroundColor" red="0.042092806230000002" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="be6-3M-ZPr"/>
-                            <constraint firstAttribute="width" constant="22" id="xCM-pB-zwU"/>
+                            <constraint firstAttribute="height" constant="22" id="7Ii-75-xhf"/>
+                            <constraint firstAttribute="width" constant="22" id="h3X-Zx-2MF"/>
                         </constraints>
-                    </imageView>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="CPZ-Rc-G3N" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="9HH-aj-xQb"/>
+                <constraint firstAttribute="trailing" secondItem="HbN-NP-9yd" secondAttribute="trailing" constant="4" id="ET3-DN-CBr"/>
                 <constraint firstItem="mxz-oA-xjr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="FII-cd-LjX"/>
-                <constraint firstAttribute="trailing" secondItem="H8L-CL-3He" secondAttribute="trailing" constant="4" id="JKL-Qv-0h7"/>
                 <constraint firstItem="I1b-hh-2Ck" firstAttribute="top" secondItem="c26-YO-Pda" secondAttribute="bottom" constant="-1" id="LRn-xf-03p"/>
                 <constraint firstAttribute="trailing" secondItem="mxz-oA-xjr" secondAttribute="trailing" constant="4" id="Ohh-1H-geZ"/>
                 <constraint firstItem="I1b-hh-2Ck" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="YPM-Bc-NkZ"/>
                 <constraint firstItem="CPZ-Rc-G3N" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-3" id="YYg-fh-UH3"/>
+                <constraint firstItem="HbN-NP-9yd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="aa5-W6-agz"/>
                 <constraint firstItem="c26-YO-Pda" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="f9O-bj-x08"/>
                 <constraint firstItem="c26-YO-Pda" firstAttribute="top" secondItem="CPZ-Rc-G3N" secondAttribute="bottom" constant="7" id="fKx-wZ-nyk"/>
                 <constraint firstAttribute="trailing" secondItem="c26-YO-Pda" secondAttribute="trailing" constant="4" id="kqv-h2-mu7"/>
                 <constraint firstAttribute="trailing" secondItem="I1b-hh-2Ck" secondAttribute="trailing" constant="4" id="nSR-rm-JwH"/>
-                <constraint firstItem="H8L-CL-3He" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="wC3-PB-Dkx"/>
                 <constraint firstItem="CPZ-Rc-G3N" firstAttribute="top" secondItem="mxz-oA-xjr" secondAttribute="bottom" constant="5" id="yr2-b5-w54"/>
             </constraints>
             <size key="customSize" width="100" height="100"/>
             <connections>
-                <outlet property="checkmark" destination="H8L-CL-3He" id="yA6-26-Uqx"/>
+                <outlet property="indexLabel" destination="HbN-NP-9yd" id="zQw-nW-qpP"/>
                 <outlet property="name" destination="I1b-hh-2Ck" id="ni1-TX-tEM"/>
                 <outlet property="regionNumber" destination="mxz-oA-xjr" id="Eja-Pf-QbX"/>
             </connections>
@@ -111,7 +115,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_elevation" width="24" height="24"/>
         <image name="ic_flag" width="21" height="10"/>
     </resources>
 </document>

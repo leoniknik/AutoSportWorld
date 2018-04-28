@@ -62,7 +62,7 @@ class ASWActionTypeCollectionViewDataSource: ASWCollectionViewDataSource {
         var id = 0
         
         if indexPath.section == 0 {
-            cell.selectCell()
+            cell.selectCell(indexPath: indexPath)
             cell.label.text = titles[self.selectedItems[indexPath.item].id]
             id = self.selectedItems[indexPath.item].id
         }

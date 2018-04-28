@@ -93,7 +93,7 @@ class ASWRegionsCollectionViewDataSource: ASWCollectionViewDataSource {
         
         
         if indexPath.section == 0 {
-            cell.selectCell()
+            cell.selectCell(indexPath: indexPath)
             var id = String(self.selectedItems[indexPath.item].id)
             if let item = regions.first(where: { $0.id == id }){
                 cell.regionNumber.text = item.codes
