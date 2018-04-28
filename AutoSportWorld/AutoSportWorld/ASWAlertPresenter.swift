@@ -63,8 +63,8 @@ extension ASWViewController {
     func presentPermissionAlert(_ completion: @escaping ()->Void){
         DispatchQueue.main.async {
             [weak self] in
-            self?.errorViewController.titleText = "Permission"
-            self?.errorViewController.bodyText = "Permission"
+            self?.errorViewController.titleText = "Функция недоступна"
+            self?.errorViewController.bodyText = "Авторизуйтесь в приложении, чтобы получить неограниченные возможности"
             self?.errorViewController.okMode = true
             self?.completion = completion
             self?.showAlert()

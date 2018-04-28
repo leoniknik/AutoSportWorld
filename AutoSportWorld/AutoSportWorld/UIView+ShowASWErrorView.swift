@@ -27,8 +27,8 @@ extension UIView{
     
     func showASWPermissionErrorView() {
         let view = ASWErrorView(frame: self.bounds)
-        view.titleLabel.text = "perm"
-        view.label.text = "perm"
+        view.titleLabel.text = "Функция недоступна"
+        view.label.text = "Авторизуйтесь в приложении, чтобы получить неограниченные возможности"
         view.button.setTitle("ОК", for: .disabled)
         view.button.isEnabled = false
         view.retryAction = {return false}
