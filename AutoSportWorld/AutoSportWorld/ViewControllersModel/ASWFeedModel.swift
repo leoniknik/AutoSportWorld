@@ -51,21 +51,58 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
         if let user = ASWDatabaseManager().getUser() {
             
 //            //регионы
-//            var regions = [String]()
-//            for item in user.regions {
-//                regions.append(String(item.id))
-//            }
-//            let regionParameter = regions.joined(separator: ",")
-//
+            var regions = [String]()
+            for item in user.regions {
+                regions.append(String(item.id))
+            }
+            let regionParameter = regions.joined(separator: ",")
+            
+//            категории
+            var categories = [String]()
+            for item in ASWDatabaseManager().getStringCategoriesIds(auto: true) ?? [] {
+                categories.append(String(item))
+            }
+            for item in ASWDatabaseManager().getStringCategoriesIds(auto: false) ?? [] {
+                categories.append(String(item))
+            }
+            let categoriesParameter = categories.joined(separator: ",")
 //            //покататься
-//            let joinParameter = user.join
+            let joinParameter = user.join
 //
 //            //посмотреть
-//            let watchParameter = user.watch
+            let watchParameter = user.watch
             
             let preferences =  "regions,categories,can_join,can_watch"
             
-            request = ASWListRacesRequest(limit: defaultlimit, preferences: preferences, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil, search: search)
+            var sortParameter: String
+            /*сортировка (см. сортировка гонок). варианты:
+             old - по убыванию времени начала
+             new - по возрастанию времени начала
+             soon - по возрастанию времени начала, исключая прошедшие
+             cheap - по возрастанию цены, исключая прошедшие
+             costly - по убыванию цены, исключая прошедшие */
+            var sorts:[String] = []
+            
+            if user.dataFilter == 1 {
+                sorts.append("new")
+            }
+            
+            switch user.costFilter {
+            case 0:
+                //                filters.append("soon")  free
+                break
+            case 1:
+                sorts.append("cheap")
+                break
+            case 2:
+                sorts.append("costly")
+                break
+            default:
+                break
+            }
+            sortParameter = sorts.joined(separator: ",")
+            
+            request = ASWListRacesRequest(limit: defaultlimit, preferences: preferences, level: nil, cursor: cursor, categories: categoriesParameter, regions: regionParameter, sort: sortParameter, canJoin: joinParameter, canWatch: watchParameter, search: search)
         } else {
             request = ASWListRacesRequest(limit: defaultlimit, preferences: nil, level: nil, cursor: cursor, categories: nil, regions: nil, sort: nil, canJoin: nil, canWatch: nil, search: search)
         }
