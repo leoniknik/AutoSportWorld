@@ -51,13 +51,18 @@ class ASWFiltersModel {
     
     func valueChangedFor(_ indexPath: IndexPath) {
         var params = values[indexPath.section]
+        
         if indexPath.section == 0 {
             params[indexPath.item] = !params[indexPath.item]
+            for (index, _) in values[1].enumerated() {
+                values[1][index] = false
+            }
         } else {
             let newValue = !params[indexPath.item]
             for (index, _) in params.enumerated() {
                 params[index] = false
             }
+            values[0][0] = false
             params[indexPath.item] = newValue
             
             if indexPath.item == 1 {

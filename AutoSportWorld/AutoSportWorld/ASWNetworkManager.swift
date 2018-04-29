@@ -248,10 +248,10 @@ class ASWNetworkManager{
         //        configuration.timeoutIntervalForResource = 5
         //        let alamoFireManager = Alamofire.SessionManager(configuration: configuration)
         
-        let headers: HTTPHeaders? = [:]
-        //        if let token = ASWDatabaseManager().getUser()?.access_token {
-        //            headers = ["x-access-token":token,"Content-Type":"application/json"]
-        //        }
+        var headers: HTTPHeaders? = [:]
+                if let token = ASWDatabaseManager().getUser()?.access_token {
+                    headers = ["x-access-token":token,"Content-Type":"application/json"]
+                }
         
         Alamofire.request(URL, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseJSON { response in
             switch response.result {
@@ -262,6 +262,7 @@ class ASWNetworkManager{
                 }
             case .failure(let error):
                 DispatchQueue.global(qos: .userInitiated).async {
+                    let json = JSON(error)
                     print(error)
                     onError(error)
                 }

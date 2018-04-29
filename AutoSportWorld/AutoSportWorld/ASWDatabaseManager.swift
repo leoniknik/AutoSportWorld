@@ -263,7 +263,7 @@ class ASWDatabaseManager {
             } else {
                 user.dataFilter = 0
             }
-            
+            user.costFilter = -1
             if values[1][0] == true {
                 user.costFilter = 0
             }
@@ -287,7 +287,9 @@ class ASWDatabaseManager {
         } else {
             values[0][0] = false
         }
-        
+        if user.costFilter == -1 {
+            values[1] = [false, false, false]
+        }
         if user.costFilter == 0 {
             values[1] = [true, false, false]
         }
