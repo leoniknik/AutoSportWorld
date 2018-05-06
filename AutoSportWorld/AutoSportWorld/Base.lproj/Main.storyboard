@@ -36,11 +36,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdX-Wb-Jhd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="476"/>
                             </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FUx-Ke-V1D">
+                                <rect key="frame" x="168" y="544" width="39" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Yuu-dW-Yyj"/>
+                                </constraints>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zdX-Wb-Jhd" firstAttribute="trailing" secondItem="PQe-Jd-fSn" secondAttribute="trailing" id="8fs-uR-uGQ"/>
                             <constraint firstItem="aqn-TA-Ny5" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="Irp-6w-kg6"/>
+                            <constraint firstItem="FUx-Ke-V1D" firstAttribute="centerX" secondItem="Ong-IN-PUv" secondAttribute="centerX" id="Mrx-8Y-wep"/>
+                            <constraint firstAttribute="bottom" secondItem="FUx-Ke-V1D" secondAttribute="bottom" id="Ozp-wV-gQf"/>
                             <constraint firstItem="zdX-Wb-Jhd" firstAttribute="top" secondItem="PQe-Jd-fSn" secondAttribute="top" id="aQD-in-Uiz"/>
                             <constraint firstItem="aqn-TA-Ny5" firstAttribute="top" secondItem="zdX-Wb-Jhd" secondAttribute="bottom" id="gqR-li-w1J"/>
                             <constraint firstItem="zdX-Wb-Jhd" firstAttribute="leading" secondItem="PQe-Jd-fSn" secondAttribute="leading" id="lTy-1k-DDe"/>
@@ -54,6 +62,7 @@
                     <connections>
                         <outlet property="collectionView" destination="aqn-TA-Ny5" id="XEF-TF-Sqy"/>
                         <outlet property="collectionViewConstraint" destination="3GN-vM-4YX" id="h0g-xB-wSS"/>
+                        <outlet property="pageControl" destination="FUx-Ke-V1D" id="cSD-yb-KiS"/>
                         <outlet property="viewForMap" destination="zdX-Wb-Jhd" id="vKK-TN-FDM"/>
                     </connections>
                 </viewController>

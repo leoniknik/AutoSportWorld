@@ -68,7 +68,12 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
+        
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.minimumLineSpacing = 0
+
+    collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
         
         calendar.delegate = self
         calendar.dataSource = self
@@ -130,9 +135,10 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
         NotificationCenter.default.addObserver(self, selector: #selector(eventCallback(_:)), name: .eventCallback, object: nil)
         self.getEvents(forDate: Date())
         
-        pageController.numberOfPages = 0;
-        pageController.pageIndicatorTintColor = UIColor.ASWColor.grey
-        pageController.currentPageIndicatorTintColor = UIColor.ASWColor.darkBlue
+        pageController.setupPageControl()    
+//        pageController.numberOfPages = 0;
+//        pageController.pageIndicatorTintColor = UIColor.ASWColor.grey
+//        pageController.currentPageIndicatorTintColor = UIColor.ASWColor.darkBlue
         
         self.setupCollectionView()
         
@@ -427,7 +433,7 @@ class ASWCalendarViewController: UIViewController, FSCalendarDataSource, FSCalen
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.size.width, height: 74)
+        return CGSize(width: self.collectionView.frame.size.width, height: 74)
     }
     
     var fullEvents:Dictionary<String,ASWRace> = Dictionary<String,ASWRace>()

@@ -260,6 +260,7 @@ class ASWDatabaseManager {
         try! realm.write {
             if values[0][0] == true {
                 user.dataFilter = 1
+                user.costFilter = -1
             } else {
                 user.dataFilter = 0
             }
