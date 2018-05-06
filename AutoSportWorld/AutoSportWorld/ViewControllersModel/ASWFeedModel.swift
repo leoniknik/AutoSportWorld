@@ -74,33 +74,31 @@ class ASWFeedsModel: ASWFeedsModelProtocol {
             
             let preferences =  "regions,categories,can_join,can_watch"
             
-            var sortParameter: String
+            var sortParameter: String? = nil
             /*сортировка (см. сортировка гонок). варианты:
              old - по убыванию времени начала
              new - по возрастанию времени начала
              soon - по возрастанию времени начала, исключая прошедшие
              cheap - по возрастанию цены, исключая прошедшие
              costly - по убыванию цены, исключая прошедшие */
-            var sorts:[String] = []
-            
             if user.dataFilter == 1 {
-                sorts.append("new")
+                sortParameter = "new"
             }
-            
+
             switch user.costFilter {
             case 0:
                 //                filters.append("soon")  free
                 break
             case 1:
-                sorts.append("cheap")
+                sortParameter = "cheap"
                 break
             case 2:
-                sorts.append("costly")
+                sortParameter = "costly"
                 break
             default:
                 break
             }
-            sortParameter = sorts.joined(separator: ",")
+
             
             request = ASWListRacesRequest(limit: defaultlimit, preferences: preferences, level: nil, cursor: cursor, categories: categoriesParameter, regions: regionParameter, sort: sortParameter, canJoin: joinParameter, canWatch: watchParameter, search: search)
         } else {

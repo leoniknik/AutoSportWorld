@@ -281,7 +281,7 @@ class ASWDatabaseManager {
             return nil
         }
         
-        var values = [[true], [false, true, false]]
+        var values = [[true], [false, false, false]]
         if user.dataFilter == 1 {
             values[0][0] = true
         } else {

@@ -569,15 +569,28 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
     }
     
     func configChangeRaceCategory(auto: Bool){
+        //new logic
+        // 0-email
+        // 1-regions
+        // 2-sportType
+        //     auto     moto    a+m   - выбор пользователя
+        // 3-autoCat_motoCat_autoCat
+        // 4-  Act     Act   motoCat
+        // 5-                  Act
         configForChangeSettings()
-        if auto {
-            rawUser.auto = true;
-        } else {
-            rawUser.moto = true;
-        }
+        let user = ASWDatabaseManager().getUser()
+        
+        rawUser.auto = auto || user?.auto ?? false;
+        
+        rawUser.moto = !auto || user?.moto ?? false;
+        
         
         if rawUser.auto && rawUser.moto {
-            self.currentStep = 4
+            if(auto){
+                self.currentStep = 3
+            }else{
+                self.currentStep = 4
+            }
         }else{
             self.currentStep = 3
         }
