@@ -358,7 +358,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4Y-Lb-B2s">
-                                        <rect key="frame" x="40" y="231" width="295" height="40"/>
+                                        <rect key="frame" x="30" y="231" width="315" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="89M-VN-Nr9"/>
@@ -375,9 +375,9 @@
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="290" id="29I-C1-rto"/>
-                                    <constraint firstItem="i4Y-Lb-B2s" firstAttribute="leading" secondItem="foe-CZ-907" secondAttribute="leading" constant="40" id="6sa-8y-qm2"/>
+                                    <constraint firstItem="i4Y-Lb-B2s" firstAttribute="leading" secondItem="foe-CZ-907" secondAttribute="leading" constant="30" id="6sa-8y-qm2"/>
                                     <constraint firstItem="x0L-9T-Eh2" firstAttribute="centerX" secondItem="foe-CZ-907" secondAttribute="centerX" id="AnN-mX-HVv"/>
-                                    <constraint firstAttribute="trailing" secondItem="i4Y-Lb-B2s" secondAttribute="trailing" constant="40" id="P7J-Fp-Bwp"/>
+                                    <constraint firstAttribute="trailing" secondItem="i4Y-Lb-B2s" secondAttribute="trailing" constant="30" id="P7J-Fp-Bwp"/>
                                     <constraint firstItem="x0L-9T-Eh2" firstAttribute="top" secondItem="foe-CZ-907" secondAttribute="top" constant="36" id="Y02-Or-ohh"/>
                                     <constraint firstItem="fFZ-T7-sdC" firstAttribute="centerX" secondItem="foe-CZ-907" secondAttribute="centerX" id="fDI-nf-6UB"/>
                                     <constraint firstAttribute="bottom" secondItem="i4Y-Lb-B2s" secondAttribute="bottom" constant="19" id="kDq-Op-OWh"/>

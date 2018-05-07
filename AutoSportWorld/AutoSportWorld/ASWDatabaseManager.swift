@@ -147,6 +147,8 @@ class ASWDatabaseManager {
             user.moto=moto
             user.watch = watch
             user.join = join
+            user.dataFilter = 1
+            user.costFilter = -1
         }
         save(object: user)
         
