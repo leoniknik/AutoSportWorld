@@ -11,10 +11,11 @@ import Alamofire
 
 class ASWSignupRequest: ASWRequest {
     
-    init(email:String, password:String) {
+    init(email:String, password:String, name:String) {
         super.init()
         url = self.baseURL + "/auth/signup"
         parameters["email"] = email
+        parameters["name"] = name
         parameters["password"] = password
         parameters["send"] = ASWConstants.isDebug ? false : true
         parameters["plzdonthack"] = ASWCryptoManager.getHMAC(str: email).toHexString().uppercased()

@@ -63,6 +63,12 @@ class ASWRaceCategoryCollectionViewDataSource: ASWCollectionViewDataSource {
                     delegate?.dataReceived()
                     isLoading = false;
                 }
+            }else if response.categories.count == 0{
+                rawAvailableItems  = []
+                raceCategories = []
+                setSelectedCategories(categoryIDs: selectedRaceCategory)
+                delegate?.dataReceived()
+                isLoading = false;
             }
             
         }

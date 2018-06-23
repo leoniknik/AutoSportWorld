@@ -296,7 +296,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         
         confirmButton.isEnabled = false;
         ModalLoadingIndicator.show()
-        ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
+        ASWNetworkManager.validateLogin(email: rawUser.email, password: rawUser.password,name:rawUser.login, sucsessFunc: sucsessCheck, errorFunc: errorCheck)
     }
     
     
@@ -473,7 +473,7 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
         }
         
         confirmButton.isEnabled = false
-        ASWNetworkManager.signupUser(email: rawUser.email, password: rawUser.password, sucsessFunc: sucsessSignup, errorFunc: errorSignup)
+        ASWNetworkManager.signupUser(email: rawUser.email, password: rawUser.password, name:rawUser.login, sucsessFunc: sucsessSignup, errorFunc: errorSignup)
     }
     
     func confirmChangeSettings(){

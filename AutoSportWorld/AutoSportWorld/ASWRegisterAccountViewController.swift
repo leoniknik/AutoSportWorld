@@ -15,7 +15,6 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
 
 protocol ASWRegisterAccountViewControllerDelegate{
     func updateUserLoginInfo(valid:Bool,login:String,email:String,password:String)

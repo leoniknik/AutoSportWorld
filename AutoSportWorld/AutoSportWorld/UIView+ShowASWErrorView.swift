@@ -40,6 +40,7 @@ extension UIView{
         view.retryAction = retryAction
         self.addSubview(view)
     }
+    
     func closeASWErrorView() {
         if self is ASWErrorView{
             self.removeFromSuperview()

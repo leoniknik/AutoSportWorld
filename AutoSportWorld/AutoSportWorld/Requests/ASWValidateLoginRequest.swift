@@ -11,11 +11,12 @@ import Alamofire
 
 class ASWValidateLoginRequest: ASWRequest {
     
-    init(email:String, password:String) {
+    init(email:String, password:String, name:String) {
         super.init()
         url = self.baseURL + "/auth/validate_signup"
         parameters["email"] = email
         parameters["password"] = password
+        parameters["name"] = name
     }
     
 }
