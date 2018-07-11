@@ -20,8 +20,16 @@ class ASWListRegionsParser {
             let name = raceRegion["name"].string
             let centerCity = raceRegion["center_city"].string
             let image = raceRegion["image"].string
-            let codesStrArray = (raceRegion["codes"].arrayObject ?? [String]()) as! [String]
-            let codes = codesStrArray.map({return Int($0) ?? 0})
+            let codesArray = raceRegion["codes"].arrayObject ?? [Any]()
+            var codes = [Int]()
+            if codesArray.count > 0{
+                if let _ = codesArray[0] as? Int {
+                    codes = codesArray.map({return $0 as? Int ?? 0})
+                }else{
+                    codes = codesArray.map({return Int(($0 as? String) ?? "0") ?? 0})
+                }
+            }
+
             regions.append(ASWRaceRegion(id: id, name: name, centerCity: centerCity, image: image,codes:codes))
             regionsIDs.append(Int(id ?? "") ?? 0)
         }
