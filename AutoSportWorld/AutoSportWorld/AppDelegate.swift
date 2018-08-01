@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ASWConstantsEntity.config()
         
         
-        var user = ASWDatabaseManager().getUser()
+        let user = ASWDatabaseManager().getUser()
         if user == nil {
             
         }else{
@@ -67,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
         VKSdk.processOpen(url, fromApplication: UIApplicationOpenURLOptionsKey.sourceApplication.rawValue)
         print("application URL")
         return true

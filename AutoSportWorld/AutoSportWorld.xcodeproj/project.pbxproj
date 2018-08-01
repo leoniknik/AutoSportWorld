@@ -68,6 +68,8 @@
 		CA8342462046A75A0089B34B /* ModalIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8342452046A75A0089B34B /* ModalIndicator.swift */; };
 		CA83978B1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */; };
 		CA83978F1F441BCC00000553 /* ASWCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */; };
+		CA8AC62E209F1EB900C138DF /* ASWVKontakteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AC62C209F1EB900C138DF /* ASWVKontakteViewController.swift */; };
+		CA8AC62F209F1EB900C138DF /* ASWVKontakteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8AC62D209F1EB900C138DF /* ASWVKontakteViewController.xib */; };
 		CA8C00401F39BAEF005CF27E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C003F1F39BAEF005CF27E /* Profile.storyboard */; };
 		CA8D11B61FFD14710009C4FF /* ASWFavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */; };
 		CA9CCA361F51626D006494EB /* ASWEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CCA351F51626D006494EB /* ASWEvent.swift */; };
@@ -208,6 +210,8 @@
 		CA8342452046A75A0089B34B /* ModalIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalIndicator.swift; sourceTree = "<group>"; };
 		CA83978A1F43B5CF00000553 /* ASWRegionsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWRegionsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CA83978E1F441BCC00000553 /* ASWCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWCollectionItem.swift; sourceTree = "<group>"; };
+		CA8AC62C209F1EB900C138DF /* ASWVKontakteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWVKontakteViewController.swift; sourceTree = "<group>"; };
+		CA8AC62D209F1EB900C138DF /* ASWVKontakteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASWVKontakteViewController.xib; sourceTree = "<group>"; };
 		CA8C003F1F39BAEF005CF27E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		CA8D11B51FFD14710009C4FF /* ASWFavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWFavoriteModel.swift; sourceTree = "<group>"; };
 		CA9CCA351F51626D006494EB /* ASWEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASWEvent.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 				DEA11E5B203C5E39009EBA26 /* ASWErrorView.xib */,
 				DE97B60E20457C4500E8F8CA /* ASWResponseErrorView.xib */,
 				CA4F8C6820680206005529E7 /* ASWRulesViewController.xib */,
+				CA8AC62D209F1EB900C138DF /* ASWVKontakteViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				CAD382FC1FFDB421000B4242 /* ASWWebViewController.swift */,
 				DE7D18042008A26900156FDA /* ASWChangePasswordViewController.swift */,
 				DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */,
+				CA8AC62C209F1EB900C138DF /* ASWVKontakteViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -678,6 +684,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8AC62F209F1EB900C138DF /* ASWVKontakteViewController.xib in Resources */,
 				CA584CD41F4843A30011E653 /* Calendar.storyboard in Resources */,
 				DEF487BC1FF0E290008318BC /* AboutApp.storyboard in Resources */,
 				CAC70E631F4701E60098470F /* ASWMapAndCalendarCell.xib in Resources */,
@@ -877,6 +884,7 @@
 				DE6D6078203DA984003D97B7 /* ASWCalendarRacesParser.swift in Sources */,
 				DE153DFB202190C0009E8CC1 /* UIViewController+HideKeyboard.swift in Sources */,
 				DE6B03B8201B2627002BFE85 /* ASWUserInfoGetParser.swift in Sources */,
+				CA8AC62E209F1EB900C138DF /* ASWVKontakteViewController.swift in Sources */,
 				CA323B271F379ADA007157D4 /* AppDelegate.swift in Sources */,
 				CA3ED32F1FFD11840026DBA6 /* ASWFavoriteViewController.swift in Sources */,
 				CAF38FAE1FE6C90100535C43 /* ASWFeedModel.swift in Sources */,
