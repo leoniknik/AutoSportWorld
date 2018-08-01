@@ -96,7 +96,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         }
         if array.count>1{
             for i in 1...array.count-1{
-                if let name = dict[i]{
+                if let name = dict[array[i]]{
                     label += ", "+name
                 }
             }

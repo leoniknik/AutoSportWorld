@@ -67,11 +67,14 @@ final class ModalLoadingIndicator {
     }
     
     static func hide() {
-        if currentOverlay != nil {
-            currentOverlay?.removeFromSuperview()
-            currentOverlay =  nil
-            currentLoadingText = nil
-            currentOverlayTarget = nil
+        DispatchQueue.main.async {
+            if currentOverlay != nil {
+                currentOverlay?.removeFromSuperview()
+                currentOverlay =  nil
+                currentLoadingText = nil
+                currentOverlayTarget = nil
+            }
         }
+        
     }
 }

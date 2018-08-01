@@ -1,7 +1,7 @@
 target 'AutoSportWorld' do
   inhibit_all_warnings!
   use_frameworks!
-    pod 'SkyFloatingLabelTextField', '~> 3.0.0'
+  #pod 'SkyFloatingLabelTextField', '~> 3.0.0'
     pod 'VK-ios-sdk'
     pod 'GoogleMaps', '~> 2.3.1'
     pod 'GooglePlaces', '~> 2.3.1'
@@ -10,8 +10,8 @@ target 'AutoSportWorld' do
     pod 'SwiftyJSON'
     pod 'Kingfisher'
 
-    pod 'FacebookCore'
-    pod 'FacebookLogin'
+#pod 'FacebookCore'
+#pod 'FacebookLogin'
     pod 'FSCalendar'
     pod 'IQKeyboardManager'
     pod 'CryptoSwift'

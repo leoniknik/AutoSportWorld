@@ -10,7 +10,7 @@ import Foundation
 
 class ASWFiltersModel {
     
-    static let defaultValues = [[true], [false, true, false]]
+    static let defaultValues = [[true], [false, false, false]]
     
     var values: [[Bool]]
     
@@ -65,16 +65,16 @@ class ASWFiltersModel {
             values[0][0] = false
             params[indexPath.item] = newValue
             
-            if indexPath.item == 1 {
-                params[2] = !newValue
-            }
-            if indexPath.item == 2 {
-                params[1] = !newValue
-            }
-            
-            if indexPath.item == 0 && newValue == false {
-                params[1] = !newValue
-            }
+//            if indexPath.item == 1 {
+//                params[2] = !newValue
+//            }
+//            if indexPath.item == 2 {
+//                params[1] = !newValue
+//            }
+//            
+//            if indexPath.item == 0 && newValue == false {
+//                params[1] = !newValue
+//            }
         }
         values[indexPath.section] = params
         saveFilters()

@@ -16,6 +16,8 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var viewForMap: UIView!
     @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
@@ -39,6 +41,9 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.minimumLineSpacing = 0
         collectionView.register(UINib(nibName:"ASWMapAndCalendarCell", bundle: nil), forCellWithReuseIdentifier:"ASWMapAndCalendarCell")
         setupLocationManager()
         setupUI()
@@ -130,7 +135,7 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     //    }
     
     func setupUI() {
-        //        pageControl.hidesForSinrglePage = true
+        pageControl.setupPageControl()
         setupNavbar()
     }
     
@@ -288,6 +293,7 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        pageControl.currentPage = indexPath.item
         //        let width: CGFloat = self.collectionView.frame.size.width
         //        let newItem = Int(self.collectionView.contentOffset.x / width)
         //        if indexPath.item == 0 && newItem == 0 {
@@ -304,11 +310,13 @@ class ASWMapViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if !isFromEvent {
                     choosenEvents = event.events
                 }
+                pageControl.numberOfPages = choosenEvents.count
                 collectionView.reloadData()
                 setupMapSize()
                 return
             }
         }
+        pageControl.numberOfPages = choosenEvents.count
         choosenEvents = []
         collectionView.reloadData()
         setupMapSize()

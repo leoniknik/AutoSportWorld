@@ -120,6 +120,7 @@
 		DEA11E60203C77B0009EBA26 /* UIView+ShowASWErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */; };
 		DEA11E68203D4C7E009EBA26 /* UIAplication+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */; };
 		DEA11E6D203D7870009EBA26 /* ASWChangeUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */; };
+		DEC0104E209F10DC00C478E4 /* UIPageControl+ASWSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0104D209F10DC00C478E4 /* UIPageControl+ASWSetup.swift */; };
 		DED63422204D705400880347 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED63421204D705400880347 /* Constants.swift */; };
 		DEDA9F22204676E10042DEA5 /* UIView+LoadFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */; };
 		DEDA9F272046A7470042DEA5 /* RegistrationAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */; };
@@ -262,6 +263,7 @@
 		DEA11E5F203C77B0009EBA26 /* UIView+ShowASWErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ShowASWErrorView.swift"; sourceTree = "<group>"; };
 		DEA11E67203D4C7E009EBA26 /* UIAplication+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication+Version.swift"; sourceTree = "<group>"; };
 		DEA11E6C203D7870009EBA26 /* ASWChangeUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASWChangeUserInfoViewController.swift; sourceTree = "<group>"; };
+		DEC0104D209F10DC00C478E4 /* UIPageControl+ASWSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl+ASWSetup.swift"; sourceTree = "<group>"; };
 		DED63421204D705400880347 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LoadFromNib.swift"; sourceTree = "<group>"; };
 		DEDA9F262046A7470042DEA5 /* RegistrationAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RegistrationAssets.xcassets; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				CAC3DC5520447A8E00EE4F50 /* UIViewController+MainScreen.swift */,
 				DEDA9F21204676E10042DEA5 /* UIView+LoadFromNib.swift */,
 				DEF6F1E9204B2A4C000F4C0A /* Date+ASWFunctions.swift */,
+				DEC0104D209F10DC00C478E4 /* UIPageControl+ASWSetup.swift */,
 			);
 			name = "Extensions ";
 			sourceTree = "<group>";
@@ -760,36 +763,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AutoSportWorld/Pods-AutoSportWorld-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/VK-ios-sdk/VK_ios_sdk.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VK_ios_sdk.framework",
 			);
@@ -830,6 +821,7 @@
 				DE04038C2045730F00CDA5B8 /* ASWErrorParser.swift in Sources */,
 				CA76A6B11F49E7AA005EA4E7 /* ASWFeedViewController.swift in Sources */,
 				CA0D21801FEDB8E100CF42FF /* ASWRaceParser.swift in Sources */,
+				DEC0104E209F10DC00C478E4 /* UIPageControl+ASWSetup.swift in Sources */,
 				DE7D18052008A26900156FDA /* ASWChangePasswordViewController.swift in Sources */,
 				DEA11E60203C77B0009EBA26 /* UIView+ShowASWErrorView.swift in Sources */,
 				CA51D65D1FE6D77F00018CE9 /* ASWRequest.swift in Sources */,

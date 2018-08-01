@@ -175,25 +175,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4z-7f-oFL" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.5" y="110" width="262.5" height="43"/>
+                                <rect key="frame" x="38" y="110" width="300" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="atc-ca-ItM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNk-qa-7Ro" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.5" y="173" width="262.5" height="43"/>
+                                <rect key="frame" x="38" y="173" width="300" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Obj-Hr-fKL"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0Z-Gl-em8" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.5" y="236" width="262.5" height="43"/>
+                                <rect key="frame" x="38" y="236" width="300" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubo-sE-Hz0" customClass="ASWLoginPasswordTextField" customModule="AutoSportWorld" customModuleProvider="target">
-                                <rect key="frame" x="56.5" y="299" width="262.5" height="43"/>
+                                <rect key="frame" x="38" y="299" width="300" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RegisterAccount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXj-W8-Fv4">
@@ -217,7 +217,7 @@
                             <constraint firstItem="n0Z-Gl-em8" firstAttribute="width" secondItem="y4z-7f-oFL" secondAttribute="width" id="cmp-7T-58j"/>
                             <constraint firstItem="BNk-qa-7Ro" firstAttribute="top" secondItem="y4z-7f-oFL" secondAttribute="bottom" constant="20" id="dtG-bD-Cf7"/>
                             <constraint firstItem="n0Z-Gl-em8" firstAttribute="centerX" secondItem="oCC-Pm-Z0H" secondAttribute="centerX" id="jQh-cF-7IR"/>
-                            <constraint firstItem="y4z-7f-oFL" firstAttribute="width" secondItem="pOI-Ui-Cae" secondAttribute="width" multiplier="0.7" id="oQj-Vf-0n6"/>
+                            <constraint firstItem="y4z-7f-oFL" firstAttribute="width" secondItem="pOI-Ui-Cae" secondAttribute="width" multiplier="0.8" id="oQj-Vf-0n6"/>
                             <constraint firstItem="Ubo-sE-Hz0" firstAttribute="height" secondItem="y4z-7f-oFL" secondAttribute="height" id="oyB-rX-9Ox"/>
                             <constraint firstItem="Ubo-sE-Hz0" firstAttribute="top" secondItem="n0Z-Gl-em8" secondAttribute="bottom" constant="20" id="wzZ-Fs-oKg"/>
                             <constraint firstItem="y4z-7f-oFL" firstAttribute="top" secondItem="oCC-Pm-Z0H" secondAttribute="top" constant="90" id="zyQ-4n-OMx"/>

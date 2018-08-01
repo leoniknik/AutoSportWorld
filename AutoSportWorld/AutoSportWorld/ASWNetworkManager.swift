@@ -84,9 +84,9 @@ class ASWNetworkManager{
         ASWNetworkManager.request(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func validateLogin(email:String,password:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
+    static func validateLogin(email:String,password:String,name:String, sucsessFunc: @escaping (ASWValidateLoginParser)->Void,  errorFunc: @escaping (ASWErrorParser)->Void) {
         
-        var request = ASWValidateLoginRequest(email:email,password:password)
+        var request = ASWValidateLoginRequest(email:email,password:password, name:name)
         
         func onSuccess(json: JSON) -> Void{
             sucsessFunc(ASWValidateLoginParser(json: json))
@@ -119,8 +119,8 @@ class ASWNetworkManager{
         ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
-    static func signupUser(email:String,password:String, sucsessFunc: @escaping (ASWSignupParser)->Void,  errorFunc: @escaping (ASWSignupErrorParser)->Void) {
-        var request = ASWSignupRequest(email:email,password:password)
+    static func signupUser(email:String,password:String,name:String, sucsessFunc: @escaping (ASWSignupParser)->Void,  errorFunc: @escaping (ASWSignupErrorParser)->Void) {
+        var request = ASWSignupRequest(email:email,password:password, name:name)
         
         func onSuccess(json: JSON) -> Void{
             let response = ASWSignupParser(json: json)
@@ -317,10 +317,15 @@ class ASWNetworkManager{
                     var json = JSON()
                     if let data = response.data {
                         do {
-                            json = try JSON(data: data)
+                            var str = String(data: data, encoding: String.Encoding.utf8) as String? ?? ""
+                            print(str)
+                            str = str.replacingOccurrences(of: "\"code\":null", with: "\"code\":0")
+                            print(str)
+                            var newData = str.data(using: String.Encoding.utf8) ?? data
+                            json = try JSON(data: newData)
                         }
-                        catch {
-                            return
+                        catch{
+                            print(error)
                         }
                     }
                     DispatchQueue.main.async {

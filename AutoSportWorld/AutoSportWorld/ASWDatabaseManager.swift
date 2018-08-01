@@ -147,6 +147,8 @@ class ASWDatabaseManager {
             user.moto=moto
             user.watch = watch
             user.join = join
+            user.dataFilter = 1
+            user.costFilter = -1
         }
         save(object: user)
         
@@ -260,6 +262,7 @@ class ASWDatabaseManager {
         try! realm.write {
             if values[0][0] == true {
                 user.dataFilter = 1
+                user.costFilter = -1
             } else {
                 user.dataFilter = 0
             }
@@ -281,7 +284,7 @@ class ASWDatabaseManager {
             return nil
         }
         
-        var values = [[true], [false, true, false]]
+        var values = [[true], [false, false, false]]
         if user.dataFilter == 1 {
             values[0][0] = true
         } else {

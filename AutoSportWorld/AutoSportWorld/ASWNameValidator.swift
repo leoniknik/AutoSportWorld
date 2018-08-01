@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
+
 
 class ASWNameValidator {
     

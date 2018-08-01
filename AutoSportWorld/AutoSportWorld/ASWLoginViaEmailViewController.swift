@@ -8,7 +8,6 @@
 
 import UIKit
 
-import SkyFloatingLabelTextField
 
 class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
     
