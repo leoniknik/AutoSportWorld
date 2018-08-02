@@ -42,7 +42,9 @@ extension ASWViewController {
     }
     
     func presentAlert(_ title: String, _ text: String){
-        presentAlert(title, text,{})
+        self.errorViewController.setupUI()
+        let newtext = text == "" ? "Ошибка" : text
+        presentAlert(title, newtext,{})
     }
     
     func presentOKAlert(_ title: String, _ text: String, _ completion: @escaping ()->Void){

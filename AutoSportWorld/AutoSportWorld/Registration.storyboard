@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cFW-UU-ztQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cFW-UU-ztQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -121,8 +121,26 @@
                                     <constraint firstAttribute="width" secondItem="CKH-M9-Kfc" secondAttribute="height" multiplier="1:1" id="Let-RP-IJH"/>
                                 </constraints>
                             </imageView>
+                            <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wz4-fC-kCW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="424"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIW-2C-mmN">
+                                <rect key="frame" x="0.0" y="20" width="59" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iaE-m6-8eq"/>
+                                    <constraint firstAttribute="width" constant="59" id="lYK-bG-uqB"/>
+                                </constraints>
+                                <state key="normal" title="Назад">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeWebView:" destination="Pqr-xr-kCH" eventType="touchUpInside" id="F1t-WY-EI5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="7kQ-Cz-tFM" firstAttribute="trailing" secondItem="Wz4-fC-kCW" secondAttribute="trailing" id="0zO-Yj-FcZ"/>
                             <constraint firstItem="7kQ-Cz-tFM" firstAttribute="bottom" secondItem="OFB-1E-Plf" secondAttribute="bottom" constant="20" id="2aM-ex-qLk"/>
                             <constraint firstItem="zgP-cr-egp" firstAttribute="height" secondItem="4PE-6Z-NYu" secondAttribute="height" id="6eb-ld-Y7I"/>
                             <constraint firstItem="8Qw-JO-lnz" firstAttribute="centerX" secondItem="jc8-5Y-U2w" secondAttribute="centerX" id="6yU-X8-tx8"/>
@@ -132,18 +150,23 @@
                             <constraint firstItem="OFB-1E-Plf" firstAttribute="top" secondItem="zgP-cr-egp" secondAttribute="bottom" constant="20" id="FLp-7S-q1a"/>
                             <constraint firstItem="Lej-cZ-AEu" firstAttribute="top" secondItem="e40-E6-XtU" secondAttribute="bottom" constant="15.5" id="H4J-KD-4dc"/>
                             <constraint firstItem="OFB-1E-Plf" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="I9L-96-g4n"/>
+                            <constraint firstItem="Wz4-fC-kCW" firstAttribute="leading" secondItem="7kQ-Cz-tFM" secondAttribute="leading" id="ITC-rJ-naw"/>
                             <constraint firstItem="4PE-6Z-NYu" firstAttribute="width" secondItem="8Qw-JO-lnz" secondAttribute="width" id="Jn2-jt-1wR"/>
+                            <constraint firstItem="Wz4-fC-kCW" firstAttribute="leading" secondItem="NIW-2C-mmN" secondAttribute="leading" id="KuG-Lm-fOc"/>
                             <constraint firstItem="4PE-6Z-NYu" firstAttribute="top" secondItem="8Qw-JO-lnz" secondAttribute="bottom" constant="20" id="NBT-zF-Pvr"/>
                             <constraint firstItem="Lej-cZ-AEu" firstAttribute="centerX" secondItem="deG-Zs-VYv" secondAttribute="centerX" id="NGU-iS-LT8"/>
+                            <constraint firstItem="Wz4-fC-kCW" firstAttribute="top" secondItem="NIW-2C-mmN" secondAttribute="top" id="PCP-2O-Mu6"/>
                             <constraint firstItem="zgP-cr-egp" firstAttribute="width" secondItem="4PE-6Z-NYu" secondAttribute="width" id="QI4-hO-FSz"/>
                             <constraint firstItem="3oc-dD-vNq" firstAttribute="width" secondItem="deG-Zs-VYv" secondAttribute="width" multiplier="0.4" id="Qe0-1G-XdS"/>
                             <constraint firstItem="8Qw-JO-lnz" firstAttribute="width" secondItem="deG-Zs-VYv" secondAttribute="width" multiplier="0.8" id="VXC-Ub-725"/>
                             <constraint firstItem="zgP-cr-egp" firstAttribute="top" secondItem="4PE-6Z-NYu" secondAttribute="bottom" constant="20" id="X3V-eG-sja"/>
+                            <constraint firstItem="Wz4-fC-kCW" firstAttribute="top" secondItem="7kQ-Cz-tFM" secondAttribute="top" id="aG4-Es-yQv"/>
                             <constraint firstItem="zgP-cr-egp" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="bBg-wJ-a4Z"/>
                             <constraint firstItem="7kQ-Cz-tFM" firstAttribute="trailing" secondItem="deG-Zs-VYv" secondAttribute="trailing" id="bPt-ys-dA2"/>
                             <constraint firstItem="4PE-6Z-NYu" firstAttribute="centerX" secondItem="7kQ-Cz-tFM" secondAttribute="centerX" id="baa-81-XcT"/>
                             <constraint firstItem="e40-E6-XtU" firstAttribute="top" secondItem="3oc-dD-vNq" secondAttribute="bottom" constant="42" id="beC-tU-Kb2"/>
                             <constraint firstItem="e40-E6-XtU" firstAttribute="centerX" secondItem="deG-Zs-VYv" secondAttribute="centerX" id="e0w-re-6IO"/>
+                            <constraint firstItem="8Qw-JO-lnz" firstAttribute="top" secondItem="Wz4-fC-kCW" secondAttribute="bottom" id="emQ-JN-F1c"/>
                             <constraint firstItem="3oc-dD-vNq" firstAttribute="centerX" secondItem="jc8-5Y-U2w" secondAttribute="centerX" id="iNt-r0-1tZ"/>
                             <constraint firstItem="deG-Zs-VYv" firstAttribute="leading" secondItem="jc8-5Y-U2w" secondAttribute="leading" id="lLx-h9-T75"/>
                             <constraint firstItem="CKH-M9-Kfc" firstAttribute="height" secondItem="OFB-1E-Plf" secondAttribute="height" id="mgA-5m-ddY"/>
@@ -160,6 +183,8 @@
                         <outlet property="loginButton" destination="4PE-6Z-NYu" id="lM1-Iv-V3T"/>
                         <outlet property="registrationButton" destination="zgP-cr-egp" id="0tB-G1-yTY"/>
                         <outlet property="vkButton" destination="8Qw-JO-lnz" id="gew-1d-1Xx"/>
+                        <outlet property="webView" destination="Wz4-fC-kCW" id="JPm-yB-n7p"/>
+                        <outlet property="webViewButton" destination="NIW-2C-mmN" id="Xh6-CU-a1u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SY-ec-h57" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -75,8 +75,7 @@ class ASWFeedViewController: ASWViewController, ASWEventCellDelegate, ASWFeedsMo
     }
     
     @objc func getUpdate() {
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
+        setSearchBarMode(active: false)
         self.errorLabel.isHidden = true
         self.view.closeASWErrorView()
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -303,7 +302,6 @@ extension ASWFeedViewController: UITableViewDataSourcePrefetching {
         let urls = indexes.flatMap {
             URL(string: model.getEvent(forIndex: $0).imageURL ?? "")
         }
-        
         ImagePrefetcher(urls: urls).start()
     }
 }
@@ -311,9 +309,7 @@ extension ASWFeedViewController: UITableViewDataSourcePrefetching {
 
 extension ASWFeedViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
+        setSearchBarMode(active: false)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -324,8 +320,28 @@ extension ASWFeedViewController: UISearchBarDelegate {
         }
     }
     
+    func setSearchBarMode(active: Bool){
+        if active {
+            searchBar.tintColor = .white
+            searchBar.showsCancelButton = true
+        } else {
+            searchBar.showsCancelButton = false
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+        }
+        
+    }
+    
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.tintColor = .white
-        searchBar.showsCancelButton = true
+        setSearchBarMode(active: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //let text = searchBar.text
+        //guard !(text?.isEmpty ?? true) else { return }
+        //DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+        //    self?.model.updateEvents(cursor: nil, text)
+       // }
     }
 }

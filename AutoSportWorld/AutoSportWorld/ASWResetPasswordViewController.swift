@@ -22,6 +22,7 @@ class ASWResetPasswordViewController: ASWViewController {
         resetButton.isEnabled = false
         
     }
+    
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -41,8 +42,7 @@ class ASWResetPasswordViewController: ASWViewController {
         
         func error(parser: ASWErrorParser){
             presentAlert(errorParser: parser)
-                self.resetButton.isEnabled = true
-            
+            self.resetButton.isEnabled = true
         }
         
         resetButton.isEnabled = false
@@ -58,6 +58,7 @@ class ASWResetPasswordViewController: ASWViewController {
         setupForm()
         setupTransparentNavBar()
         navigationController?.navigationBar.tintColor = .white
+        self.errorViewController.view.frame = self.view.frame
     }
     
     func setupForm() {

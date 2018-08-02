@@ -21,15 +21,17 @@
 
 import UIKit
 
-class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ASWSettingsViewController: ASWViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var settingsTable: UITableView!
     
-    let sections = ["Информация о пользователе", "Социальные сети", "Фильтры"]
+    //let sections = ["Информация о пользователе", "Социальные сети", "Фильтры"]
+    let sections = ["Информация о пользователе", "Фильтры"]
     
-    let items = [["Личные данные", "Пароль"], ["Вконтакте"], ["Регионы", "Вид спорта", "Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
+    //let items = [["Личные данные", "Пароль"], ["Вконтакте"], ["Регионы", "Вид спорта", "Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
+    let items = [["Личные данные", "Пароль"], ["Регионы", "Вид спорта", "Гонки автоспорта", "Гонки мотоспорта", "Действия"]]
     
-    var botomItems = [["Имя, E-mail, телефон", "Сменить"],[],[]]
+    var botomItems = [["Имя, E-mail, телефон", "Сменить"],[]]
     let filterItems = [[],[],[],[],[]]
     
     override func viewDidLoad() {
@@ -84,7 +86,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
         }
         labelsArray.append(label)
         
-        botomItems[2] = labelsArray
+        botomItems[1] = labelsArray
     }
     
     func getLabel(dict:Dictionary<Int,String>,array:[Int])->String{
@@ -203,12 +205,12 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
             cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
             return cell
         }
-        else if indexPath.section == 1 {
+        else if indexPath.section == -1 { // соц сети убраны
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsSocialNetworkCell", for: indexPath) as! ASWSettingsSocialNetworkCell
             cell.socialTextLabel.text = items[indexPath.section][indexPath.item]
             return cell
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ASWSettingsUserDataCell", for: indexPath) as! ASWSettingsUserDataCell
             cell.infoLabel.text = items[indexPath.section][indexPath.item]
             cell.bottomLine.text = botomItems[indexPath.section][indexPath.item]
@@ -221,7 +223,7 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        if section == 1 || section == 0 {
+        if section == -1 || section == 0 {
             return 25
         }
         return 0
@@ -246,13 +248,23 @@ class ASWSettingsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 && indexPath.item == 0 {
-            let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeUserInfo
-            vc.view.backgroundColor = .white
-            navigationController?.pushViewController(vc, animated: true)
+            if ASWDatabaseManager().getUser()?.vkUser ?? false{
+                presentOKAlert("Функция недоступна", " При входе через ВК данная функция недоступна")
+            }else{
+                let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeUserInfo
+                vc.view.backgroundColor = .white
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            
         } else if indexPath.section == 0 && indexPath.item == 1 {
+            if ASWDatabaseManager().getUser()?.vkUser ?? false{
+                presentOKAlert("Функция недоступна", " При входе через ВК данная функция недоступна")
+            }else{
             let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changePassword
-            navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 2 {
+                navigationController?.pushViewController(vc, animated: true)
+                
+            }
+        } else if indexPath.section == 1 {
             if indexPath.item == 0 {
                 let vc = ASWViewControllersManager.ChangeUserDataViewControllers.changeRegionsViewController
                 vc.title = "Регионы"

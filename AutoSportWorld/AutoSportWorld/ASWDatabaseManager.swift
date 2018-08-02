@@ -73,6 +73,34 @@ class ASWDatabaseManager {
         }
     }
     
+    func loginUser(parser:ASWVKLoginParser)->ASWUserEntity{
+        unloginAllUsers()
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "email == 'vk'")
+        if let user = realm.objects(ASWUserEntity.self).filter(predicate).first{
+            try! realm.write {
+                //user.password = parser.password
+                user.isLogedIn = true
+                user.vkUser = true
+            }
+            save(object: user)
+            let sessionInfoParser = parser.sessionInfoParser!
+            setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)
+            return user
+        }else{
+            let user = createUserFrom(login:"vk",password:"vk")
+            try! realm.write {
+                user.isLogedIn = true
+                user.vkUser = true
+                user.login = "vk"
+                user.email = "vk"
+            }
+            let sessionInfoParser = parser.sessionInfoParser!
+            setSessionInfo(refresh_token: sessionInfoParser.refresh_token, access_token: sessionInfoParser.access_token, expires_at: sessionInfoParser.expires_at)
+            return user
+        }
+    }
+    
     func createUserFrom(login: String, password:String) -> ASWUserEntity {
         unloginAllUsers()
         

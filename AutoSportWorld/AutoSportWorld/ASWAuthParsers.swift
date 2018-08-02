@@ -177,6 +177,29 @@ class ASWSessionInfoParser{
     }
 }
 
+class ASWVKLoginParser {
+    var errorString = ""
+    var valid = false
+    var new = false
+    var filtersEmpty = false
+    
+    var sessionInfoParser:ASWSessionInfoParser?
+    
+    init(json: JSON) {
+        
+        let message = json["message"].stringValue
+        valid = message == ""
+        if valid {
+            let sessionInfo = json["session"]
+            sessionInfoParser = ASWSessionInfoParser(json: sessionInfo)
+            new = json["new"].boolValue
+            filtersEmpty = json["filters_empty"].boolValue
+        }else{
+            errorString = message
+        }
+    }
+}
+
 
 
 

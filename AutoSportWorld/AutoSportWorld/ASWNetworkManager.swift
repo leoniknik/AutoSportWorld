@@ -237,7 +237,24 @@ class ASWNetworkManager{
             errorFunc(response)
         }
         
-        ASWNetworkManager.authRequest(URL: request.url, method: .post, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
+        ASWNetworkManager.secretRequest(URL: request.url, method: .post, parameters: request.parameters, encoding: JSONEncoding.default, onSuccess: onSuccess, onError: onError, acessToken: ASWDatabaseManager().getUser()?.access_token ?? "")
+    }
+    
+    static func vkLogin(url: String, sucsessFunc: @escaping (ASWVKLoginParser)->Void,  errorFunc: @escaping (ASWLoginErrorParser)->Void) {
+        var request = ASWRequest()
+        request.url = url
+        
+        func onSuccess(json: JSON) -> Void{
+            let response = ASWVKLoginParser(json: json)
+            sucsessFunc(response)
+        }
+        
+        func onError(json: JSON, error: Error) -> Void {
+            let response = ASWLoginErrorParser(error: error, json: json)
+            errorFunc(response)
+        }
+        
+        ASWNetworkManager.authRequest(URL: request.url, method: .get, parameters: request.parameters, onSuccess: onSuccess, onError: onError)
     }
     
     //get Request

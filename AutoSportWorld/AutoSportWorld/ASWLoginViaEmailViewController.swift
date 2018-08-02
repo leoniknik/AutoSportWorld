@@ -140,8 +140,6 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         func errorFunc(parser:ASWErrorParser){
             presentAlert(errorParser: parser)
             leaveWaitMode()
-            //#error
-            //leaveWaitModeWithError()
         }
         
         ASWNetworkManager.getUserInfo(sucsessFunc: sucsessFunc, errorFunc: errorFunc)

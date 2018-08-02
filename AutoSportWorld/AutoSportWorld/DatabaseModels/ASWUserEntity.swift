@@ -25,6 +25,7 @@ class ASWUserEntity: Object {
     @objc dynamic var expires_at: Int = 0
     @objc dynamic var dataFilter: Int = 1
     @objc dynamic var costFilter: Int = -1
+    @objc dynamic var vkUser: Bool = false
 
     let favoriteRaces = List<ASWRaceEntity>()
     let regions = List<ASWRegionEntity>()

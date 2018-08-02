@@ -20,6 +20,13 @@ class ASWViewController:UIViewController, ASWResponseErrorViewControllerDelegate
         setupUI()   
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupUI()
+    }
+    
+    
+    
     
     private func setupUI() {
         setupErrorView()
