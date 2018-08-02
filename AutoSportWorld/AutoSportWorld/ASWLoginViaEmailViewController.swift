@@ -45,8 +45,8 @@ class ASWLoginViaEmailViewController:ASWViewController, UITextFieldDelegate {
         passwordField.setupUI()
 
         
-        loginField.textField.text = "evtAlex@gmail.com"
-        passwordField.textField.text = "123123"
+        //loginField.textField.text = "evtAlex@gmail.com"
+        //passwordField.textField.text = "123123"
     }
 
     let emailValidator = ASWEmailValidator()

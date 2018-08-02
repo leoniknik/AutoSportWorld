@@ -173,9 +173,9 @@ class ASWRegistrationViewController: ASWViewController, ASWCollectionViewControl
             add(asChildViewController: registerAccountViewController)
             
             
-            rawUser.login = "testUser@gmail.com"//"123123"
-            rawUser.email = "eded\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
-            rawUser.password = "123123"
+            //rawUser.login = "testUser@gmail.com"//"123123"
+            //rawUser.email = "eded\(Int(Date().timeIntervalSince1970*1000))@dede.ru"
+            //rawUser.password = "123123"
             registerAccountViewController.name = rawUser.login
             registerAccountViewController.email = rawUser.email
             registerAccountViewController.password = rawUser.password
