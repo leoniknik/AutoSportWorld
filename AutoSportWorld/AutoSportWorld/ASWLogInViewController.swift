@@ -54,6 +54,8 @@ class ASWLogInViewController: ASWViewController, VKSdkDelegate, VKSdkUIDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        webView.layer.cornerRadius = 20
+        webView.clipsToBounds = true
         setupUI()
     }
     
@@ -177,6 +179,8 @@ extension ASWLogInViewController: UIWebViewDelegate {
             var parser = ASWVKLoginParser(json: json)
             
             if parser.valid{
+                webView.isHidden = true
+                webViewButton.isHidden = true
                 ASWDatabaseManager().loginUser(parser:parser)
                 
                 if parser.filtersEmpty {
@@ -184,7 +188,6 @@ extension ASWLogInViewController: UIWebViewDelegate {
                     self.navigationController?.pushViewController(vc, animated: true)
                     return
                 }
-                
                 getUserInfo()
             }
             
