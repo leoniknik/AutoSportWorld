@@ -149,6 +149,8 @@ class ASWLogInViewController: ASWViewController, VKSdkDelegate, VKSdkUIDelegate 
     @IBAction func closeWebView(_ sender: Any) {
         webViewButton.isHidden = true
         webView.isHidden = true
+        webView.resignFirstResponder()
+        webView.endEditing(true)
     }
 }
 
@@ -181,6 +183,8 @@ extension ASWLogInViewController: UIWebViewDelegate {
             if parser.valid{
                 webView.isHidden = true
                 webViewButton.isHidden = true
+                webView.resignFirstResponder()
+                webView.endEditing(true)
                 ASWDatabaseManager().loginUser(parser:parser)
                 
                 if parser.filtersEmpty {
